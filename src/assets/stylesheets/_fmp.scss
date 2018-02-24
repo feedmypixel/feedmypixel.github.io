@@ -1,0 +1,89 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: poppins, helvetica neue, helvetica, arial, sans-serif;
+  text-size-adjust: 100%;
+  background-color: $white;
+  color: $white;
+}
+
+.center-aligned {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 0 10px;
+}
+
+.blue {
+  background-color: $blue;
+  padding: 10px 0;
+}
+
+.h1 {
+  margin: 0 0 10px;
+  font-size: 48px;
+}
+
+.h2 {
+  margin: 0 0 10px;
+  font-size: 32px;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.list {
+  margin-bottom: 20px;
+}
+
+.list--indented {
+  font-size: 14px;
+}
+
+.list--centered {
+  width: 200px;
+  margin: 40px auto 0;
+}
+
+.list--bare {
+  padding: 0;
+  list-style: none;
+}
+
+.list__item {
+  margin-bottom: 8px;
+}
+
+.list__icon {
+  display: inline-block;
+  margin-right: 8px;
+  list-style: none;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.header {
+  padding: 10px;
+}
+
+.footer {
+  font-size: 14px;
+  color: $black;
+  padding: 20px 10px;
+}
+
