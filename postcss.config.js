@@ -29,13 +29,6 @@ module.exports = (ctx) => ({
         'border-radius',
         'letter-spacing'
       ]
-    },
-    autoprefixer: {
-      browsers: [
-        '> 2%',
-        'last 2 versions',
-        'ie >= 7'
-      ]
     }
   }
 })
