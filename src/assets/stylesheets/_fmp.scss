@@ -1,42 +1,71 @@
 @import "settings/_vars.scss";
 
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
+  font-family: "Quicksand", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-family: poppins, helvetica neue, helvetica, arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 100%;
+  line-height: 1.2;
   text-size-adjust: 100%;
+}
+
+body {
   background-color: $white;
   color: $white;
 }
 
-.center-aligned {
-  margin: 20px auto;
-  max-width: 800px;
+.header {
+  padding: 12px;
+}
+
+.section-centered {
+  margin: 12px auto;
+  max-width: 820px;
   padding: 0 10px;
+}
+
+.section-centered-small {
+  text-align: center;
+  width: 260px;
+  margin: 12px auto 0;
+}
+
+.section-welcome {
+  padding: 24px 0 12px;
+  font-size: 18px;
 }
 
 .blue {
   background-color: $blue;
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .h1 {
-  margin: 0 0 10px;
-  font-size: 48px;
+  margin: 0;
+  font-size: 60px;
   color: $blue;
   display: inline-block;
 }
 
 .h2 {
-  margin: 0 0 10px;
-  font-size: 32px;
+  margin: 0;
+  font-size: 48px;
+}
+
+.link {
+  color: $white;
+  text-decoration: underline;
+
+  &:hover,
+  &:active,
+  &:visited {
+    color: $white;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .small-text {
@@ -44,50 +73,33 @@ body {
 }
 
 .list {
-  margin-bottom: 20px;
-}
-
-.list--indented {
-  font-size: 14px;
-}
-
-.list--centered {
-  width: 200px;
-  margin: 40px auto 0;
-}
-
-.list--bare {
-  padding: 0;
-  list-style: none;
+  margin-bottom: 24px;
 }
 
 .list__item {
-  margin-bottom: 8px;
-}
-
-.list__icon {
   display: inline-block;
-  margin-right: 8px;
+  margin-right: 6px;
   list-style: none;
 }
 
 .logo {
   width: 60px;
   height: 60px;
+  margin-left: 6px;
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
-.header {
-  padding: 10px;
+.copyright {
+  font-size: 14px;
+  color: $dark-grey;
 }
 
 .footer {
   font-size: 14px;
   color: $black;
-  padding: 20px 10px;
+  padding: 24px 12px;
 }
-
