@@ -10,7 +10,7 @@
   "scripts": {
     "clean:dist": "rm -rf dist && mkdir -p dist/assets/{images,stylesheets}",
     "build": "scripts/build.sh",
-    "build:css": "node-sass src/assets/stylesheets/ -o dist/assets/stylesheets/ --output-style compressed",
+    "build:css": "node-sass src/assets/stylesheets/ -o dist/assets/stylesheets/ --output-style compressed --omit-source-map-url",
     "postbuild:css": "postcss dist/assets/stylesheets/*.css -d dist/assets/stylesheets/ --parser sugarss",
     "lint:css": "stylelint --config .stylelintrc src/assets/stylesheets/**/*.scss --syntax scss -f verbose",
     "build:html": "node scripts/htmlBuilder.js",
