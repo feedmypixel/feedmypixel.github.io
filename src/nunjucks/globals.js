@@ -1,8 +1,9 @@
-let globals = new Map()
+let globals = new Map();
 
-globals.set('pageTitle', 'feedMyPixel - Software solutions - Ben Chidgey')
-globals.set('currentYear', (new Date()).getFullYear())
+globals.set("pageTitle", "feedMyPixel - Software solutions - Ben Chidgey");
+globals.set("currentYear", new Date().getFullYear());
 
-const init = (env) => globals.forEach((value, key) => env.addGlobal(key, value))
+const init = (env) =>
+  globals.forEach((value, key) => env.addGlobal(key, value));
 
-module.exports = init
+module.exports = init;
