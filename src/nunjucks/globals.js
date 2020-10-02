@@ -1,6 +1,6 @@
 let globals = new Map();
 
-globals.set("pageTitle", "feedMyPixel - Software solutions - Ben Chidgey");
+globals.set("pageTitle", "feedMyPixel - Web based things - Ben Chidgey");
 globals.set("currentYear", new Date().getFullYear());
 
 const init = (env) =>
