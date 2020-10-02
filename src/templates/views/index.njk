@@ -2,65 +2,46 @@
 
 {% block content %}
   <header class="header">
-    <div class="center-aligned">
-      <img src="/assets/images/feedMyPixelLtd.svg" class="logo" alt="feedMyPixel Ltd.">
+    <div class="section-centered">
       <h1 class="h1 company-name">feedMyPixel<span class="small-text">Ltd</span></h1>
+      <img src="/assets/images/feedMyPixelLtd.svg" class="logo" alt="feedMyPixel Ltd.">
     </div>
   </header>
-  <main class="blue">
-    <div class="center-aligned">
-      <h2 class="h2">Software solutions</h2>
-      <ul class="list">
-        <li class="list__item">frontend</li>
-        <ul class="list list--indented">
-          <li class="list__item">JavaScript</li>
-          <li class="list__item">CSS</li>
-          <li class="list__item">HTML</li>
-          <li class="list__item">Progressive Enhancement</li>
-          <li class="list__item">Accessibility</li>
-        </ul>
-        <li class="list__item">nodeJs</li>
-        <li class="list__item">Scala</li>
-      </ul>
+  <main>
+    <div class="blue">
+      <div class="section-centered">
+        <div class="section-welcome" itemscope itemtype="http://schema.org/Organization">
+          <h2 class="h2">Beautifully crafted web based things</h2>
+          <p>mail: <span itemprop="email">
+              <a class="link" href="mailto:hello&#64;feedmypixel.com">hello&#64;feedmypixel.com</a>
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   </main>
   <footer class="footer"  role="contentinfo" itemscope itemtype="http://schema.org/Organization">
-    <div class="center-aligned">
-      <ul class="list list--bare">
+    <div class="section-centered-small">
+      <ul class="list">
         <li class="list__item">
-          Founder, Developer, Designer: <span itemprop="founder">Ben Chidgey</span>
+          <a itemprop="sameAs" rel="external" href="https://github.com/feedmypixel">
+            <img src="/assets/images/github.svg" class="icon" alt="GitHub">
+          </a>
         </li>
         <li class="list__item">
-          Mail: <span itemprop="email"><a
-              href="mailto:hello&#64;feedmypixel.com">hello&#64;feedmypixel.com</a></span>
+          <a itemprop="sameAs" rel="external" href="https://www.linkedin.com/in/benchidgey">
+            <img src="/assets/images/linkedin.svg" class="icon" alt="LinkedIn">
+          </a>
         </li>
         <li class="list__item">
-          feedMyPixel Ltd is a registered company in England and Wales {{ currentYear }}©
-        </li>
-        <li class="list__item">
-          Company number: 8198085
-        </li>
-        <li class="list__item">
-          VAT Registration Number: <span itemprop="vatID">152 0607 46</span>
+          <a itemprop="sameAs" rel="external" href="https://twitter.com/feedmypixel">
+            <img src="/assets/images/twitter.svg" class="icon" alt="twitter">
+          </a>
         </li>
       </ul>
     </div>
-    <ul class="list list--centered">
-      <li class="list__icon">
-        <a itemprop="sameAs" rel="external" href="https://github.com/feedmypixel">
-          <img src="/assets/images/github.svg" class="icon" alt="GitHub">
-        </a>
-      </li>
-      <li class="list__icon">
-        <a itemprop="sameAs" rel="external" href="https://www.linkedin.com/in/benchidgey">
-          <img src="/assets/images/linkedin.svg" class="icon" alt="LinkedIn">
-        </a>
-      </li>
-      <li class="list__icon">
-        <a itemprop="sameAs" rel="external" href="https://twitter.com/feedmypixel">
-          <img src="/assets/images/twitter.svg" class="icon" alt="twitter">
-        </a>
-      </li>
-    </ul>
+    <div class="section-centered-small copyright">
+      © feedMyPixel Ltd 2012 - {{ currentYear }}
+    </div>
   </footer>
 {% endblock %}
