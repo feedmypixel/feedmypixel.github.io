@@ -17,7 +17,7 @@ body {
 }
 
 .header {
-  padding: 12px;
+  padding: 12px 0;
 }
 
 .section-centered {
@@ -44,14 +44,14 @@ body {
 
 .h1 {
   margin: 0;
-  font-size: 60px;
+  font-size: 48px;
   color: $blue;
   display: inline-block;
 }
 
 .h2 {
   margin: 0;
-  font-size: 48px;
+  font-size: 36px;
 }
 
 .link {
@@ -103,4 +103,14 @@ body {
   font-size: 14px;
   color: $black;
   padding: 24px 12px;
+}
+
+@media screen and (min-width: 30em) {
+  .h1 {
+    font-size: 60px;
+  }
+
+  .h2 {
+    font-size: 48px;
+  }
 }
