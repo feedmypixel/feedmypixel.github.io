@@ -6,6 +6,7 @@ A site for feedMyPixel Ltd. A static html site built via nunjucks.
 - [Setup](#setup)
 - [Development](#development)
 - [Npm Scripts](#npm-scripts)
+- [Releasing to Production](#releasing-to-production)
 - [License](#license)
 
 ### Requirements
@@ -22,14 +23,12 @@ $ npm i
 ```
 
 ### Development
-All development is done on the `develop` branch and static assets and markup are pushed to the `master` branch
-to deploy.
+All development is done on the `develop` branch and static assets and markup are pushed to the `master` branch to deploy.
 
 ### Npm Scripts
-
-To work on the site you can watch CSS, html and images via:
+To develop and work on the site locally:
 ```bash
-$ npm run watch
+$ npm run dev
 ```
 
 To build the `/dist` directory for production
@@ -41,6 +40,14 @@ If you wish to list all available `npm script` tasks for this project type:
 ```bash
 $ npm run
 ```
+
+### Releasing to Production
+Once you have pushed your changes on `develop`:
+- run `npm run build` 
+- checkout `master`
+- copy work from `./dist` to relevant folders
+- commit work
+- push to `master`
 
 ### License
 [Apache License 2.0](LICENSE)
