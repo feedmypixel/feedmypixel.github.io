@@ -7,7 +7,9 @@ html {
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
   font-size: 100%;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: 0.6px;
   text-size-adjust: 100%;
 }
 
@@ -22,7 +24,7 @@ body {
 
 .section-centered {
   margin: 12px auto;
-  max-width: 430px;
+  max-width: 440px;
   padding: 0 10px;
 }
 
@@ -44,7 +46,7 @@ body {
 
 .h1 {
   margin: 0;
-  font-size: 42px;
+  font-size: 40px;
   color: $blue;
   display: inline-block;
 }
@@ -72,15 +74,34 @@ body {
   font-size: 12px;
 }
 
-.list {
-  margin-bottom: 24px;
+.list-table {
+  display: table;
+  list-style: none;
+  margin: 24px 0;
   padding: 0;
+
+  .list__item {
+    display: table-row;
+    line-height: 1.6;
+
+    &::before {
+      display: table-cell;
+      content: attr(data-icon);
+      padding-right: 6px;
+      padding-bottom: 12px;
+    }
+  }
 }
 
-.list__item {
-  display: inline-block;
-  margin-right: 6px;
+.list-inline {
+  margin-bottom: 18px;
   list-style: none;
+
+  .list__item {
+    padding: 0;
+    display: inline-block;
+    margin-right: 6px;
+  }
 }
 
 .logo {
