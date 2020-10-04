@@ -9,7 +9,7 @@ html {
   font-size: 100%;
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.4px;
   text-size-adjust: 100%;
 }
 
@@ -30,7 +30,7 @@ body {
 
 .section-centered-small {
   text-align: center;
-  width: 230px;
+  width: 240px;
   margin: 12px auto 0;
 }
 
@@ -94,6 +94,7 @@ body {
 }
 
 .list-inline {
+  padding: 0;
   margin-bottom: 18px;
   list-style: none;
 
