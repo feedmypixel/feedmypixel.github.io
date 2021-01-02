@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "scripts/build.sh",
-    "build:css": "node-sass src/assets/stylesheets/ -o dist/assets/stylesheets/ --output-style compressed --omit-source-map-url",
+    "build:css": "sass --no-source-map --style compressed src/assets/stylesheets:dist/assets/stylesheets",
     "build:html": "node scripts/htmlBuilder.js",
     "clean:dist": "rm -rf dist/* && mkdir -p dist/assets/{images,stylesheets}",
     "copy:images": "rm -rf dist/assets/images && mkdir -p dist/assets/images && cp -R src/assets/images/* dist/assets/images/",
@@ -35,11 +35,11 @@
   },
   "devDependencies": {
     "autoprefixer": "10.0.1",
-    "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "postcss-cli": "8.0.0",
     "postcss-pxtorem": "5.1.1",
     "prettier": "2.1.2",
+    "sass": "1.32.0",
     "serve": "11.3.2",
     "standard": "14.3.4",
     "stylelint": "13.7.2"
