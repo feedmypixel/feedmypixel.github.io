@@ -34,14 +34,14 @@
     "nunjucks": "3.2.2"
   },
   "devDependencies": {
-    "autoprefixer": "10.0.1",
-    "nodemon": "2.0.4",
+    "autoprefixer": "10.1.0",
+    "nodemon": "2.0.6",
     "postcss-cli": "8.0.0",
     "postcss-pxtorem": "5.1.1",
-    "prettier": "2.1.2",
+    "prettier": "2.2.1",
     "sass": "1.32.0",
     "serve": "11.3.2",
-    "standard": "14.3.4",
-    "stylelint": "13.7.2"
+    "standard": "16.0.3",
+    "stylelint": "13.8.0"
   }
 }
