@@ -31,17 +31,18 @@
   },
   "contributors": "Ben Chidgey <ben@feedmypixel.com>",
   "dependencies": {
-    "nunjucks": "3.2.2"
+    "nunjucks": "3.2.3"
   },
   "devDependencies": {
-    "autoprefixer": "10.1.0",
-    "nodemon": "2.0.6",
-    "postcss-cli": "8.0.0",
-    "postcss-pxtorem": "5.1.1",
-    "prettier": "2.2.1",
-    "sass": "1.32.0",
-    "serve": "11.3.2",
-    "standard": "16.0.3",
-    "stylelint": "13.8.0"
+    "autoprefixer": "10.4.2",
+    "nodemon": "2.0.15",
+    "postcss-cli": "9.1.0",
+    "postcss-pxtorem": "6.0.0",
+    "prettier": "2.5.1",
+    "sass": "1.49.7",
+    "serve": "13.0.2",
+    "standard": "16.0.4",
+    "stylelint": "14.3.0",
+    "sugarss": "4.0.1"
   }
 }
