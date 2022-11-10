@@ -40,7 +40,7 @@
     "postcss-pxtorem": "6.0.0",
     "prettier": "2.5.1",
     "sass": "1.49.7",
-    "serve": "13.0.2",
+    "serve": "14.1.1",
     "standard": "16.0.4",
     "stylelint": "14.3.0",
     "sugarss": "4.0.1"
