@@ -1,5 +1,5 @@
 {
-  "name": "feedMyPixel-site",
+  "name": "feedmypixel-site",
   "version": "0.1.0",
   "description": "site for feedMyPixel Ltd",
   "author": "feedMyPixel",
@@ -18,7 +18,7 @@
     "hash:assets": "scripts/hash-assets.sh",
     "hash:images": "scripts/hash-images.sh",
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:css": "stylelint --config .stylelintrc src/assets/stylesheets/**/*.scss --syntax scss -f verbose",
+    "lint:css": "stylelint --config .stylelintrc src/assets/stylesheets/**/*.scss -f verbose",
     "lint:js": "standard",
     "postbuild:css": "postcss dist/assets/stylesheets/*.css -d dist/assets/stylesheets/ --parser sugarss",
     "prewatch": "npm run clean:dist && npm run build:css",
@@ -29,20 +29,32 @@
     "watch:html": "nodemon -w src/ -e njk -x 'npm run build:html'",
     "watch:images": "nodemon -w src/assets/ -e ico,svg -x 'npm run copy:images && npm run copy:favicon'"
   },
-  "contributors": "Ben Chidgey <ben@feedmypixel.com>",
+  "contributors": [
+    "Ben Chidgey <ben@feedmypixel.com> (https://feedmypixel.com)"
+  ],
   "dependencies": {
     "nunjucks": "3.2.3"
   },
   "devDependencies": {
-    "autoprefixer": "10.4.2",
-    "nodemon": "2.0.15",
-    "postcss-cli": "9.1.0",
+    "autoprefixer": "10.4.13",
+    "eslint": "8.27.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.5.1",
+    "eslint-plugin-promise": "6.1.1",
+    "node-sass": "8.0.0",
+    "nodemon": "2.0.20",
+    "postcss": "8.4.19",
+    "postcss-cli": "10.0.0",
     "postcss-pxtorem": "6.0.0",
-    "prettier": "2.5.1",
-    "sass": "1.49.7",
-    "serve": "13.0.2",
-    "standard": "16.0.4",
-    "stylelint": "14.3.0",
+    "postcss-scss": "4.0.5",
+    "prettier": "2.7.1",
+    "sass": "1.56.1",
+    "serve": "14.1.1",
+    "standard": "17.0.0",
+    "stylelint": "14.14.1",
+    "stylelint-config-prettier": "9.0.4",
+    "stylelint-config-standard": "29.0.0",
     "sugarss": "4.0.1"
   }
 }

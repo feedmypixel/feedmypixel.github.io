@@ -1,7 +1,7 @@
-@import "settings/_vars.scss";
+@import 'settings/_vars.scss';
 
 html {
-  font-family: "Quicksand", Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -14,40 +14,40 @@ html {
 }
 
 body {
-  background-color: $white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $blue;
   color: $white;
 }
 
+main {
+  flex: 1;
+}
+
 .header {
-  padding: 12px 0;
+  background-color: $white;
+  color: $blue;
 }
 
 .section-centered {
-  margin: 12px auto;
-  max-width: 440px;
-  padding: 0 10px;
+  margin: 24px auto 12px;
+  max-width: 552px;
 }
 
 .section-centered-small {
   text-align: center;
-  width: 240px;
-  margin: 12px auto 0;
+  width: 252px;
+  margin: 0 auto;
 }
 
 .section-welcome {
-  padding: 24px 0 12px;
-  font-size: 18px;
-}
-
-.blue {
-  background-color: $blue;
   padding: 12px 0;
 }
 
 .h1 {
   margin: 0;
-  font-size: 40px;
-  color: $blue;
+  font-size: 48px;
   display: inline-block;
 }
 
@@ -77,7 +77,7 @@ body {
 .list-table {
   display: table;
   list-style: none;
-  margin: 12px 0 24px;
+  margin: 12px 0;
   padding: 0;
 
   .list__item {
@@ -118,7 +118,7 @@ body {
 
 .copyright {
   font-size: 14px;
-  color: $dark-grey;
+  color: $white;
 }
 
 .footer {

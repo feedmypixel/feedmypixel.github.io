@@ -3,34 +3,46 @@
 {% block content %}
   <header class="header">
     <div class="section-centered">
-      <h1 class="h1 company-name">feedMyPixel<span class="small-text">Ltd</span></h1>
+      <h1 class="h1">feedMyPixel<span class="small-text">Ltd</span></h1>
       <img src="/assets/images/feedMyPixelLtd.svg" class="logo" alt="feedMyPixel Ltd.">
     </div>
   </header>
   <main>
-    <div class="blue">
-      <div class="section-centered">
-        <div class="section-welcome" itemscope itemtype="http://schema.org/Organization">
-          <h2 class="h2">Web based things</h2>
+      <div class="section-centered" itemscope itemtype="http://schema.org/Organization">
+          <div class="section-welcome">
+              <h2>Hi 👋🏻</h2>
+              <p>I'm Ben, a consultant software engineer.</p>
+              <p>My passion is beautifully crafted websites, well written code and building interfaces that make users
+                  smile.</p>
+          </div>
+
           <ul class="list-table">
-            <li class="list__item" data-icon="❤️">
-              JavaScript, Node.js, React.js
+            <li class="list__item" data-icon="😎">
+              Vanilla JavaScript, Node.js, React.js
             </li>
-            <li class="list__item" data-icon="💪🏻">
+            <li class="list__item" data-icon="✅">
               HTML
             </li>
-            <li class="list__item" data-icon="👍🏻">
+            <li class="list__item" data-icon="👌">
               CSS
             </li>
+            <li class="list__item" data-icon="🚀">
+              Progressive enhancement
+            </li>
+            <li class="list__item" data-icon="⌨️">
+              User experience
+            </li>
+            <li class="list__item" data-icon="🎉">
+              Accessibility
+            </li>
+            <li class="list__item" data-icon="☁️">
+              Cloud infrastructure
+            </li>
+            <li class="list__item" data-icon="🙌">
+              Lots of other stuff
+            </li>
           </ul>
-          <p>
-            <span itemprop="email">
-              <a class="link" href="mailto:hello&#64;feedmypixel.com">hello&#64;feedmypixel.com</a>
-            </span>
-          </p>
-        </div>
       </div>
-    </div>
   </main>
   <footer class="footer"  role="contentinfo" itemscope itemtype="http://schema.org/Organization">
     <div class="section-centered-small">
@@ -58,7 +70,7 @@
       </ul>
     </div>
     <div class="section-centered-small copyright">
-      © feedMyPixel Ltd 2012 - {{ currentYear }}
+      © feedMyPixel Ltd established 2012
     </div>
   </footer>
 {% endblock %}
