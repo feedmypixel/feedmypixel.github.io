@@ -42,10 +42,8 @@ $ npm run
 ```
 
 ### Releasing to Production
-Once you have pushed your changes on `develop`:
-- run `npm run build` 
-- checkout `master`
-- copy work from `./dist` to relevant folders
+Once you have committed and pushed your changes to `develop`:
+- `npm run pre:deploy`
 - commit work
 - push to `master`
 
