@@ -34,6 +34,7 @@ main {
 }
 
 .welcome {
+  margin-top: 36px;
   margin-bottom: 36px;
 }
 
@@ -116,6 +117,42 @@ main {
 .icon {
   width: 24px;
   height: 24px;
+}
+
+.github {
+  display: inline-block;
+  background: url('../images/github-fmp.svg') no-repeat;
+
+  &:hover {
+    background: url('../images/github.svg') no-repeat;
+  }
+}
+
+.instagram {
+  display: inline-block;
+  background: url('../images/instagram-fmp.svg') no-repeat;
+
+  &:hover {
+    background: url('../images/instagram.svg') no-repeat;
+  }
+}
+
+.twitter {
+  display: inline-block;
+  background: url('../images/twitter-fmp.svg') no-repeat;
+
+  &:hover {
+    background: url('../images/twitter.svg') no-repeat;
+  }
+}
+
+.linkedin {
+  display: inline-block;
+  background: url('../images/linkedin-fmp.svg') no-repeat;
+
+  &:hover {
+    background: url('../images/linkedin.svg') no-repeat;
+  }
 }
 
 .copyright {
