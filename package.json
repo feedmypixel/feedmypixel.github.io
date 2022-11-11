@@ -15,6 +15,7 @@
     "copy:images": "rm -rf dist/assets/images && mkdir -p dist/assets/images && cp -R src/assets/images/* dist/assets/images/",
     "copy:favicon": "rm -f dist/assets/favicon.ico && cp src/assets/favicon.ico dist/favicon.ico",
     "dev": "npm run watch & npm run serve",
+    "prep:deploy": "npm run build && git checkout master && rm -rf assets index.html favicon.ico && mv dist/*",
     "hash:assets": "scripts/hash-assets.sh",
     "hash:images": "scripts/hash-images.sh",
     "lint": "npm run lint:css && npm run lint:js",
