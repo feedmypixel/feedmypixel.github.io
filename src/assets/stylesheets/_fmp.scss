@@ -23,12 +23,13 @@ body {
 
 main {
   flex: 1;
+  margin: 0 12px;
 }
 
 .header {
   background-color: $white;
   color: $blue;
-  padding: 30px 0 18px;
+  padding: 24px 12px 18px;
   border-bottom: 1px solid $dark-blue;
 }
 
@@ -49,13 +50,13 @@ main {
 
 .h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 36px;
   display: inline-block;
 }
 
 .h2 {
   margin: 0;
-  font-size: 36px;
+  font-size: 24px;
 }
 
 .link {
@@ -107,8 +108,8 @@ main {
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   margin-left: 6px;
 }
 
@@ -135,5 +136,14 @@ main {
 
   .h2 {
     font-size: 48px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header {
+    padding-top: 30px;
   }
 }
