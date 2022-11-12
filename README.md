@@ -43,7 +43,7 @@ $ npm run
 
 ### Releasing to Production
 Once you have committed and pushed your changes to `develop`:
-- `npm run pre:deploy`
+- `npm run prep:deploy`
 - commit work
 - push to `master`
 
