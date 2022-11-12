@@ -26,7 +26,7 @@
     "serve": "serve ./dist/",
     "test": "npm run lint:css",
     "watch": "npm run watch:html & npm run watch:images & npm run watch:css",
-    "watch:css": "node-sass --source-map true -wr src/assets/stylesheets/ -o dist/assets/stylesheets/",
+    "watch:css": "sass --source-map -w src/assets/stylesheets:dist/assets/stylesheets",
     "watch:html": "nodemon -w src/ -e njk -x 'npm run build:html'",
     "watch:images": "nodemon -w src/assets/ -e ico,svg -x 'npm run copy:images && npm run copy:favicon'"
   },
@@ -43,7 +43,6 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.5.1",
     "eslint-plugin-promise": "6.1.1",
-    "node-sass": "8.0.0",
     "nodemon": "2.0.20",
     "postcss": "8.4.19",
     "postcss-cli": "10.0.0",
