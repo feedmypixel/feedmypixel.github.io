@@ -28,7 +28,7 @@ main {
 }
 
 .header {
-  padding: 12px;
+  padding: 12px 12px 6px;
   background-color: $white;
   border-bottom: 1px solid $grey;
 }
@@ -41,6 +41,7 @@ main {
 
 .header-title {
   flex: 12;
+  color: $dark-grey;
 }
 
 .header-logo {
@@ -50,6 +51,7 @@ main {
 
 .welcome {
   margin-top: 36px;
+  margin-bottom: 36px;
 }
 
 .section {
@@ -66,7 +68,6 @@ main {
   margin: 0;
   font-size: 42px;
   display: inline-block;
-  color: $dark-grey;
 }
 
 .large-text {
@@ -158,6 +159,7 @@ main {
 .footer {
   font-size: 14px;
   padding: 24px 12px;
+  color: $dark-grey;
 }
 
 @media screen and (min-width: 30em) {
