@@ -18,18 +18,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $blue;
-  color: $white;
-}
-
-body::after {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  z-index: -1;
-  content: url('../images/github.svg') url('../images/linkedin.svg')
-    url('../images/twitter.svg') url('../images/instagram.svg');
+  background-color: $light-grey;
+  color: $black;
 }
 
 main {
@@ -39,19 +29,18 @@ main {
 
 .header {
   background-color: $white;
-  color: $blue;
-  padding: 24px 12px 18px;
-  border-bottom: 1px solid $dark-blue;
+  padding: 24px 24px 12px;
+  border-bottom: 1px solid $grey;
 }
 
 .welcome {
-  margin-top: 36px;
+  margin-top: 24px;
   margin-bottom: 36px;
 }
 
 .section-centered {
   margin: 12px auto;
-  max-width: 492px;
+  max-width: 800px;
 }
 
 .section-centered-small {
@@ -122,58 +111,40 @@ main {
 .logo {
   width: 48px;
   height: 48px;
-  margin-left: 6px;
+  margin-left: 12px;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 
 .github {
   display: inline-block;
-  background: url('../images/github-fmp.svg') no-repeat;
-
-  &:hover {
-    background: url('../images/github.svg') no-repeat;
-  }
+  background: url('../images/github.svg') no-repeat;
 }
 
 .instagram {
   display: inline-block;
-  background: url('../images/instagram-fmp.svg') no-repeat;
-
-  &:hover {
-    background: url('../images/instagram.svg') no-repeat;
-  }
+  background: url('../images/instagram.svg') no-repeat;
 }
 
 .twitter {
   display: inline-block;
-  background: url('../images/twitter-fmp.svg') no-repeat;
-
-  &:hover {
-    background: url('../images/twitter.svg') no-repeat;
-  }
+  background: url('../images/twitter.svg') no-repeat;
 }
 
 .linkedin {
   display: inline-block;
-  background: url('../images/linkedin-fmp.svg') no-repeat;
-
-  &:hover {
-    background: url('../images/linkedin.svg') no-repeat;
-  }
+  background: url('../images/linkedin.svg') no-repeat;
 }
 
 .copyright {
   font-size: 14px;
-  color: $white;
 }
 
 .footer {
   font-size: 14px;
-  color: $black;
   padding: 24px 12px;
 }
 
