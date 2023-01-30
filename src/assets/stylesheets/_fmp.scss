@@ -28,21 +28,36 @@ main {
 }
 
 .header {
-  background-color: $white;
   padding: 12px;
+  background-color: $white;
   border-bottom: 1px solid $grey;
+}
+
+.header-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.header-title {
+  flex: 12;
+}
+
+.header-logo {
+  flex: 1;
+  align-self: flex-end;
 }
 
 .welcome {
   margin-top: 36px;
 }
 
-.section-centered {
+.section {
   margin: 12px auto;
   max-width: 800px;
 }
 
-.section-centered-slim {
+.section-centered {
   text-align: center;
   margin: 0 auto;
 }
@@ -100,20 +115,19 @@ main {
 
 .list-inline {
   padding: 0;
-  margin-bottom: 18px;
+  margin: 0 0 12px;
   list-style: none;
 
   .list__item {
     padding: 0;
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 2px;
   }
 }
 
 .logo {
-  width: 36px;
-  height: 36px;
-  margin-left: 12px;
+  width: 56px;
+  height: 56px;
 }
 
 .icon {
@@ -157,14 +171,5 @@ main {
 
   .h2 {
     font-size: 48px;
-  }
-
-  .logo {
-    width: 42px;
-    height: 42px;
-  }
-
-  .header {
-    text-align: right;
   }
 }
