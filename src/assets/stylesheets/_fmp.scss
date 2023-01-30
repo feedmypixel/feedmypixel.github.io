@@ -29,8 +29,9 @@ main {
 
 .header {
   background-color: $white;
-  padding: 24px 24px 12px;
+  padding: 12px;
   border-bottom: 1px solid $grey;
+  text-align: right;
 }
 
 .welcome {
@@ -45,7 +46,6 @@ main {
 
 .section-centered-slim {
   text-align: center;
-  width: 400px;
   margin: 0 auto;
 }
 
@@ -53,10 +53,11 @@ main {
   margin: 0;
   font-size: 42px;
   display: inline-block;
+  color: $dark-grey;
 }
 
 .large-text {
-  font-size: 24px;
+  font-size: 42px;
 }
 
 .small-text {
@@ -107,19 +108,19 @@ main {
   .list__item {
     padding: 0;
     display: inline-block;
-    margin-right: 6px;
+    margin-right: 4px;
   }
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   margin-left: 12px;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 .github {
@@ -149,7 +150,7 @@ main {
 
 @media screen and (min-width: 30em) {
   .h1 {
-    font-size: 60px;
+    font-size: 48px;
   }
 
   .h2 {
@@ -157,8 +158,8 @@ main {
   }
 
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
   }
 
   .header {
