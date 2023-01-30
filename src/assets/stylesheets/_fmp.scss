@@ -43,9 +43,9 @@ main {
   max-width: 800px;
 }
 
-.section-centered-small {
+.section-centered-slim {
   text-align: center;
-  width: 320px;
+  width: 400px;
   margin: 0 auto;
 }
 
@@ -56,8 +56,15 @@ main {
 }
 
 .large-text {
-  margin: 0;
   font-size: 24px;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.tiny-text {
+  font-size: 12px;
 }
 
 .link {
@@ -72,10 +79,6 @@ main {
   &:hover {
     text-decoration: none;
   }
-}
-
-.small-text {
-  font-size: 12px;
 }
 
 .list {
@@ -115,8 +118,8 @@ main {
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
 .github {
@@ -137,10 +140,6 @@ main {
 .linkedin {
   display: inline-block;
   background: url('../images/linkedin.svg') no-repeat;
-}
-
-.copyright {
-  font-size: 14px;
 }
 
 .footer {
