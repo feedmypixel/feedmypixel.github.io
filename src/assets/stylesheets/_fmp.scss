@@ -8,7 +8,7 @@ html {
   box-sizing: border-box;
   font-size: 100%;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.6;
   letter-spacing: 0.4px;
   text-size-adjust: 100%;
   padding: env(safe-area-inset);
@@ -31,12 +31,10 @@ main {
   background-color: $white;
   padding: 12px;
   border-bottom: 1px solid $grey;
-  text-align: right;
 }
 
 .welcome {
   margin-top: 36px;
-  margin-bottom: 36px;
 }
 
 .section-centered {
@@ -149,6 +147,10 @@ main {
 }
 
 @media screen and (min-width: 30em) {
+  html {
+    line-height: 1.2;
+  }
+
   .h1 {
     font-size: 48px;
   }
@@ -163,6 +165,6 @@ main {
   }
 
   .header {
-    padding-top: 30px;
+    text-align: right;
   }
 }
