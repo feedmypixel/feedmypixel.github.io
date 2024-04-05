@@ -1,100 +1,82 @@
 {% extends "templates/_layout/base.njk" %}
 
 {% block content %}
-    <header class="header">
-        <div class="section header-content">
-            <h1 class="h1 header-title">feedMyPixel<span class="small-text">Ltd</span></h1>
-            <img src="/assets/images/feedMyPixelLtd.svg" class="logo header-logo" alt="feedMyPixel Ltd." />
-        </div>
-    </header>
-    <main>
-        <div class="section" itemscope itemtype="http://schema.org/Organization">
-            <div class="welcome">
-                <span class="large-text">Hi 👋🏻</span>
-                <p>I'm Ben Chidgey, a consultant Software engineer.</p>
-                <p>My passion is beautifully crafted websites, well written code and building interfaces that make users
-                    smile.</p>
-            </div>
-            <ul class="list">
-                <li class="list__item">
-                    <span class="list__icon">😎</span>
-                    Vanilla JavaScript, React.js
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">✅</span>
-                    HTML
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">👌🏻</span>
-                    CSS, Sass
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">🚀</span>
-                    Progressive enhancement, Resilience
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">📱️</span>
-                    All the screens
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">👍🏻</span>
-                    User experience, Business value
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">🎉</span>
-                    Accessibility
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">💪🏻</span>
-                    Node.js
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">🤖</span>
-                    Cloud infrastructure, Continuous Integration, Docker, Terraform
-                </li>
-                <li class="list__item">
-                    <span class="list__icon">🙌🏻</span>
-                    Lots of other stuff, Git, TypeScript, GitHub Actions etc...
-                </li>
-            </ul>
-        </div>
-    </main>
+  <header class="header">
+    <div class="section header-content">
+      <h1 class="h1 header-title">feedMyPixel<span class="small-text">Ltd</span></h1>
+      <img src="/assets/images/feedMyPixelLtd.svg" class="logo header-logo" alt="feedMyPixel Ltd." />
+    </div>
+  </header>
+  <main>
+    <div class="section" itemscope itemtype="http://schema.org/Organization">
+      <div class="welcome">
+        <span class="large-text">Hi 👋🏻</span>
+        <p>I'm Ben Chidgey, a consultant Software engineer.</p>
+        <p>My passion is beautifully crafted websites, well written code and building interfaces that make users
+          smile.</p>
+      </div>
+      <ul class="list">
+        <li class="list__item">
+          <span class="list__icon">😎</span>
+          Vanilla JavaScript, React.js
+        </li>
+        <li class="list__item">
+          <span class="list__icon">✅</span>
+          HTML
+        </li>
+        <li class="list__item">
+          <span class="list__icon">👌🏻</span>
+          CSS, Sass
+        </li>
+        <li class="list__item">
+          <span class="list__icon">🚀</span>
+          Progressive enhancement, Resilience
+        </li>
+        <li class="list__item">
+          <span class="list__icon">📱️</span>
+          All the screens
+        </li>
+        <li class="list__item">
+          <span class="list__icon">👍🏻</span>
+          User experience, Business value
+        </li>
+        <li class="list__item">
+          <span class="list__icon">🎉</span>
+          Accessibility
+        </li>
+        <li class="list__item">
+          <span class="list__icon">💪🏻</span>
+          Node.js
+        </li>
+        <li class="list__item">
+          <span class="list__icon">🤖</span>
+          Cloud infrastructure, Continuous Integration, Docker, Terraform
+        </li>
+        <li class="list__item">
+          <span class="list__icon">🙌🏻</span>
+          Lots of other stuff, Git, TypeScript, GitHub Actions etc...
+        </li>
+      </ul>
+    </div>
+  </main>
 
-    <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/Organization">
-        <div class="section-centered">
-            <ul class="list-inline">
-                <li class="list__item">
-                    <a itemprop="sameAs" rel="external" href="https://instagram.com/feedmypixel">
-                     <span class="instagram icon" role="img"
-                           aria-label="Instagram"
-                           aria-description="Instagram image"></span>
-                    </a>
-                </li>
-                <li class="list__item">
-                    <a itemprop="sameAs" rel="external" href="https://twitter.com/feedmypixel">
-                    <span class="twitter icon" role="img"
-                          aria-label="Twitter"
-                          aria-description="Twitter image"></span>
-                    </a>
-                </li>
-                <li class="list__item">
-                    <a itemprop="sameAs" rel="external" href="https://github.com/feedmypixel">
-                      <span class="github icon" role="img"
-                            aria-label="Github"
-                            aria-description="Github image"></span>
-                    </a>
-                </li>
-                <li class="list__item">
-                    <a itemprop="sameAs" rel="external" href="https://www.linkedin.com/in/benchidgey">
-                      <span class="linkedin icon" role="img"
-                            aria-label="Linkedin"
-                            aria-description="Linkedin image"></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-            <div class="section-centered tiny-text">
-                © feedMyPixel Ltd established 2012. Company number: 08198085
-            </div>
-    </footer>
+  <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/Organization">
+    <div class="icons-container">
+      <a class="app-link" itemprop="sameAs" rel="external" href="https://instagram.com/feedmypixel">
+        <span class="instagram icon" role="img" aria-label="Instagram" aria-description="Instagram image"></span>
+      </a>
+      <a class="app-link" itemprop="sameAs" rel="external" href="https://twitter.com/feedmypixel">
+        <span class="x icon" role="img" aria-label="X" aria-description="X image"></span>
+      </a>
+      <a class="app-link" itemprop="sameAs" rel="external" href="https://github.com/feedmypixel">
+        <span class="github icon" role="img" aria-label="Github" aria-description="Github image"></span>
+      </a>
+      <a class="app-link" itemprop="sameAs" rel="external" href="https://www.linkedin.com/in/benchidgey">
+        <span class="linkedin icon" role="img" aria-label="Linkedin" aria-description="Linkedin image"></span>
+      </a>
+    </div>
+    <div class="section-centered tiny-text">
+      © feedMyPixel Ltd established 2012. Company number: 08198085
+    </div>
+  </footer>
 {% endblock %}
