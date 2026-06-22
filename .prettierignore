@@ -1,0 +1,23 @@
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Generated
+build
+coverage
+/static/
+
+# Settings
+.husky
+.lintstagedrc
+.github
+
+# Claude Code working dir
+.claude
+
+# PRDs + task lists left untouched
+tasks
+
+# Design reference (claude.ai/design HTML+CSS prototypes — not production code)
+design

@@ -1,0 +1,47 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "overrides": [
+    {
+      "files": ["**/*.svelte"],
+      "customSyntax": "postcss-html",
+      "rules": {
+        "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global"] }]
+      }
+    },
+    {
+      "files": ["src/lib/styles/tokens.css"],
+      "rules": {
+        "color-no-hex": null
+      }
+    }
+  ],
+  "rules": {
+    "color-no-hex": [
+      true,
+      {
+        "message": "Use a token: var(--brand) etc. Hex literals are only allowed in src/lib/styles/tokens.css."
+      }
+    ],
+    "no-descending-specificity": null,
+    "selector-class-pattern": null,
+    "no-empty-source": null,
+    "custom-property-pattern": null,
+    "declaration-block-no-duplicate-properties": [
+      true,
+      { "ignore": ["consecutive-duplicates-with-different-values"] }
+    ],
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "hue-degree-notation": null,
+    "media-feature-range-notation": null,
+    "value-keyword-case": null
+  },
+  "ignoreFiles": [
+    "node_modules/**",
+    "build/**",
+    ".svelte-kit/**",
+    "design/**",
+    "coverage/**",
+    "**/*.d.ts"
+  ]
+}
