@@ -76,6 +76,19 @@ portfolio piece: its quality *is* the pitch. **Spirit:** *simple, well-made, qua
 - Progressive enhancement — must work as plain HTML/CSS; JS only enhances.
 - Self-documenting, restrained. Every element earns its place.
 
+## Principles to bake in
+
+- **Units: rem, not px** — honour the user's root font size. Type + space on a modular scale; tune
+  line-heights for **vertical rhythm**.
+- **Responsive: container queries** (`@container`) for component-internal layout; viewport media
+  queries only for page/layout decisions — keeps components drop-anywhere.
+- **Never dead-end the user.** Every state offers a way forward. **No disabled buttons** (only the
+  transient in-flight window after submit); empty states carry a CTA; errors say what + the way out;
+  404 routes home. Action never applies in a state → hide it; not yet → keep it live + explain on click.
+- **One clear primary action per screen** — main path obvious, everything else quieter. Progressive
+  disclosure for secondary/advanced.
+- **Honour preferences:** `prefers-reduced-motion`, `prefers-color-scheme`, user font size.
+
 ## Deliver
 
 Token foundations (annotated hex/rem, stat vocabulary, blue brand), typography specimen, header +
