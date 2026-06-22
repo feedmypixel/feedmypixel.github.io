@@ -1,51 +1,42 @@
-# feedMyPixel Ltd. Holding page site
-A site for feedMyPixel Ltd. A static html site built via nunjucks.
+# sv
 
-## Table of Contents
-- [Requirements](#requirements)
-- [Setup](#setup)
-- [Development](#development)
-- [Npm Scripts](#npm-scripts)
-- [Releasing to Production](#releasing-to-production)
-- [License](#license)
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-### Requirements
+## Creating a project
 
-### [Node.js](http://nodejs.org/) & [npm](https://nodejs.org/download/)
-Please install Node.js `>= v6.3.0` and npm `>= v4.1.1`.
-You may find it easier to use the Node Version Manager [nvm](https://github.com/creationix/nvm)
+If you're seeing this, you've probably already done this step. Congrats!
 
-
-### Setup
-Install npm dependencies:
-```bash
-$ npm i
+```sh
+# create a new project
+npx sv create my-app
 ```
 
-### Development
-All development is done on the `develop` branch and static assets and markup are pushed to the `master` branch to deploy.
+To recreate this project with the same configuration:
 
-### Npm Scripts
-To develop and work on the site locally:
-```bash
-$ npm run dev
+```sh
+# recreate this project
+pnpm dlx sv@0.16.1 create --template minimal --types ts --install pnpm fmp-scaffold
 ```
 
-To build the `/dist` directory for production
-```bash
-$ npm run build
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-If you wish to list all available `npm script` tasks for this project type:
-```bash
-$ npm run
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
 ```
 
-### Releasing to Production
-Once you have committed and pushed your changes to `develop`:
-- `npm run prep:deploy`
-- commit work
-- push to `master`
+You can preview the production build with `npm run preview`.
 
-### License
-[Apache License 2.0](LICENSE)
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
