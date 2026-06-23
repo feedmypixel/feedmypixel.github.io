@@ -1,0 +1,65 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    open-pull-requests-limit: 5
+    versioning-strategy: increase
+    allow:
+      - dependency-type: direct
+    cooldown:
+      default-days: 5
+      semver-major-days: 20
+      semver-minor-days: 7
+      semver-patch-days: 3
+    schedule:
+      interval: weekly
+      day: thursday
+      time: "09:00"
+      timezone: "Europe/London"
+    groups:
+      svelte:
+        patterns:
+          - "svelte"
+          - "svelte-*"
+          - "@sveltejs/*"
+          - "sveltekit-*"
+          - "vitest-browser-svelte"
+          - "prettier-plugin-svelte"
+          - "eslint-plugin-svelte"
+          - "mdsvex"
+      lint:
+        patterns:
+          - "eslint"
+          - "eslint-config-*"
+          - "eslint-plugin-security"
+          - "@eslint/*"
+          - "typescript-eslint"
+          - "prettier"
+          - "stylelint"
+          - "stylelint-*"
+          - "globals"
+          - "postcss-html"
+      test:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "playwright"
+          - "@playwright/*"
+          - "@axe-core/playwright"
+      types:
+        patterns:
+          - "@types/*"
+      tooling:
+        patterns:
+          - "vite"
+          - "husky"
+          - "lint-staged"
+          - "typescript"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "09:00"
+      timezone: "Europe/London"
