@@ -1,1 +1,6 @@
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks git --staged --redact --no-banner
+else
+  echo "⚠ gitleaks not installed — skipping local secret scan (brew install gitleaks). GitHub push protection still applies."
+fi
 pnpm exec lint-staged
