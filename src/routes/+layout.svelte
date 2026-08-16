@@ -4,6 +4,9 @@
   import '@fontsource/dm-mono/400.css'
   import '@fontsource/dm-mono/500.css'
   import favicon from '$lib/assets/favicon.svg'
+  import Header from '$lib/components/Header.svelte'
+  import Footer from '$lib/components/Footer.svelte'
+  import Toaster from '$lib/components/Toaster.svelte'
 
   let { children } = $props()
 </script>
@@ -12,4 +15,45 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div id="top" class="page">
+  <Header />
+  <main id="main">
+    {@render children()}
+  </main>
+  <Footer />
+</div>
+
+<Toaster />
+
+<style>
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -3.5rem;
+    left: var(--space-4);
+    z-index: var(--z-toast);
+    padding: var(--space-2) var(--space-4);
+    background: var(--button-bg);
+    color: var(--button-ink);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: top var(--transition) var(--ease-standard);
+  }
+
+  .skip-link:focus {
+    top: var(--space-4);
+  }
+</style>

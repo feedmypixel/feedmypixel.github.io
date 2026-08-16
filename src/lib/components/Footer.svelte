@@ -1,0 +1,61 @@
+<script lang="ts">
+  import Logo from './Logo.svelte'
+</script>
+
+<footer class="footer">
+  <div class="inner">
+    <div class="brand">
+      <Logo size={22} />
+      <span class="line">feedMyPixel Ltd · Ben Chidgey</span>
+    </div>
+    <nav class="nav" aria-label="Footer">
+      <a href="#products">Products</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.gov.uk/digital-marketplace">Digital Marketplace</a>
+      <a href="https://github.com/feedmypixel">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--surface-page);
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: var(--space-10) var(--gutter);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .line {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--ink-subtle);
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
+  .nav a {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+</style>
