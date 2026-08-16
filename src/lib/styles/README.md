@@ -22,9 +22,11 @@ every named layer by design.
 
 ## Tokens
 
-Values come from the `design_handoff_onepager_v1` bundle and keep the handoff's own names
-(`--space-4`, `--size-3xl`, `--band`, `--gutter`). Dark theme is a pure token swap under
-`[data-theme='dark']` — no per-component dark CSS.
+Values come from the `design_handoff_onepager_v1` bundle. Naming follows stat-ui's conventions where
+they map (`--font-size-*`, `--line-height-*`, `--font-weight-*`, `--transition-*`); the handoff's own
+system stays where it's finer or off-brand for stat — the 12-step `--space-1`…`--space-24` scale,
+pixel-square `--radius-*`, the fluid clamp() type scale, `--band` and `--gutter`. Dark theme is a pure
+token swap under `[data-theme='dark']` — no per-component dark CSS.
 
 Fonts are self-hosted via `@fontsource-variable/plus-jakarta-sans` (display + text) and
 `@fontsource/dm-mono` (mono), imported in the root layout — no Google Fonts.

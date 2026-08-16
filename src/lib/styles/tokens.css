@@ -88,28 +88,28 @@
   --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
 
   /* weights */
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* type scale — clamp()-fluid from xl up, no font-size media queries */
-  --size-xs: 0.75rem;
-  --size-sm: 0.875rem;
-  --size-base: 1rem;
-  --size-md: 1.125rem;
-  --size-lg: 1.25rem;
-  --size-xl: clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem);
-  --size-2xl: clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem);
-  --size-3xl: clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem);
-  --size-4xl: clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem);
-  --size-5xl: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem);
+  --font-size-2xl: clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem);
+  --font-size-3xl: clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem);
+  --font-size-4xl: clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem);
+  --font-size-5xl: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
 
   /* line height */
-  --leading-tight: 1.1;
-  --leading-snug: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.65;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
 
   /* tracking */
   --tracking-tight: -0.02em;
@@ -151,9 +151,9 @@
   /* motion */
   --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 120ms;
-  --dur: 200ms;
-  --dur-slow: 320ms;
+  --transition-fast: 120ms;
+  --transition: 200ms;
+  --transition-slow: 320ms;
 
   /* z-index */
   --z-header: 100;

@@ -20,8 +20,8 @@ body {
   background: var(--surface-page);
   color: var(--ink);
   font-family: var(--font-text);
-  font-size: var(--size-base);
-  line-height: var(--leading-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
 }
 
