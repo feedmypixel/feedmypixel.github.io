@@ -1,0 +1,9 @@
+/* App stylesheet entry — the only stylesheet +layout imports. Declares layer order, then imports each concern. */
+
+@layer tokens, base, objects, utilities, patterns;
+
+@import url('./tokens.css') layer(tokens);
+@import url('./base.css') layer(base);
+@import url('./objects.css') layer(objects);
+@import url('./utilities.css') layer(utilities);
+@import url('./patterns.css') layer(patterns);

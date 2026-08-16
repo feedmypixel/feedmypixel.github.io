@@ -1,0 +1,209 @@
+/* Design tokens — the only place raw hex lives. Values from design_handoff_onepager_v1. */
+
+:root {
+  /* neutral ramp */
+  --neutral-50: #fbfcfe;
+  --neutral-100: #f4f7fa;
+  --neutral-150: #e9eef5;
+  --neutral-200: #dbe3ed;
+  --neutral-300: #c2ccda;
+  --neutral-400: #94a1b3;
+  --neutral-500: #66748a;
+  --neutral-600: #4a586b;
+  --neutral-700: #374355;
+  --neutral-800: #1c2635;
+  --neutral-900: #111a26;
+  --neutral-950: #0a1020;
+
+  /* pixel blue ramp */
+  --blue-50: #eaf3ff;
+  --blue-100: #d2e6ff;
+  --blue-200: #a9ceff;
+  --blue-300: #73b0ff;
+  --blue-400: #3294fc;
+  --blue-500: #1a7ef0;
+  --blue-600: #1267d1;
+  --blue-700: #0f52a8;
+
+  /* surfaces */
+  --surface-page: #fbfcfe;
+  --surface-raised: #fff;
+  --surface-sunken: #f1f5fa;
+  --surface-inset: #e5ebf4;
+  --surface-overlay: #fff;
+
+  /* borders */
+  --border-subtle: var(--neutral-150);
+  --border-default: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+
+  /* ink */
+  --ink-strong: var(--neutral-950);
+  --ink: var(--neutral-800);
+  --ink-muted: var(--neutral-600);
+  --ink-subtle: #5d6b80;
+  --ink-onbrand: #fff;
+
+  /* brand */
+  --brand: var(--blue-400);
+  --brand-hover: var(--blue-500);
+  --brand-active: var(--blue-600);
+  --brand-tint: var(--blue-50);
+  --brand-tint-strong: var(--blue-100);
+  --brand-text: #0f52a8;
+
+  /* link */
+  --link: var(--blue-700);
+  --link-hover: var(--blue-600);
+
+  /* button */
+  --button-bg: #1267d1;
+  --button-bg-hover: #0f52a8;
+  --button-ink: #fff;
+
+  /* mood accents */
+  --mood-positive: oklch(49% 0.12 150);
+  --mood-positive-tint: oklch(95% 0.04 150);
+  --mood-caution: oklch(70% 0.13 75);
+  --mood-critical: oklch(52% 0.16 25);
+  --mood-critical-tint: oklch(95% 0.03 25);
+  --mood-info: #1267d1;
+  --mood-accent: oklch(56% 0.14 290);
+
+  /* solid mood fills (toasts) */
+  --solid-positive: oklch(48% 0.12 150);
+  --solid-critical: oklch(50% 0.17 25);
+  --solid-info: #0f52a8;
+
+  /* form fields */
+  --field-bg: #fff;
+  --field-border: var(--neutral-300);
+  --field-border-focus: var(--brand);
+  --field-invalid: var(--mood-critical);
+  --field-placeholder: var(--ink-subtle);
+
+  /* type families — self-hosted, no italic */
+  --font-display: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  --font-text: 'Plus Jakarta Sans Variable', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* type scale — clamp()-fluid from xl up, no font-size media queries */
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-base: 1rem;
+  --size-md: 1.125rem;
+  --size-lg: 1.25rem;
+  --size-xl: clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem);
+  --size-2xl: clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem);
+  --size-3xl: clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem);
+  --size-4xl: clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem);
+  --size-5xl: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+
+  /* line height */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* tracking */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+
+  /* space — 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* fluid gutter + section band */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --band: clamp(4rem, 2.5rem + 6vw, 8rem);
+
+  /* radii — pixel brand keeps corners square */
+  --radius-pixel: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-pill: 6px;
+
+  /* shadow */
+  --shadow-sm: 0 1px 2px rgb(20, 26, 39, 0.04);
+  --shadow-md: 0 1px 3px rgb(20, 26, 39, 0.06);
+  --shadow-lg: 0 8px 24px -12px rgb(20, 26, 39, 0.15);
+
+  /* motion */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+
+  /* z-index */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-toast: 400;
+
+  /* focus */
+  --focus-ring-color: rgb(50, 148, 252, 0.45);
+  --focus-ring: 0 0 0 3px var(--focus-ring-color);
+
+  /* container max — 1240px */
+  --container-max: 77.5rem;
+}
+
+[data-theme='dark'] {
+  --surface-page: #0a0b0e;
+  --surface-raised: #1b1e26;
+  --surface-sunken: #13151c;
+  --surface-inset: #23262f;
+  --surface-overlay: #1b1e26;
+  --border-subtle: #262a33;
+  --border-default: #333843;
+  --border-strong: #454b58;
+  --ink-strong: #f3f6fb;
+  --ink: #d6deea;
+  --ink-muted: #93a1ba;
+  --ink-subtle: #7888a2;
+  --brand: #4f9dfd;
+  --brand-hover: #73b0ff;
+  --brand-active: #a9ceff;
+  --brand-tint: #122236;
+  --brand-tint-strong: #16304b;
+  --brand-text: #4f9dfd;
+  --link: #73b0ff;
+  --link-hover: #a9ceff;
+  --button-bg: #4f9dfd;
+  --button-bg-hover: #73b0ff;
+  --button-ink: #0b0f18;
+  --mood-positive: oklch(78% 0.15 150);
+  --mood-critical: oklch(74% 0.16 25);
+  --mood-positive-tint: #0f2417;
+  --mood-critical-tint: #2a1414;
+  --mood-info: #73b0ff;
+  --field-bg: #0d121b;
+  --field-border: #38445c;
+  --field-invalid: oklch(74% 0.16 25);
+  --field-border-focus: #4f9dfd;
+  --focus-ring-color: rgb(79, 157, 253, 0.55);
+  --focus-ring: 0 0 0 3px var(--focus-ring-color);
+  --shadow-sm: 0 1px 2px rgb(0, 0, 0, 0.3);
+  --shadow-md: 0 1px 3px rgb(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 28px -12px rgb(0, 0, 0, 0.55);
+}
