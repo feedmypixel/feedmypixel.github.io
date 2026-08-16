@@ -64,12 +64,11 @@ h6 {
 
 a {
   color: var(--link);
-  text-decoration: none;
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: var(--link-hover);
 }
 
 input::placeholder,
