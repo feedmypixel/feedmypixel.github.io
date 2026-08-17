@@ -1,60 +1,98 @@
 <script lang="ts">
   import { consent } from '$lib/consent.svelte'
+  import { toasts } from '$lib/toasts.svelte'
   import Button from './Button.svelte'
 
+  const FADE_MS = 320
+
   let bannerEl: HTMLElement | undefined = $state()
+  let closing = $state(false)
+  let focused = false
 
   $effect(() => {
     consent.init()
   })
 
   $effect(() => {
-    if (consent.choice === 'unknown') {
-      bannerEl?.focus()
+    if (consent.choice === 'unknown' && bannerEl && !focused) {
+      bannerEl.focus()
+      focused = true
+    }
+    if (consent.choice !== 'unknown') {
+      focused = false
     }
   })
+
+  function decide(accepted: boolean) {
+    closing = true
+    toasts.push(
+      accepted ? 'positive' : 'info',
+      accepted ? 'Analytics on, thank you' : 'Analytics stays off'
+    )
+    setTimeout(() => {
+      closing = false
+      if (accepted) {
+        consent.grant()
+      } else {
+        consent.deny()
+      }
+    }, FADE_MS)
+  }
 </script>
 
 {#if consent.choice === 'unknown'}
   <div
     bind:this={bannerEl}
     class="banner"
+    class:closing
     role="dialog"
-    aria-modal="false"
-    aria-label="Analytics cookies"
+    aria-label="Cookie consent"
+    aria-describedby="consent-copy"
     tabindex="-1"
   >
-    <p class="copy">
-      I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-      yes, and no personal data is collected either way.
-    </p>
-    <div class="actions">
-      <Button variant="solid" onclick={() => consent.grant()}>Accept analytics</Button>
-      <Button variant="ghost" onclick={() => consent.deny()}>Decline</Button>
+    <div class="inner">
+      <p id="consent-copy" class="copy">
+        I use Google Analytics to see which parts of this site are read. Nothing loads until you say
+        yes, and no personal data is collected either way.
+        <a href="https://policies.google.com/privacy">Read more</a>
+      </p>
+      <div class="actions">
+        <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
+        <Button variant="solid" onclick={() => decide(true)}>Accept analytics</Button>
+      </div>
     </div>
   </div>
 {/if}
 
 <style>
   .banner {
-    position: fixed;
-    right: var(--space-5);
-    bottom: var(--space-5);
-    left: var(--space-5);
-    z-index: var(--z-toast);
+    position: sticky;
+    top: calc(var(--header-height) + 1px);
+    z-index: var(--z-consent);
+    background: var(--surface-raised);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: var(--shadow-md);
+    opacity: 1;
+    transition: opacity var(--transition-slow) var(--ease-emphasized);
+  }
+
+  .closing {
+    opacity: 0;
+  }
+
+  .inner {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     gap: var(--space-4);
-    max-width: 34rem;
+    max-width: var(--container-max);
     margin-inline: auto;
-    padding: var(--space-5);
-    background: var(--surface-overlay);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
+    padding: var(--space-4) var(--gutter);
   }
 
   .copy {
+    max-width: 62ch;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-relaxed);
     color: var(--ink);
@@ -62,21 +100,10 @@
   }
 
   .actions {
+    --button-ghost-bg: var(--surface-page);
+
     display: flex;
-    flex-wrap: wrap;
+    flex: none;
     gap: var(--space-3);
-  }
-
-  @media (min-width: 47.5rem) {
-    .banner {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 52rem;
-    }
-
-    .actions {
-      flex: none;
-    }
   }
 </style>

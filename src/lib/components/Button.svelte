@@ -67,7 +67,7 @@
   }
 
   .ghost {
-    background: var(--surface-raised);
+    background: var(--button-ghost-bg, var(--surface-raised));
     color: var(--ink-strong);
     border: 1px solid var(--border-default);
   }

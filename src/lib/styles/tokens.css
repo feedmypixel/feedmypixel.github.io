@@ -164,6 +164,7 @@
   --transition-slow: 320ms;
 
   /* z-index */
+  --z-consent: 90;
   --z-header: 100;
   --z-overlay: 200;
   --z-toast: 400;

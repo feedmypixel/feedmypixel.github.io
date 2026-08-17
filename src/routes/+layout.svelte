@@ -30,12 +30,12 @@
 <div id="top" class="page">
   <Header />
   <main id="main">
+    <ConsentBanner />
     {@render children()}
   </main>
   <Footer />
 </div>
 
-<ConsentBanner />
 <Toaster />
 
 <style>

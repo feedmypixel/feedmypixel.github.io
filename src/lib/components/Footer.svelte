@@ -19,7 +19,7 @@
       <a href={resolve('/components')}>Components</a>
       <a href="https://www.gov.uk/digital-marketplace">Digital Marketplace</a>
       <a href="https://github.com/feedmypixel">GitHub</a>
-      <button type="button" onclick={() => consent.ask()}>Analytics</button>
+      <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
     </nav>
   </div>
 </footer>

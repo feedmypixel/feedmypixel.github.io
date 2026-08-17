@@ -2,17 +2,19 @@ import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import ConsentBanner from './ConsentBanner.svelte'
 import { consent, CONSENT_KEY } from '$lib/consent.svelte'
+import { toasts } from '$lib/toasts.svelte'
 
 beforeEach(() => {
   localStorage.removeItem(CONSENT_KEY)
   consent.choice = 'unknown'
+  toasts.items = []
 })
 
 afterEach(() => {
   vi.restoreAllMocks()
 })
 
-const banner = () => document.querySelector('[role="dialog"][aria-label="Analytics cookies"]')
+const banner = () => document.querySelector('[role="dialog"][aria-label="Cookie consent"]')
 
 test('asks before anything is loaded', async () => {
   render(ConsentBanner)
@@ -21,23 +23,54 @@ test('asks before anything is loaded', async () => {
   await expect.element(page.getByRole('button', { name: 'Decline' })).toBeInTheDocument()
 })
 
-test('accepting is remembered and closes the banner', async () => {
+test('sits under the header in the page rather than covering it', async () => {
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(banner()).not.toBeNull())
+  const styles = getComputedStyle(banner() as HTMLElement)
+  expect(styles.position).toBe('sticky')
+})
+
+test('describes itself for screen readers and points at the copy', async () => {
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(banner()).not.toBeNull())
+  expect(banner()?.getAttribute('aria-describedby')).toBe('consent-copy')
+  expect(document.querySelector('#consent-copy')?.textContent).toContain('Google Analytics')
+})
+
+test('links out to the privacy policy', async () => {
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(banner()).not.toBeNull())
+  const link = document.querySelector<HTMLAnchorElement>('#consent-copy a')
+  expect(link?.href).toContain('policies.google.com/privacy')
+  expect(link?.textContent?.trim()).toBe('Read more')
+})
+
+test('accepting is remembered, confirmed and closes the banner', async () => {
   render(ConsentBanner)
   await vi.waitFor(() => expect(banner()).not.toBeNull())
   await page.getByRole('button', { name: 'Accept analytics' }).click()
 
-  await vi.waitFor(() => expect(banner()).toBeNull())
-  expect(consent.choice).toBe('granted')
+  expect(toasts.items.at(-1)).toMatchObject({
+    kind: 'positive',
+    message: 'Analytics on, thank you'
+  })
+  await vi.waitFor(() => {
+    expect(consent.choice).toBe('granted')
+    expect(banner()).toBeNull()
+  })
   expect(localStorage.getItem(CONSENT_KEY)).toBe('granted')
 })
 
-test('declining is remembered and closes the banner', async () => {
+test('declining is remembered, acknowledged and closes the banner', async () => {
   render(ConsentBanner)
   await vi.waitFor(() => expect(banner()).not.toBeNull())
   await page.getByRole('button', { name: 'Decline' }).click()
 
-  await vi.waitFor(() => expect(banner()).toBeNull())
-  expect(consent.choice).toBe('denied')
+  expect(toasts.items.at(-1)).toMatchObject({ kind: 'info', message: 'Analytics stays off' })
+  await vi.waitFor(() => {
+    expect(consent.choice).toBe('denied')
+    expect(banner()).toBeNull()
+  })
   expect(localStorage.getItem(CONSENT_KEY)).toBe('denied')
 })
 
