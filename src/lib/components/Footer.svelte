@@ -1,6 +1,7 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
   import Logo from './Logo.svelte'
+  import { consent } from '$lib/consent.svelte'
 
   const home = resolve('/')
 </script>
@@ -18,6 +19,7 @@
       <a href={resolve('/components')}>Components</a>
       <a href="https://www.gov.uk/digital-marketplace">Digital Marketplace</a>
       <a href="https://github.com/feedmypixel">GitHub</a>
+      <button type="button" onclick={() => consent.ask()}>Analytics</button>
     </nav>
   </div>
 </footer>
@@ -56,10 +58,24 @@
     gap: var(--space-5);
   }
 
-  .nav a {
+  .nav a,
+  .nav button {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--ink-muted);
     text-decoration: none;
+  }
+
+  .nav button {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav button:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>

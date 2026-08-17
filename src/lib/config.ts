@@ -10,5 +10,7 @@ export const pipesChromeUrl =
 export const pipesFirefoxUrl = 'https://addons.mozilla.org/firefox/addon/pipes/'
 export const pipesSourceUrl = 'https://github.com/feedmypixel/pipes'
 
+export const analyticsId = 'G-9LQ8KHG828'
+
 export const contactEndpoint = 'https://api.web3forms.com/submit'
 export const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY ?? ''

@@ -7,8 +7,17 @@
   import Header from '$lib/components/Header.svelte'
   import Footer from '$lib/components/Footer.svelte'
   import Toaster from '$lib/components/Toaster.svelte'
+  import ConsentBanner from '$lib/components/ConsentBanner.svelte'
+  import { consent } from '$lib/consent.svelte'
+  import { loadAnalytics } from '$lib/analytics'
 
   let { children } = $props()
+
+  $effect(() => {
+    if (consent.choice === 'granted') {
+      loadAnalytics()
+    }
+  })
 </script>
 
 <svelte:head>
@@ -26,6 +35,7 @@
   <Footer />
 </div>
 
+<ConsentBanner />
 <Toaster />
 
 <style>
