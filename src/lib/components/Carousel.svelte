@@ -10,24 +10,32 @@
   let stripEl: HTMLElement | undefined = $state()
   const enhanced = browser
 
-  const caption = $derived(slides[clampIndex(index, slides.length)]?.label ?? '')
+  const caption = $derived(slides[clampIndex(index, slides.length)].label)
 
-  function slideWidth() {
-    return stripEl ? stripEl.clientWidth + 16 : 0
+  function slideWidth(strip: HTMLElement) {
+    return strip.clientWidth + 16
   }
 
   function goTo(next: number) {
     const target = clampIndex(next, slides.length)
     index = target
-    stripEl?.scrollTo({ left: scrollOffsetFor(target, slideWidth()), behavior: 'smooth' })
+    if (stripEl) {
+      stripEl.scrollTo({ left: scrollOffsetFor(target, slideWidth(stripEl)), behavior: 'smooth' })
+    }
   }
 
+  let settleTimer: ReturnType<typeof setTimeout> | undefined
+
   function onScroll() {
-    if (!stripEl) {
-      return
-    }
-    index = indexFromScroll(stripEl.scrollLeft, slideWidth(), slides.length)
+    clearTimeout(settleTimer)
+    settleTimer = setTimeout(() => {
+      if (stripEl) {
+        index = indexFromScroll(stripEl.scrollLeft, slideWidth(stripEl), slides.length)
+      }
+    }, 120)
   }
+
+  $effect(() => () => clearTimeout(settleTimer))
 </script>
 
 <figure class="carousel">

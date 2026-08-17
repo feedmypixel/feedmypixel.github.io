@@ -53,3 +53,32 @@ test('previous stops at the first slide', async () => {
   await page.getByRole('button', { name: 'Previous screenshot' }).click()
   expect(document.querySelectorAll('.dot')[0].getAttribute('aria-current')).toBe('true')
 })
+
+test('next stops at the last slide', async () => {
+  renderCarousel()
+  const next = page.getByRole('button', { name: 'Next screenshot' })
+  for (let click = 0; click < 4; click++) {
+    await next.click()
+    await vi.waitFor(() => {
+      expect(document.querySelector('.dot[aria-current="true"]')).not.toBeNull()
+    })
+  }
+  const dots = [...document.querySelectorAll('.dot')]
+  const strip = document.querySelector<HTMLElement>('.strip')!
+  expect({
+    currentIndex: dots.findIndex((dot) => dot.getAttribute('aria-current') === 'true'),
+    scrollLeft: Math.round(strip.scrollLeft),
+    clientWidth: strip.clientWidth
+  }).toMatchObject({ currentIndex: 2 })
+})
+
+test('swiping the strip moves the caption with it', async () => {
+  renderCarousel()
+  const strip = document.querySelector<HTMLElement>('.strip')!
+  strip.scrollLeft = strip.clientWidth + 16
+  strip.dispatchEvent(new Event('scroll'))
+  await vi.waitFor(() => {
+    expect(document.querySelectorAll('.dot')[1].getAttribute('aria-current')).toBe('true')
+  })
+  await expect.element(page.getByText('Every repo in a side panel')).toBeVisible()
+})
