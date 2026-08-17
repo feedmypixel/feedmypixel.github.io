@@ -45,6 +45,15 @@
           branch breaks.
         </p>
         <div class="links">
+          <Button
+            variant="solid"
+            href="https://chromewebstore.google.com/detail/pipes-watch-your-cicd-pip/aoijidjpiiphnblbeddcmmfkbdildnpl"
+          >
+            Chrome Web Store
+          </Button>
+          <Button variant="ghost" href="https://addons.mozilla.org/firefox/addon/pipes/">
+            Firefox Add-ons
+          </Button>
           <Button variant="ghost" href="https://github.com/feedmypixel/pipes">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path
@@ -53,7 +62,6 @@
             </svg>
             Source
           </Button>
-          <p class="status">Coming to the Chrome Web Store and Firefox Add-ons</p>
         </div>
       </div>
 
@@ -181,12 +189,6 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-4);
-  }
-
-  .status {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    color: var(--ink-subtle);
   }
 
   .story {

@@ -13,24 +13,18 @@ test('introduces Pipes', async () => {
   await expect.element(page.getByText(/CI\/CD pipeline monitoring/)).toBeVisible()
 })
 
-test('links the source and says where the extension is headed', async () => {
+test('offers both stores and the source', async () => {
   render(Products)
-  const source = page.getByRole('link', { name: 'Source' })
-  await expect.element(source).toBeInTheDocument()
-  expect(document.querySelector<HTMLAnchorElement>('a.button')?.href).toContain(
-    'github.com/feedmypixel/pipes'
-  )
-  await expect
-    .element(page.getByText('Coming to the Chrome Web Store and Firefox Add-ons'))
-    .toBeVisible()
-})
+  await expect.element(page.getByRole('link', { name: 'Chrome Web Store' })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: 'Firefox Add-ons' })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: 'Source' })).toBeInTheDocument()
 
-test('does not offer store links while the extension is unpublished', () => {
-  render(Products)
-  const hrefs = [...document.querySelectorAll('a')].map((link) => link.getAttribute('href') ?? '')
-  expect(
-    hrefs.some((href) => href.includes('chromewebstore') || href.includes('addons.mozilla'))
-  ).toBe(false)
+  const hrefs = [...document.querySelectorAll<HTMLAnchorElement>('a.button')].map(
+    (link) => link.href
+  )
+  expect(hrefs[0]).toContain('chromewebstore.google.com/detail/')
+  expect(hrefs[1]).toContain('addons.mozilla.org/firefox/addon/pipes')
+  expect(hrefs[2]).toContain('github.com/feedmypixel/pipes')
 })
 
 test('tells the problem, solution and product story', async () => {
