@@ -20,7 +20,7 @@ Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
 
 - [Home](https://feedmypixel.com/): hero, products, searchable CV and contact, on one page.
 - [Components](https://feedmypixel.com/components): the component catalogue this site is built from.
-- [CV (PDF)](https://feedmypixel.com/Ben-Chidgey-CV.pdf): the full work history as a document.
+- [CV (PDF)](https://feedmypixel.com/BenChidgeyCV.pdf): the full work history as a document.
 
 ## Contact
 

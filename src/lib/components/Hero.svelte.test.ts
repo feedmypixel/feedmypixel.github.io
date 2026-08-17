@@ -13,7 +13,7 @@ test('leads with the positioning and the headline', async () => {
 test('offers the CV as a real download, saved under its own name', () => {
   render(Hero)
   const cv = document.querySelector<HTMLAnchorElement>('a[download]')
-  expect(cv?.getAttribute('href')).toContain('Ben-Chidgey-CV.pdf')
+  expect(cv?.getAttribute('href')).toContain('BenChidgeyCV.pdf')
   expect(cv?.getAttribute('download')).toBe('BenChidgeyCV.pdf')
 })
 

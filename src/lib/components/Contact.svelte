@@ -147,7 +147,7 @@
           <p class="aside-label">Also here</p>
           <ul>
             <li>
-              <a href={asset('/Ben-Chidgey-CV.pdf')} download="BenChidgeyCV.pdf">
+              <a href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
                 Download CV (PDF)
               </a>
             </li>

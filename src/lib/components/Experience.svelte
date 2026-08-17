@@ -148,7 +148,7 @@
     <noscript>
       <p class="noscript">
         Search and filtering need JavaScript. The full history is listed below, and the
-        <a href={asset('/Ben-Chidgey-CV.pdf')}>CV is downloadable</a>.
+        <a href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
       </p>
     </noscript>
   </div>
