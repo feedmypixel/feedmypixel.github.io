@@ -1,8 +1,26 @@
 <script lang="ts">
+  import { asset } from '$app/paths'
   import Logo from '$lib/components/Logo.svelte'
   import ThemeToggle from '$lib/components/ThemeToggle.svelte'
   import Toast from '$lib/components/Toast.svelte'
+  import Button from '$lib/components/Button.svelte'
+  import EmailPill from '$lib/components/EmailPill.svelte'
+  import Carousel from '$lib/components/Carousel.svelte'
+  import type { Slide } from '$lib/components/Carousel.svelte'
   import { toasts } from '$lib/toasts.svelte'
+
+  const slides: Slide[] = [
+    {
+      src: asset('/pipes/framed-popup.png'),
+      alt: 'Pipes: status from your toolbar',
+      label: 'Status from your toolbar'
+    },
+    {
+      src: asset('/pipes/framed-sidepanel.png'),
+      alt: 'Pipes: every repo in a side panel',
+      label: 'Every repo in a side panel'
+    }
+  ]
 </script>
 
 <svelte:head>
@@ -33,6 +51,30 @@
     <h2 id="theme-h">Theme toggle</h2>
     <div class="row">
       <ThemeToggle />
+    </div>
+  </section>
+
+  <section aria-labelledby="button-h">
+    <h2 id="button-h">Button</h2>
+    <div class="row">
+      <Button variant="solid">Send message</Button>
+      <Button variant="ghost">Clear all filters</Button>
+      <Button variant="solid" href="https://example.com">Solid link</Button>
+      <Button variant="ghost" href="https://example.com">Ghost link</Button>
+    </div>
+  </section>
+
+  <section aria-labelledby="email-h">
+    <h2 id="email-h">Email pill</h2>
+    <div class="row">
+      <EmailPill />
+    </div>
+  </section>
+
+  <section aria-labelledby="carousel-h">
+    <h2 id="carousel-h">Carousel</h2>
+    <div class="carousel-demo">
+      <Carousel {slides} label="Example screenshots" />
     </div>
   </section>
 
@@ -114,6 +156,10 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-4);
+  }
+
+  .carousel-demo {
+    max-width: 34rem;
   }
 
   .specimens {
