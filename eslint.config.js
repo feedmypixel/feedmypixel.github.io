@@ -51,5 +51,11 @@ export default defineConfig(
     rules: {
       'no-empty-pattern': 'off'
     }
+  },
+  {
+    files: ['src/lib/components/Button.svelte'],
+    rules: {
+      'svelte/no-navigation-without-resolve': 'off'
+    }
   }
 )

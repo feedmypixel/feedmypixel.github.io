@@ -54,6 +54,10 @@ that a unit test cannot reach — after switching hrefs to `resolve()`-based int
 50% branches on three pure-interpolation lines while statements/functions/lines stay ~98%. Gaming that
 with artificial re-render tests would buy nothing.
 
+**FOLLOWUP (before v1 ships):** regroup on getting branches back to **80**. Sessions C and D add
+genuinely branchy logic (filter pipeline, keyboard handling, validation), which should lift the real
+figure; revisit the threshold then rather than writing tests that assert nothing.
+
 ## Questions for the product owner (Ben)
 
 1. **Mobile nav (conflict, blocks Header).** BEHAVIOR.md + STATES.md spec a hamburger drawer ≤759px; the render has none (desktop nav just hides, logo + theme toggle remain). Render wins per skill → **no top nav on mobile** (sections reachable by scroll; footer has section links). Build the drawer BEHAVIOR describes, or ship render-as-is? **Default: build a minimal disclosure** (never dead-end) unless you say otherwise.
