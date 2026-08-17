@@ -27,6 +27,17 @@ test('offers both stores and the source', async () => {
   expect(hrefs[2]).toContain('github.com/feedmypixel/pipes')
 })
 
+test('the store and source links leave the site in a new tab, safely', () => {
+  render(Products)
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('a.button')]
+  expect(links).toHaveLength(3)
+  links.forEach((link) => {
+    expect(link.getAttribute('target')).toBe('_blank')
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer')
+    expect(link.textContent).toContain('opens in a new tab')
+  })
+})
+
 test('tells the problem, solution and product story', async () => {
   render(Products)
   await expect.element(page.getByText('Problem')).toBeVisible()

@@ -20,9 +20,24 @@ test('carries the ghost variant', () => {
   expect(document.querySelector('.button')?.classList.contains('ghost')).toBe(true)
 })
 
-test('marks a download link as a download', () => {
-  render(ButtonHarness, { props: { href: '/cv.pdf', download: true, label: 'CV' } })
-  expect(document.querySelector('a.button')?.hasAttribute('download')).toBe(true)
+test('a download link saves under the name it is given', () => {
+  render(ButtonHarness, { props: { href: '/cv.pdf', download: 'BenChidgeyCV.pdf', label: 'CV' } })
+  expect(document.querySelector('a.button')?.getAttribute('download')).toBe('BenChidgeyCV.pdf')
+})
+
+test('an external link opens in a new tab, safely, and says so', () => {
+  render(ButtonHarness, { props: { href: 'https://example.com', external: true, label: 'Store' } })
+  const link = document.querySelector('a.button')
+  expect(link?.getAttribute('target')).toBe('_blank')
+  expect(link?.getAttribute('rel')).toBe('noopener noreferrer')
+  expect(link?.textContent).toContain('opens in a new tab')
+})
+
+test('an internal link stays in the tab', () => {
+  render(ButtonHarness, { props: { href: '/somewhere', label: 'Internal' } })
+  const link = document.querySelector('a.button')
+  expect(link?.getAttribute('target')).toBeNull()
+  expect(link?.textContent).not.toContain('opens in a new tab')
 })
 
 test('calls onclick', async () => {

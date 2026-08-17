@@ -42,7 +42,9 @@ test('links out to the privacy policy', async () => {
   await vi.waitFor(() => expect(banner()).not.toBeNull())
   const link = document.querySelector<HTMLAnchorElement>('#consent-copy a')
   expect(link?.href).toContain('policies.google.com/privacy')
-  expect(link?.textContent?.trim()).toBe('Read more')
+  expect(link?.textContent).toContain('Read more')
+  expect(link?.getAttribute('target')).toBe('_blank')
+  expect(link?.getAttribute('rel')).toBe('noopener noreferrer')
 })
 
 test('accepting is remembered, confirmed and closes the banner', async () => {

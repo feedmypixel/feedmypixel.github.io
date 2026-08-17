@@ -146,10 +146,26 @@
         <div>
           <p class="aside-label">Also here</p>
           <ul>
-            <li><a href={asset('/Ben-Chidgey-CV.pdf')} download>Download CV (PDF)</a></li>
-            <li><a href={digitalMarketplaceUrl}>Digital Marketplace</a></li>
-            <li><a href={gitHubUrl}>GitHub</a></li>
-            <li><a href={linkedInUrl}>LinkedIn</a></li>
+            <li>
+              <a href={asset('/Ben-Chidgey-CV.pdf')} download="BenChidgeyCV.pdf">
+                Download CV (PDF)
+              </a>
+            </li>
+            <li>
+              <a href={digitalMarketplaceUrl} target="_blank" rel="noopener noreferrer">
+                Digital Marketplace<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href={gitHubUrl} target="_blank" rel="noopener noreferrer">
+                GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">
+                LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
           </ul>
         </div>
       </aside>

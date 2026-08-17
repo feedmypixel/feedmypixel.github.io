@@ -4,7 +4,8 @@
   let {
     variant = 'solid',
     href,
-    download = false,
+    download,
+    external = false,
     type = 'button',
     disabled = false,
     onclick,
@@ -13,7 +14,8 @@
   }: {
     variant?: 'solid' | 'ghost'
     href?: string
-    download?: boolean
+    download?: string
+    external?: boolean
     type?: 'button' | 'submit'
     disabled?: boolean
     onclick?: (event: MouseEvent) => void
@@ -22,8 +24,19 @@
 </script>
 
 {#if href}
-  <a class="button {variant}" {href} download={download || undefined} {onclick} {...rest}>
+  <a
+    class="button {variant}"
+    {href}
+    {download}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener noreferrer' : undefined}
+    {onclick}
+    {...rest}
+  >
     {@render children()}
+    {#if external}
+      <span class="visually-hidden">(opens in a new tab)</span>
+    {/if}
   </a>
 {:else}
   <button class="button {variant}" {type} {disabled} {onclick} {...rest}>

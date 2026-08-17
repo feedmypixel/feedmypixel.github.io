@@ -14,7 +14,7 @@
     <p class="lede">Twenty years building for the Guardian, the BBC and UK government.</p>
 
     <div class="actions">
-      <Button variant="solid" href={asset('/Ben-Chidgey-CV.pdf')} download>
+      <Button variant="solid" href={asset('/Ben-Chidgey-CV.pdf')} download="BenChidgeyCV.pdf">
         <svg
           width="15"
           height="15"

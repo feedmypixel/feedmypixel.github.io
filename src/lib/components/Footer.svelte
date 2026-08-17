@@ -17,8 +17,12 @@
       <a href="{home}#experience">Experience</a>
       <a href="{home}#contact">Contact</a>
       <a href={resolve('/components')}>Components</a>
-      <a href="https://www.gov.uk/digital-marketplace">Digital Marketplace</a>
-      <a href="https://github.com/feedmypixel">GitHub</a>
+      <a href="https://www.gov.uk/digital-marketplace" target="_blank" rel="noopener noreferrer">
+        Digital Marketplace<span class="visually-hidden"> (opens in a new tab)</span>
+      </a>
+      <a href="https://github.com/feedmypixel" target="_blank" rel="noopener noreferrer">
+        GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+      </a>
       <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
     </nav>
   </div>

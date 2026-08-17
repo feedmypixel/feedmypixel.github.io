@@ -10,10 +10,11 @@ test('leads with the positioning and the headline', async () => {
   await expect.element(page.getByText('Ben Chidgey — contract full-stack engineer')).toBeVisible()
 })
 
-test('offers the CV as a real download', () => {
+test('offers the CV as a real download, saved under its own name', () => {
   render(Hero)
   const cv = document.querySelector<HTMLAnchorElement>('a[download]')
   expect(cv?.getAttribute('href')).toContain('Ben-Chidgey-CV.pdf')
+  expect(cv?.getAttribute('download')).toBe('BenChidgeyCV.pdf')
 })
 
 test('offers the email address', async () => {
