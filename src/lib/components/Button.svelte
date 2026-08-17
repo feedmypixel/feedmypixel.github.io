@@ -6,6 +6,7 @@
     href,
     download = false,
     type = 'button',
+    disabled = false,
     onclick,
     children,
     ...rest
@@ -14,6 +15,7 @@
     href?: string
     download?: boolean
     type?: 'button' | 'submit'
+    disabled?: boolean
     onclick?: (event: MouseEvent) => void
     children: Snippet
   } = $props()
@@ -24,7 +26,7 @@
     {@render children()}
   </a>
 {:else}
-  <button class="button {variant}" {type} {onclick} {...rest}>
+  <button class="button {variant}" {type} {disabled} {onclick} {...rest}>
     {@render children()}
   </button>
 {/if}
@@ -73,5 +75,10 @@
   .ghost:hover {
     border-color: var(--brand);
     color: var(--brand-text);
+  }
+
+  .button:disabled {
+    opacity: 0.7;
+    cursor: progress;
   }
 </style>

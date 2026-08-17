@@ -6,10 +6,7 @@ const config = {
   extensions: ['.svelte', '.svx', '.md'],
   preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
   kit: {
-    adapter: adapter(),
-    prerender: {
-      handleMissingId: 'warn'
-    }
+    adapter: adapter()
   }
 }
 

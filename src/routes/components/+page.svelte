@@ -1,5 +1,6 @@
 <script lang="ts">
   import { asset } from '$app/paths'
+  import Seo from '$lib/components/Seo.svelte'
   import Logo from '$lib/components/Logo.svelte'
   import ThemeToggle from '$lib/components/ThemeToggle.svelte'
   import Toast from '$lib/components/Toast.svelte'
@@ -31,13 +32,11 @@
   ]
 </script>
 
-<svelte:head>
-  <title>Components — feedMyPixel</title>
-  <meta
-    name="description"
-    content="The component catalogue behind feedmypixel.com — every brick in its states, light and dark."
-  />
-</svelte:head>
+<Seo
+  title="Components — feedMyPixel"
+  description="The component catalogue behind feedmypixel.com — every brick in its states, light and dark."
+  path="/components"
+/>
 
 <div class="container catalogue">
   <header class="intro">

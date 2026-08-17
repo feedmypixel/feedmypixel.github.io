@@ -3,7 +3,7 @@
   import '@fontsource-variable/plus-jakarta-sans/wght.css'
   import '@fontsource/dm-mono/400.css'
   import '@fontsource/dm-mono/500.css'
-  import favicon from '$lib/assets/favicon.svg'
+  import { asset } from '$app/paths'
   import Header from '$lib/components/Header.svelte'
   import Footer from '$lib/components/Footer.svelte'
   import Toaster from '$lib/components/Toaster.svelte'
@@ -12,7 +12,8 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" href={favicon} />
+  <link rel="icon" type="image/png" href={asset('/favicon.png')} />
+  <link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')} />
 </svelte:head>
 
 <a class="skip-link" href="#main">Skip to content</a>

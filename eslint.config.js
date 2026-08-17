@@ -53,9 +53,16 @@ export default defineConfig(
     }
   },
   {
-    files: ['src/lib/components/Button.svelte'],
+    files: ['src/lib/components/Button.svelte', 'src/lib/components/Contact.svelte'],
     rules: {
       'svelte/no-navigation-without-resolve': 'off'
+    }
+  },
+  {
+    files: ['src/lib/components/Seo.svelte'],
+    rules: {
+      'svelte/no-at-html-tags': 'off',
+      'no-useless-escape': 'off'
     }
   }
 )

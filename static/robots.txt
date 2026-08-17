@@ -1,3 +1,17 @@
-# allow crawling everything by default
 User-agent: *
-Disallow:
+Allow: /
+
+# Answer engines are welcome to read and cite this site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://feedmypixel.com/sitemap.xml
