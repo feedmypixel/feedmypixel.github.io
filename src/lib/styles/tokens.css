@@ -75,10 +75,10 @@
   --solid-critical: oklch(50% 0.17 25);
   --solid-info: #0f52a8;
 
-  /* toast overlays — white text + progress bar on the solid mood fill */
+  /* toast overlays — white text; the depleting bar darkens the mood fill */
   --toast-ink: #fff;
-  --toast-progress-track: rgb(0, 0, 0, 0.3);
-  --toast-progress-fill: rgb(255, 255, 255, 0.9);
+  --toast-progress-track: rgb(255, 255, 255, 0.18);
+  --toast-progress-fill: rgb(0, 0, 0, 0.38);
 
   /* scrim behind overlays/drawers */
   --scrim: rgb(10, 16, 32, 0.4);

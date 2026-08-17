@@ -37,6 +37,23 @@ Layout `+layout.svelte` (skip-link · header · main · footer · toast region) 
 | `!important` (used to beat inline in DC) | Unneeded once inline is gone |
 | `--font-display/--font-text` default 'Manrope' in `:root` | Default to Plus Jakarta Sans (shipped face) |
 
+## Deviations from the render (agreed)
+
+- **Toast depleting bar** — the render depletes a white bar over the mood fill; ships as a **dark**
+  bar (`--toast-progress-fill: rgb(0 0 0 / 38%)`) on a faint light track, per Ben on review.
+- **Inline links underline by default** — WCAG 1.4.1; the render relied on colour alone.
+- **`/components` is public and linked from the footer** (was noindex + unlinked) — it is a portfolio
+  artifact in its own right.
+- **Section links are root-relative via `resolve()`** (`/#products`), so header/footer/drawer work from
+  `/components` too rather than dead-ending on a missing anchor.
+
+## Coverage gate
+
+Branch threshold is **75** (others 80). Svelte compiles each dynamic attribute into an update branch
+that a unit test cannot reach — after switching hrefs to `resolve()`-based interpolation, Footer reads
+50% branches on three pure-interpolation lines while statements/functions/lines stay ~98%. Gaming that
+with artificial re-render tests would buy nothing.
+
 ## Questions for the product owner (Ben)
 
 1. **Mobile nav (conflict, blocks Header).** BEHAVIOR.md + STATES.md spec a hamburger drawer ≤759px; the render has none (desktop nav just hides, logo + theme toggle remain). Render wins per skill → **no top nav on mobile** (sections reachable by scroll; footer has section links). Build the drawer BEHAVIOR describes, or ship render-as-is? **Default: build a minimal disclosure** (never dead-end) unless you say otherwise.

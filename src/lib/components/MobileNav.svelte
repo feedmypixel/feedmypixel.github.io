@@ -1,6 +1,9 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition'
   import { MediaQuery } from 'svelte/reactivity'
+  import { resolve } from '$app/paths'
+
+  const home = resolve('/')
 
   let { open, onclose }: { open: boolean; onclose: () => void } = $props()
 
@@ -74,7 +77,7 @@
   >
     <nav aria-label="Sections">
       {#each links as link (link.id)}
-        <a href="#{link.id}" onclick={onclose}>{link.label}</a>
+        <a href="{home}#{link.id}" onclick={onclose}>{link.label}</a>
       {/each}
     </nav>
   </div>

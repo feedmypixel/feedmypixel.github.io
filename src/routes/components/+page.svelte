@@ -7,16 +7,17 @@
 
 <svelte:head>
   <title>Components — feedMyPixel</title>
-  <meta name="robots" content="noindex" />
+  <meta
+    name="description"
+    content="The component catalogue behind feedmypixel.com — every brick in its states, light and dark."
+  />
 </svelte:head>
 
 <div class="container catalogue">
   <header class="intro">
     <p class="eyebrow">Reference</p>
     <h1>Component catalogue</h1>
-    <p class="lede">
-      Every brick, in its states. Not linked from the site — a build-time reference.
-    </p>
+    <p class="lede">Every brick this site is built from, in each of its states.</p>
   </header>
 
   <section aria-labelledby="logo-h">

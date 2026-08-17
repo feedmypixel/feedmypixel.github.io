@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { resolve } from '$app/paths'
   import Logo from './Logo.svelte'
+
+  const home = resolve('/')
 </script>
 
 <footer class="footer">
@@ -9,9 +12,10 @@
       <span class="line">feedMyPixel Ltd · Ben Chidgey</span>
     </div>
     <nav class="nav" aria-label="Footer">
-      <a href="#products">Products</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+      <a href="{home}#products">Products</a>
+      <a href="{home}#experience">Experience</a>
+      <a href="{home}#contact">Contact</a>
+      <a href={resolve('/components')}>Components</a>
       <a href="https://www.gov.uk/digital-marketplace">Digital Marketplace</a>
       <a href="https://github.com/feedmypixel">GitHub</a>
     </nav>

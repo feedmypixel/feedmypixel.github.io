@@ -2,7 +2,10 @@
   import Logo from './Logo.svelte'
   import ThemeToggle from './ThemeToggle.svelte'
   import MobileNav from './MobileNav.svelte'
+  import { resolve } from '$app/paths'
   import { mostVisibleId, indicatorGeometry } from '$lib/nav-indicator'
+
+  const home = resolve('/')
 
   const sections = [
     { id: 'products', label: 'Products' },
@@ -64,7 +67,7 @@
 
 <header class="header" class:drawer-open={drawerOpen}>
   <div class="inner">
-    <a href="#top" class="brand" aria-label="feedMyPixel, back to top">
+    <a href="{home}#top" class="brand" aria-label="feedMyPixel, back to top">
       <Logo size={26} />
       <span class="wordmark">feedMyPixel</span>
     </a>
@@ -73,7 +76,7 @@
       <nav bind:this={navEl} class="nav" aria-label="Sections">
         {#each sections as section (section.id)}
           <a
-            href="#{section.id}"
+            href="{home}#{section.id}"
             class:active={active === section.id}
             aria-current={active === section.id ? 'true' : undefined}
           >
