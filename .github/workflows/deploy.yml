@@ -28,6 +28,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm lint
+      - name: Cache Playwright browser
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Playwright chromium
+        run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:unit
       - name: Build
         env:
