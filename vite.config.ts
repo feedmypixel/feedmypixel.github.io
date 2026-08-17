@@ -21,12 +21,13 @@ export default defineConfig({
         'vite.config.ts',
         'eslint.config.js',
         'src/app.d.ts',
+        'src/test-setup.ts',
         '**/*.test.{js,ts}',
         '**/*.svelte.test.{js,ts}',
         'src/routes/**/+*.ts',
         'src/routes/**/+*.svelte'
       ],
-      thresholds: { statements: 80, branches: 75, functions: 80, lines: 80 }
+      thresholds: { statements: 80, branches: 80, functions: 80, lines: 80 }
     },
     projects: [
       {
@@ -38,6 +39,7 @@ export default defineConfig({
             provider: playwright(),
             instances: [{ browser: 'chromium', headless: true }]
           },
+          setupFiles: ['./src/test-setup.ts'],
           include: ['src/**/*.svelte.test.{js,ts}']
         }
       },

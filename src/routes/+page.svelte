@@ -1,6 +1,7 @@
 <script lang="ts">
   import Hero from '$lib/components/Hero.svelte'
   import Products from '$lib/components/Products.svelte'
+  import Experience from '$lib/components/Experience.svelte'
 </script>
 
 <svelte:head>
@@ -13,3 +14,4 @@
 
 <Hero />
 <Products />
+<Experience />

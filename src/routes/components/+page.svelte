@@ -7,7 +7,15 @@
   import EmailPill from '$lib/components/EmailPill.svelte'
   import Carousel from '$lib/components/Carousel.svelte'
   import type { Slide } from '$lib/components/Carousel.svelte'
+  import Chip from '$lib/components/Chip.svelte'
+  import SegmentedControl from '$lib/components/SegmentedControl.svelte'
+  import RoleCard from '$lib/components/RoleCard.svelte'
+  import EmptyState from '$lib/components/EmptyState.svelte'
+  import { roles } from '$lib/data/experience'
+  import { TYPE_FILTERS, type TypeFilter } from '$lib/cv-filter'
   import { toasts } from '$lib/toasts.svelte'
+
+  let segment = $state<TypeFilter>('All')
 
   const slides: Slide[] = [
     {
@@ -76,6 +84,43 @@
     <div class="carousel-demo">
       <Carousel {slides} label="Example screenshots" />
     </div>
+  </section>
+
+  <section aria-labelledby="chip-h">
+    <h2 id="chip-h">Chip</h2>
+    <div class="row">
+      <Chip label="SvelteKit" onRemove={() => {}} />
+      <Chip label="Government" onRemove={() => {}} />
+    </div>
+  </section>
+
+  <section aria-labelledby="segment-h">
+    <h2 id="segment-h">Segmented control</h2>
+    <div class="row">
+      <SegmentedControl
+        options={TYPE_FILTERS}
+        value={segment}
+        label="Role type"
+        onSelect={(next) => (segment = next)}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="role-h">
+    <h2 id="role-h">Role card</h2>
+    <ol class="rolecards">
+      <RoleCard role={roles[0]} chips={[{ label: 'SvelteKit', kind: 'skill' }]} query="" />
+    </ol>
+  </section>
+
+  <section aria-labelledby="empty-h">
+    <h2 id="empty-h">Empty state</h2>
+    <EmptyState
+      title="Nothing matches those filters"
+      message="Try a broader term, or start again"
+      actionLabel="Clear all filters"
+      onAction={() => {}}
+    />
   </section>
 
   <section aria-labelledby="toast-h">
@@ -160,6 +205,13 @@
 
   .carousel-demo {
     max-width: 34rem;
+  }
+
+  .rolecards {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border-subtle);
+    list-style: none;
   }
 
   .specimens {
