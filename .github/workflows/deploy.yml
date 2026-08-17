@@ -1,6 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'tasks/**'
+      - 'design/**'
+      - 'README.md'
   workflow_dispatch:
 
 concurrency:
