@@ -15,18 +15,18 @@ export const roles: Role[] = [
   {
     company: 'WhiskyInvestDirect',
     title: 'Full-Stack Engineer',
-    dates: 'Apr 2026 – present',
+    dates: 'Apr 2026 - present',
     location: 'Remote / London',
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      'Leading a greenfield rebuild of the core trading platform on SvelteKit — modernising architecture and embedding quality across engineering, delivery and product.',
+      'Leading a greenfield rebuild of the core trading platform on SvelteKit - modernising architecture and embedding quality across engineering, delivery and product.',
     tags: ['SvelteKit', 'TypeScript', 'Fastify', 'AWS', 'Accessibility', 'CI/CD']
   },
   {
     company: 'DEFRA',
     title: 'Full-Stack Platform Engineer',
-    dates: 'Mar 2023 – Feb 2026',
+    dates: 'Mar 2023 - Feb 2026',
     location: 'Remote',
     type: 'Contract',
     sector: 'Government',
@@ -36,7 +36,7 @@ export const roles: Role[] = [
   {
     company: 'Wayfair',
     title: 'Software Engineer',
-    dates: 'Aug 2022 – Dec 2022',
+    dates: 'Aug 2022 - Dec 2022',
     location: 'Remote',
     type: 'Contract',
     sector: 'Retail',
@@ -46,7 +46,7 @@ export const roles: Role[] = [
   {
     company: 'Wayfair',
     title: 'Senior Frontend Engineer / Tech Lead',
-    dates: 'Jan 2022 – Aug 2022',
+    dates: 'Jan 2022 - Aug 2022',
     location: 'Remote',
     type: 'Contract',
     sector: 'Retail',
@@ -57,7 +57,7 @@ export const roles: Role[] = [
   {
     company: 'Pret A Manger',
     title: 'Platform Engineer',
-    dates: 'Jan 2021 – Dec 2021',
+    dates: 'Jan 2021 - Dec 2021',
     location: 'Remote',
     type: 'Contract',
     sector: 'Retail',
@@ -68,7 +68,7 @@ export const roles: Role[] = [
   {
     company: 'LifeBox Health',
     title: 'Senior Full-Stack Developer',
-    dates: 'Jul 2020 – Dec 2020',
+    dates: 'Jul 2020 - Dec 2020',
     location: 'Brighton / Remote',
     type: 'Contract',
     sector: 'Health',
@@ -78,7 +78,7 @@ export const roles: Role[] = [
   {
     company: 'Rewind',
     title: 'Senior Frontend Developer',
-    dates: 'Feb 2020 – Mar 2020',
+    dates: 'Feb 2020 - Mar 2020',
     location: 'St Albans',
     type: 'Contract',
     sector: 'Mobile',
@@ -88,7 +88,7 @@ export const roles: Role[] = [
   {
     company: 'Ministry of Justice',
     title: 'Senior Full-Stack Developer',
-    dates: 'Aug 2019 – Dec 2019',
+    dates: 'Aug 2019 - Dec 2019',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -98,7 +98,7 @@ export const roles: Role[] = [
   {
     company: 'Marks & Spencer',
     title: 'Senior Full-Stack Developer',
-    dates: 'Apr 2019 – Aug 2019',
+    dates: 'Apr 2019 - Aug 2019',
     location: 'London',
     type: 'Contract',
     sector: 'Retail',
@@ -108,7 +108,7 @@ export const roles: Role[] = [
   {
     company: 'HM Passport Office',
     title: 'Senior Full-Stack Developer',
-    dates: 'Oct 2018 – Dec 2018',
+    dates: 'Oct 2018 - Dec 2018',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -118,7 +118,7 @@ export const roles: Role[] = [
   {
     company: 'Department for International Trade',
     title: 'Senior Full-Stack Developer',
-    dates: 'May 2017 – Mar 2018',
+    dates: 'May 2017 - Mar 2018',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -129,7 +129,7 @@ export const roles: Role[] = [
   {
     company: 'HM Revenue & Customs',
     title: 'Senior Frontend Developer',
-    dates: 'Sep 2016 – Apr 2017',
+    dates: 'Sep 2016 - Apr 2017',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -147,7 +147,7 @@ export const roles: Role[] = [
   {
     company: 'HM Revenue & Customs',
     title: 'Senior Frontend Developer',
-    dates: 'Feb 2016 – Sep 2016',
+    dates: 'Feb 2016 - Sep 2016',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -158,7 +158,7 @@ export const roles: Role[] = [
   {
     company: 'HM Revenue & Customs',
     title: 'Frontend Developer',
-    dates: 'Sep 2015 – Feb 2016',
+    dates: 'Sep 2015 - Feb 2016',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -169,7 +169,7 @@ export const roles: Role[] = [
   {
     company: 'Department for Work & Pensions',
     title: 'Frontend Developer',
-    dates: 'Apr 2015 – May 2015',
+    dates: 'Apr 2015 - May 2015',
     location: 'London',
     type: 'Contract',
     sector: 'Government',
@@ -179,7 +179,7 @@ export const roles: Role[] = [
   {
     company: 'Guardian News & Media',
     title: 'Client-Side Engineer',
-    dates: 'Apr 2014 – Apr 2015',
+    dates: 'Apr 2014 - Apr 2015',
     location: 'London',
     type: 'Contract',
     sector: 'Media',
@@ -189,7 +189,7 @@ export const roles: Role[] = [
   {
     company: 'feedMyPixel',
     title: 'Research & Development',
-    dates: 'Feb 2014 – Mar 2014',
+    dates: 'Feb 2014 - Mar 2014',
     location: 'St Albans',
     type: 'Freelance',
     sector: 'Products',
@@ -199,7 +199,7 @@ export const roles: Role[] = [
   {
     company: 'Deutsche Telekom UK',
     title: 'Mobile Frontend Developer',
-    dates: 'Oct 2012 – Dec 2013',
+    dates: 'Oct 2012 - Dec 2013',
     location: 'Hatfield',
     type: 'Contract',
     sector: 'Telecoms',
@@ -210,18 +210,18 @@ export const roles: Role[] = [
   {
     company: 'BBC',
     title: 'Software Engineer',
-    dates: 'Aug 2011 – Aug 2012',
+    dates: 'Aug 2011 - Aug 2012',
     location: 'London',
     type: 'Contract',
     sector: 'Media',
     summary:
-      'Future Media, Core Services — iBroadcast2, a next-gen media & metadata publishing platform for iPlayer.',
+      'Future Media, Core Services - iBroadcast2, a next-gen media & metadata publishing platform for iPlayer.',
     tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'TDD', 'REST']
   },
   {
     company: 'eDigitalResearch',
     title: 'Application Support Developer',
-    dates: 'Apr 2010 – Jul 2011',
+    dates: 'Apr 2010 - Jul 2011',
     location: 'Southampton',
     type: 'Permanent',
     sector: 'Research',
@@ -232,7 +232,7 @@ export const roles: Role[] = [
   {
     company: 'Freelance',
     title: 'Web Developer & Designer',
-    dates: 'Oct 2007 – Apr 2010',
+    dates: 'Oct 2007 - Apr 2010',
     location: 'Southampton',
     type: 'Freelance',
     sector: 'Arts',
@@ -243,7 +243,7 @@ export const roles: Role[] = [
   {
     company: 'Lazy Gramophone',
     title: 'Web Developer & Designer',
-    dates: '2004 – 2010',
+    dates: '2004 - 2010',
     location: 'Remote',
     type: 'Freelance',
     sector: 'Arts',
@@ -263,7 +263,7 @@ export const roles: Role[] = [
   {
     company: 'Trusted Digital',
     title: 'Product Design Manager',
-    dates: 'Jan 2007 – Oct 2007',
+    dates: 'Jan 2007 - Oct 2007',
     location: 'Brighton',
     type: 'Permanent',
     sector: 'Mobile',
@@ -273,7 +273,7 @@ export const roles: Role[] = [
   {
     company: 'Hotxt',
     title: 'Quality Assurance Manager',
-    dates: 'Aug 2006 – Dec 2006',
+    dates: 'Aug 2006 - Dec 2006',
     location: 'London',
     type: 'Permanent',
     sector: 'Mobile',
@@ -284,7 +284,7 @@ export const roles: Role[] = [
   {
     company: 'Freelance',
     title: 'Developer & Designer',
-    dates: 'Oct 2005 – Jul 2006',
+    dates: 'Oct 2005 - Jul 2006',
     location: 'Brighton',
     type: 'Freelance',
     sector: 'Games',
@@ -294,7 +294,7 @@ export const roles: Role[] = [
   {
     company: 'Babel Media',
     title: 'QA Technician',
-    dates: 'Aug 2002 – Sep 2005',
+    dates: 'Aug 2002 - Sep 2005',
     location: 'Brighton',
     type: 'Permanent',
     sector: 'Games',

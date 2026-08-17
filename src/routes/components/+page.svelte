@@ -33,8 +33,8 @@
 </script>
 
 <Seo
-  title="Components — feedMyPixel"
-  description="The component catalogue behind feedmypixel.com — every brick in its states, light and dark."
+  title="Components - feedMyPixel"
+  description="The component catalogue behind feedmypixel.com - every brick in its states, light and dark."
   path="/components"
 />
 

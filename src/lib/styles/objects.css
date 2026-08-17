@@ -1,13 +1,13 @@
-/* Layout primitives — page/route call-site tool, never used inside a component. */
+/* Layout primitives - page/route call-site tool, never used inside a component. */
 
-/* Vertical rhythm — a column with consistent spacing between children. */
+/* Vertical rhythm - a column with consistent spacing between children. */
 .stack {
   display: flex;
   flex-direction: column;
   gap: var(--stack-gap, var(--space-6));
 }
 
-/* Inline group that wraps — chips, buttons, tags. */
+/* Inline group that wraps - chips, buttons, tags. */
 .cluster {
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
   max-width: var(--measure, 65ch);
 }
 
-/* Section container — max width + fluid side gutters. */
+/* Section container - max width + fluid side gutters. */
 .container {
   max-width: var(--container-max, 77.5rem);
   margin-inline: auto;

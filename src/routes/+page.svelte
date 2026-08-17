@@ -8,7 +8,7 @@
 </script>
 
 <Seo
-  title="feedMyPixel — Ben Chidgey, contract full-stack engineer"
+  title="feedMyPixel - Ben Chidgey, contract full-stack engineer"
   description="Ben Chidgey. Contract full-stack engineer. Twenty years building for the Guardian, the BBC and UK government. Searchable CV, products and contact."
   structuredData={homeStructuredData()}
 />

@@ -3,7 +3,7 @@
 </script>
 
 <Seo
-  title="Pipes privacy policy — feedMyPixel"
+  title="Pipes privacy policy - feedMyPixel"
   description="How Pipes handles your data: fully client-side, no backend, nothing ever sent to us."
   path="/pipes/privacy"
 />

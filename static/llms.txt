@@ -1,6 +1,6 @@
 # feedMyPixel
 
-> Ben Chidgey — contract full-stack engineer trading as feedMyPixel Ltd. Twenty years building for
+> Ben Chidgey - contract full-stack engineer trading as feedMyPixel Ltd. Twenty years building for
 > the Guardian, the BBC and UK government. Available worldwide and remote.
 
 ## About
@@ -14,7 +14,7 @@ Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
 
 - [Pipes](https://github.com/feedmypixel/pipes): CI/CD pipeline monitoring as a browser extension.
   Watches GitHub Actions and GitLab CI/CD, and goes loud the moment a default branch breaks. Fully
-  client-side — no server, no tracking. Published on the Chrome Web Store and Firefox Add-ons.
+  client-side - no server, no tracking. Published on the Chrome Web Store and Firefox Add-ons.
 
 ## Pages
 

@@ -1,4 +1,4 @@
-/* Design tokens — the only place raw hex lives. Values from design_handoff_onepager_v1. */
+/* Design tokens - the only place raw hex lives. Values from design_handoff_onepager_v1. */
 
 :root {
   /* neutral ramp */
@@ -75,7 +75,7 @@
   --solid-critical: oklch(50% 0.17 25);
   --solid-info: #0f52a8;
 
-  /* toast overlays — white text; the depleting bar darkens the mood fill */
+  /* toast overlays - white text; the depleting bar darkens the mood fill */
   --toast-ink: #fff;
   --toast-progress-track: transparent;
   --toast-progress-fill: rgb(0, 0, 0, 0.38);
@@ -90,7 +90,7 @@
   --field-invalid: var(--mood-critical);
   --field-placeholder: var(--ink-subtle);
 
-  /* type families — self-hosted, no italic */
+  /* type families - self-hosted, no italic */
   --font-display: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
   --font-text: 'Plus Jakarta Sans Variable', system-ui, -apple-system, sans-serif;
   --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
@@ -101,7 +101,7 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* type scale — clamp()-fluid from xl up, no font-size media queries */
+  /* type scale - clamp()-fluid from xl up, no font-size media queries */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -124,7 +124,7 @@
   --tracking-normal: 0;
   --tracking-wide: 0.04em;
 
-  /* space — 4px base */
+  /* space - 4px base */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -142,7 +142,7 @@
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --band: clamp(4rem, 2.5rem + 6vw, 8rem);
 
-  /* radii — pixel brand keeps corners square */
+  /* radii - pixel brand keeps corners square */
   --radius-pixel: 2px;
   --radius-sm: 3px;
   --radius-md: 4px;

@@ -31,7 +31,7 @@ test('closes on Escape', () => {
   expect(onclose).toHaveBeenCalled()
 })
 
-test('traps focus — Tab from the last link wraps to the first', () => {
+test('traps focus - Tab from the last link wraps to the first', () => {
   render(MobileNav, { props: { open: true, onclose: () => {} } })
   const links = linksIn('#mobile-nav')
   links[links.length - 1].focus()
@@ -39,7 +39,7 @@ test('traps focus — Tab from the last link wraps to the first', () => {
   expect(document.activeElement).toBe(links[0])
 })
 
-test('traps focus — Shift+Tab from the first link wraps to the last', () => {
+test('traps focus - Shift+Tab from the first link wraps to the last', () => {
   render(MobileNav, { props: { open: true, onclose: () => {} } })
   const links = linksIn('#mobile-nav')
   links[0].focus()

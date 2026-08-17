@@ -7,7 +7,7 @@ test('leads with the positioning and the headline', async () => {
   await expect
     .element(page.getByRole('heading', { level: 1 }))
     .toHaveTextContent('Software that makes you smile')
-  await expect.element(page.getByText('Ben Chidgey — contract full-stack engineer')).toBeVisible()
+  await expect.element(page.getByText('Ben Chidgey - contract full-stack engineer')).toBeVisible()
 })
 
 test('offers the CV as a real download, saved under its own name', () => {

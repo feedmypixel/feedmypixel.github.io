@@ -18,7 +18,7 @@ import type { Role } from './data/experience'
 const role = (overrides: Partial<Role> = {}): Role => ({
   company: 'Guardian News & Media',
   title: 'Client-Side Engineer',
-  dates: 'Apr 2014 – Apr 2015',
+  dates: 'Apr 2014 - Apr 2015',
   type: 'Contract',
   location: 'London',
   sector: 'Media',

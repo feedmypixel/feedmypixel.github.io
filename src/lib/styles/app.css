@@ -1,4 +1,4 @@
-/* App stylesheet entry — the only stylesheet +layout imports. Declares layer order, then imports each concern. */
+/* App stylesheet entry - the only stylesheet +layout imports. Declares layer order, then imports each concern. */
 
 @layer tokens, base, objects, utilities, patterns;
 
