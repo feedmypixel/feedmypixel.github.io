@@ -222,23 +222,46 @@
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     padding: 0;
-    background: var(--brand);
+    background: none;
     border: none;
-    border-radius: 1px;
-    opacity: 0.32;
     cursor: pointer;
-    transform: scale(0.8);
+  }
+
+  .dot::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: var(--brand);
+    border-radius: var(--radius-pixel);
+    opacity: 0.32;
+    transform: scale(0.85);
     transition:
       opacity var(--transition) var(--ease-standard),
       transform var(--transition) var(--ease-standard);
   }
 
-  .dot[aria-current='true'] {
+  .dot[aria-current='true']::before {
     opacity: 1;
     transform: scale(1);
+  }
+
+  @media (min-width: 47.5rem) {
+    .dot {
+      width: 24px;
+      height: 24px;
+    }
+
+    .dot::before {
+      width: 10px;
+      height: 10px;
+      border-radius: 1px;
+    }
   }
 
   @media (min-width: 47.5rem) {
