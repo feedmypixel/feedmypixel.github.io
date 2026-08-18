@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment'
-  import { clampIndex, indexFromScroll, scrollOffsetFor } from '$lib/carousel'
+  import { clampIndex, nearestSlide, scrollOffsetFor } from '$lib/carousel'
 
   export type Slide = { src: string; alt: string; label: string }
 
@@ -16,6 +16,17 @@
     return strip.clientWidth + 16
   }
 
+  function syncFromScroll() {
+    if (!stripEl) {
+      return
+    }
+    const midpoints = [...stripEl.children].map((slide) => {
+      const el = slide as HTMLElement
+      return el.offsetLeft + el.offsetWidth / 2
+    })
+    index = nearestSlide(stripEl.scrollLeft + stripEl.clientWidth / 2, midpoints)
+  }
+
   function goTo(next: number) {
     const target = clampIndex(next, slides.length)
     index = target
@@ -28,14 +39,20 @@
 
   function onScroll() {
     clearTimeout(settleTimer)
-    settleTimer = setTimeout(() => {
-      if (stripEl) {
-        index = indexFromScroll(stripEl.scrollLeft, slideWidth(stripEl), slides.length)
-      }
-    }, 120)
+    settleTimer = setTimeout(syncFromScroll, 120)
   }
 
-  $effect(() => () => clearTimeout(settleTimer))
+  $effect(() => {
+    const strip = stripEl
+    if (!strip) {
+      return
+    }
+    strip.addEventListener('scrollend', syncFromScroll)
+    return () => {
+      clearTimeout(settleTimer)
+      strip.removeEventListener('scrollend', syncFromScroll)
+    }
+  })
 </script>
 
 <figure class="carousel">

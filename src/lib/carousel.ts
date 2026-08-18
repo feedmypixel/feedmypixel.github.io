@@ -15,3 +15,19 @@ export function indexFromScroll(scrollLeft: number, slideWidth: number, count: n
 export function scrollOffsetFor(index: number, slideWidth: number) {
   return index * slideWidth
 }
+
+export function nearestSlide(centre: number, midpoints: number[]) {
+  if (midpoints.length === 0) {
+    return 0
+  }
+  let best = 0
+  let bestDistance = Infinity
+  midpoints.forEach((midpoint, index) => {
+    const distance = Math.abs(midpoint - centre)
+    if (distance < bestDistance) {
+      bestDistance = distance
+      best = index
+    }
+  })
+  return best
+}

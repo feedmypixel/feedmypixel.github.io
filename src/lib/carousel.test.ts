@@ -1,4 +1,4 @@
-import { clampIndex, indexFromScroll, scrollOffsetFor } from './carousel'
+import { clampIndex, indexFromScroll, nearestSlide, scrollOffsetFor } from './carousel'
 
 test('clampIndex keeps the index inside the slide range', () => {
   expect(clampIndex(-2, 4)).toBe(0)
@@ -26,4 +26,21 @@ test('indexFromScroll is safe before the strip has been measured', () => {
 
 test('scrollOffsetFor positions the strip at the slide', () => {
   expect(scrollOffsetFor(2, 616)).toBe(1232)
+})
+
+test('nearestSlide picks the slide closest to the viewport centre', () => {
+  const midpoints = [187, 561, 935, 1309]
+  expect(nearestSlide(187, midpoints)).toBe(0)
+  expect(nearestSlide(560, midpoints)).toBe(1)
+  expect(nearestSlide(1000, midpoints)).toBe(2)
+})
+
+test('nearestSlide copes with a part-way swipe', () => {
+  const midpoints = [187, 561, 935]
+  expect(nearestSlide(300, midpoints)).toBe(0)
+  expect(nearestSlide(420, midpoints)).toBe(1)
+})
+
+test('nearestSlide is safe with no slides', () => {
+  expect(nearestSlide(100, [])).toBe(0)
 })
