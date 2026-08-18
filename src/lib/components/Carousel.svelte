@@ -154,9 +154,9 @@
   }
 
   .step {
+    display: none;
     position: absolute;
     top: 50%;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 50px;
@@ -222,6 +222,12 @@
   .dot[aria-current='true'] {
     opacity: 1;
     transform: scale(1);
+  }
+
+  @media (min-width: 47.5rem) {
+    .step {
+      display: inline-flex;
+    }
   }
 
   @media (min-width: 87.5rem) {

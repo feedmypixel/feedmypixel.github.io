@@ -48,16 +48,21 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
+    min-width: 0;
     min-height: 48px;
-    padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
+    padding: var(--space-1) var(--space-1) var(--space-1) var(--space-2);
     background: var(--surface-raised);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-md);
   }
 
   .address {
+    min-width: 0;
+    overflow: hidden;
     font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: var(--ink-strong);
     text-decoration: none;
   }
@@ -65,6 +70,16 @@
   .address:hover {
     color: var(--brand-text);
     text-decoration: underline;
+  }
+
+  @media (min-width: 47.5rem) {
+    .address {
+      font-size: var(--font-size-sm);
+    }
+
+    .pill {
+      padding-left: var(--space-4);
+    }
   }
 
   .copy {

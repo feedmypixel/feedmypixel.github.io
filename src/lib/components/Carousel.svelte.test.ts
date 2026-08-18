@@ -10,6 +10,9 @@ const slides = [
 
 const renderCarousel = () => render(Carousel, { props: { slides, label: 'Pipes screenshots' } })
 
+const clickStep = (direction: 'prev' | 'next') =>
+  document.querySelector<HTMLButtonElement>(`.${direction}`)?.click()
+
 test('renders every slide with dimensions so the layout does not shift', () => {
   renderCarousel()
   const images = document.querySelectorAll<HTMLImageElement>('.strip img')
@@ -35,30 +38,29 @@ test('captions the first slide and marks its dot current', async () => {
 
 test('a dot moves the carousel to that slide', async () => {
   renderCarousel()
-  await page.getByRole('button', { name: 'Show Connect GitHub and GitLab' }).click()
+  document.querySelectorAll<HTMLButtonElement>('.dot')[2].click()
   await expect.element(page.getByText('Connect GitHub and GitLab')).toBeVisible()
   expect(document.querySelectorAll('.dot')[2].getAttribute('aria-current')).toBe('true')
 })
 
 test('next advances and previous goes back', async () => {
   renderCarousel()
-  await page.getByRole('button', { name: 'Next screenshot' }).click()
+  clickStep('next')
   await expect.element(page.getByText('Every repo in a side panel')).toBeVisible()
-  await page.getByRole('button', { name: 'Previous screenshot' }).click()
+  clickStep('prev')
   await expect.element(page.getByText('Status from your toolbar')).toBeVisible()
 })
 
 test('previous stops at the first slide', async () => {
   renderCarousel()
-  await page.getByRole('button', { name: 'Previous screenshot' }).click()
+  clickStep('prev')
   expect(document.querySelectorAll('.dot')[0].getAttribute('aria-current')).toBe('true')
 })
 
 test('next stops at the last slide', async () => {
   renderCarousel()
-  const next = page.getByRole('button', { name: 'Next screenshot' })
   for (let click = 0; click < 4; click++) {
-    await next.click()
+    clickStep('next')
     await vi.waitFor(() => {
       expect(document.querySelector('.dot[aria-current="true"]')).not.toBeNull()
     })

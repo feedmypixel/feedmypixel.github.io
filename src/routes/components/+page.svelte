@@ -12,6 +12,7 @@
   import SegmentedControl from '$lib/components/SegmentedControl.svelte'
   import RoleCard from '$lib/components/RoleCard.svelte'
   import EmptyState from '$lib/components/EmptyState.svelte'
+  import BackToTop from '$lib/components/BackToTop.svelte'
   import { roles } from '$lib/data/experience'
   import { TYPE_FILTERS, type TypeFilter } from '$lib/cv-filter'
   import { toasts } from '$lib/toasts.svelte'
@@ -122,6 +123,12 @@
     />
   </section>
 
+  <section aria-labelledby="totop-h">
+    <h2 id="totop-h">Back to top</h2>
+    <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px.</p>
+    <BackToTop />
+  </section>
+
   <section aria-labelledby="toast-h">
     <h2 id="toast-h">Toast</h2>
     <div class="specimens">
@@ -200,6 +207,11 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-4);
+  }
+
+  .note {
+    font-size: var(--font-size-sm);
+    color: var(--ink-muted);
   }
 
   .carousel-demo {

@@ -19,6 +19,7 @@
     type?: 'button' | 'submit'
     disabled?: boolean
     onclick?: (event: MouseEvent) => void
+    'aria-label'?: string
     children: Snippet
   } = $props()
 </script>
@@ -51,11 +52,12 @@
     justify-content: center;
     gap: var(--space-3);
     min-height: 44px;
-    padding-inline: var(--space-5);
+    padding-inline: var(--button-padding-inline, var(--space-5));
     border-radius: var(--radius-md);
     font-family: var(--font-text);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
     text-decoration: none;
     cursor: pointer;
     transition:

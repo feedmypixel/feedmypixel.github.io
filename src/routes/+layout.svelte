@@ -7,6 +7,7 @@
   import Header from '$lib/components/Header.svelte'
   import Footer from '$lib/components/Footer.svelte'
   import Toaster from '$lib/components/Toaster.svelte'
+  import BackToTop from '$lib/components/BackToTop.svelte'
   import ConsentBanner from '$lib/components/ConsentBanner.svelte'
   import { consent } from '$lib/consent.svelte'
   import { loadAnalytics } from '$lib/analytics'
@@ -36,6 +37,7 @@
   <Footer />
 </div>
 
+<BackToTop />
 <Toaster />
 
 <style>

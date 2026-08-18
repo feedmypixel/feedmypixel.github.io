@@ -139,7 +139,7 @@
   --space-24: 6rem;
 
   /* fluid gutter + section band */
-  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --gutter: clamp(1rem, 4vw, 3rem);
   --band: clamp(4rem, 2.5rem + 6vw, 8rem);
 
   /* radii - pixel brand keeps corners square */

@@ -8,7 +8,7 @@
     activeIndex,
     countLabel,
     anyFilter,
-    placeholder,
+    label,
     onKeyDown,
     onOpen,
     onClose,
@@ -22,7 +22,7 @@
     activeIndex: number
     countLabel: string
     anyFilter: boolean
-    placeholder: string
+    label: string
     onKeyDown: (event: KeyboardEvent) => void
     onOpen: () => void
     onClose: () => void
@@ -66,7 +66,6 @@
     <path d="M10.5 10.5 14 14" />
   </svg>
 
-  <label class="visually-hidden" for="cv-search"> Search roles, skills, clients and sectors </label>
   <input
     id="cv-search"
     type="text"
@@ -77,12 +76,13 @@
     aria-controls="cv-suggestions"
     aria-autocomplete="list"
     aria-activedescendant={activeIndex >= 0 ? `cv-suggestion-${activeIndex}` : undefined}
-    {placeholder}
+    placeholder=" "
     bind:value={query}
     onfocus={onOpen}
     oninput={onOpen}
     onkeydown={onKeyDown}
   />
+  <label class="floating-label" for="cv-search">{label}</label>
 
   <span class="count" aria-hidden="true">{countLabel}</span>
 
@@ -168,6 +168,46 @@
     font-family: var(--font-text);
     font-size: var(--font-size-base);
     color: var(--ink-strong);
+  }
+
+  .floating-label {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--space-4) + 17px + var(--space-3));
+    max-width: calc(100% - var(--space-16));
+    overflow: hidden;
+    padding-inline: 0.375rem;
+    color: var(--field-placeholder);
+    font-size: var(--font-size-base);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transform-origin: left center;
+    transition:
+      top var(--transition) var(--ease-standard),
+      left var(--transition) var(--ease-standard),
+      font-size var(--transition) var(--ease-standard),
+      color var(--transition) var(--ease-standard);
+  }
+
+  input:focus ~ .floating-label,
+  input:not(:placeholder-shown) ~ .floating-label {
+    top: 0;
+    left: var(--space-3);
+    background: var(--field-bg);
+    color: var(--ink-muted);
+    font-size: var(--font-size-xs);
+  }
+
+  input:focus ~ .floating-label {
+    color: var(--brand-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-label {
+      transition: none;
+    }
   }
 
   .count {

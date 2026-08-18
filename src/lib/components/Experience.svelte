@@ -92,7 +92,7 @@
       {activeIndex}
       {anyFilter}
       countLabel={countLabel(results.length, roles.length)}
-      placeholder="Search {roles.length} roles, try SvelteKit, government, Guardian"
+      label="Search"
       onOpen={() => {
         open = true
         activeIndex = -1

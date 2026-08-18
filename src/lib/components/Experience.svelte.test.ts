@@ -220,7 +220,5 @@ test('the search field is a labelled combobox', async () => {
   const input = document.querySelector('#cv-search')
   expect(input?.getAttribute('role')).toBe('combobox')
   expect(input?.getAttribute('aria-controls')).toBe('cv-suggestions')
-  await expect
-    .element(page.getByLabelText('Search roles, skills, clients and sectors'))
-    .toBeInTheDocument()
+  await expect.element(page.getByLabelText('Search')).toBeInTheDocument()
 })

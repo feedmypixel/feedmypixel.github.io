@@ -14,7 +14,12 @@
     <p class="lede">Twenty years building for the Guardian, the BBC and UK government.</p>
 
     <div class="actions">
-      <Button variant="solid" href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
+      <Button
+        variant="solid"
+        href={asset('/BenChidgeyCV.pdf')}
+        download="BenChidgeyCV.pdf"
+        aria-label="Download CV"
+      >
         <svg
           width="15"
           height="15"
@@ -28,7 +33,8 @@
         >
           <path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" />
         </svg>
-        Download CV
+        <span class="cv-full">Download CV</span>
+        <span class="cv-short">CV</span>
       </Button>
       <EmailPill />
     </div>
@@ -75,11 +81,21 @@
   }
 
   .actions {
+    --button-padding-inline: var(--space-3);
+
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--space-2);
     margin-top: var(--space-10);
+  }
+
+  .cv-short {
+    display: inline;
+  }
+
+  .cv-full {
+    display: none;
   }
 
   .clients {
@@ -93,10 +109,21 @@
     color: var(--ink-subtle);
   }
 
+  @media (min-width: 30rem) {
+    .cv-short {
+      display: none;
+    }
+
+    .cv-full {
+      display: inline;
+    }
+  }
+
   @media (min-width: 47.5rem) {
     .actions {
-      flex-direction: row;
-      align-items: center;
+      --button-padding-inline: var(--space-6);
+
+      gap: var(--space-4);
     }
   }
 </style>
