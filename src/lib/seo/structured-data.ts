@@ -1,5 +1,6 @@
 import { emailAddress, gitHubUrl, linkedInUrl, siteUrl } from '$lib/config'
 import { roles } from '$lib/data/experience'
+import { faqs, serviceFacts, serviceLede } from '$lib/data/services'
 
 const organisation = {
   '@type': 'Organization',
@@ -40,9 +41,36 @@ const website = {
   about: { '@id': `${siteUrl}/#ben-chidgey` }
 }
 
+const faqPage = {
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}/#faq`,
+  isPartOf: { '@id': `${siteUrl}/#website` },
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+  }))
+}
+
+const professionalService = {
+  '@type': 'ProfessionalService',
+  '@id': `${siteUrl}/#service`,
+  name: 'Contract full-stack engineering',
+  description: serviceLede,
+  provider: { '@id': `${siteUrl}/#organization` },
+  employee: { '@id': `${siteUrl}/#ben-chidgey` },
+  areaServed: { '@type': 'Place', name: 'Worldwide, remote' },
+  availableLanguage: 'en-GB',
+  additionalProperty: serviceFacts.map((fact) => ({
+    '@type': 'PropertyValue',
+    name: fact.label,
+    value: fact.value
+  }))
+}
+
 export function homeStructuredData() {
   return JSON.stringify({
     '@context': 'https://schema.org',
-    '@graph': [organisation, person, website]
+    '@graph': [organisation, person, website, professionalService, faqPage]
   })
 }

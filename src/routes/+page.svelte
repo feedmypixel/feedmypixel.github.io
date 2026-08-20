@@ -3,6 +3,7 @@
   import Hero from '$lib/components/Hero.svelte'
   import Products from '$lib/components/Products.svelte'
   import Experience from '$lib/components/Experience.svelte'
+  import Services from '$lib/components/Services.svelte'
   import Contact from '$lib/components/Contact.svelte'
   import { homeStructuredData } from '$lib/seo/structured-data'
 </script>
@@ -16,4 +17,5 @@
 <Hero />
 <Products />
 <Experience />
+<Services />
 <Contact />

@@ -7,7 +7,13 @@ test('renders the brand, section nav and theme toggle', async () => {
   await expect
     .element(page.getByRole('link', { name: 'feedMyPixel, back to top' }))
     .toBeInTheDocument()
-  expect(document.querySelectorAll('nav[aria-label="Sections"] a')).toHaveLength(3)
+  const sectionLinks = document.querySelectorAll('nav[aria-label="Sections"] a')
+  expect([...sectionLinks].map((link) => link.textContent?.trim())).toEqual([
+    'Products',
+    'Experience',
+    'Services',
+    'Contact'
+  ])
   await expect
     .element(page.getByRole('button', { name: 'Switch colour theme' }))
     .toBeInTheDocument()

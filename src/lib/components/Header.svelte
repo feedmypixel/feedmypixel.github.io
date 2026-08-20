@@ -10,6 +10,7 @@
   const sections = [
     { id: 'products', label: 'Products' },
     { id: 'experience', label: 'Experience' },
+    { id: 'services', label: 'Services' },
     { id: 'contact', label: 'Contact' }
   ]
 
@@ -199,7 +200,7 @@
     position: absolute;
     bottom: 0;
     height: 4px;
-    background: var(--brand);
+    background: var(--indicator);
     border-radius: 1px;
     opacity: 0;
     transition:

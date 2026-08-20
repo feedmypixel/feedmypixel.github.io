@@ -16,6 +16,7 @@
     <nav class="nav" aria-label="Footer">
       <a href="{home}#products">Products</a>
       <a href="{home}#experience">Experience</a>
+      <a href="{home}#services">Services</a>
       <a href="{home}#contact">Contact</a>
       <a href={resolve('/components')}>Components</a>
       <a href="https://www.gov.uk/digital-marketplace" target="_blank" rel="noopener noreferrer">

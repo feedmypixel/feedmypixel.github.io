@@ -52,6 +52,35 @@ Answers must be **self-contained** - each one quotable on its own without the qu
 around it. That is what makes it citable. Two to four sentences each; if an answer needs more, the
 question is wrong.
 
+### Added for v4 - the commercial questions the first pass missed
+
+The v3 set answered "what is Ben like to work with" but not "can we actually buy this". These five
+are what a client asks before contracting, and what an answer engine gets asked most often. They are
+collapsed `<details>`, so extra rows cost almost nothing visually.
+
+- **What do you charge?** The most-asked question on the whole page and currently absent. Ben does
+  not publish a rate. The answer should say so plainly and turn it into a next step ("tell me the
+  shape of the work and I will give you a number"), not dodge it.
+- **Our stack is not SvelteKit - can you still help?** As written, the v3 "What do you build with?"
+  answer reads as a filter, and a team on Rails or .NET may bounce. Twenty years across Java, Scala,
+  PHP and Python is the point: the stack is not the constraint. This question exists to undo that
+  false signal, so place it directly after the stack question.
+- **Do you hold security clearance?** Ben's public-sector history (DEFRA, Ministry of Justice, HMRC,
+  HM Passport Office) makes this a real procurement gate, asked before anything else on government
+  work. **Ben to supply his current status - do not invent one, and if the answer is unhelpful this
+  question gets cut rather than answered vaguely.**
+- **Are you insured, and what are the company details?** Professional indemnity and public liability,
+  company number 08198085, established 2012, VAT status. Dull, but procurement stalls without it.
+  **Ben to supply cover details.** This may read better as two extra rows in the services spec list
+  than as an FAQ row - your call, argue for it.
+- **What happens when the engagement ends?** Handover, documentation, whether Ben is available
+  afterwards. This is the natural close and it pays off the v3 line about not wanting to be the only
+  person who understands how something works.
+
+**Do not draft answers containing facts you were not given.** Rate policy, clearance status and
+insurance cover are Ben's to state. Where a fact is missing, write the answer with an obvious
+`[Ben to confirm]` gap rather than a plausible guess.
+
 ## The real design problems
 
 1. **Where does it go?** Current order is Hero → Products → Experience (faceted CV search) → Contact.
