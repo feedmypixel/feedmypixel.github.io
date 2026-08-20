@@ -30,7 +30,6 @@ updates:
           - "vitest-browser-svelte"
           - "prettier-plugin-svelte"
           - "eslint-plugin-svelte"
-          - "mdsvex"
       lint:
         patterns:
           - "eslint"
