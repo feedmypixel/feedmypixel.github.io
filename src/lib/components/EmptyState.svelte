@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Button from './Button.svelte'
-
   let {
     title,
     message,
@@ -12,7 +10,7 @@
 <div class="empty">
   <p class="title">{title}</p>
   <p class="message">{message}</p>
-  <Button variant="ghost" onclick={onAction}>{actionLabel}</Button>
+  <button class="action" type="button" onclick={onAction}>{actionLabel}</button>
 </div>
 
 <style>
@@ -33,5 +31,21 @@
     margin: var(--space-3) 0 var(--space-6);
     font-size: var(--font-size-base);
     color: var(--ink-muted);
+  }
+
+  .action {
+    padding: var(--space-2);
+    background: none;
+    border: none;
+    color: var(--link);
+    font-size: var(--font-size-base);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .action:hover {
+    color: var(--link-hover);
+    text-decoration: none;
   }
 </style>

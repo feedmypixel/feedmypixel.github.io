@@ -126,6 +126,7 @@
 
   nav a:hover {
     background: var(--surface-sunken);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>

@@ -186,7 +186,9 @@
   }
 
   .nav a:hover {
-    text-decoration: none;
+    color: var(--ink-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .nav a.active {
