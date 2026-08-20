@@ -44,6 +44,39 @@
 </section>
 
 <style>
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes hero-arrive {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    .eyebrow,
+    h1,
+    .lede,
+    .actions,
+    .clients {
+      animation: hero-arrive var(--transition-slow) var(--ease-emphasized) backwards;
+    }
+
+    h1 {
+      animation-delay: 60ms;
+    }
+
+    .lede {
+      animation-delay: 120ms;
+    }
+
+    .actions {
+      animation-delay: 180ms;
+    }
+
+    .clients {
+      animation-delay: 240ms;
+    }
+  }
+
   .hero {
     border-bottom: 1px solid var(--border-subtle);
   }

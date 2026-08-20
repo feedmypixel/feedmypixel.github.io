@@ -1,1 +1,24 @@
 /* Named multi-property patterns - added as page-level repetition earns them. */
+
+/*
+  Scroll-driven reveals. Native view timelines only: no observer, no script.
+  The @supports must test animation-range as well as animation-timeline, or
+  browsers with partial support match and then never run the animation, which
+  would leave every section stuck at opacity 0.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+    }
+
+    #main > section:not(.hero) {
+      animation: rise-in auto var(--ease-standard) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 18%;
+    }
+  }
+}

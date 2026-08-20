@@ -122,6 +122,22 @@
 
   .faq {
     border-bottom: 1px solid var(--border-subtle);
+    interpolate-size: allow-keywords;
+  }
+
+  .faq::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      block-size var(--transition) var(--ease-standard),
+      opacity var(--transition) var(--ease-standard),
+      content-visibility var(--transition) allow-discrete;
+  }
+
+  .faq[open]::details-content {
+    block-size: auto;
+    opacity: 1;
   }
 
   summary {

@@ -25,6 +25,23 @@
 </li>
 
 <style>
+  @media (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: view()) and (animation-range: entry)) {
+      @keyframes row-rise {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+      }
+
+      .row {
+        animation: row-rise auto var(--ease-standard) backwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 12%;
+      }
+    }
+  }
+
   .row {
     border-bottom: 1px solid var(--border-subtle);
     transition: background var(--transition) var(--ease-standard);
