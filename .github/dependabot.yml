@@ -7,13 +7,16 @@ updates:
     versioning-strategy: increase
     allow:
       - dependency-type: direct
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     cooldown:
       default-days: 5
       semver-major-days: 20
       semver-minor-days: 7
       semver-patch-days: 3
     schedule:
-      interval: weekly
+      interval: monthly
       day: thursday
       time: "09:00"
       timezone: "Europe/London"
