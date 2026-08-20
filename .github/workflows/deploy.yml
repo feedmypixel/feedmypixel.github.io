@@ -51,7 +51,7 @@ jobs:
         run: pnpm build
       - name: Fail if the custom domain would be dropped
         run: test -f build/CNAME
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: build
