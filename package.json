@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "FeedMyPixel site — brochure + dev blog (SvelteKit static)",
   "author": "Ben Chidgey <ben@feedmypixel.com> (https://feedmypixel.com)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@11.8.0",
   "engines": {

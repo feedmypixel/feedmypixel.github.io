@@ -121,3 +121,9 @@ retired. CNAME `feedmypixel.com` is preserved throughout.
 Project plan, PRD, task list, and decisions live under [`tasks/`](./tasks):
 [`prd-feedmypixel-site.md`](./tasks/prd-feedmypixel-site.md) and
 [`tasks-prd-feedmypixel-site.md`](./tasks/tasks-prd-feedmypixel-site.md).
+
+## Licence
+
+Source code is [MIT](./LICENSE). The CV, feedMyPixel branding, product
+screenshots, and site copy are **not** covered by it and remain all rights
+reserved. See [`NOTICE.md`](./NOTICE.md) for the full list.
