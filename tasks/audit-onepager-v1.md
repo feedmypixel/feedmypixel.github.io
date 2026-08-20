@@ -54,9 +54,9 @@ that a unit test cannot reach — after switching hrefs to `resolve()`-based int
 50% branches on three pure-interpolation lines while statements/functions/lines stay ~98%. Gaming that
 with artificial re-render tests would buy nothing.
 
-**FOLLOWUP (before v1 ships):** regroup on getting branches back to **80**. Sessions C and D add
-genuinely branchy logic (filter pipeline, keyboard handling, validation), which should lift the real
-figure; revisit the threshold then rather than writing tests that assert nothing.
+**Resolved.** Sessions C and D added enough genuinely branchy logic (filter pipeline, keyboard
+handling, validation) to lift the real figure. All four thresholds are back at **80**, with branches
+measuring 86.6%.
 
 ## Questions for the product owner (Ben)
 

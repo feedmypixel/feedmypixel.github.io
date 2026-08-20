@@ -1,11 +1,11 @@
 # feedmypixel.github.io
 
-The FeedMyPixel site — brochure + dev blog for Ben Chidgey (senior contract full-stack engineer)
-and his products (Pipes, stat). A statically prerendered SvelteKit app (`@sveltejs/adapter-static`)
-deployed to GitHub Pages at [feedmypixel.com](https://feedmypixel.com).
+The feedMyPixel site: a one-page portfolio for Ben Chidgey (contract full-stack engineer) and his
+product Pipes. A statically prerendered SvelteKit app (`@sveltejs/adapter-static`) deployed to GitHub
+Pages at [feedmypixel.com](https://feedmypixel.com).
 
-Project planning + PRDs live under [`tasks/`](./tasks). Visual design reference (claude.ai/design
-output) lives under [`design/`](./design).
+Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/design output live under
+[`design/`](./design).
 
 - [Stack](#stack)
 - [Prerequisites](#prerequisites)
@@ -15,15 +15,16 @@ output) lives under [`design/`](./design).
 - [Brand](#brand)
 - [Styling](#styling)
 - [Design](#design)
+- [Privacy and analytics](#privacy-and-analytics)
+- [SEO and AEO](#seo-and-aeo)
 - [Deploy](#deploy)
-- [Tasks / PRDs](#tasks--prds)
+- [Licence](#licence)
 
 ## Stack
 
 - **SvelteKit 2** + **Svelte 5** (runes mode)
 - **Vite 8** for bundling, **adapter-static** (full prerender) for output
-- **mdsvex** for the Markdown dev blog
-- **Vitest 4** + **Playwright** (e2e + axe a11y) for tests
+- **Vitest 4** (browser mode) + **Playwright** (e2e + axe a11y) for tests
 - **ESLint** + **Prettier** + **Stylelint** + **husky** + **lint-staged**
 
 ## Prerequisites
@@ -42,6 +43,9 @@ pnpm install
 pnpm dev
 ```
 
+The contact form posts to [Web3Forms](https://web3forms.com). Copy `.env.example` to `.env` and set
+`VITE_WEB3FORMS_KEY` to exercise it locally; the same value is a repository secret for CI.
+
 ## Scripts
 
 | Script                | Purpose                                       |
@@ -59,71 +63,84 @@ pnpm dev
 | `pnpm test`           | Unit + e2e                                    |
 | `pnpm security-audit` | `pnpm audit --audit-level=moderate`           |
 
-## Layout
+Unit tests run in **Vitest browser mode** against real Chromium, so `pnpm exec playwright install
+chromium` must have run or whole test files skip silently.
 
-Target structure (built feature-by-feature per the task list):
+## Layout
 
 ```
 src/
-├── app.html                     # HTML shell, brand meta, favicons
+├── app.html                     # HTML shell, no-flash theme script
 ├── app.d.ts                     # App namespace globals
 ├── lib/
-│   ├── components/              # Header, Footer, Seo, NewsletterSignup, … (Svelte 5)
-│   ├── data/                    # experience.ts (roles → explorer + JSON-LD + PDF)
+│   ├── components/              # Header, Footer, Hero, Products, Experience, Contact, … (Svelte 5)
+│   ├── data/                    # experience.ts (roles → CV search + JSON-LD)
 │   ├── seo/                     # structured-data.ts (JSON-LD builders)
-│   └── styles/                  # Layered app CSS — see styles/README.md
-├── posts/                       # mdsvex blog posts
+│   ├── styles/                  # Layered app CSS - see styles/README.md
+│   ├── config.ts                # All environment + constant access, one place
+│   └── consent.svelte.ts        # Consent state, gates analytics
 └── routes/
     ├── +layout.svelte           # Header + main + footer shell
-    ├── +page.svelte             # Home (brochure)
-    ├── work/                    # Experience explorer
-    ├── about/                   # About
-    ├── blog/                    # Blog index + [slug] posts
-    ├── rss.xml/                 # RSS feed endpoint (prerendered)
+    ├── +page.svelte             # The one-pager (hero, products, CV search, contact)
+    ├── components/              # Public component catalogue
+    ├── pipes/privacy/           # Privacy policy for the Pipes extension
     └── sitemap.xml/             # Sitemap endpoint (prerendered)
 
-static/                          # CV PDF, robots.txt, llms.txt, icons — served at root
+static/                          # CV PDF, robots.txt, llms.txt, icons, CNAME - served at root
 e2e/                             # Playwright specs
 ```
 
 ## Brand
 
 Brand colour **Pixel Blue `#3294fc`** (the logo's blue square + white pixel motif; same blue family
-as Pipes `#3194FC`). Used for identity/accent only. Typeface is being upgraded from Quicksand at the
-design step. Full token vocabulary is established at the design-foundation step (`tasks/`).
+as Pipes `#3194FC`). Used for identity and accent only. Typefaces are **Plus Jakarta Sans** (display
+and text) and **DM Mono**, self-hosted via `@fontsource`.
 
 ## Styling
 
 App-wide CSS is split by concern into cascade layers under `src/lib/styles/`
-(`tokens` / `base` / `objects` / `utilities` / `patterns`) behind one `app.css` entry — mirroring the
-[stat-ui](https://github.com/feedmypixel) architecture.
+(`tokens` / `base` / `objects` / `utilities` / `patterns`) behind one `app.css` entry - mirroring the
+stat-ui architecture.
 
 The load-bearing rule: **components are self-contained** (scoped `<style>`, depending only on
-**tokens**) and **never use global utility classes**; utilities + layout objects
+**tokens**) and **never use global utility classes**; utilities and layout objects
 (`.stack`/`.cluster`/`.center`) are a **page/route call-site tool**; cross-component duplication is
 DRY'd via **tokens, not shared classes**. Raw hex lives only in `tokens.css` (Stylelint-enforced).
 
+Links follow one rule: hover always **changes** the underline state. Content links are underlined at
+rest and lose it on hover; chrome links (nav, footer, buttons) are clean at rest and gain it.
+
 ## Design
 
-Locked visual reference (HTML + CSS prototypes from [claude.ai/design](https://claude.ai/design))
-lives under [`design/`](./design). Briefs (`design/brief-*.md`) drive each screen; outputs land in
-`design/vN/`. Use those bundles as source-of-truth when implementing screens — but **don't import the
-design CSS wholesale**; every component owns its own scoped styles using the tokens. No Figma.
+Visual reference (HTML + CSS prototypes from [claude.ai/design](https://claude.ai/design)) lives
+under [`design/`](./design). Briefs (`design/brief-*.md`) drive each screen. Use those bundles as
+source-of-truth when implementing - but **don't import the design CSS wholesale**; every component
+owns its own scoped styles using the tokens. No Figma.
+
+## Privacy and analytics
+
+Google Analytics is **consent-gated**: nothing from Google is requested until the visitor accepts.
+A browser-level opt-out (Global Privacy Control / Do Not Track) auto-declines and the banner never
+appears. The choice is remembered and can be withdrawn from the footer.
+
+## SEO and AEO
+
+- Per-page title, description, canonical, Open Graph and Twitter cards via `Seo.svelte`
+- JSON-LD `@graph` (`Organization`, `Person`, `WebSite`) built from the CV data
+- `sitemap.xml` (prerendered, with `lastmod`), `robots.txt`, and an `llms.txt` summary for
+  answer engines
+- `robots.txt` explicitly welcomes answer-engine crawlers, including the retrieval bots
+  (`OAI-SearchBot`, `Claude-SearchBot`, `Perplexity-User`) that fetch pages in order to cite them
 
 ## Deploy
 
-Static build served by **GitHub Pages**. During the build phase the legacy holding page keeps serving
-live from `master`; at cutover, Pages switches to a GitHub Actions build of `main` and `master` is
-retired. CNAME `feedmypixel.com` is preserved throughout.
-
-## Tasks / PRDs
-
-Project plan, PRD, task list, and decisions live under [`tasks/`](./tasks):
-[`prd-feedmypixel-site.md`](./tasks/prd-feedmypixel-site.md) and
-[`tasks-prd-feedmypixel-site.md`](./tasks/tasks-prd-feedmypixel-site.md).
+Static build served by **GitHub Pages** from a GitHub Actions build of `main`
+(`.github/workflows/deploy.yml`). `static/CNAME` keeps `feedmypixel.com` attached, and the workflow
+fails the build if it goes missing. Documentation-only paths are excluded from the trigger so they
+don't burn a deploy.
 
 ## Licence
 
-Source code is [MIT](./LICENSE). The CV, feedMyPixel branding, product
-screenshots, and site copy are **not** covered by it and remain all rights
-reserved. See [`NOTICE.md`](./NOTICE.md) for the full list.
+Source code is [MIT](./LICENSE). The CV, feedMyPixel branding, product screenshots, and site copy are
+**not** covered by it and remain all rights reserved. See [`NOTICE.md`](./NOTICE.md) for the full
+list.
