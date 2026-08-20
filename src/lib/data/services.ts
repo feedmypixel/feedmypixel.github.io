@@ -10,10 +10,9 @@ export const serviceLede =
 export const serviceFacts: ServiceFact[] = [
   { label: 'Engagement', value: 'Contract, through feedMyPixel Ltd. Outside IR35.' },
   { label: 'Length', value: 'A few days to a year or more.' },
+  { label: 'Project size', value: "Small to huge. Let's chat about what you need." },
   { label: 'Location', value: 'Remote worldwide, based in the UK.' },
-  { label: 'Availability', value: 'Open to conversations about upcoming work.' },
-  { label: 'Insured', value: 'Professional indemnity and public liability.' },
-  { label: 'Company', value: 'feedMyPixel Ltd, number 08198085, established 2012.' }
+  { label: 'Availability', value: 'Open to conversations about upcoming work.' }
 ]
 
 export const faqs: Faq[] = [
@@ -31,6 +30,15 @@ export const faqs: Faq[] = [
     question: 'Do you work remotely, and where?',
     answer:
       "I work remotely, worldwide, from the UK. I'll shift my hours to overlap properly with your team's timezone, and I'll travel for a kickoff or a workshop when it genuinely helps. Most of my last decade of contracts have been fully remote."
+  },
+  {
+    question: 'What do you charge?',
+    answer: 'We can discuss the specifics depending on what the project needs.'
+  },
+  {
+    question: 'Do you take inside-IR35 work?',
+    answer:
+      'No. I work outside IR35 only, contracting through feedMyPixel Ltd. Tell me the determination up front and we will both know quickly whether it is a fit.'
   },
   {
     question: 'How do you work with an existing team?',

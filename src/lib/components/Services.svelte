@@ -97,7 +97,7 @@
 
   .fact {
     display: grid;
-    grid-template-columns: 11ch 1fr;
+    grid-template-columns: 13ch 1fr;
     gap: var(--space-4);
     padding-bottom: var(--space-4);
     border-bottom: 1px solid var(--border-subtle);

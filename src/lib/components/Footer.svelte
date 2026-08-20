@@ -11,7 +11,7 @@
   <div class="inner">
     <div class="brand">
       <Logo size={22} />
-      <span class="line">feedMyPixel Ltd · Ben Chidgey</span>
+      <span class="line">feedMyPixel Ltd · Ben Chidgey · number 08198085 · established 2012</span>
     </div>
     <nav class="nav" aria-label="Footer">
       <a href="{home}#products">Products</a>
