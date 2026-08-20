@@ -3,3 +3,4 @@ allowBuilds:
 
 overrides:
   postcss: ^8.5.23
+  cookie: ^0.7.2
