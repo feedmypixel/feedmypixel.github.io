@@ -59,7 +59,7 @@
   }
 
   .back-to-top:hover {
-    border-color: var(--brand);
+    border-color: var(--indicator);
     color: var(--brand-text);
   }
 

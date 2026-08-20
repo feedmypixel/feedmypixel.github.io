@@ -258,7 +258,7 @@
   }
 
   .quick-chip:hover {
-    border-color: var(--brand);
+    border-color: var(--indicator);
     color: var(--brand-text);
   }
 

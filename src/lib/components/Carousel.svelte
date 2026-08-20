@@ -237,7 +237,7 @@
     content: '';
     width: 14px;
     height: 14px;
-    background: var(--brand);
+    background: var(--indicator);
     border-radius: var(--radius-pixel);
     opacity: 0.32;
     transform: scale(0.85);
@@ -282,7 +282,7 @@
     .step {
       background: transparent;
       box-shadow: none;
-      color: var(--brand);
+      color: var(--indicator);
       backdrop-filter: none;
     }
 

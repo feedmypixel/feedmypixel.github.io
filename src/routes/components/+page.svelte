@@ -13,6 +13,7 @@
   import RoleCard from '$lib/components/RoleCard.svelte'
   import EmptyState from '$lib/components/EmptyState.svelte'
   import BackToTop from '$lib/components/BackToTop.svelte'
+  import Services from '$lib/components/Services.svelte'
   import { roles } from '$lib/data/experience'
   import { TYPE_FILTERS, type TypeFilter } from '$lib/cv-filter'
   import { toasts } from '$lib/toasts.svelte'
@@ -121,6 +122,15 @@
       actionLabel="Clear all filters"
       onAction={() => {}}
     />
+  </section>
+
+  <section aria-labelledby="services-h">
+    <h2 id="services-h">Services and FAQ</h2>
+    <p class="note">
+      The full section as it appears on the home page. Answers stay in the DOM while collapsed so
+      crawlers and answer engines can read them.
+    </p>
+    <Services />
   </section>
 
   <section aria-labelledby="totop-h">
@@ -244,7 +254,7 @@
   }
 
   .demo:hover {
-    border-color: var(--brand);
+    border-color: var(--indicator);
     color: var(--brand-text);
   }
 </style>

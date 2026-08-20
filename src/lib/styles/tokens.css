@@ -52,6 +52,9 @@
   --brand-tint-strong: var(--blue-100);
   --brand-text: #0f52a8;
 
+  /* focus + component state; --brand is decoration only (WCAG 1.4.11 needs 3:1) */
+  --indicator: var(--blue-600);
+
   /* link */
   --link: var(--blue-700);
   --link-hover: var(--blue-600);
@@ -86,7 +89,7 @@
   /* form fields */
   --field-bg: #fff;
   --field-border: var(--neutral-300);
-  --field-border-focus: var(--brand);
+  --field-border-focus: var(--indicator);
   --field-invalid: var(--mood-critical);
   --field-placeholder: var(--ink-subtle);
 
@@ -170,7 +173,7 @@
   --z-toast: 400;
 
   /* focus */
-  --focus-ring-color: rgb(50, 148, 252, 0.45);
+  --focus-ring-color: rgb(18, 103, 209, 0.55);
   --focus-ring: 0 0 0 3px var(--focus-ring-color);
 
   /* layout */
@@ -197,6 +200,7 @@
   --brand-tint: #122236;
   --brand-tint-strong: #16304b;
   --brand-text: #4f9dfd;
+  --indicator: #4f9dfd;
   --link: #73b0ff;
   --link-hover: #a9ceff;
   --button-bg: #4f9dfd;
@@ -210,7 +214,7 @@
   --field-bg: #0d121b;
   --field-border: #38445c;
   --field-invalid: oklch(74% 0.16 25);
-  --field-border-focus: #4f9dfd;
+  --field-border-focus: var(--indicator);
   --focus-ring-color: rgb(79, 157, 253, 0.55);
   --focus-ring: 0 0 0 3px var(--focus-ring-color);
   --shadow-sm: 0 1px 2px rgb(0, 0, 0, 0.3);

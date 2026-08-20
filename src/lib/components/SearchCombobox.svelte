@@ -149,7 +149,7 @@
   }
 
   .field:focus-within {
-    border-color: var(--brand);
+    border-color: var(--indicator);
     box-shadow: var(--focus-ring);
   }
 
