@@ -175,7 +175,6 @@
 
 <style>
   .contact {
-    background: var(--surface-sunken);
     border-bottom: 1px solid var(--border-subtle);
   }
 
