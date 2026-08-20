@@ -1,6 +1,7 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
   import Logo from './Logo.svelte'
+  import GitHubMark from './GitHubMark.svelte'
   import { consent } from '$lib/consent.svelte'
 
   const home = resolve('/')
@@ -24,6 +25,15 @@
         GitHub<span class="visually-hidden"> (opens in a new tab)</span>
       </a>
       <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
+      <a
+        class="repo"
+        href="https://github.com/feedmypixel/feedmypixel.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <GitHubMark size={20} />
+        <span class="visually-hidden">This site's source on GitHub (opens in a new tab)</span>
+      </a>
     </nav>
   </div>
 </footer>
@@ -67,6 +77,23 @@
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .repo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--ink-muted);
+  }
+
+  .nav a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .repo:hover {
+    color: color-mix(in srgb, var(--ink-muted) 70%, white);
     text-decoration: none;
   }
 
