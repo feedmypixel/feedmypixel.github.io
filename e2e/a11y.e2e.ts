@@ -1,7 +1,7 @@
 import { test } from '@playwright/test'
 import { expectNoSeriousA11yViolations } from './fixtures/axe.ts'
 
-const publicRoutes = ['/']
+const publicRoutes = ['/', '/components', '/pipes/privacy']
 
 for (const route of publicRoutes) {
   test(`no serious a11y violations on ${route}`, async ({ page }) => {

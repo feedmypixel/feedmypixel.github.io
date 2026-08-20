@@ -1,7 +1,21 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page } from '@playwright/test'
 
+const ENTRANCE_ANIMATION_MAX_MS = 1000
+
+async function waitForEntranceAnimationsToSettle(page: Page) {
+  await page.waitForFunction((maxMs) => {
+    return document.getAnimations().every((animation) => {
+      const duration = Number(animation.effect?.getComputedTiming().duration ?? 0)
+      return duration > maxMs || animation.playState === 'finished'
+    })
+  }, ENTRANCE_ANIMATION_MAX_MS)
+}
+
 export async function expectNoSeriousA11yViolations(page: Page) {
+  await page.evaluate(() => document.fonts.ready)
+  await waitForEntranceAnimationsToSettle(page)
+
   const { violations } = await new AxeBuilder({ page }).analyze()
 
   const blocking = violations.filter((v) => v.impact === 'critical' || v.impact === 'serious')
