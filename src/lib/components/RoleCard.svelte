@@ -30,14 +30,14 @@
       @keyframes row-rise {
         from {
           opacity: 0;
-          transform: translateY(8px);
+          transform: translateY(24px);
         }
       }
 
       .row {
-        animation: row-rise auto var(--ease-standard) backwards;
+        animation: row-rise auto linear backwards;
         animation-timeline: view();
-        animation-range: entry 0% cover 12%;
+        animation-range: cover 0% cover 300px;
       }
     }
   }

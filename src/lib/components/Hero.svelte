@@ -48,7 +48,7 @@
     @keyframes hero-arrive {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(24px);
       }
     }
 

@@ -11,14 +11,14 @@
     @keyframes rise-in {
       from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(32px);
       }
     }
 
     #main > section:not(.hero) {
-      animation: rise-in auto var(--ease-standard) backwards;
+      animation: rise-in auto linear backwards;
       animation-timeline: view();
-      animation-range: entry 0% cover 18%;
+      animation-range: cover 0% cover 520px;
     }
   }
 }
