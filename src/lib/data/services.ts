@@ -33,16 +33,6 @@ export const faqs: Faq[] = [
       "I work remotely, worldwide, from the UK. I'll shift my hours to overlap properly with your team's timezone, and I'll travel for a kickoff or a workshop when it genuinely helps. Most of my last decade of contracts have been fully remote."
   },
   {
-    question: 'What do you charge?',
-    answer:
-      'A standard outside IR35 day rate. We can discuss the specifics depending on what the project needs.'
-  },
-  {
-    question: 'Do you take inside-IR35 work?',
-    answer:
-      'No. I work outside IR35 only, contracting through feedMyPixel Ltd. Tell me the determination up front and we will both know quickly whether it is a fit.'
-  },
-  {
     question: 'How do you work with an existing team?',
     answer:
       'I hit the ground running. I join as one of the team rather than sitting outside it: your standups, your board, your code review, your conventions.'
