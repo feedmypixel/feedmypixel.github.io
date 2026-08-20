@@ -9,21 +9,23 @@ export const serviceLede =
 
 export const serviceFacts: ServiceFact[] = [
   { label: 'Engagement', value: 'Contract, through feedMyPixel Ltd. Outside IR35.' },
-  { label: 'Length', value: 'Two weeks to several months.' },
+  { label: 'Length', value: 'A few days to a year or more.' },
   { label: 'Location', value: 'Remote worldwide, based in the UK.' },
-  { label: 'Availability', value: 'Open to new work now, starting in two to four weeks.' }
+  { label: 'Availability', value: 'Open to conversations about upcoming work.' },
+  { label: 'Insured', value: 'Professional indemnity and public liability.' },
+  { label: 'Company', value: 'feedMyPixel Ltd, number 08198085, established 2012.' }
 ]
 
 export const faqs: Faq[] = [
   {
     question: 'Are you available, and how soon can you start?',
     answer:
-      "I'm open to new contract work now. I can usually start within two to four weeks, and sometimes sooner for a short, focused piece. If your timeline is tighter than that, ask anyway and I'll tell you honestly whether it fits."
+      'Always worth asking. Longer engagements of three, six or twelve months suit me well, and I am just as happy taking on small, well defined pieces of work. Have a chat with me about what you need and we can work out whether it suits and whether I have the capacity. I can move quickly when it is needed.'
   },
   {
     question: 'What do you build with?',
     answer:
-      "Right now it's mostly SvelteKit, TypeScript, Node and Fastify on AWS. Across twenty years I've also shipped Java, Scala, PHP, Python and a lot of front end that predates all of it. I care more about picking the boring, testable option than about using the newest thing."
+      'Whatever is appropriate to the project and the work that needs doing. Recent work has been SvelteKit, TypeScript, Node and AWS, but across twenty years I have shipped in plenty of other stacks. The right choice depends on your problem, your team and what you already run.'
   },
   {
     question: 'Do you work remotely, and where?',
@@ -31,23 +33,28 @@ export const faqs: Faq[] = [
       "I work remotely, worldwide, from the UK. I'll shift my hours to overlap properly with your team's timezone, and I'll travel for a kickoff or a workshop when it genuinely helps. Most of my last decade of contracts have been fully remote."
   },
   {
+    question: 'What do you charge?',
+    answer:
+      'A standard outside IR35 day rate. We can discuss the specifics depending on what the project needs.'
+  },
+  {
     question: 'Do you take inside-IR35 work?',
     answer:
-      "Outside IR35 only. I contract through feedMyPixel Ltd on an outside determination, which is how the work genuinely operates. Tell me the determination up front and we'll both know quickly whether it's a fit."
+      'No. I work outside IR35 only, contracting through feedMyPixel Ltd. Tell me the determination up front and we will both know quickly whether it is a fit.'
   },
   {
     question: 'How do you work with an existing team?',
     answer:
-      "I join as one of the team rather than sitting outside it. Your standups, your board, your code review, your conventions. I'd rather leave a pattern the team understands and can maintain than be the only person who knows how something works."
-  },
-  {
-    question: 'Do you do accessibility work?',
-    answer:
-      "Yes, and not as a separate phase at the end. I build with semantic HTML and progressive enhancement so things work before JavaScript loads, then test with a keyboard and a screen reader as I go. Much of my public-sector work had to meet WCAG 2.1 AA as a contractual requirement, so I'm used to it being audited properly."
+      'I hit the ground running. I join as one of the team rather than sitting outside it: your standups, your board, your code review, your conventions.'
   },
   {
     question: 'What size of engagement suits you?',
     answer:
-      "Anything from a two-week piece of focused work up to a multi-month build. I'm one person covering the whole stack, so I'm a strong fit for greenfield builds, rescues, and teams who need a senior pair of hands. If you need a whole squad, I'm the wrong shape and I'll say so."
+      'Anything from small to large. I have worked as the only developer on a project and as part of a multi discipline team, so the shape of the team matters more to me than the size of it.'
+  },
+  {
+    question: 'What happens when the engagement ends?',
+    answer:
+      'You keep everything, and your team understands it. I document as I go and work in the open rather than leaving knowledge in my head, so there is no cliff edge when I stop. I am happy to stay reachable for questions afterwards, and to come back for follow-on work if it helps.'
   }
 ]
