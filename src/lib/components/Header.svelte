@@ -3,6 +3,7 @@
   import ThemeToggle from './ThemeToggle.svelte'
   import MobileNav from './MobileNav.svelte'
   import { resolve } from '$app/paths'
+  import { page } from '$app/state'
   import { mostVisibleId, indicatorGeometry } from '$lib/nav-indicator'
 
   const home = resolve('/')
@@ -22,6 +23,15 @@
   let hamEl: HTMLButtonElement | undefined
 
   $effect(() => {
+    /* The header lives in the layout and is never remounted, so without reading
+       the path here the observer stays bound to the previous page's sections and
+       the old link stays marked. Section highlighting belongs to the one-pager:
+       the catalogue renders a Services demo that would otherwise light the nav. */
+    active = null
+    if (page.route.id !== '/') {
+      return
+    }
+
     const els = sections
       .map((section) => document.getElementById(section.id))
       .filter((el): el is HTMLElement => el !== null)

@@ -2,6 +2,9 @@ import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Header from './Header.svelte'
 
+/* Header only tracks sections on the one-pager, so the route has to look like it. */
+vi.mock('$app/state', () => ({ page: { route: { id: '/' }, url: new URL('http://localhost/') } }))
+
 test('renders the brand, section nav and theme toggle', async () => {
   render(Header)
   await expect
