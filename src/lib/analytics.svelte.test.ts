@@ -35,3 +35,13 @@ test('the data layer is primed for the property', () => {
   expect(window.dataLayer?.length).toBe(2)
   expect(JSON.stringify(window.dataLayer)).toContain(analyticsId)
 })
+
+test('the data layer receives Arguments objects, which is what makes the tag send', () => {
+  loadAnalytics()
+  const entries = window.dataLayer ?? []
+  expect(entries).toHaveLength(2)
+  for (const entry of entries) {
+    expect(Array.isArray(entry)).toBe(false)
+    expect(Object.prototype.toString.call(entry)).toBe('[object Arguments]')
+  }
+})

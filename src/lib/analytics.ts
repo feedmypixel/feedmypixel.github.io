@@ -13,16 +13,18 @@ export function loadAnalytics(doc: Document = document) {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`
   doc.head.appendChild(script)
 
-  /* Google's own snippet, injected verbatim. gtag needs a real Arguments object:
-     pushing plain arrays or a hand-rolled array-like loads the script and
-     silently drops the config, so the tag looks installed and never sends. */
-  const bootstrap = doc.createElement('script')
-  bootstrap.text =
-    'window.dataLayer=window.dataLayer||[];' +
-    'function gtag(){dataLayer.push(arguments);}' +
-    "gtag('js',new Date());" +
-    `gtag('config','${analyticsId}');`
-  doc.head.appendChild(bootstrap)
+  const dataLayer = (window.dataLayer = window.dataLayer ?? [])
+
+  /* gtag must push the Arguments object itself. Pushing an equivalent array
+     loads the tag and then silently sends nothing, so the rest-params form of
+     this function would look correct and collect no data. */
+  const gtag = function () {
+    // eslint-disable-next-line prefer-rest-params
+    dataLayer.push(arguments)
+  } as (...args: unknown[]) => void
+
+  gtag('js', new Date())
+  gtag('config', analyticsId)
 }
 
 export function resetAnalyticsForTest() {
