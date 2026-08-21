@@ -163,7 +163,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Government Gateway 2FA, Identity Verification form validation, and the HMRC API/docs UI.',
+      'Government Gateway 2FA, Identity Verification form validation and the HMRC API/docs UI.',
     tags: ['JavaScript', 'Scala', 'Node', 'Responsive', 'Accessibility']
   },
   {
@@ -204,7 +204,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Telecoms',
     summary:
-      'Multiple responsive projects: client dashboards, a globally-distributed header, and SMS-to-web tooling.',
+      'Multiple responsive projects: client dashboards, a globally-distributed header and SMS-to-web tooling.',
     tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive', 'Node', 'Mobile']
   },
   {

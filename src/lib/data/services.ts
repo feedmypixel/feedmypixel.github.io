@@ -34,7 +34,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you use AI?',
     answer:
-      'Every day, and deliberately. Claude is part of how I work rather than something bolted on — planning, code, review, tests. Twenty years of knowing what good looks like is what makes that worth having: it decides what to keep, catches what the model gets wrong, and holds the same bar I would hold without it. The speed is the tool. The judgement is what you are paying for, and it is still mine.'
+      'Every day, and deliberately. Claude is part of how I work rather than something bolted on. Planning, code, review, tests. Twenty years of knowing what good looks like is what makes that worth having: it decides what to keep, catches what the model gets wrong and holds the same bar I would hold without it. The speed is the tool. The judgement is what you are paying for, and it is still mine.'
   },
   {
     question: 'How do you work with an existing team?',

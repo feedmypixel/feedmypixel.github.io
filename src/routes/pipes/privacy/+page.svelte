@@ -56,7 +56,7 @@
   <ul>
     <li>The token authenticates the read-only API calls that fetch your pipeline status.</li>
     <li>
-      Accounts, watched repositories, and settings configure what Pipes watches and how it notifies
+      Accounts, watched repositories and settings configure what Pipes watches and how it notifies
       you.
     </li>
     <li>
@@ -68,7 +68,7 @@
   <h2>Permissions</h2>
   <p>
     Tokens are requested as <strong>read-only</strong> (GitHub fine-grained: Actions + Pull requests
-    read; GitLab <code>read_api</code>). Pipes cannot push, merge, or modify anything in your
+    read; GitLab <code>read_api</code>). Pipes cannot push, merge or modify anything in your
     repositories.
   </p>
 
