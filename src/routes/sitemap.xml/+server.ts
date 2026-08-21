@@ -2,17 +2,19 @@ import { siteUrl } from '$lib/config'
 
 export const prerender = true
 
+/* No lastmod: hand-maintained dates went stale within a day, and an unreliable
+   one is discounted anyway. */
 const pages = [
-  { path: '/', priority: '1.0', lastmod: '2026-08-20' },
-  { path: '/components', priority: '0.5', lastmod: '2026-08-18' },
-  { path: '/pipes/privacy', priority: '0.3', lastmod: '2026-08-17' }
+  { path: '/', priority: '1.0' },
+  { path: '/components', priority: '0.5' },
+  { path: '/pipes/privacy', priority: '0.3' }
 ]
 
 export function GET() {
   const urls = pages
     .map(
-      ({ path, priority, lastmod }) =>
-        `  <url>\n    <loc>${siteUrl}${path === '/' ? '/' : path}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${priority}</priority>\n  </url>`
+      ({ path, priority }) =>
+        `  <url>\n    <loc>${siteUrl}${path === '/' ? '/' : path}</loc>\n    <priority>${priority}</priority>\n  </url>`
     )
     .join('\n')
 
