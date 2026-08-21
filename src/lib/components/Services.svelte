@@ -33,7 +33,12 @@
               </span>
               <span class="question">{faq.question}</span>
             </summary>
-            <p class="answer">{faq.answer}</p>
+            <p class="answer">
+              {faq.answer}
+              {#if faq.link}
+                <a href="{home}{faq.link.href}">{faq.link.text}</a>
+              {/if}
+            </p>
           </details>
         {/each}
         <p class="more">

@@ -1,4 +1,8 @@
-export type Faq = { question: string; answer: string }
+export type Faq = {
+  question: string
+  answer: string
+  link?: { href: string; text: string }
+}
 
 export type ServiceFact = { label: string; value: string }
 
@@ -19,7 +23,8 @@ export const faqs: Faq[] = [
   {
     question: 'Are you available and how soon can you start?',
     answer:
-      'Always worth a conversation. Long engagements or small well defined jobs, both suit me. Tell me what you need and I will tell you honestly whether it fits.'
+      'Always worth a conversation. Long engagements or small well defined jobs, both suit me. Tell me what you need and I will tell you honestly whether it fits.',
+    link: { href: '#experience', text: 'The CV above shows what I am working on now.' }
   },
   {
     question: 'What do you build with?',

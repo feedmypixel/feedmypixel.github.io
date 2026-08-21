@@ -48,7 +48,10 @@ const faqPage = {
   mainEntity: faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.link ? `${faq.answer} ${faq.link.text}` : faq.answer
+    }
   }))
 }
 
