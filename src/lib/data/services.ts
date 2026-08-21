@@ -17,7 +17,7 @@ export const serviceFacts: ServiceFact[] = [
 
 export const faqs: Faq[] = [
   {
-    question: 'Are you available, and how soon can you start?',
+    question: 'Are you available and how soon can you start?',
     answer:
       'Always worth a conversation. Long engagements or small well defined jobs, both suit me. Tell me what you need and I will tell you honestly whether it fits.'
   },
@@ -27,19 +27,19 @@ export const faqs: Faq[] = [
       'Whatever suits the project. Recent work is SvelteKit, TypeScript, Node and AWS, but twenty years covers plenty of other stacks. The right choice depends on your problem and what you already run.'
   },
   {
-    question: 'Do you work remotely, and where?',
+    question: 'Do you work remotely and where?',
     answer:
-      "I work remotely, worldwide, from the UK. I'll shift my hours to overlap with your team, and travel for a kickoff when it helps."
+      "I work remotely, worldwide, from the UK. I'll shift my hours to overlap with your team and travel for a kickoff when it helps."
   },
   {
     question: 'Do you use AI?',
     answer:
-      'Every day, and deliberately. Claude is part of how I work rather than something bolted on. Planning, code, review, tests. Twenty years of knowing what good looks like is what makes that worth having: it decides what to keep, catches what the model gets wrong and holds the same bar I would hold without it. The speed is the tool. The judgement is what you are paying for, and it is still mine.'
+      'Every day and deliberately. Claude is part of how I work rather than something bolted on. Planning, code, review, tests. Twenty years of knowing what good looks like is what makes that worth having: it decides what to keep, catches what the model gets wrong and holds the same bar I would hold without it. The speed is the tool. The judgement is what you are paying for and it is still mine.'
   },
   {
     question: 'How do you work with an existing team?',
     answer:
-      'I hit the ground running, and I join as one of the team rather than sitting outside it. Your standups, your board, your code review, your conventions.'
+      'I hit the ground running and I join as one of the team rather than sitting outside it. Your standups, your board, your code review, your conventions.'
   },
   {
     question: 'What size of engagement suits you?',
@@ -49,6 +49,6 @@ export const faqs: Faq[] = [
   {
     question: 'What happens when the engagement ends?',
     answer:
-      'You keep everything, and your team understands it. I document as I go rather than leaving knowledge in my head, so there is no cliff edge when I stop.'
+      'You keep everything and your team understands it. I document as I go rather than leaving knowledge in my head, so there is no cliff edge when I stop.'
   }
 ]

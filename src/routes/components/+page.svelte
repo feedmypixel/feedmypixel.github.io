@@ -118,7 +118,7 @@
     <h2 id="empty-h">Empty state</h2>
     <EmptyState
       title="Nothing matches those filters"
-      message="Try a broader term, or start again"
+      message="Try a broader term or start again"
       actionLabel="Clear all filters"
       onAction={() => {}}
     />

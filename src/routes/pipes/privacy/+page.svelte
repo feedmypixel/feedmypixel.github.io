@@ -16,7 +16,7 @@
   <p class="lede">
     Pipes is a browser extension that watches GitHub Actions and GitLab CI/CD pipeline status across
     the repositories you choose. It is <strong>fully client-side and has no backend</strong>. There
-    is no Pipes server, and your data never reaches us.
+    is no Pipes server and your data never reaches us.
   </p>
 
   <h2>What data Pipes handles</h2>
@@ -75,7 +75,7 @@
   <h2>Data retention and deletion</h2>
   <p>
     Your data stays on your device until you remove it. You can delete a token or account from the
-    extension's options at any time, and <strong
+    extension's options at any time and <strong
       >uninstalling Pipes clears all of its stored data</strong
     >.
   </p>

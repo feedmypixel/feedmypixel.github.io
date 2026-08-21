@@ -53,7 +53,7 @@
     <div class="inner">
       <p id="consent-copy" class="copy">
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-        yes, and no personal data is collected either way.
+        yes and no personal data is collected either way.
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
           Read more<span class="visually-hidden"> (opens in a new tab)</span>
         </a>

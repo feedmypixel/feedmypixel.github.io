@@ -147,7 +147,7 @@
 
     <noscript>
       <p class="noscript">
-        Search and filtering need JavaScript. The full history is listed below, and the
+        Search and filtering need JavaScript. The full history is listed below and the
         <a href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
       </p>
     </noscript>
@@ -163,7 +163,7 @@
     {:else}
       <EmptyState
         title="Nothing matches those filters"
-        message="Try a broader term, or start again"
+        message="Try a broader term or start again"
         actionLabel="Clear all filters"
         onAction={clearAll}
       />

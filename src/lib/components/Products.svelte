@@ -76,7 +76,7 @@
         <div>
           <p class="label" data-kind="solution">Solution</p>
           <p>
-            Pipes watches the repos you choose across GitHub Actions and GitLab CI/CD, and surfaces
+            Pipes watches the repos you choose across GitHub Actions and GitLab CI/CD and surfaces
             the status in your toolbar. Loud when the default branch fails, quiet when it is green.
           </p>
         </div>
