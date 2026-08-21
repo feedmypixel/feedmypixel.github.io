@@ -41,7 +41,10 @@
 <style>
   .back-to-top {
     position: fixed;
-    right: var(--gutter);
+
+    /* Sits just outside the content column rather than the viewport edge, and
+       falls back to the gutter once there is no room beside it. */
+    right: max(var(--gutter), calc((100vw - var(--container-max, 77.5rem)) / 2 - 3.5rem));
     bottom: var(--space-5);
     z-index: var(--z-header);
     display: inline-flex;
