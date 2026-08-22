@@ -127,7 +127,7 @@ appears. The choice is remembered and can be withdrawn from the footer.
 
 - Per-page title, description, canonical, Open Graph and Twitter cards via `Seo.svelte`
 - JSON-LD `@graph` (`Organization`, `Person`, `WebSite`) built from the CV data
-- `sitemap.xml` (prerendered, with `lastmod`), `robots.txt`, and an `llms.txt` summary for
+- `sitemap.xml` (prerendered), `robots.txt`, and an `llms.txt` summary for
   answer engines
 - `robots.txt` explicitly welcomes answer-engine crawlers, including the retrieval bots
   (`OAI-SearchBot`, `Claude-SearchBot`, `Perplexity-User`) that fetch pages in order to cite them
