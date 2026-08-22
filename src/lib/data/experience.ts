@@ -40,8 +40,17 @@ export const roles: Role[] = [
     location: 'Remote',
     type: 'Contract',
     sector: 'Retail',
-    summary: 'Freight Portal frontend micro-service for the Global Transportation Services team.',
-    tags: ['React', 'TypeScript', 'Cypress', 'Kubernetes', 'Accessibility']
+    summary:
+      'Built the Freight Portal frontend micro-service for the Global Transportation Services team, the place users find information and interact with every Wayfair facility service.',
+    tags: [
+      'React',
+      'TypeScript',
+      'Cypress',
+      'Kubernetes',
+      'Accessibility',
+      'Micro frontend',
+      'DataDog'
+    ]
   },
   {
     company: 'Wayfair',
@@ -51,8 +60,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      'Tech lead on the Global Customs Platform, building the Customs Portal frontend micro-service.',
-    tags: ['React', 'TypeScript', 'Jest', 'Kubernetes', 'Accessibility']
+      'Tech lead on the Global Customs Platform team, creating the Customs Portal frontend micro-service.',
+    tags: ['React', 'TypeScript', 'Jest', 'Kubernetes', 'Accessibility', 'DataDog', 'BuildKite']
   },
   {
     company: 'Pret A Manger',
@@ -62,8 +71,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      'Platform team: SRE/Accelerate metrics, observability, service templates and chaos/incident exercises.',
-    tags: ['Node', 'Next.js', 'TypeScript', 'GCP', 'Terraform', 'GitHub Actions']
+      'Built a Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises.',
+    tags: ['Node', 'Next.js', 'TypeScript', 'GCP', 'Terraform', 'Backstage', 'Sentry', 'Postgres']
   },
   {
     company: 'LifeBox Health',
@@ -112,8 +121,17 @@ export const roles: Role[] = [
     location: 'London',
     type: 'Contract',
     sector: 'Government',
-    summary: 'Re-building a legacy appointment-booking system and its public journeys in-house.',
-    tags: ['Node', 'Microservices', 'GOV.UK Pay', 'Redis', 'Accessibility']
+    summary:
+      'Inherited a legacy appointment booking system and its public journeys, worked out how it behaved and proposed a new roadmap with the design team while managing senior stakeholders. The team rebuilt it in-house as Node microservices.',
+    tags: [
+      'Node',
+      'Microservices',
+      'GOV.UK Pay',
+      'Redis',
+      'Accessibility',
+      'Progressive enhancement',
+      'Express'
+    ]
   },
   {
     company: 'Department for International Trade',
@@ -123,8 +141,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Data Hub: software and infrastructure for civil servants managing UK trade & investment relationships.',
-    tags: ['Node', 'React', 'Vue', 'Docker', 'CI/CD', 'Architecture']
+      'Software and infrastructure for the Data Hub team, enabling civil servants to manage the business relationships behind UK trade and investment.',
+    tags: ['Node', 'React', 'Vue', 'Docker', 'Redis', 'Accessibility', 'Pattern library', 'SSO']
   },
   {
     company: 'HM Revenue & Customs',
@@ -134,14 +152,16 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Service Design Tools: creating the HMRC design language, documentation and tooling with GDS.',
+      'Created the HMRC design language in a small team, with the documentation, process and principles behind it, so designers and developers could build frontend services for the Tax Platform with parity across HMRC. Worked closely with GDS.',
     tags: [
-      'Frontend architecture',
-      'AWS',
+      'Design system',
       'Pattern library',
       'Node',
+      'Scala',
+      'Sass',
       'Accessibility',
-      'Documentation'
+      'Documentation',
+      'Mentoring'
     ]
   },
   {
@@ -152,8 +172,16 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Platform Operations: front-end architecture and a shared component library across the Tax Platform.',
-    tags: ['React', 'Scala', 'Node', 'Responsive', 'Accessibility', 'Mentoring']
+      'Tackled frontend architecture across the Tax Platform with Platform Operations. Refactored shared assets, exposed components through a component library and mentored frontend developers and designers on how to approach common problems.',
+    tags: [
+      'Frontend architecture',
+      'Component library',
+      'React',
+      'Scala',
+      'Sass',
+      'Accessibility',
+      'Mentoring'
+    ]
   },
   {
     company: 'HM Revenue & Customs',
@@ -163,8 +191,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Government Gateway 2FA, Identity Verification form validation and the HMRC API/docs UI.',
-    tags: ['JavaScript', 'Scala', 'Node', 'Responsive', 'Accessibility']
+      'Built user interfaces for HMRC digital services. Implemented two factor authentication and registration with the Government Gateway team, generic client and server form validation for Identity Verification and the API documentation site.',
+    tags: ['JavaScript', 'Scala', 'Node', 'Sass', 'Accessibility', 'Security', 'Forms']
   },
   {
     company: 'Department for Work & Pensions',
@@ -173,8 +201,9 @@ export const roles: Role[] = [
     location: 'London',
     type: 'Contract',
     sector: 'Government',
-    summary: 'Universal Credit: front-end analysis, tech-debt refactor and UX prototyping tools.',
-    tags: ['JavaScript', 'Responsive', 'Accessibility', 'Node', 'Prototyping']
+    summary:
+      'Analysed a mature Universal Credit codebase and presented frontend improvements, tackling technical debt and building rapid prototyping tools and workflows for the UX and design team.',
+    tags: ['JavaScript', 'Sass', 'FlightJS', 'Accessibility', 'Prototyping', 'Technical debt']
   },
   {
     company: 'Guardian News & Media',
@@ -183,8 +212,18 @@ export const roles: Role[] = [
     location: 'London',
     type: 'Contract',
     sector: 'Media',
-    summary: 'Membership team: the beta responsive website and associated tools.',
-    tags: ['JavaScript', 'Responsive', 'Scala', 'Node', 'CI', 'Pair programming']
+    summary:
+      'Client side engineer on the Membership team building the beta responsive site and its tools. Lean agile with Scala and micro JavaScript libraries, pair programming, code review and continuous integration.',
+    tags: [
+      'JavaScript',
+      'Scala',
+      'Sass',
+      'BEM',
+      'Responsive',
+      'Pair programming',
+      'Mentoring',
+      'CI'
+    ]
   },
   {
     company: 'feedMyPixel',
@@ -204,8 +243,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Telecoms',
     summary:
-      'Multiple responsive projects: client dashboards, a globally-distributed header and SMS-to-web tooling.',
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive', 'Node', 'Mobile']
+      'Responsive work across several products: a client dashboard, a globally distributed header injected into many Telekom pages, an SMS to web prototype that became the company Node skeleton and a rebuilt advertising asset platform.',
+    tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive', 'Node', 'Mobile', 'Express', 'Patterns']
   },
   {
     company: 'BBC',
@@ -215,8 +254,8 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Media',
     summary:
-      'Future Media, Core Services - iBroadcast2, a next-gen media & metadata publishing platform for iPlayer.',
-    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'TDD', 'REST']
+      'Future Media Core Services on iBroadcast2, a next generation media and metadata publishing platform behind iPlayer, scheduling and BBC websites. Fortnight sprints with PHP, jQuery and Cucumber.',
+    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'TDD', 'BDD', 'REST']
   },
   {
     company: 'eDigitalResearch',
@@ -226,8 +265,8 @@ export const roles: Role[] = [
     type: 'Permanent',
     sector: 'Research',
     summary:
-      'Supporting applications and tools for high-profile clients in customer-insight analytics.',
-    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'PostgreSQL']
+      'Supported the applications, websites and in-house tools behind customer insight analytics for clients including Sky, BT, Expedia, Virgin and the BBC.',
+    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'PostgreSQL', 'Support']
   },
   {
     company: 'Freelance',
@@ -237,8 +276,8 @@ export const roles: Role[] = [
     type: 'Freelance',
     sector: 'Arts',
     summary:
-      'Built a large dynamic website and bespoke CMS, culminating in the Lazy Gramophone platform.',
-    tags: ['PHP', 'JavaScript', 'MySQL', 'SEO', 'UX']
+      'Extended my development work across a large dynamic website driven by a hand-built content management system, culminating in the Lazy Gramophone platform.',
+    tags: ['PHP', 'JavaScript', 'MySQL', 'SEO', 'UX', 'CMS']
   },
   {
     company: 'Lazy Gramophone',
@@ -247,8 +286,9 @@ export const roles: Role[] = [
     location: 'Remote',
     type: 'Freelance',
     sector: 'Arts',
-    summary: 'Community website and bespoke CMS for the arts collective and publisher.',
-    tags: ['PHP', 'MySQL', 'JavaScript', 'UX', 'SEO']
+    summary:
+      'Community website and bespoke CMS for the arts collective and publisher, with editing tools for artists to upload their work, an invite and management facility and comment moderation. Built from the ground up in PHP and MySQL.',
+    tags: ['PHP', 'MySQL', 'JavaScript', 'UX', 'SEO', 'CMS']
   },
   {
     company: 'Design Haus',
@@ -278,8 +318,8 @@ export const roles: Role[] = [
     type: 'Permanent',
     sector: 'Mobile',
     summary:
-      'Built a QA structure for a J2ME “text over IP” start-up across many handsets and networks.',
-    tags: ['QA', 'Mobile']
+      'Introduced a QA testing structure for a J2ME text over IP start-up across many handsets and networks, forming the beginnings of an in-house QA department.',
+    tags: ['QA', 'Mobile', 'J2ME']
   },
   {
     company: 'Freelance',
@@ -299,7 +339,7 @@ export const roles: Role[] = [
     type: 'Permanent',
     sector: 'Games',
     summary:
-      'Console TRC certification (PS2, GameCube) and growing a mobile J2ME QA department to 150+.',
-    tags: ['Game QA', 'Mobile QA', 'Certification']
+      'Console TRC certification for PS2 and GameCube, then started the mobile J2ME QA department and grew it from three people to over 150, adapting testing procedures to new workloads and operator requirements.',
+    tags: ['Game QA', 'Mobile QA', 'Certification', 'Process']
   }
 ]
