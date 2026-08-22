@@ -1,14 +1,20 @@
 <script lang="ts">
   import type { Role } from '$lib/data/experience'
   import { isTagHot, type Chip } from '$lib/cv-filter'
+  import { roleDuration } from '$lib/role-dates'
 
   let { role, chips, query }: { role: Role; chips: Chip[]; query: string } = $props()
+
+  const duration = $derived(roleDuration(role.dates, new Date()))
 </script>
 
 <li class="row">
   <div class="grid">
     <div class="when">
       <span class="dates">{role.dates}</span>
+      {#if duration}
+        <span class="duration">{duration}</span>
+      {/if}
       <span class="meta">{role.type} · {role.location}</span>
     </div>
     <div class="what">
@@ -63,6 +69,12 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+  }
+
+  .duration {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--ink-subtle);
   }
 
   .dates {
