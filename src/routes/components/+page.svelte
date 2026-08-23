@@ -10,7 +10,8 @@
   import type { Slide } from '$lib/components/Carousel.svelte'
   import Chip from '$lib/components/Chip.svelte'
   import SegmentedControl from '$lib/components/SegmentedControl.svelte'
-  import RoleCard from '$lib/components/RoleCard.svelte'
+  import RoleRun from '$lib/components/RoleRun.svelte'
+  import { buildRuns } from '$lib/role-runs'
   import EmptyState from '$lib/components/EmptyState.svelte'
   import BackToTop from '$lib/components/BackToTop.svelte'
   import Services from '$lib/components/Services.svelte'
@@ -110,7 +111,11 @@
   <section aria-labelledby="role-h">
     <h2 id="role-h">Role card</h2>
     <ol class="rolecards">
-      <RoleCard role={roles[0]} chips={[{ label: 'SvelteKit', kind: 'skill' }]} query="" />
+      <RoleRun
+        run={buildRuns([roles[0]], new Date())[0]}
+        chips={[{ label: 'SvelteKit', kind: 'skill' }]}
+        query=""
+      />
     </ol>
   </section>
 

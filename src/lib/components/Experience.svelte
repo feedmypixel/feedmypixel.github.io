@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tick } from 'svelte'
   import { asset } from '$app/paths'
   import { roles } from '$lib/data/experience'
   import {
@@ -18,7 +19,8 @@
   import SearchCombobox from './SearchCombobox.svelte'
   import SegmentedControl from './SegmentedControl.svelte'
   import Chip from './Chip.svelte'
-  import RoleCard from './RoleCard.svelte'
+  import RoleRun from './RoleRun.svelte'
+  import { buildRuns } from '$lib/role-runs'
   import EmptyState from './EmptyState.svelte'
 
   let query = $state('')
@@ -26,11 +28,16 @@
   let type = $state<TypeFilter>('All')
   let open = $state(false)
   let activeIndex = $state(-1)
+  let suppressListbox = false
+
+  const chipButtons = () => [...document.querySelectorAll<HTMLButtonElement>('.chips .chip')]
+  const searchInput = () => document.querySelector<HTMLInputElement>('#cv-search')
 
   const facets = deriveFacets(roles)
 
   const inScope = $derived(filterByControls(roles, type, chips))
   const results = $derived(filterRoles(roles, type, chips, query))
+  const runs = $derived(buildRuns(results, new Date()))
   const suggestions = $derived(suggestFacets(facets, inScope, chips, query))
   const anyFilter = $derived(chips.length > 0 || query.length > 0 || type !== 'All')
 
@@ -39,6 +46,35 @@
     query = ''
     open = false
     activeIndex = -1
+  }
+
+  /* Focus must land on something that survives the re-render this triggers.
+     Not the tag: its row may be filtered out of the DOM a moment later, which
+     drops focus to the body. Not the search input: focusing it opens the
+     suggestion listbox unasked. */
+  async function selectTag(label: string) {
+    const before = chips.length
+    chips = addChip(chips, { label, kind: 'skill' })
+    if (chips.length === before) {
+      return
+    }
+    await tick()
+    chipButtons()[chips.length - 1]?.focus()
+  }
+
+  /* The remove button destroys the element it sits on, so the next holder of
+     focus is chosen here rather than left to the browser. */
+  async function removeChipAt(index: number) {
+    chips = chips.filter((_, position) => position !== index)
+    await tick()
+    const remaining = chipButtons()
+    const next = remaining.at(index) ?? remaining.at(-1)
+    if (next) {
+      next.focus()
+      return
+    }
+    suppressListbox = true
+    searchInput()?.focus()
   }
 
   function clearAll() {
@@ -94,6 +130,10 @@
       countLabel={countLabel(results.length, roles.length)}
       label="Search"
       onOpen={() => {
+        if (suppressListbox) {
+          suppressListbox = false
+          return
+        }
         open = true
         activeIndex = -1
       }}
@@ -111,10 +151,7 @@
       <ul class="chips" aria-label="Active filters">
         {#each chips as chip, index (chip.kind + chip.label)}
           <li>
-            <Chip
-              label={chip.label}
-              onRemove={() => (chips = chips.filter((_, position) => position !== index))}
-            />
+            <Chip label={chip.label} onRemove={() => removeChipAt(index)} />
           </li>
         {/each}
       </ul>
@@ -156,8 +193,8 @@
   <div class="container results" aria-live="polite">
     {#if results.length > 0}
       <ol class="rows">
-        {#each results as role (role.company + role.dates)}
-          <RoleCard {role} {chips} {query} />
+        {#each runs as run (run.company + run.spanLabel)}
+          <RoleRun {run} {chips} {query} onSelectTag={selectTag} />
         {/each}
       </ol>
     {:else}

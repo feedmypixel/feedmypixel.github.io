@@ -4,6 +4,14 @@ import Experience from './Experience.svelte'
 import { roles } from '$lib/data/experience'
 
 const rowCount = () => document.querySelectorAll('.rows > li').length
+
+/* Consecutive roles at one employer render as a single run, so counting rows
+   undercounts the history. Chapters are the roles inside a grouped run. */
+const roleCount = () => {
+  const rows = [...document.querySelectorAll('.rows > li')]
+  const solo = rows.filter((row) => row.querySelector('.chapter') === null).length
+  return solo + document.querySelectorAll('.chapter').length
+}
 const chipLabels = () =>
   [...document.querySelectorAll('.chips .chip span:first-child')].map((chip) =>
     chip.textContent?.trim()
@@ -12,7 +20,7 @@ const searchBox = () => page.getByRole('combobox')
 
 test('lists the whole CV before anything is filtered', async () => {
   render(Experience)
-  expect(rowCount()).toBe(roles.length)
+  expect(roleCount()).toBe(roles.length)
   await expect.element(page.getByText(`${roles.length} roles`)).toBeVisible()
 })
 
@@ -40,7 +48,7 @@ test('the segmented control narrows by engagement', async () => {
 
 test('a quick filter adds a chip and filters', async () => {
   render(Experience)
-  await page.getByRole('button', { name: 'SvelteKit' }).click()
+  await page.getByRole('button', { name: 'SvelteKit', exact: true }).click()
   await vi.waitFor(() => {
     expect(chipLabels()).toContain('SvelteKit')
   })
@@ -59,11 +67,11 @@ test('the same quick filter twice does not stack up', async () => {
 
 test('removing a chip restores the results', async () => {
   render(Experience)
-  await page.getByRole('button', { name: 'SvelteKit' }).click()
+  await page.getByRole('button', { name: 'SvelteKit', exact: true }).click()
   await vi.waitFor(() => expect(chipLabels()).toContain('SvelteKit'))
   await page.getByRole('button', { name: /Remove filter/ }).click()
   await vi.waitFor(() => {
-    expect(rowCount()).toBe(roles.length)
+    expect(roleCount()).toBe(roles.length)
   })
 })
 
@@ -104,7 +112,7 @@ test('nothing matching offers a way back', async () => {
   await expect.element(page.getByText('Nothing matches those filters')).toBeVisible()
   await page.getByRole('button', { name: 'Clear all filters' }).last().click()
   await vi.waitFor(() => {
-    expect(rowCount()).toBe(roles.length)
+    expect(roleCount()).toBe(roles.length)
   })
 })
 
@@ -115,14 +123,14 @@ test('the clear control resets every filter at once', async () => {
   await searchBox().fill('gov')
   await page.getByRole('button', { name: 'Clear all filters' }).first().click()
   await vi.waitFor(() => {
-    expect(rowCount()).toBe(roles.length)
+    expect(roleCount()).toBe(roles.length)
     expect(chipLabels()).toHaveLength(0)
   })
 })
 
 test('matching tags light up on the results', async () => {
   render(Experience)
-  await page.getByRole('button', { name: 'SvelteKit' }).click()
+  await page.getByRole('button', { name: 'SvelteKit', exact: true }).click()
   await vi.waitFor(() => {
     expect(document.querySelector('.tag[data-hot="true"]')?.textContent?.trim()).toBe('SvelteKit')
   })
@@ -221,4 +229,61 @@ test('the search field is a labelled combobox', async () => {
   expect(input?.getAttribute('role')).toBe('combobox')
   expect(input?.getAttribute('aria-controls')).toBe('cv-suggestions')
   await expect.element(page.getByLabelText('Search')).toBeInTheDocument()
+})
+
+const tagButton = (label: string) =>
+  [...document.querySelectorAll<HTMLButtonElement>('.tag')].find(
+    (tag) => tag.textContent?.trim() === label
+  )
+
+test('a skill tag filters by itself and hands focus to the new chip', async () => {
+  render(Experience)
+  tagButton('Fastify')!.click()
+
+  await vi.waitFor(() => {
+    expect(chipLabels()).toEqual(['Fastify'])
+  })
+  expect(document.activeElement).not.toBe(document.body)
+  expect(document.activeElement?.textContent).toContain('Fastify')
+})
+
+test('tags carry an accessible name, not just the bare word', () => {
+  render(Experience)
+  expect(tagButton('Fastify')?.getAttribute('aria-label')).toBe('Filter by Fastify')
+})
+
+test('clicking an already active tag does not duplicate the chip', async () => {
+  render(Experience)
+  tagButton('Fastify')!.click()
+  await vi.waitFor(() => expect(chipLabels()).toEqual(['Fastify']))
+  tagButton('Fastify')?.click()
+  await vi.waitFor(() => expect(chipLabels()).toEqual(['Fastify']))
+})
+
+test('removing a chip hands focus to another chip rather than dropping it', async () => {
+  render(Experience)
+  tagButton('Fastify')!.click()
+  await vi.waitFor(() => expect(chipLabels()).toEqual(['Fastify']))
+  tagButton('Accessibility')!.click()
+  await vi.waitFor(() => expect(chipLabels()).toHaveLength(2))
+
+  const first = document.querySelector<HTMLButtonElement>('.chips .chip')!
+  first.click()
+
+  await vi.waitFor(() => expect(chipLabels()).toHaveLength(1))
+  expect(document.activeElement).not.toBe(document.body)
+  expect(document.activeElement?.className).toContain('chip')
+})
+
+test('removing the last chip falls back to the search input with the listbox shut', async () => {
+  render(Experience)
+  tagButton('Fastify')!.click()
+  await vi.waitFor(() => expect(chipLabels()).toEqual(['Fastify']))
+
+  document.querySelector<HTMLButtonElement>('.chips .chip')!.click()
+
+  await vi.waitFor(() => expect(chipLabels()).toHaveLength(0))
+  expect(document.activeElement).not.toBe(document.body)
+  expect(document.activeElement?.id).toBe('cv-search')
+  expect(document.querySelector('.listbox')).toBeNull()
 })

@@ -16,8 +16,8 @@ export function parsePoint(text: string): Point | null {
 export function describeMonths(months: number): string {
   const years = Math.floor(months / 12)
   const rest = months % 12
-  const yearPart = years === 1 ? '1 yr' : `${years} yrs`
-  const monthPart = rest === 1 ? '1 mo' : `${rest} mos`
+  const yearPart = years === 1 ? '1 year' : `${years} years`
+  const monthPart = rest === 1 ? '1 month' : `${rest} months`
 
   if (years === 0) {
     return monthPart
