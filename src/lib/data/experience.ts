@@ -20,8 +20,18 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      'Leading a greenfield rebuild of the core trading platform on SvelteKit - modernising architecture and embedding quality across engineering, delivery and product.',
-    tags: ['SvelteKit', 'TypeScript', 'Fastify', 'AWS', 'Accessibility', 'CI/CD']
+      'Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and Android apps from that same codebase with Capacitor. Modernising architecture and embedding quality across engineering, delivery and product.',
+    tags: [
+      'SvelteKit',
+      'TypeScript',
+      'Fastify',
+      'Capacitor',
+      'iOS',
+      'Android',
+      'AWS',
+      'Accessibility',
+      'CI/CD'
+    ]
   },
   {
     company: 'DEFRA',

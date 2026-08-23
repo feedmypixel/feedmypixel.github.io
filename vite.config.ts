@@ -4,6 +4,11 @@ import { sveltekit } from '@sveltejs/kit/vite'
 
 export default defineConfig({
   plugins: [sveltekit()],
+
+  /* Stated rather than inherited, so the baseline survives the next Vite major.
+     The site already relies on cascade layers, oklch and color-mix. */
+  build: { target: 'baseline-widely-available' },
+
   test: {
     globals: true,
     passWithNoTests: true,
