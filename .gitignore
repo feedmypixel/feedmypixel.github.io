@@ -30,3 +30,14 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Private working notes, never publish
+tasks/cv-role-answers.md
+tasks/cv-private/
+
+# Generated from tasks/cv-draft.md by scripts/cv-to-odt.py
+tasks/BenChidgeyCV.odt
+tasks/cv-paste.html
+tasks/cv-paste.txt
+.~lock.*#
+tasks/.~lock.*#
