@@ -1,0 +1,192 @@
+/* feedMyPixel design tokens - exported from feedMyPixel.dc.html (CV document drop)
+   Unchanged from design_handoff_tenure. The CV consumes a SUBSET - see PRINT-SUBSET
+   at the foot of this file for which tokens are print-safe and which are not. */
+
+:root{
+    --neutral-50:#fbfcfe; --neutral-100:#f4f7fa; --neutral-150:#e9eef5; --neutral-200:#dbe3ed;
+    --neutral-300:#c2ccda; --neutral-400:#94a1b3; --neutral-500:#66748a; --neutral-600:#4a586b;
+    --neutral-700:#374355; --neutral-800:#1c2635; --neutral-900:#111a26; --neutral-950:#0a1020;
+    --blue-50:#eaf3ff; --blue-100:#d2e6ff; --blue-200:#a9ceff; --blue-300:#73b0ff;
+    --blue-400:#3294fc; --blue-500:#1a7ef0; --blue-600:#1267d1; --blue-700:#0f52a8;
+    --surface-page:#fbfcfe; --surface-raised:#ffffff; --surface-sunken:#f1f5fa;
+    --surface-inset:#e5ebf4; --surface-overlay:#ffffff;
+    --border-subtle:var(--neutral-150); --border-default:var(--neutral-200); --border-strong:var(--neutral-300);
+    --ink-strong:var(--neutral-950); --ink:var(--neutral-800); --ink-muted:var(--neutral-600);
+    --ink-subtle:#5d6b80; --ink-onbrand:#ffffff;
+    --brand:var(--blue-400); --brand-hover:var(--blue-500); --brand-active:var(--blue-600);
+    --brand-tint:var(--blue-50); --brand-tint-strong:var(--blue-100);
+    --link:var(--blue-700); --link-hover:var(--blue-600);
+    --button-bg:#1267d1; --button-bg-hover:#0f52a8; --button-ink:#ffffff; --brand-text:#0f52a8;
+    --mood-positive:oklch(0.49 0.12 150); --mood-positive-tint:oklch(0.95 0.04 150);
+    --mood-caution:oklch(0.70 0.13 75); --mood-critical:oklch(0.52 0.16 25); --mood-critical-tint:oklch(0.95 0.03 25);
+    --mood-info:#1267d1; --mood-accent:oklch(0.56 0.14 290);
+    --solid-positive:oklch(0.48 0.12 150); --solid-critical:oklch(0.50 0.17 25); --solid-info:#0f52a8;
+    --field-bg:#ffffff; --field-border:var(--neutral-300); --field-border-focus:var(--indicator);
+    --field-invalid:var(--mood-critical); --field-placeholder:var(--ink-subtle);
+    --font-display:'Manrope', system-ui, sans-serif;
+    --font-text:'Manrope', system-ui, -apple-system, sans-serif;
+    --font-mono:'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+    --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700;
+    --size-xs:0.75rem; --size-sm:0.875rem; --size-base:1rem; --size-md:1.125rem; --size-lg:1.25rem;
+    --size-xl:clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem); --size-2xl:clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem); --size-3xl:clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem); --size-4xl:clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem); --size-5xl:clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+    --leading-tight:1.1; --leading-snug:1.25; --leading-normal:1.5; --leading-relaxed:1.65;
+    --tracking-tight:-0.02em; --tracking-normal:0; --tracking-wide:0.04em;
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem; --space-5:1.25rem;
+    --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem; --space-20:5rem; --space-24:6rem;
+    --gutter:clamp(1.25rem, 4vw, 3rem);
+    --band:clamp(4rem, 2.5rem + 6vw, 8rem);
+    --radius-pixel:2px; --radius-sm:3px; --radius-md:4px; --radius-lg:4px; --radius-xl:4px; --radius-2xl:6px; --radius-pill:6px;
+    --shadow-sm:0 1px 2px rgba(20,26,39,0.04);
+    --shadow-md:0 1px 3px rgba(20,26,39,0.06);
+    --shadow-lg:0 8px 24px -12px rgba(20,26,39,0.15);
+    --ease-standard:cubic-bezier(0.2,0.8,0.2,1); --ease-emphasized:cubic-bezier(0.16,1,0.3,1);
+    --dur-fast:120ms; --dur:200ms; --dur-slow:320ms;
+    --z-header:100; --z-overlay:200; --z-toast:400;
+    --focus-ring-color:rgba(18,103,209,0.55); --focus-ring:0 0 0 3px var(--focus-ring-color);
+    /* --brand is the decorative blue-400 tint; it cannot reach 3:1 on sunken/inset
+       surfaces, so anything conveying STATE (focus rings, disclosure markers)
+       uses --indicator instead. WCAG 2.1 AA 1.4.11. */
+    --indicator:#1267d1;
+    /* accent: the chromatic counterpoint. Baseline aliases the brand so the
+       default palette is unchanged; palettes below repoint it. */
+    --accent:var(--brand); --accent-text:var(--brand-text);
+    --scrim:rgb(10 16 32 / 40%); --header-height:4.25rem; --container-max:77.5rem;
+  }
+  [data-theme="dark"]{
+    --surface-page:#0a0b0e; --surface-raised:#1b1e26; --surface-sunken:#13151c;
+    --surface-inset:#23262f; --surface-overlay:#1b1e26;
+    --border-subtle:#262a33; --border-default:#333843; --border-strong:#454b58;
+    --ink-strong:#f3f6fb; --ink:#d6deea; --ink-muted:#93a1ba; --ink-subtle:#7888a2;
+    --brand:#4f9dfd; --brand-hover:#73b0ff; --brand-active:#a9ceff; --brand-tint:#122236; --brand-tint-strong:#16304b;
+    --link:#73b0ff; --link-hover:#a9ceff;
+    --button-bg:#4f9dfd; --button-bg-hover:#73b0ff; --button-ink:#0b0f18; --brand-text:#4f9dfd;
+    --mood-positive:oklch(0.78 0.15 150); --mood-critical:oklch(0.74 0.16 25);
+    --mood-positive-tint:#0f2417; --mood-critical-tint:#2a1414;
+    --mood-info:#73b0ff;
+    --field-bg:#0d121b; --field-border:#38445c;
+    --field-invalid:oklch(0.74 0.16 25); --field-border-focus:#4f9dfd;
+    --focus-ring:0 0 0 3px rgba(79,157,253,0.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 1px 3px rgba(0,0,0,0.4);
+    --shadow-lg:0 10px 28px -12px rgba(0,0,0,0.55);
+    --focus-ring-color:rgba(79,157,253,0.55);
+    --indicator:#4f9dfd;
+    /* re-resolve the accent aliases here: :root matches <html>, but data-theme
+       lives on the app root div, so a :root var() would inherit the light value. */
+    --accent:var(--brand); --accent-text:var(--brand-text);
+    --scrim:rgb(0 0 0 / 55%);
+  }
+  [data-type="refined"]{ --font-display:'Instrument Sans', system-ui, sans-serif; --font-text:'Instrument Sans', system-ui, sans-serif; }
+  [data-type="crisp"]{ --font-display:'Schibsted Grotesk', system-ui, sans-serif; --font-text:'Schibsted Grotesk', system-ui, sans-serif; }
+  [data-type="editorial"]{ --font-display:'Instrument Serif', Georgia, serif; --font-text:'Manrope', system-ui, sans-serif; --tracking-tight:-0.01em; }
+  [data-type="literary"]{ --font-display:'Newsreader', Georgia, serif; --font-text:'Instrument Sans', system-ui, sans-serif; --tracking-tight:-0.01em; }
+  [data-type="characterful"]{ --font-display:'Bricolage Grotesque', system-ui, sans-serif; --font-text:'Manrope', system-ui, sans-serif; }
+  [data-type="geometric"]{ --font-display:'Outfit', system-ui, sans-serif; --font-text:'Outfit', system-ui, sans-serif; }
+  [data-type="friendly"]{ --font-display:'Figtree', system-ui, sans-serif; --font-text:'Figtree', system-ui, sans-serif; }
+  [data-type="precise"]{ --font-display:'Sora', system-ui, sans-serif; --font-text:'Sora', system-ui, sans-serif; --tracking-tight:-0.03em; }
+  [data-type="modern"]{ --font-display:'Plus Jakarta Sans', system-ui, sans-serif; --font-text:'Plus Jakarta Sans', system-ui, sans-serif; }
+  [data-type="mixed"]{ --font-display:'Bricolage Grotesque', system-ui, sans-serif; --font-text:'Instrument Sans', system-ui, sans-serif; }
+  /* ============ COLOUR DIRECTION EXPLORATIONS ============
+     current : baseline, no overrides (see :root)
+     depth   : light ladder re-spaced so raised sits clearly above page. No new hue.
+     warm    : depth ladder + one warm counterpoint on decorative moments.
+     drift   : warm paper / cool ink + the warm counterpoint.
+     Dark ladder is left alone in every palette; only the accent changes there. */
+
+  [data-palette="depth"]:not([data-theme="dark"]){
+    --surface-page:#eef2f8; --surface-raised:#ffffff; --surface-sunken:#e3e9f2;
+    --surface-inset:#d6dfec; --surface-overlay:#ffffff;
+    --border-subtle:#dbe3ee; --border-default:#c7d2e0; --border-strong:#a9b8ca;
+    --field-bg:#ffffff;
+    /* ink moves with the surfaces: 12px labels must clear 4.5:1 on --surface-inset,
+       the darkest surface any of them can land on. */
+    --ink-subtle:#525f74;
+  }
+
+  [data-palette="warm"]:not([data-theme="dark"]){
+    --surface-page:#eef2f8; --surface-raised:#ffffff; --surface-sunken:#e3e9f2;
+    --surface-inset:#d6dfec; --surface-overlay:#ffffff;
+    --border-subtle:#dbe3ee; --border-default:#c7d2e0; --border-strong:#a9b8ca;
+    --field-bg:#ffffff;
+    --ink-subtle:#525f74;
+    --accent:oklch(56% 0.14 58); --accent-text:oklch(42% 0.13 50);
+  }
+  [data-theme="dark"][data-palette="warm"]{
+    --accent:oklch(76% 0.13 65); --accent-text:oklch(80% 0.12 68);
+  }
+
+  [data-palette="drift"]:not([data-theme="dark"]){
+    --surface-page:oklch(96.5% 0.006 85); --surface-raised:#ffffff;
+    --surface-sunken:oklch(93.5% 0.009 80); --surface-inset:oklch(90% 0.011 78);
+    --surface-overlay:#ffffff;
+    --border-subtle:oklch(89% 0.008 80); --border-default:oklch(83% 0.010 78); --border-strong:oklch(72% 0.012 75);
+    --ink-strong:oklch(20% 0.030 255); --ink:oklch(30% 0.025 250);
+    --ink-muted:oklch(48% 0.020 245); --ink-subtle:oklch(46% 0.018 240);
+    --field-bg:#ffffff;
+    --accent:oklch(56% 0.14 58); --accent-text:oklch(42% 0.13 50);
+  }
+  [data-theme="dark"][data-palette="drift"]{
+    --accent:oklch(76% 0.13 65); --accent-text:oklch(80% 0.12 68);
+  }
+
+  /* paper : near-neutral surface ladder, wider steps. No second hue - the brand blue
+             becomes the only chroma on the page, so it reads as colour again. */
+  [data-palette="paper"]:not([data-theme="dark"]){
+    --surface-page:oklch(97.5% 0.003 250); --surface-raised:#ffffff;
+    --surface-sunken:oklch(93% 0.004 250); --surface-inset:oklch(88.5% 0.005 250);
+    --surface-overlay:#ffffff;
+    --border-subtle:oklch(90% 0.004 250); --border-default:oklch(85% 0.005 250); --border-strong:oklch(74% 0.006 250);
+    --ink-strong:oklch(19% 0.020 255); --ink:oklch(28% 0.016 252);
+    --ink-muted:oklch(44% 0.012 250); --ink-subtle:oklch(43% 0.011 248);
+    --field-bg:#ffffff;
+  }
+
+  /* band : the paper ladder plus one inverted section. Products goes deep brand-navy
+            so the Pipes screenshots (dark UI) sit natively instead of floating on
+            near-white, and the page gains real rhythm. All from the blue ramp. */
+  [data-palette="band"]:not([data-theme="dark"]){
+    --surface-page:oklch(97.5% 0.003 250); --surface-raised:#ffffff;
+    --surface-sunken:oklch(93% 0.004 250); --surface-inset:oklch(88.5% 0.005 250);
+    --surface-overlay:#ffffff;
+    --border-subtle:oklch(90% 0.004 250); --border-default:oklch(85% 0.005 250); --border-strong:oklch(74% 0.006 250);
+    --ink-strong:oklch(19% 0.020 255); --ink:oklch(28% 0.016 252);
+    --ink-muted:oklch(44% 0.012 250); --ink-subtle:oklch(43% 0.011 248);
+    --field-bg:#ffffff;
+  }
+  [data-palette="band"]:not([data-theme="dark"]) #products{
+    --surface-sunken:oklch(21% 0.045 252); --surface-raised:oklch(27% 0.040 252);
+    --surface-inset:oklch(31% 0.036 252); --surface-page:oklch(21% 0.045 252);
+    --border-subtle:oklch(30% 0.030 252); --border-default:oklch(36% 0.030 252); --border-strong:oklch(46% 0.030 252);
+    --ink-strong:#f3f6fb; --ink:#d6deea; --ink-muted:#a3b1c8; --ink-subtle:#93a1ba;
+    --brand:#4f9dfd; --brand-text:#73b0ff; --indicator:#4f9dfd;
+    --accent:#4f9dfd; --accent-text:#73b0ff;
+    --button-bg:#4f9dfd; --button-bg-hover:#73b0ff; --button-ink:#0b0f18;
+    --link:#73b0ff; --link-hover:#a9ceff;
+    /* moods must invert with the band too - the Problem/Product labels read these */
+    --mood-positive:oklch(78% 0.15 150); --mood-critical:oklch(74% 0.16 25);
+    --mood-caution:oklch(80% 0.13 75); --mood-info:#73b0ff;
+  }
+
+/* ============================ PRINT-SUBSET ============================
+   The CV is laser printed and photocopied, so it uses a narrower palette
+   than the screen. Mapping, light theme only (there is no dark paper):
+
+     --ink-strong   #0a1020   name, company names
+     --ink          #1c2635   body text, role titles
+     --ink-muted    #4a586b   dates, meta, technology lines, running header
+     --brand-text   #0f52a8   section heads, identity role line, skill labels
+     --brand        #3294fc   logo mark, technology-line left border ONLY
+     --border-strong #c2ccda  section head underrule
+
+   NOT print-safe, do not use in the document:
+
+     --ink-subtle   #5d6b80   1.8:1 against white after photocopying, and
+                              below the brief's mid-grey floor. Every place
+                              the SITE uses --ink-subtle for small metadata,
+                              the CV uses --ink-muted instead. This is the
+                              one real divergence between the two artefacts.
+
+     --surface-*              the CV is white paper. No tinted bands: they
+                              are fragile across an ODT page break and
+                              expensive on a printer.
+   ===================================================================== */

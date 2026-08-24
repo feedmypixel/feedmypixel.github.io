@@ -23,14 +23,14 @@ UK government.
 
 **Core** SvelteKit, TypeScript, Node, Fastify, AWS
 
-**Also** React, Next.js, GraphQL, Postgres, Terraform, GitHub Actions, Kubernetes
+**Also** React, Next.js, GraphQL, Postgres, Terraform, GitHub Actions
 
 **Throughout** Accessibility to WCAG 2.1 AA, progressive enhancement, performance, testing, CI/CD,
 mentoring
 
 ## Experience
 
-### WhiskyInvestDirect, Full-Stack Engineer
+### Whisky Invest Direct, Full-Stack Engineer
 
 Apr 2026 to present · Remote and London · Contract
 
@@ -45,12 +45,11 @@ SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Accessibility, CI/
 Mar 2023 to Feb 2026 · Remote · Contract
 
 Designed and built the Core Delivery Platform portal and its APIs from a blank page, with the
-service templates behind them: a GOV.UK compliant Node frontend, Hapi API or .NET service with
-Postgres, plus the infrastructure, observability and tooling around them, created on demand. It
+service templates behind them: a GOV.UK compliant Node frontend, Hapi API or .NET service, plus the infrastructure, observability and tooling around them, created on demand. It
 went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
 from three to six months down to hours and recovery from failure from a week to under an hour.
 
-Node, Hapi, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system, Templates
+Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system, Templates
 
 ### Wayfair, Senior Frontend Engineer and Tech Lead, then Software Engineer
 
@@ -161,6 +160,14 @@ JavaScript libraries, pair programming, code review and continuous integration.
 
 JavaScript, Scala, Sass, BEM, Responsive, Pair programming, Mentoring
 
+### feedMyPixel, Research and Development
+
+Feb 2014 to Mar 2014 · St Albans · Freelance
+
+Research and development between contracts, getting to know AngularJS.
+
+Angular, JavaScript
+
 ### Deutsche Telekom UK, Mobile Frontend Developer
 
 Oct 2012 to Dec 2013 · Hatfield · Contract
@@ -189,6 +196,25 @@ including Sky, BT, Expedia, Virgin and the BBC.
 
 PHP, Zend, JavaScript, jQuery, PostgreSQL
 
+### Freelance, Web Developer and Designer
+
+Oct 2007 to Apr 2010 · Southampton · Freelance
+
+Development across a large dynamic website driven by a hand-built content management system,
+culminating in the Lazy Gramophone platform.
+
+PHP, JavaScript, MySQL, SEO, UX, CMS
+
+### Lazy Gramophone, Web Developer and Designer
+
+2004 to 2010 · Remote · Freelance
+
+A community publishing platform and bespoke CMS built from the ground up in PHP and MySQL, with
+editing tools for artists to manage their own work, an invite and management facility and comment
+moderation.
+
+PHP, MySQL, JavaScript, UX, SEO, CMS
+
 ### Design Haus, Frontend Developer
 
 Mar 2010 · Southampton · Freelance
@@ -197,19 +223,58 @@ An internal intranet for Diageo, built in jQuery and Mustache.
 
 jQuery, CSS, UX
 
-### Earlier career, 2002 to 2010
+### Trusted Digital, Product Design Manager
 
-Freelance and Lazy Gramophone, a community publishing platform and bespoke CMS built from the ground
-up in PHP and MySQL, with editing tools for artists, an invite and management facility and comment
-moderation. Trusted Digital, mobile marketing sites built in Mobile Profile HTML, making the case for
-purpose-built mobile experiences years before mobile first became normal practice.
-Before that, mobile and games QA at Hotxt and Babel Media, where I introduced console TRC
-certification for PS2 and GameCube, then started the mobile J2ME QA department and grew it from three
-people to over 150.
+Jan 2007 to Oct 2007 · Brighton · Permanent
+
+Interactive SMS marketing services for mobile handsets and the mobile web, built in Mobile Profile
+HTML. Making the case for purpose-built mobile experiences years before mobile first became normal
+practice.
+
+XHTML-MP, CSS, SEO
+
+### Hotxt, Quality Assurance Manager
+
+Aug 2006 to Dec 2006 · London · Permanent
+
+Introduced a QA testing structure for a J2ME text over IP start-up across many handsets and networks,
+forming the beginnings of an in-house QA department.
+
+QA, Mobile, J2ME
+
+### Freelance, Developer and Designer
+
+Oct 2005 to Jul 2006 · Brighton · Freelance
+
+Web and mobile media, J2ME game graphics and 3D modelling, including the 3D work for the Concorde2 website and the Battleships mobile game.
+
+Flash, Photoshop, 3D, J2ME, Design
+
+### Babel Media, QA Technician
+
+Aug 2002 to Sep 2005 · Brighton · Permanent
+
+Console TRC certification for PS2 and GameCube, then started the mobile J2ME QA department and grew
+it from three people to over 150, adapting testing procedures to new workloads and operator
+requirements.
+
+Game QA, Mobile QA, Certification, Process
 
 ## Education
 
-University of Hertfordshire, 1999 to 2002. BA (Hons) Software Systems for the Arts and Media, 2.1.
+**University of Hertfordshire**, 1999 to 2002. BA (Hons) Software Systems for the Arts and Media,
+2.1.
+
+The degree covered computer programming, computer systems and hardware, computer generated
+imaging, digital image and sound processes, digital time-based and interactive media, principles and
+theory of hypermedia design, virtual reality and cyber culture.
+
+**Oxford College of Further Education**, 1999. City and Guilds Certificate of Information Technology
+for Computing. City and Guilds Certificate of Information Technology for Visual Basic 1.
+
+**Gosford Hill School**, Kidlington, 1988 to 1994. GCSE English Literature A, English Language A,
+Geography A, Science AA, Business Studies B, Mathematics B, History C, Craft Design and Technology
+D.
 
 ## References
 
