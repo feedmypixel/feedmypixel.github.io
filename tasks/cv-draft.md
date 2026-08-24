@@ -49,14 +49,16 @@ SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright
 
 Mar 2023 to Feb 2026 · Remote · Contract
 
-Designed and built the Core Delivery Platform portal and APIs from a blank page, with the
-service templates behind them: a GOV.UK compliant Node frontend, Hapi.js API, .NET service, testing
-repository or prototype kit, plus the infrastructure created on demand alongside them.
+Designed and built the Core Delivery Platform portal and APIs from a blank page. A service fronting a platform that
+provides microservice templates, testing tools, package creation and prototype kits alongside the infrastructure,
+observability and monitoring at teh touch of a button.
 
-The portal also gives teams a UI to manage, release and run their services day to day, providing
-parity across DEFRA's software offering. It went from a concept to the way software gets built at
-DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from
-failure from a week to under an hour.
+The portal gives teams a UI to manage, release and run their services and tooling. A product sat at the core of DEFRA's
+software offering that provides teams a way to manage, release and run their services and tooling. The portal
+provides for the business, parity across DEFRA's software offering whilst upholding high standards across the estate.
+
+It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
+from three to six months down to hours and recovery from failure from a week to under an hour.
 
 Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system,
 Templates, Postgres
@@ -146,7 +148,8 @@ May 2017 to Mar 2018 · London · Contract
 Software and infrastructure for the Data Hub team, enabling civil servants to manage the business
 relationships behind UK trade and investment.
 
-Node, Express, React, Vue, Nunjucks, Docker, Redis, SSO, CircleCI, Nightwatch, Pattern library, Accessibility, Architecture
+Node, Express, React, Vue, Nunjucks, Docker, Redis, SSO, CircleCI, Nightwatch, Pattern library, Accessibility,
+Architecture
 
 ### HM Revenue and Customs, Senior Frontend Developer
 
@@ -284,7 +287,8 @@ QA, Mobile, J2ME
 
 Oct 2005 to Jul 2006 · Brighton · Freelance
 
-Web and mobile media, J2ME game graphics and 3D modelling, including the 3D work for the Concorde2 website and the Battleships mobile game.
+Web and mobile media, J2ME game graphics and 3D modelling, including the 3D work for the Concorde2 website and the
+Battleships mobile game.
 
 Flash, Photoshop, 3ds Max, Premiere, J2ME, Design
 
