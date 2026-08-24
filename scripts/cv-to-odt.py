@@ -318,7 +318,7 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'Statement',
-            'fo:margin-top="24pt" fo:margin-bottom="0pt" fo:line-height="18.5pt"',
+            'fo:margin-top="26pt" fo:margin-bottom="0pt" fo:line-height="18.5pt"',
             f'{PJS} fo:font-size="11pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
