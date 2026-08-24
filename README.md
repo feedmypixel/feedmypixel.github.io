@@ -178,9 +178,15 @@ Consecutive roles at one employer group into a run - employer and span printed o
 carrying its own dates - matching `src/lib/role-runs.ts`, so the CV and the site's Experience
 section group identically.
 
-> [!IMPORTANT]
-> `src/lib/data/experience.ts` carries the same summaries, and its tags are a superset of the CV's.
-> Nothing enforces that. Edit `cv-draft.md` and the site silently drifts - update both.
+`src/lib/data/experience.ts` carries the same summaries (as HTML, one `<p>` per paragraph in the
+draft - `RoleRun.svelte` renders them with `{@html}`, safe only because Ben is the sole author) and
+its tags are a superset of the CV's. Edit `cv-draft.md`, then:
+
+```bash
+python3 scripts/sync-experience.py
+```
+
+Nothing runs this automatically - skip it and the site silently drifts from the CV.
 
 ## Privacy and analytics
 
