@@ -49,13 +49,12 @@ SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright
 
 Mar 2023 to Feb 2026 · Remote · Contract
 
-Designed and built the Core Delivery Platform portal and APIs from a blank page. A service fronting a platform that
-provides microservice templates, testing tools, package creation and prototype kits alongside the infrastructure,
-observability and monitoring at teh touch of a button.
+Designed and built the Core Delivery Platform portal and APIs from a blank page, providing
+microservice templates, testing tools, package creation and prototype kits alongside the
+infrastructure, observability and monitoring behind them, all on demand.
 
-The portal gives teams a UI to manage, release and run their services and tooling. A product sat at the core of DEFRA's
-software offering that provides teams a way to manage, release and run their services and tooling. The portal
-provides for the business, parity across DEFRA's software offering whilst upholding high standards across the estate.
+The portal gives teams a UI to manage, release and run their services and tooling, sitting at the
+core of DEFRA's software offering and upholding parity and high standards across the estate.
 
 It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
 from three to six months down to hours and recovery from failure from a week to under an hour.
