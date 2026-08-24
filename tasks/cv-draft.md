@@ -17,18 +17,21 @@ hello@feedmypixel.com
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
 Twenty years building software, mostly public-facing services that have to work for everyone. I take
-a product or a problem and build it end to end: front end, API, infrastructure, tests and the
-accessibility work. Recent work is SvelteKit, TypeScript, Node and AWS, for the Guardian, the BBC and
-UK government.
+a product, a business or user need or a problem that needs addressing and build it end to end: front end, API,
+infrastructure, tests and the accessibility work. Recent work is SvelteKit, TypeScript, Node and AWS, for UK
+government, the Guardian and the BBC. I like to understand how things work by pulling them apart. I then like to
+make things work how I want them too, to provide buiness, user or developer value. This fundamental understanding
+across code, design, architecture, products and business is something I find very interesting and soemthing I enjoy
+working with on a daily occurance. Being able to accomodate, tweak, improve and understand things across the entire
+business is soemthing I really enjoy.
 
 ## Skills
 
 **Core** SvelteKit, TypeScript, Node, Fastify, AWS
 
-**Also** React, Next.js, GraphQL, Postgres, Terraform, GitHub Actions
+**Also** React, Next.js, GraphQL, Postgres, MongoDB, Terraform, GitHub Actions
 
-**Throughout** Accessibility to WCAG 2.1 AA, progressive enhancement, performance, testing, CI/CD,
-mentoring
+**Throughout** Accessibility, progressive enhancement, performance, testing, CI/CD, mentoring, UX, DX
 
 ## Experience
 
@@ -46,12 +49,17 @@ SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright
 
 Mar 2023 to Feb 2026 · Remote · Contract
 
-Designed and built the Core Delivery Platform portal and its APIs from a blank page, with the
-service templates behind them: a GOV.UK compliant Node frontend, Hapi API or .NET service, plus the infrastructure, observability and tooling around them, created on demand. It
-went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
+Designed and built the Core Delivery Platform portal and APIs from a blank page, alongside the
+service templates behind them: a GOV.UK compliant Node frontend, Hapi API, .NET service, Testing repositories or a
+GOV.UK compliant Node prototype kit.
+The portal suite of applications allows developers to create on demand services with the associated infra at the
+touch of a button. Whilst providing a UI to manage, release and day to day running of services. Providing parity
+across DEFRAs software offering from its teams.
+It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
 from three to six months down to hours and recovery from failure from a week to under an hour.
 
-Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system, Templates
+Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system,
+Templates, Postgres
 
 ### Wayfair, Software Engineer
 
@@ -116,7 +124,8 @@ Node, Express, GOV.UK, Nunjucks, Pattern library, Progressive enhancement, Kuber
 Apr 2019 to Aug 2019 · London · Contract
 
 Framework team, building the shared tooling and component library used by teams across the dot-com
-business while it moved off a bespoke in-house JavaScript framework towards React.
+business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various
+departments across the business.
 
 Node, Express, React, Architecture, Pattern library, Concourse, Jest, Progressive enhancement, Accessibility, Mentoring
 
@@ -145,9 +154,10 @@ Sep 2016 to Apr 2017 · London · Contract
 
 Created the HMRC design language in a small team, with the documentation, process and principles
 behind it, so designers and developers could build frontend services for the Tax Platform with parity
-across HMRC. Worked closely with GDS.
+across HMRC. Worked closely with GDS and partnered on the first releases of the GOV.UK Frontend.
 
-Design system, Pattern library, Frontend operations, Node, Scala, Sass, AWS, Responsive, Accessibility, Documentation, Mentoring
+Design system, Pattern library, Frontend operations, Node, Scala, Sass, AWS, Responsive, Accessibility,
+Documentation, Mentoring, GOV.UK Frontend
 
 ### HM Revenue and Customs, Senior Frontend Developer
 
@@ -191,7 +201,7 @@ JavaScript, Node, Scala, Sass, BEM, Responsive, Jasmine, Grunt, CI, Pair program
 
 Feb 2014 to Mar 2014 · St Albans · Freelance
 
-Research and development between contracts, getting to know AngularJS.
+Research and development between contracts, getting to know AngularJS as well as other side projects.
 
 Angular, JavaScript
 
