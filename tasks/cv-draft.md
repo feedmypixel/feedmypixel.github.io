@@ -12,7 +12,7 @@ they carry across into whatever the document does with them.
 
 Contract full-stack engineer · feedMyPixel Ltd · Remote worldwide, UK based
 
-hello@feedmypixel.com
+ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
