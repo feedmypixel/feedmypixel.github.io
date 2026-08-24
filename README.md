@@ -168,6 +168,26 @@ No Python packages are needed - the generator writes the ODT zip with the standa
 
 The ODT is gitignored, so edit the draft, never the ODT.
 
+### The private build
+
+`static/BenChidgeyCV.pdf` is served from a public site whose `robots.txt` welcomes every crawler,
+so it carries no phone number. The number lives in `.env` as `CV_PHONE`, which git never sees, and
+reaches only the private build:
+
+```bash
+python3 scripts/cv-to-odt.py --private   # → tasks/BenChidgeyCV-private.odt
+
+/Applications/LibreOffice.app/Contents/MacOS/soffice \
+  --headless --convert-to pdf --outdir tasks tasks/BenChidgeyCV-private.odt
+```
+
+That is the copy to attach to an application. Both private files are gitignored, and the two builds
+differ by filename precisely so the one carrying the number cannot be published by accident. Every
+run prints which contact line it produced.
+
+Put the number anywhere in `cv-draft.md` and it is public, whatever the PDF says - the draft is
+committed.
+
 Layout follows [`design/design_handoff_cv/STYLES.md`](./design/design_handoff_cv/STYLES.md), with
 two deliberate deviations: `RoleHeadFirst` collapses into the other tiers (it keys off a page break
 the generator cannot see), and `RoleBody`, chapter `RoleTech` and a degree's `EduDetail` carry
