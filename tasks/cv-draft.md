@@ -21,9 +21,9 @@ everyone. I take a product, a business or user need or a problem that needs addr
 design, front end, API, infrastructure, tests and the accessibility work.
 
 Recent work is SvelteKit, TypeScript, Node and AWS, for UK government, the Guardian and the BBC. I like to understand
-how things work by pulling them apart. I then like to make things work how I want them too, to provide buiness, user or
+how things work by pulling them apart. I then like to make things work how I want them too, to provide business, user or
 developer value. This fundamental understanding across code, design, architecture, products and business is something I
-find very interesting and soemthing I enjoy working with on a daily occurance. Being able to accomodate, tweak, improve
+find very interesting and something I enjoy working with on a daily occurrence. Being able to accommodate, tweak, improve
 and understand things across the entire business is something I really enjoy.
 
 ## Skills
@@ -41,7 +41,7 @@ and understand things across the entire business is something I really enjoy.
 Apr 2026 to present · Remote and London · Contract
 
 Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising
-of the architecture and embedding User Experience, Deveoper Experience, testing, accessibility and delivery best
+of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best
 practice across engineering and product.
 
 TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility, Observability, CI/CD

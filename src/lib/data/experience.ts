@@ -20,7 +20,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Deveoper Experience, testing, accessibility and delivery best practice across engineering and product.</p>',
+      '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best practice across engineering and product.</p>',
     tags: [
       'TypeScript',
       'JavaScript',
