@@ -44,7 +44,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Designed and built the Core Delivery Platform portal and its APIs from a blank page, with the service templates behind them: a GOV.UK compliant Node frontend, Hapi API or .NET service, plus the infrastructure, observability and tooling around them, created on demand. It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.',
+      'Designed and built the Core Delivery Platform portal and APIs from a blank page, alongside the service templates behind them: a GOV.UK compliant Node frontend, Hapi API, .NET service, Testing repositories or a GOV.UK compliant Node prototype kit. The portal suite of applications allows developers to create on demand services with the associated infra at the touch of a button. Whilst providing a UI to manage, release and day to day running of services. Providing parity across DEFRAs software offering from its teams. It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.',
     tags: [
       'Node',
       'Hapi',
@@ -58,6 +58,7 @@ export const roles: Role[] = [
       'Accessibility',
       'Design system',
       'Templates',
+      'Postgres',
       'GOV.UK',
       'JavaScript'
     ]
@@ -188,7 +189,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      'Framework team, building the shared tooling and component library used by teams across the dot-com business while it moved off a bespoke in-house JavaScript framework towards React.',
+      'Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various departments across the business.',
     tags: [
       'Node',
       'Express',
@@ -256,7 +257,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Created the HMRC design language in a small team, with the documentation, process and principles behind it, so designers and developers could build frontend services for the Tax Platform with parity across HMRC. Worked closely with GDS.',
+      'Created the HMRC design language in a small team, with the documentation, process and principles behind it, so designers and developers could build frontend services for the Tax Platform with parity across HMRC. Worked closely with GDS and partnered on the first releases of the GOV.UK Frontend.',
     tags: [
       'Design system',
       'Pattern library',
@@ -268,7 +269,8 @@ export const roles: Role[] = [
       'Responsive',
       'Accessibility',
       'Documentation',
-      'Mentoring'
+      'Mentoring',
+      'GOV.UK Frontend'
     ]
   },
   {
@@ -365,7 +367,8 @@ export const roles: Role[] = [
     location: 'St Albans',
     type: 'Freelance',
     sector: 'Products',
-    summary: 'Research and development between contracts, getting to know AngularJS.',
+    summary:
+      'Research and development between contracts, getting to know AngularJS as well as other side projects.',
     tags: ['Angular', 'JavaScript']
   },
   {
