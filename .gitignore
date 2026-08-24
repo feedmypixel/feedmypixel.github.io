@@ -37,8 +37,6 @@ tasks/cv-private/
 
 # Generated from tasks/cv-draft.md by scripts/cv-to-odt.py
 tasks/BenChidgeyCV.odt
-tasks/BenChidgeyCV-private.odt
-tasks/BenChidgeyCV-private.pdf
 tasks/cv-paste.html
 tasks/cv-paste.txt
 .~lock.*#
