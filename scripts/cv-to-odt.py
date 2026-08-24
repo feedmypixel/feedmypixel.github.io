@@ -312,7 +312,7 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'IdentityLinks',
-            f'fo:margin-top="3pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
+            f'fo:margin-top="10pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
             f'fo:border-bottom="1pt solid {PIXEL_BLUE}" fo:padding-bottom="10pt"',
             f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
         ),
