@@ -16,14 +16,15 @@ ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
-Twenty years building software, mostly public-facing services that have to work for everyone. I take
-a product, a business or user need or a problem that needs addressing and build it end to end: front end, API,
-infrastructure, tests and the accessibility work. Recent work is SvelteKit, TypeScript, Node and AWS, for UK
-government, the Guardian and the BBC. I like to understand how things work by pulling them apart. I then like to
-make things work how I want them too, to provide buiness, user or developer value. This fundamental understanding
-across code, design, architecture, products and business is something I find very interesting and soemthing I enjoy
-working with on a daily occurance. Being able to accomodate, tweak, improve and understand things across the entire
-business is soemthing I really enjoy.
+Twenty years building software, mostly public-facing long-standing, resilient, services that work for
+everyone. I take a product, a business or user need or a problem that needs addressing and build it end to end:
+design, front end, API, infrastructure, tests and the accessibility work.
+
+Recent work is SvelteKit, TypeScript, Node and AWS, for UK government, the Guardian and the BBC. I like to understand
+how things work by pulling them apart. I then like to make things work how I want them too, to provide buiness, user or
+developer value. This fundamental understanding across code, design, architecture, products and business is something I
+find very interesting and soemthing I enjoy working with on a daily occurance. Being able to accomodate, tweak, improve
+and understand things across the entire business is something I really enjoy.
 
 ## Skills
 
@@ -39,11 +40,12 @@ business is soemthing I really enjoy.
 
 Apr 2026 to present · Remote and London · Contract
 
-Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and
-Android apps from that same codebase with Capacitor. Modernising the architecture and embedding
-testing, accessibility and delivery best practice across engineering and product.
+Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising
+of the architecture and embedding User Experience, Deveoper Experience, testing, accessibility and delivery best
+practice across engineering and product.
 
-SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility, Observability, CI/CD
+SvelteKit, TypeScript, CSS, HTML, JavaScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright,
+Accessibility, Observability, CI/CD
 
 ### DEFRA, Full-Stack Platform Engineer
 
@@ -59,35 +61,36 @@ core of DEFRA's software offering and upholding parity and high standards across
 It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
 from three to six months down to hours and recovery from failure from a week to under an hour.
 
-Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system,
-Templates, Postgres
+Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, CSS, HTML, JavaScript, AWS, Docker, Vitest, WDIO, GitHub Actions,
+Accessibility, Design system, Templates, Postgres
 
 ### Wayfair, Software Engineer
 
 Aug 2022 to Dec 2022 · Remote · Contract
 
-Built the Freight Portal frontend micro-service for Global Transportation Services, where users find
+Built the Freight Portal frontend microservice for Global Transportation Services, where users find
 and interact with every Wayfair facility service.
 
-React, TypeScript, Kubernetes, Jest, Cypress, Micro frontend, Accessibility, DataDog
+React, TypeScript, CSS, HTML, JavaScript, Kubernetes, Jest, Cypress, Micro frontend, Accessibility, DataDog
 
 ### Wayfair, Senior Frontend Engineer and Tech Lead
 
 Jan 2022 to Aug 2022 · Remote · Contract
 
-Tech lead on the Global Customs Platform team, creating the Customs Portal frontend micro-service.
+Tech lead on the Global Customs Platform team, creating the Customs Portal frontend microservice.
 
-React, TypeScript, Kubernetes, Jest, Cypress, Accessibility, DataDog, BuildKite
+React, TypeScript, CSS, HTML, JavaScript, Kubernetes, Jest, Cypress, Accessibility, DataDog, BuildKite
 
 ### Pret A Manger, Platform Engineer
 
 Jan 2021 to Dec 2021 · Remote · Contract
 
-Built a Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express
-API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express
-template repositories and ran chaos experiments and incident exercises with platform teams.
+Built a custom developer Backstage platform, Disco. A Backstage plugin serving SRE and Accelerate metrics from a
+TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and
+Express template repositories and ran chaos experiments and incident exercises with platform teams.
 
-Node, React, Next.js, TypeScript, GCP, Lambda, Terraform, Backstage, Postgres, Sentry, Jest, Cypress
+Node, React, Next.js, TypeScript, CSS, HTML, JavaScript, GCP, Lambda, Terraform, Backstage, Postgres, Sentry, Jest,
+Cypress
 
 ### LifeBox Health, Senior Full-Stack Developer
 

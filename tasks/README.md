@@ -21,10 +21,7 @@ with the `design-to-code` skill rather than imported wholesale.
 
 ## What is in here
 
-- [`audit-onepager-v1.md`](./audit-onepager-v1.md) - the step-one audit for the current one-page
-  site: what the design handoff specified, where the build deviated and why, and how the work was
-  split into sessions.
-
-The original PRD and its task list described a multi-page brochure with a dev blog. That plan was
-superseded by the design-to-code process and the site shipped as a one-pager, so both documents were
-removed rather than left to rot. They remain in git history if the reasoning is ever needed.
+Only documents describing work still in progress. Everything else - the original multi-page PRD and
+task list, the one-pager build audit, CV notes overtaken by later edits - is removed once the work it
+guided ships, rather than left to rot. All of it remains in git history if the reasoning is ever
+needed.
