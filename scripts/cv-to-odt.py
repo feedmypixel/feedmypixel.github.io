@@ -259,7 +259,7 @@ RULE = '#c2ccda'
 PIXEL_BLUE = '#3294fc'
 KEEP = 'fo:keep-with-next="always" '
 TECH_BLOCK = (
-    'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="12.33pt" '
+    'fo:margin-top="9pt" fo:margin-bottom="0pt" fo:line-height="12.33pt" '
     'fo:border-left="2pt solid #3294fc" fo:padding-left="8pt"'
 )
 WIDOWS = 'fo:widows="2" fo:orphans="2" '
@@ -318,12 +318,12 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'Statement',
-            'fo:margin-top="12pt" fo:margin-bottom="0pt" fo:line-height="17.05pt"',
+            'fo:margin-top="16pt" fo:margin-bottom="0pt" fo:line-height="18.5pt"',
             f'{PJS} fo:font-size="11pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
             'SectionHead',
-            f'{KEEP}fo:margin-top="18pt" fo:margin-bottom="0pt" fo:line-height="12pt" '
+            f'{KEEP}fo:margin-top="26pt" fo:margin-bottom="0pt" fo:line-height="12pt" '
             f'fo:border-bottom="1pt solid {RULE}" fo:padding-bottom="4pt"',
             f'{DMM} fo:font-size="9pt" fo:font-weight="500" fo:color="{BLUE}" fo:letter-spacing="0.81pt"',
         ),
@@ -339,35 +339,35 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'RoleHeadRecent',
-            f'{KEEP}fo:margin-top="14pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="20pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'RoleHeadMid',
-            f'{KEEP}fo:margin-top="12pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="17pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'RoleHeadEarly',
-            f'{KEEP}fo:margin-top="11pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="15pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'RoleTitle',
-            f'{KEEP}fo:margin-top="3pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
+            f'{KEEP}fo:margin-top="5pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
             f'{PJS} fo:font-size="9.5pt" fo:font-weight="600" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
             'RoleTitleChapter',
-            f'{KEEP}fo:margin-top="10pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
+            f'{KEEP}fo:margin-top="14pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
             f'{PJS} fo:font-size="9.5pt" fo:font-weight="600" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
             'RoleBody',
-            f'{KEEP}fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            f'{KEEP}fo:margin-top="9pt" fo:margin-bottom="0pt" fo:line-height="17.5pt"',
             f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
@@ -382,18 +382,18 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'EduHead',
-            f'{KEEP}fo:margin-top="11pt" fo:margin-bottom="0pt" fo:line-height="13.2pt"',
+            f'{KEEP}fo:margin-top="16pt" fo:margin-bottom="0pt" fo:line-height="13.2pt"',
             f'{PJS} fo:font-size="11pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.13pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'EduDetail',
-            'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="17.5pt"',
             f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
             'EduDetailKeep',
-            f'{KEEP}fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            f'{KEEP}fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="17.5pt"',
             f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
