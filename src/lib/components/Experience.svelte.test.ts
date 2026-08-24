@@ -29,6 +29,13 @@ test('anchors the experience section for the nav', () => {
   expect(document.querySelector('section#experience')).not.toBeNull()
 })
 
+test('offers the CV as a real download, saved under its own name', () => {
+  render(Experience)
+  const cv = document.querySelector<HTMLAnchorElement>('a[download]')
+  expect(cv?.getAttribute('href')).toContain('BenChidgeyCV.pdf')
+  expect(cv?.getAttribute('download')).toBe('BenChidgeyCV.pdf')
+})
+
 test('free text narrows the timeline and the count', async () => {
   render(Experience)
   await searchBox().fill('guardian')

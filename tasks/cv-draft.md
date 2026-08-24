@@ -50,15 +50,16 @@ TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, 
 
 Mar 2023 to Feb 2026 · Remote · Contract
 
-Designed and built the Core Delivery Platform portal and APIs from a blank page, providing
-microservice templates, testing tools, package creation and prototype kits alongside the
-infrastructure, observability and monitoring behind them, all on demand.
+Designed and built the Core Delivery Platform Portal and APIs from a blank page. The Portal is the one-stop
+developer shop for microservice templates, testing tools, prototype kits and package libraries alongside the supporting
+platforms infrastructure, observability and monitoring, all on demand.
 
-The portal gives teams a UI to manage, release and run their services and tooling, sitting at the
-core of DEFRA's software offering and upholding parity and high standards across the estate.
+The Portal provides an admin UI for the Platform team and gives tenant teams a UI to create, manage, release and run
+their services, tooling, infra and team users. Sitting at the core of DEFRA's software offering and upholding parity
+and standards across the estate.
 
-It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
-from three to six months down to hours and recovery from failure from a week to under an hour.
+It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six
+months down to hours and recovery from failure from a week to under an hour.
 
 JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system, Templates, Postgres
 
