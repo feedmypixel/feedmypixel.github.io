@@ -210,7 +210,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various departments across the business.</p>',
+      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst React was brought in to various departments across the business.</p>',
     tags: [
       'JavaScript',
       'CSS',

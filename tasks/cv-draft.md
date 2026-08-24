@@ -16,15 +16,16 @@ ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
-Twenty years building software, mostly public-facing long-standing, resilient, services that work for
-everyone. I take a product, a business or user need or a problem that needs addressing and build it end to end:
-design, front end, API, infrastructure, tests and the accessibility work.
+Twenty years building software, mostly long-standing, resilient services that work for everyone on all
+devices. I take a user/business need, an idea, or an issue that needs addressing, and build a product/function/service
+end to end: design, front end, API, microservices, infrastructure and more, in an iterable, testable fashion,
+focused on quality user experience and robust, maintainable, testable, resilient products that provide business value
+and fantastic user experiences.
 
-Recent work is SvelteKit, TypeScript, Node and AWS, for UK government, the Guardian and the BBC. I like to understand
-how things work by pulling them apart. I then like to make things work how I want them too, to provide business, user or
-developer value. This fundamental understanding across code, design, architecture, products and business is something I
-find very interesting and something I enjoy working with on a daily occurrence. Being able to accommodate, tweak, improve
-and understand things across the entire business is something I really enjoy.
+Recent work is SvelteKit, TypeScript, Node, Hapi.js, Fastify, AI and AWS, for Whisky Invest Direct, UK Government,
+Wayfair and Pret. Understanding how things work across the disciplines I work with daily is something I find
+interesting and enjoy, across code, design, architecture, products and business. Being able to tweak, improve and
+build things that meet and surpass user and business needs for the clients I work with is a joy.
 
 ## Skills
 
@@ -44,7 +45,8 @@ Leading a greenfield rebuild of the core trading platform and API. Rebuild of th
 of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best
 practice across engineering and product.
 
-TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility, Observability, CI/CD
+TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility,
+Observability, CI/CD
 
 ### DEFRA, Full-Stack Platform Engineer
 
@@ -61,7 +63,8 @@ and standards across the estate.
 It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six
 months down to hours and recovery from failure from a week to under an hour.
 
-JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system, Templates, Postgres
+JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, Docker, Vitest, WDIO, GitHub Actions,
+Accessibility, Design system, Templates, Postgres
 
 ### Wayfair, Software Engineer
 
@@ -88,7 +91,8 @@ Built a custom developer Backstage platform, Disco. A Backstage plugin serving S
 TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and
 Express template repositories and ran chaos experiments and incident exercises with platform teams.
 
-TypeScript, JavaScript, CSS, HTML, Node, React, Next.js, GCP, Lambda, Terraform, Backstage, Postgres, Sentry, Jest, Cypress
+TypeScript, JavaScript, CSS, HTML, Node, React, Next.js, GCP, Lambda, Terraform, Backstage, Postgres, Sentry, Jest,
+Cypress
 
 ### LifeBox Health, Senior Full-Stack Developer
 
@@ -119,17 +123,19 @@ vertical: the multi-file upload component, its controller and API model, size li
 error handling, the translations and both unit and end to end coverage. Handed it over on leaving and
 it stayed in the service for years afterwards.
 
-JavaScript, CSS, HTML, Node, Express, GOV.UK, Nunjucks, Pattern library, Progressive enhancement, Kubernetes, Jest, Testcafe, Accessibility
+JavaScript, CSS, HTML, Node, Express, GOV.UK, Nunjucks, Pattern library, Progressive enhancement, Kubernetes, Jest,
+Testcafe, Accessibility
 
 ### Marks and Spencer, Senior Full-Stack Developer
 
 Apr 2019 to Aug 2019 · London · Contract
 
 Framework team, building the shared tooling and component library used by teams across the dot-com
-business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various
+business and worked with the bespoke in-house JavaScript framework, whilst React was brought in to various
 departments across the business.
 
-JavaScript, CSS, HTML, Node, Express, React, Architecture, Pattern library, Concourse, Jest, Progressive enhancement, Accessibility, Mentoring
+JavaScript, CSS, HTML, Node, Express, React, Architecture, Pattern library, Concourse, Jest, Progressive enhancement,
+Accessibility, Mentoring
 
 ### HM Passport Office, Senior Full-Stack Developer
 
@@ -139,7 +145,8 @@ Inherited a legacy appointment booking system and its public journeys, establish
 behaved, then proposed a roadmap with the design team and carried it through senior stakeholders. The
 team rebuilt it in-house as Node microservices.
 
-JavaScript, CSS, HTML, Node, Express, Microservices, GOV.UK Pay, Home Office Forms, Redis, Jest, Progressive enhancement, Accessibility
+JavaScript, CSS, HTML, Node, Express, Microservices, GOV.UK Pay, Home Office Forms, Redis, Jest, Progressive
+enhancement, Accessibility
 
 ### Department for International Trade, Senior Full-Stack Developer
 
@@ -148,7 +155,8 @@ May 2017 to Mar 2018 · London · Contract
 Software and infrastructure for the Data Hub team, enabling civil servants to manage the business
 relationships behind UK trade and investment.
 
-JavaScript, CSS, HTML, Node, Express, React, Vue, Nunjucks, Docker, Redis, SSO, CircleCI, Nightwatch, Pattern library, Accessibility, Architecture
+JavaScript, CSS, HTML, Node, Express, React, Vue, Nunjucks, Docker, Redis, SSO, CircleCI, Nightwatch, Pattern library,
+Accessibility, Architecture
 
 ### HM Revenue and Customs, Senior Frontend Developer
 
@@ -158,7 +166,8 @@ Created the HMRC design language in a small team, with the documentation, proces
 behind it, so designers and developers could build frontend services for the Tax Platform with parity
 across HMRC. Worked closely with GDS and partnered on the first releases of the GOV.UK Frontend.
 
-JavaScript, CSS, HTML, Design system, Pattern library, Frontend operations, Node, Scala, Sass, AWS, Responsive, Accessibility, Documentation, Mentoring, GOV.UK Frontend
+JavaScript, CSS, HTML, Design system, Pattern library, Frontend operations, Node, Scala, Sass, AWS, Responsive,
+Accessibility, Documentation, Mentoring, GOV.UK Frontend
 
 ### HM Revenue and Customs, Senior Frontend Developer
 
@@ -168,7 +177,8 @@ Tackled frontend architecture across the Tax Platform with Platform Operations. 
 assets, exposed components through a component library and mentored frontend developers and
 designers on how to approach common problems.
 
-JavaScript, CSS, HTML, Frontend architecture, Component library, React, Node, Scala, Sass, Responsive, Accessibility, Mentoring
+JavaScript, CSS, HTML, Frontend architecture, Component library, React, Node, Scala, Sass, Responsive, Accessibility,
+Mentoring
 
 ### HM Revenue and Customs, Frontend Developer
 
