@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { emailAddress } from '$lib/config'
   import { toasts } from '$lib/toasts.svelte'
 
-  let { address = 'hello@feedmypixel.com' }: { address?: string } = $props()
+  let { address = emailAddress }: { address?: string } = $props()
 
   async function copy() {
     if (!navigator.clipboard?.writeText) {

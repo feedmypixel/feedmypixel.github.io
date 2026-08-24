@@ -3,6 +3,7 @@
   import {
     contactEndpoint,
     digitalMarketplaceUrl,
+    emailAddress,
     gitHubUrl,
     linkedInUrl,
     web3formsKey
@@ -133,7 +134,7 @@
         <noscript>
           <p class="noscript">
             This form posts normally without JavaScript. You can also email
-            <a href="mailto:hello@feedmypixel.com">hello@feedmypixel.com</a> directly.
+            <a href="mailto:{emailAddress}">{emailAddress}</a> directly.
           </p>
         </noscript>
       </form>
