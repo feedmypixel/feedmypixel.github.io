@@ -215,7 +215,7 @@ def render(parsed):
             '<draw:frame draw:style-name="Logo" text:anchor-type="as-char" '
             'svg:width="5.3mm" svg:height="5.3mm" draw:z-index="0">'
             '<draw:image xlink:href="Pictures/logo.png" xlink:type="simple" xlink:show="embed" '
-            'xlink:actuate="onLoad"/></draw:frame>feedMyPixel',
+            'xlink:actuate="onLoad"/></draw:frame>feedMyPixel Ltd.',
         )
     ]
     skills = []
@@ -302,7 +302,7 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'IdentityRole',
-            'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="14.25pt"',
+            'fo:margin-top="12pt" fo:margin-bottom="0pt" fo:line-height="14.25pt"',
             f'{DMM} fo:font-size="9.5pt" fo:color="{BLUE}"',
         ),
         paragraph_style(
@@ -313,12 +313,12 @@ STYLES = ''.join(
         paragraph_style(
             'IdentityLinks',
             f'fo:margin-top="3pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
-            f'fo:border-bottom="2pt solid {INK}" fo:padding-bottom="10pt"',
+            f'fo:border-bottom="1pt solid {PIXEL_BLUE}" fo:padding-bottom="10pt"',
             f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
         ),
         paragraph_style(
             'Statement',
-            'fo:margin-top="16pt" fo:margin-bottom="0pt" fo:line-height="18.5pt"',
+            'fo:margin-top="24pt" fo:margin-bottom="0pt" fo:line-height="18.5pt"',
             f'{PJS} fo:font-size="11pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
