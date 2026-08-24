@@ -36,8 +36,8 @@ mentoring
 Apr 2026 to present · Remote and London · Contract
 
 Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and
-Android apps from that same codebase with Capacitor, both in progress. Modernising the architecture
-and embedding testing, accessibility and delivery practice across engineering and product.
+Android apps from that same codebase with Capacitor. Modernising the architecture and embedding
+testing, accessibility and delivery best practice across engineering and product.
 
 SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility, Observability, CI/CD
 
