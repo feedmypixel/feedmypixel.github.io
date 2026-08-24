@@ -1,103 +1,460 @@
-import re, zipfile, html
+"""Render tasks/cv-draft.md into an ODT laid out to design/design_handoff_cv/STYLES.md.
+
+The four RoleHead tiers collapse to three, which STYLES.md allows: RoleHeadFirst keys off a
+page break the generator cannot see until the document is paginated.
+"""
+
+import html
+import re
+import struct
+import zipfile
+import zlib
 from pathlib import Path
 
-src = Path('tasks/cv-draft.md').read_text()
-body = src[src.index('\n---\n') + 5:]
-blocks = [re.sub(r'\s*\n\s*', ' ', b.strip()) for b in re.split(r'\n\s*\n', body) if b.strip()]
+SOURCE = Path('tasks/cv-draft.md')
+OUTPUT = Path('tasks/BenChidgeyCV.odt')
 
-DATE = re.compile(r'^[A-Z][a-z]{2} \d{4} to (present|\d{4}|[A-Z][a-z]{2} \d{4})|^\w{3} \d{4} · ')
+LOGO_GRID = 30
+LOGO_SCALE = 16
+LOGO_RADIUS = 2
 
-def esc(t):
-    return html.escape(t, quote=False)
 
-def inline(t):
-    parts = re.split(r'\*\*(.+?)\*\*', esc(t))
-    out = ''
-    for i, p in enumerate(parts):
-        out += f'<text:span text:style-name="Strong">{p}</text:span>' if i % 2 else p
+def logo_png():
+    """The pixel mark, drawn straight to PNG.
+
+    LibreOffice's SVG import flattens the mark to a bare rectangle, so the shape is rasterised
+    here rather than handed over as vector.
+    """
+    size = LOGO_GRID * LOGO_SCALE
+    radius = LOGO_RADIUS * LOGO_SCALE
+    blue = bytes.fromhex('3294fc') + b'\xff'
+    white = b'\xff\xff\xff\xff'
+    clear = b'\x00\x00\x00\x00'
+    holes = [(5, 5), (12, 5)]
+
+    def pixel(x, y):
+        for hole_x, hole_y in holes:
+            left, top = hole_x * LOGO_SCALE, hole_y * LOGO_SCALE
+            if left <= x < left + 5 * LOGO_SCALE and top <= y < top + 5 * LOGO_SCALE:
+                return white
+        corner_x = radius - x if x < radius else x - (size - radius) + 1
+        corner_y = radius - y if y < radius else y - (size - radius) + 1
+        if corner_x > 0 and corner_y > 0 and corner_x**2 + corner_y**2 > radius**2:
+            return clear
+        return blue
+
+    rows = b''.join(
+        b'\x00' + b''.join(pixel(x, y) for x in range(size)) for y in range(size)
+    )
+
+    def chunk(tag, data):
+        return (
+            struct.pack('>I', len(data))
+            + tag
+            + data
+            + struct.pack('>I', zlib.crc32(tag + data))
+        )
+
+    return (
+        b'\x89PNG\r\n\x1a\n'
+        + chunk(b'IHDR', struct.pack('>IIBBBBB', size, size, 8, 6, 0, 0, 0))
+        + chunk(b'IDAT', zlib.compress(rows, 9))
+        + chunk(b'IEND', b'')
+    )
+
+DATED = re.compile(r'^(?:[A-Z][a-z]{2} )?\d{4}\b.*·')
+INSTITUTION = re.compile(r'^\*\*(.+?)\*\*, (?:(.+?), )?(\d{4}(?: to \d{4})?)\. (.+)$')
+SKILL = re.compile(r'^\*\*(.+?)\*\* (.+)$')
+END_YEAR = re.compile(r'(present|\d{4})\s*$')
+GRADE = re.compile(r'\b([A-D]{1,2})(?=[,.])')
+
+CONTENT_WIDTH = '17.4cm'
+
+
+def escape(text):
+    return html.escape(text, quote=False)
+
+
+def paragraph(style, inner):
+    return f'<text:p text:style-name="{style}">{inner}</text:p>'
+
+
+def run(style, text):
+    return f'<text:span text:style-name="{style}">{escape(text)}</text:span>'
+
+
+def role_head_style(dates):
+    match = END_YEAR.search(dates)
+    year = 2100 if match.group(1) == 'present' else int(match.group(1))
+    if year >= 2020:
+        return 'RoleHeadRecent'
+    return 'RoleHeadMid' if year >= 2014 else 'RoleHeadEarly'
+
+
+def dated_head(style, left, dates):
+    return paragraph(style, escape(left) + '<text:tab/>' + run('DateStamp', dates))
+
+
+def skill_row(style, label, items):
+    cells = (
+        f'<table:table-cell office:value-type="string">{paragraph(style, run("SkillLabel", label))}</table:table-cell>'
+        f'<table:table-cell office:value-type="string">{paragraph(style, escape(items))}</table:table-cell>'
+    )
+    return f'<table:table-row>{cells}</table:table-row>'
+
+
+def parse(blocks):
+    """Turn the draft's blocks into (kind, payload) pairs, kind being the style name."""
+    out = []
+    section = None
+    pending_role = None
+    identity = 0
+
+    for block in blocks:
+        if block.startswith('## '):
+            section = block[3:]
+            if not out:
+                out.append(('NameTitle', section))
+                identity = 2
+            else:
+                out.append(('SectionHead', section))
+            continue
+
+        if identity:
+            out.append(('IdentityRole' if identity == 2 else 'IdentityContact', block))
+            identity -= 1
+            continue
+
+        if block.startswith('### '):
+            pending_role = block[4:].split(', ', 1)
+            continue
+
+        if pending_role and DATED.match(block):
+            dates, meta = block.split(' · ', 1)
+            out.append((role_head_style(dates), (pending_role[0], dates)))
+            out.append(('RoleTitle', (pending_role[1], meta)))
+            pending_role = None
+            continue
+
+        if section == 'Skills':
+            label, items = SKILL.match(block).groups()
+            out.append(('SkillLineCore' if label == 'Core' else 'SkillLine', (label, items)))
+            continue
+
+        if section == 'Education':
+            found = INSTITUTION.match(block)
+            if found:
+                name, place, dates, detail = found.groups()
+                out.append(('EduHead', (f'{name}, {place}' if place else name, dates)))
+                out.append(('EduDetail', detail))
+            else:
+                out.append(('EduModules', block))
+            continue
+
+        if section == 'Experience':
+            out.append(('RoleBody' if block.endswith('.') else 'RoleTech', block))
+            continue
+
+        out.append(('Statement' if section is None else 'RoleBody', block))
+
     return out
 
-paras = []
-for b in blocks:
-    if b.startswith('### '):
-        paras.append(('Role', b[4:]))
-    elif b.startswith('## '):
-        paras.append(('Section', b[3:]))
-    elif DATE.match(b):
-        paras.append(('Meta', b))
-    elif b.startswith('**'):
-        paras.append(('Body', b))
-    elif not b.endswith('.') and ',' in b and len(b) < 160:
-        paras.append(('Tags', b))
-    else:
-        paras.append(('Body', b))
 
-# the name is the first Section
-for i, (s, t) in enumerate(paras):
-    if s == 'Section':
-        paras[i] = ('Name', t)
-        break
+def render(parsed):
+    body = [
+        paragraph(
+            'BrandMark',
+            '<draw:frame draw:style-name="Logo" text:anchor-type="as-char" '
+            'svg:width="5.3mm" svg:height="5.3mm" draw:z-index="0">'
+            '<draw:image xlink:href="Pictures/logo.png" xlink:type="simple" xlink:show="embed" '
+            'xlink:actuate="onLoad"/></draw:frame>feedMyPixel',
+        )
+    ]
+    skills = []
 
-content = ''.join(
-    f'<text:p text:style-name="{s}">{inline(t)}</text:p>' for s, t in paras
+    for style, payload in parsed:
+        if style in ('SkillLineCore', 'SkillLine'):
+            skills.append(skill_row(style, *payload))
+            continue
+        if skills:
+            body.append(
+                '<table:table table:name="Skills" table:style-name="Skills">'
+                '<table:table-column table:style-name="SkillsLabel"/>'
+                '<table:table-column table:style-name="SkillsList"/>'
+                + ''.join(skills)
+                + '</table:table>'
+            )
+            skills = []
+
+        if style in ('RoleHeadRecent', 'RoleHeadMid', 'RoleHeadEarly', 'EduHead'):
+            body.append(dated_head(style, *payload))
+        elif style == 'RoleTitle':
+            title, meta = payload
+            body.append(paragraph(style, escape(title) + run('MetaText', f' · {meta}')))
+        elif style == 'EduDetail' and 'GCSE' in payload:
+            marked = GRADE.sub(r'<text:span text:style-name="Grade">\1</text:span>', escape(payload))
+            body.append(paragraph(style, marked))
+        else:
+            body.append(paragraph(style, escape(payload)))
+
+    return ''.join(body)
+
+
+PJS = 'style:font-name="Plus Jakarta Sans"'
+DMM = 'style:font-name="DM Mono"'
+INK = '#0a1020'
+BODY_INK = '#1c2635'
+BLUE = '#0f52a8'
+MUTED = '#4a586b'
+RULE = '#c2ccda'
+PIXEL_BLUE = '#3294fc'
+KEEP = 'fo:keep-with-next="always" '
+WIDOWS = 'fo:widows="2" fo:orphans="2" '
+RIGHT_TAB = (
+    '<style:tab-stops><style:tab-stop style:position="'
+    + CONTENT_WIDTH
+    + '" style:type="right"/></style:tab-stops>'
 )
 
-def style(name, parent, props_p='', props_t=''):
-    return (f'<style:style style:name="{name}" style:family="paragraph" '
-            f'style:parent-style-name="{parent}">'
-            f'<style:paragraph-properties {props_p}/>'
-            f'<style:text-properties {props_t} fo:language="en" fo:country="GB"/>'
-            f'</style:style>')
 
-FONT = 'style:font-name="Plus Jakarta Sans"'
-MONO = 'style:font-name="DM Mono"'
-styles = (
-  '<style:style style:name="Strong" style:family="text">'
-  '<style:text-properties fo:font-weight="bold"/></style:style>'
-  + style('Name', 'Standard', 'fo:margin-bottom="0.15cm"', f'{FONT} fo:font-size="24pt" fo:font-weight="bold" fo:letter-spacing="-0.03cm"')
-  + style('Section', 'Standard', 'fo:margin-top="0.7cm" fo:margin-bottom="0.2cm" fo:border-bottom="0.5pt solid #cccccc" fo:padding-bottom="0.1cm"', f'{FONT} fo:font-size="11pt" fo:font-weight="bold" fo:letter-spacing="0.04cm" fo:text-transform="uppercase"')
-  + style('Role', 'Standard', 'fo:margin-top="0.45cm" fo:margin-bottom="0.05cm" fo:keep-with-next="always"', f'{FONT} fo:font-size="11.5pt" fo:font-weight="bold"')
-  + style('Meta', 'Standard', 'fo:margin-bottom="0.2cm"', f'{MONO} fo:font-size="8.5pt" fo:color="#5d6b80"')
-  + style('Body', 'Standard', 'fo:margin-bottom="0.2cm" fo:line-height="130%"', f'{FONT} fo:font-size="10pt"')
-  + style('Tags', 'Standard', 'fo:margin-bottom="0.1cm"', f'{MONO} fo:font-size="8.5pt" fo:color="#5d6b80"')
+def paragraph_style(name, block, text, children='', master=''):
+    return (
+        f'<style:style style:name="{name}" style:family="paragraph" '
+        f'style:parent-style-name="Standard"{master}>'
+        f'<style:paragraph-properties {WIDOWS}{block}>{children}</style:paragraph-properties>'
+        f'<style:text-properties {text} fo:language="en" fo:country="GB"/>'
+        f'</style:style>'
+    )
+
+
+def character_style(name, text):
+    return (
+        f'<style:style style:name="{name}" style:family="text">'
+        f'<style:text-properties {text}/></style:style>'
+    )
+
+
+STYLES = ''.join(
+    [
+        paragraph_style(
+            'BrandMark',
+            'fo:margin-top="0pt" fo:margin-bottom="0pt" fo:line-height="12pt"',
+            f'{PJS} fo:font-size="10pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.1pt"',
+            master=' style:master-page-name="First"',
+        ),
+        paragraph_style(
+            'NameTitle',
+            'fo:margin-top="9pt" fo:margin-bottom="0pt" fo:line-height="27.3pt"',
+            f'{PJS} fo:font-size="26pt" fo:font-weight="700" fo:color="{INK}" fo:letter-spacing="-0.65pt"',
+        ),
+        paragraph_style(
+            'IdentityRole',
+            'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="14.25pt"',
+            f'{DMM} fo:font-size="9.5pt" fo:color="{BLUE}"',
+        ),
+        paragraph_style(
+            'IdentityContact',
+            f'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
+            f'fo:border-bottom="2pt solid {INK}" fo:padding-bottom="10pt"',
+            f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
+        ),
+        paragraph_style(
+            'Statement',
+            'fo:margin-top="12pt" fo:margin-bottom="0pt" fo:line-height="17.05pt"',
+            f'{PJS} fo:font-size="11pt" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'SectionHead',
+            f'{KEEP}fo:margin-top="18pt" fo:margin-bottom="0pt" fo:line-height="12pt" '
+            f'fo:border-bottom="1pt solid {RULE}" fo:padding-bottom="4pt"',
+            f'{DMM} fo:font-size="9pt" fo:font-weight="500" fo:color="{BLUE}" fo:letter-spacing="0.81pt"',
+        ),
+        paragraph_style(
+            'SkillLineCore',
+            'fo:margin-top="8pt" fo:margin-bottom="0pt" fo:line-height="15.23pt"',
+            f'{PJS} fo:font-size="10.5pt" fo:font-weight="600" fo:color="{INK}"',
+        ),
+        paragraph_style(
+            'SkillLine',
+            'fo:margin-top="5pt" fo:margin-bottom="0pt" fo:line-height="15.23pt"',
+            f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'RoleHeadRecent',
+            f'{KEEP}fo:margin-top="14pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
+            RIGHT_TAB,
+        ),
+        paragraph_style(
+            'RoleHeadMid',
+            f'{KEEP}fo:margin-top="12pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
+            RIGHT_TAB,
+        ),
+        paragraph_style(
+            'RoleHeadEarly',
+            f'{KEEP}fo:margin-top="11pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
+            RIGHT_TAB,
+        ),
+        paragraph_style(
+            'RoleTitle',
+            f'{KEEP}fo:margin-top="3pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
+            f'{PJS} fo:font-size="9.5pt" fo:font-weight="600" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'RoleBody',
+            f'{KEEP}fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'RoleTech',
+            f'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="12.33pt" '
+            f'fo:border-left="2pt solid {PIXEL_BLUE}" fo:padding-left="8pt"',
+            f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
+        ),
+        paragraph_style(
+            'EduHead',
+            f'{KEEP}fo:margin-top="11pt" fo:margin-bottom="0pt" fo:line-height="13.2pt"',
+            f'{PJS} fo:font-size="11pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.13pt"',
+            RIGHT_TAB,
+        ),
+        paragraph_style(
+            'EduDetail',
+            'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'EduModules',
+            'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15pt"',
+            f'{PJS} fo:font-size="10pt" fo:color="{MUTED}"',
+        ),
+        paragraph_style(
+            'PageHeader',
+            f'fo:margin-top="0pt" fo:margin-bottom="0pt" fo:line-height="11.9pt" '
+            f'fo:border-bottom="1pt solid {RULE}" fo:padding-bottom="5pt"',
+            f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
+            RIGHT_TAB,
+        ),
+        character_style('DateStamp', f'{DMM} fo:font-size="9pt" fo:color="{MUTED}"'),
+        character_style('MetaText', f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"'),
+        character_style('SkillLabel', f'{DMM} fo:font-size="9pt" fo:color="{BLUE}"'),
+        character_style('PageNumber', f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"'),
+        character_style('Grade', f'{DMM} fo:font-size="9.5pt" fo:color="{BLUE}"'),
+    ]
 )
 
-page = ('<style:page-layout style:name="pm1"><style:page-layout-properties '
-        'fo:page-width="21cm" fo:page-height="29.7cm" style:print-orientation="portrait" '
-        'fo:margin-top="1.6cm" fo:margin-bottom="1.6cm" fo:margin-left="1.9cm" fo:margin-right="1.9cm"/>'
-        '</style:page-layout>')
+PAGE = (
+    'fo:page-width="210mm" fo:page-height="297mm" style:print-orientation="portrait" '
+    'fo:margin-top="15mm" fo:margin-bottom="15mm" fo:margin-left="18mm" fo:margin-right="18mm"'
+)
 
-NS = ('xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" '
-      'xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" '
-      'xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" '
-      'xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" '
-      'office:version="1.2"')
+PAGE_LAYOUTS = (
+    f'<style:page-layout style:name="pmFirst"><style:page-layout-properties {PAGE}/>'
+    f'</style:page-layout>'
+    f'<style:page-layout style:name="pmRunning"><style:page-layout-properties {PAGE}/>'
+    f'<style:header-style><style:header-footer-properties fo:min-height="0mm" '
+    f'fo:margin-bottom="13pt"/></style:header-style></style:page-layout>'
+)
 
-styles_xml = (f'<?xml version="1.0" encoding="UTF-8"?><office:document-styles {NS}>'
-              f'<office:styles>{styles}</office:styles>'
-              f'<office:automatic-styles>{page}</office:automatic-styles>'
-              f'<office:master-styles><style:master-page style:name="Standard" '
-              f'style:page-layout-name="pm1"/></office:master-styles></office:document-styles>')
+HEADER = (
+    '<style:header><text:p text:style-name="PageHeader">Ben Chidgey · Curriculum vitae'
+    '<text:tab/><text:span text:style-name="PageNumber">'
+    '<text:page-number text:select-page="current"/> of <text:page-count/>'
+    '</text:span></text:p></style:header>'
+)
 
-content_xml = (f'<?xml version="1.0" encoding="UTF-8"?><office:document-content {NS}>'
-               f'<office:body><office:text>{content}</office:text></office:body>'
-               f'</office:document-content>')
+MASTER_PAGES = (
+    '<style:master-page style:name="First" style:page-layout-name="pmFirst" '
+    'style:next-style-name="Standard"/>'
+    f'<style:master-page style:name="Standard" style:page-layout-name="pmRunning">{HEADER}'
+    '</style:master-page>'
+)
 
-manifest = ('<?xml version="1.0" encoding="UTF-8"?>'
-            '<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" manifest:version="1.2">'
-            '<manifest:file-entry manifest:full-path="/" manifest:media-type="application/vnd.oasis.opendocument.text"/>'
-            '<manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml"/>'
-            '<manifest:file-entry manifest:full-path="styles.xml" manifest:media-type="text/xml"/>'
-            '</manifest:manifest>')
+FONTS = (
+    '<office:font-face-decls>'
+    '<style:font-face style:name="Plus Jakarta Sans" svg:font-family="Plus Jakarta Sans" '
+    'style:font-family-generic="swiss" style:font-pitch="variable"/>'
+    '<style:font-face style:name="DM Mono" svg:font-family="DM Mono" '
+    'style:font-family-generic="modern" style:font-pitch="fixed"/>'
+    '</office:font-face-decls>'
+)
 
-out = Path('tasks/BenChidgeyCV.odt')
-with zipfile.ZipFile(out, 'w') as z:
-    z.writestr(zipfile.ZipInfo('mimetype'), 'application/vnd.oasis.opendocument.text', zipfile.ZIP_STORED)
-    z.writestr('META-INF/manifest.xml', manifest)
-    z.writestr('styles.xml', styles_xml)
-    z.writestr('content.xml', content_xml)
+FRAME_STYLES = (
+    '<style:style style:name="Logo" style:family="graphic">'
+    '<style:graphic-properties style:vertical-pos="middle" style:vertical-rel="text" '
+    'fo:margin-right="2.1mm" style:wrap="none"/></style:style>'
+)
+
+TABLE_STYLES = (
+    f'<style:style style:name="Skills" style:family="table">'
+    f'<style:table-properties style:width="{CONTENT_WIDTH}" table:align="left"/></style:style>'
+    '<style:style style:name="SkillsLabel" style:family="table-column">'
+    '<style:table-column-properties style:column-width="23mm"/></style:style>'
+    '<style:style style:name="SkillsList" style:family="table-column">'
+    '<style:table-column-properties style:column-width="151mm"/></style:style>'
+)
+
+NS = (
+    'xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" '
+    'xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" '
+    'xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" '
+    'xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" '
+    'xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" '
+    'xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" '
+    'xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" '
+    'xmlns:xlink="http://www.w3.org/1999/xlink" '
+    'office:version="1.2"'
+)
+
+MANIFEST = (
+    '<?xml version="1.0" encoding="UTF-8"?>'
+    '<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" '
+    'manifest:version="1.2">'
+    '<manifest:file-entry manifest:full-path="/" '
+    'manifest:media-type="application/vnd.oasis.opendocument.text"/>'
+    '<manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml"/>'
+    '<manifest:file-entry manifest:full-path="styles.xml" manifest:media-type="text/xml"/>'
+    '<manifest:file-entry manifest:full-path="Pictures/logo.png" manifest:media-type="image/png"/>'
+    '</manifest:manifest>'
+)
+
+parsed = parse(
+    [
+        re.sub(r'\s*\n\s*', ' ', block.strip())
+        for block in re.split(r'\n\s*\n', SOURCE.read_text().split('\n---\n', 1)[1])
+        if block.strip()
+    ]
+)
+
+styles_xml = (
+    f'<?xml version="1.0" encoding="UTF-8"?><office:document-styles {NS}>{FONTS}'
+    f'<office:styles>{STYLES}</office:styles>'
+    f'<office:automatic-styles>{PAGE_LAYOUTS}</office:automatic-styles>'
+    f'<office:master-styles>{MASTER_PAGES}</office:master-styles></office:document-styles>'
+)
+
+content_xml = (
+    f'<?xml version="1.0" encoding="UTF-8"?><office:document-content {NS}>{FONTS}'
+    f'<office:automatic-styles>{FRAME_STYLES}{TABLE_STYLES}</office:automatic-styles>'
+    f'<office:body><office:text>{render(parsed)}</office:text></office:body>'
+    f'</office:document-content>'
+)
+
+with zipfile.ZipFile(OUTPUT, 'w') as archive:
+    archive.writestr(
+        zipfile.ZipInfo('mimetype'),
+        'application/vnd.oasis.opendocument.text',
+        zipfile.ZIP_STORED,
+    )
+    archive.writestr('META-INF/manifest.xml', MANIFEST)
+    archive.writestr('styles.xml', styles_xml)
+    archive.writestr('content.xml', content_xml)
+    archive.writestr('Pictures/logo.png', logo_png())
 
 from collections import Counter
-print('  paragraphs: ' + str(len(paras)))
-print('  ' + ', '.join(f'{k}={v}' for k, v in Counter(s for s, _ in paras).items()))
-print('  written: ' + str(out) + ' (' + str(out.stat().st_size) + ' bytes)')
+
+counts = Counter(style for style, _ in parsed)
+print(f'  blocks: {len(parsed)}')
+print('  ' + ', '.join(f'{name}={count}' for name, count in sorted(counts.items())))
+print(f'  written: {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
