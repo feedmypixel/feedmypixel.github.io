@@ -22,11 +22,11 @@ export const roles: Role[] = [
     summary:
       '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Deveoper Experience, testing, accessibility and delivery best practice across engineering and product.</p>',
     tags: [
-      'SvelteKit',
       'TypeScript',
+      'JavaScript',
       'CSS',
       'HTML',
-      'JavaScript',
+      'SvelteKit',
       'Fastify',
       'Capacitor',
       'iOS',
@@ -49,14 +49,14 @@ export const roles: Role[] = [
     summary:
       "<p>Designed and built the Core Delivery Platform portal and APIs from a blank page, providing microservice templates, testing tools, package creation and prototype kits alongside the infrastructure, observability and monitoring behind them, all on demand.</p><p>The portal gives teams a UI to manage, release and run their services and tooling, sitting at the core of DEFRA's software offering and upholding parity and high standards across the estate.</p><p>It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.</p>",
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Hapi',
       'MongoDB',
       'GOV.UK Frontend',
       'Nunjucks',
-      'CSS',
-      'HTML',
-      'JavaScript',
       'AWS',
       'Docker',
       'Vitest',
@@ -79,11 +79,11 @@ export const roles: Role[] = [
     summary:
       '<p>Built the Freight Portal frontend microservice for Global Transportation Services, where users find and interact with every Wayfair facility service.</p>',
     tags: [
-      'React',
       'TypeScript',
+      'JavaScript',
       'CSS',
       'HTML',
-      'JavaScript',
+      'React',
       'Kubernetes',
       'Jest',
       'Cypress',
@@ -102,11 +102,11 @@ export const roles: Role[] = [
     summary:
       '<p>Tech lead on the Global Customs Platform team, creating the Customs Portal frontend microservice.</p>',
     tags: [
-      'React',
       'TypeScript',
+      'JavaScript',
       'CSS',
       'HTML',
-      'JavaScript',
+      'React',
       'Kubernetes',
       'Jest',
       'Cypress',
@@ -125,13 +125,13 @@ export const roles: Role[] = [
     summary:
       '<p>Built a custom developer Backstage platform, Disco. A Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises with platform teams.</p>',
     tags: [
+      'TypeScript',
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'React',
       'Next.js',
-      'TypeScript',
-      'CSS',
-      'HTML',
-      'JavaScript',
       'GCP',
       'Lambda',
       'Terraform',
@@ -152,6 +152,9 @@ export const roles: Role[] = [
     summary:
       '<p>Took on a React codebase grown over several years and stalled midway through the move from class to function components. Brought in functional patterns, testing and quality. Improved both the user experience and the developer experience while working alongside the junior developers on the team.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'React',
       'GraphQL',
       'Node',
@@ -172,7 +175,7 @@ export const roles: Role[] = [
     sector: 'Mobile',
     summary:
       '<p>Brought in as the specialist to get a late project over the line: the Leaflet mapping inside the Dubai Expo 2020 app.</p>',
-    tags: ['Node', 'JavaScript', 'Leaflet', 'Accessibility', 'UX']
+    tags: ['JavaScript', 'CSS', 'HTML', 'Node', 'Leaflet', 'Accessibility', 'UX']
   },
   {
     company: 'Ministry of Justice',
@@ -184,6 +187,9 @@ export const roles: Role[] = [
     summary:
       '<p>Frontend for booking secure moves on the Prisoner Escort and Custody Service, a paper to digital transformation delivered with designers and user researchers. Built document upload as a whole vertical: the multi-file upload component, its controller and API model, size limits and client side error handling, the translations and both unit and end to end coverage. Handed it over on leaving and it stayed in the service for years afterwards.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Express',
       'GOV.UK',
@@ -206,6 +212,9 @@ export const roles: Role[] = [
     summary:
       '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various departments across the business.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Express',
       'React',
@@ -228,6 +237,9 @@ export const roles: Role[] = [
     summary:
       '<p>Inherited a legacy appointment booking system and its public journeys, established how it actually behaved, then proposed a roadmap with the design team and carried it through senior stakeholders. The team rebuilt it in-house as Node microservices.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Express',
       'Microservices',
@@ -249,6 +261,9 @@ export const roles: Role[] = [
     summary:
       '<p>Software and infrastructure for the Data Hub team, enabling civil servants to manage the business relationships behind UK trade and investment.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Express',
       'React',
@@ -274,6 +289,9 @@ export const roles: Role[] = [
     summary:
       '<p>Created the HMRC design language in a small team, with the documentation, process and principles behind it, so designers and developers could build frontend services for the Tax Platform with parity across HMRC. Worked closely with GDS and partnered on the first releases of the GOV.UK Frontend.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Design system',
       'Pattern library',
       'Frontend operations',
@@ -298,6 +316,9 @@ export const roles: Role[] = [
     summary:
       '<p>Tackled frontend architecture across the Tax Platform with Platform Operations. Refactored shared assets, exposed components through a component library and mentored frontend developers and designers on how to approach common problems.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'Frontend architecture',
       'Component library',
       'React',
@@ -320,6 +341,8 @@ export const roles: Role[] = [
       '<p>Built user interfaces for HMRC digital services. Implemented Government Gateway two factor authentication and registration, generic client and server form validation for Identity Verification and the API documentation site.</p>',
     tags: [
       'JavaScript',
+      'CSS',
+      'HTML',
       'Scala',
       'Node',
       'Sass',
@@ -340,6 +363,8 @@ export const roles: Role[] = [
       '<p>Universal Credit. Analysed a mature codebase and presented frontend improvements, tackled technical debt and built rapid prototyping tools and workflows for the UX and design team.</p>',
     tags: [
       'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Sass',
       'FlightJS',
@@ -362,6 +387,8 @@ export const roles: Role[] = [
       '<p>Membership team, building the beta responsive site and its tools. Lean agile with Scala and micro JavaScript libraries, pair programming, code review and continuous integration.</p>',
     tags: [
       'JavaScript',
+      'CSS',
+      'HTML',
       'Node',
       'Scala',
       'Sass',
@@ -384,7 +411,7 @@ export const roles: Role[] = [
     sector: 'Products',
     summary:
       '<p>Research and development between contracts, getting to know AngularJS as well as other side projects.</p>',
-    tags: ['Angular', 'JavaScript']
+    tags: ['JavaScript', 'CSS', 'HTML', 'Angular']
   },
   {
     company: 'Deutsche Telekom UK',
@@ -397,8 +424,8 @@ export const roles: Role[] = [
       '<p>Responsive work across several products: a client dashboard, a globally distributed header injected into many Telekom pages, an SMS to web prototype that became the company Node skeleton and a rebuilt advertising asset platform.</p>',
     tags: [
       'JavaScript',
-      'HTML5',
       'CSS3',
+      'HTML5',
       'Responsive',
       'Node',
       'Express',
@@ -417,9 +444,11 @@ export const roles: Role[] = [
     summary:
       '<p>Future Media Core Services on iBroadcast2, a next generation media and metadata publishing platform behind iPlayer, scheduling and BBC websites. Fortnight sprints with PHP, jQuery and Cucumber.</p>',
     tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
       'PHP',
       'Zend',
-      'JavaScript',
       'jQuery',
       'LessCSS',
       'TDD',
@@ -437,7 +466,17 @@ export const roles: Role[] = [
     sector: 'Research',
     summary:
       '<p>Supported the applications, websites and in-house tools behind customer insight analytics for clients including Sky, BT, Expedia, Virgin and the BBC.</p>',
-    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'MooTools', 'PostgreSQL', 'Support']
+    tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
+      'PHP',
+      'Zend',
+      'jQuery',
+      'MooTools',
+      'PostgreSQL',
+      'Support'
+    ]
   },
   {
     company: 'Freelance',
@@ -448,7 +487,7 @@ export const roles: Role[] = [
     sector: 'Arts',
     summary:
       '<p>Development across a large dynamic website driven by a hand-built content management system, culminating in the Lazy Gramophone platform.</p>',
-    tags: ['PHP', 'JavaScript', 'MySQL', 'SEO', 'UX', 'CMS']
+    tags: ['JavaScript', 'CSS', 'HTML', 'PHP', 'MySQL', 'SEO', 'UX', 'CMS']
   },
   {
     company: 'Lazy Gramophone',
@@ -459,7 +498,7 @@ export const roles: Role[] = [
     sector: 'Arts',
     summary:
       '<p>A community publishing platform and bespoke CMS for the arts collective and publisher, built from the ground up in PHP and MySQL, with editing tools for artists to manage their own work, an invite and management facility and comment moderation.</p>',
-    tags: ['PHP', 'MySQL', 'JavaScript', 'Photoshop', 'UX', 'SEO', 'CMS']
+    tags: ['JavaScript', 'CSS', 'HTML', 'PHP', 'MySQL', 'Photoshop', 'UX', 'SEO', 'CMS']
   },
   {
     company: 'Design Haus',
@@ -469,7 +508,7 @@ export const roles: Role[] = [
     type: 'Freelance',
     sector: 'Agency',
     summary: '<p>An internal intranet for Diageo, built in jQuery and Mustache.</p>',
-    tags: ['jQuery', 'Mustache', 'CSS', 'Photoshop', 'UX']
+    tags: ['JavaScript', 'CSS', 'HTML', 'jQuery', 'Mustache', 'Photoshop', 'UX']
   },
   {
     company: 'Trusted Digital',
@@ -502,7 +541,18 @@ export const roles: Role[] = [
     sector: 'Games',
     summary:
       '<p>Web and mobile media, J2ME game graphics and 3D modelling, including the 3D work for the Concorde2 website and the Battleships mobile game.</p>',
-    tags: ['Flash', 'Photoshop', '3ds Max', 'Premiere', 'J2ME', 'Design', '3D']
+    tags: [
+      'JavaScript',
+      'CSS',
+      'HTML',
+      'Flash',
+      'Photoshop',
+      '3ds Max',
+      'Premiere',
+      'J2ME',
+      'Design',
+      '3D'
+    ]
   },
   {
     company: 'Babel Media',
