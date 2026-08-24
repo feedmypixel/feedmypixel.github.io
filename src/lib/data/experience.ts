@@ -20,10 +20,13 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      '<p>Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and Android apps from that same codebase with Capacitor. Modernising the architecture and embedding testing, accessibility and delivery best practice across engineering and product.</p>',
+      '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Deveoper Experience, testing, accessibility and delivery best practice across engineering and product.</p>',
     tags: [
       'SvelteKit',
       'TypeScript',
+      'CSS',
+      'HTML',
+      'JavaScript',
       'Fastify',
       'Capacitor',
       'iOS',
@@ -50,6 +53,10 @@ export const roles: Role[] = [
       'Hapi',
       'MongoDB',
       'GOV.UK Frontend',
+      'Nunjucks',
+      'CSS',
+      'HTML',
+      'JavaScript',
       'AWS',
       'Docker',
       'Vitest',
@@ -59,8 +66,7 @@ export const roles: Role[] = [
       'Design system',
       'Templates',
       'Postgres',
-      'GOV.UK',
-      'JavaScript'
+      'GOV.UK'
     ]
   },
   {
@@ -71,10 +77,13 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Built the Freight Portal frontend micro-service for Global Transportation Services, where users find and interact with every Wayfair facility service.</p>',
+      '<p>Built the Freight Portal frontend microservice for Global Transportation Services, where users find and interact with every Wayfair facility service.</p>',
     tags: [
       'React',
       'TypeScript',
+      'CSS',
+      'HTML',
+      'JavaScript',
       'Kubernetes',
       'Jest',
       'Cypress',
@@ -91,10 +100,13 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Tech lead on the Global Customs Platform team, creating the Customs Portal frontend micro-service.</p>',
+      '<p>Tech lead on the Global Customs Platform team, creating the Customs Portal frontend microservice.</p>',
     tags: [
       'React',
       'TypeScript',
+      'CSS',
+      'HTML',
+      'JavaScript',
       'Kubernetes',
       'Jest',
       'Cypress',
@@ -111,12 +123,15 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Built a Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises with platform teams.</p>',
+      '<p>Built a custom developer Backstage platform, Disco. A Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises with platform teams.</p>',
     tags: [
       'Node',
       'React',
       'Next.js',
       'TypeScript',
+      'CSS',
+      'HTML',
+      'JavaScript',
       'GCP',
       'Lambda',
       'Terraform',
