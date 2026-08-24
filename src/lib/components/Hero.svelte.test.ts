@@ -19,9 +19,7 @@ test('offers the CV as a real download, saved under its own name', () => {
 
 test('offers the email address', async () => {
   render(Hero)
-  await expect
-    .element(page.getByRole('link', { name: 'hello@feedmypixel.com' }))
-    .toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: 'ben@feedmypixel.com' })).toBeInTheDocument()
 })
 
 test('names the clients worked for', async () => {

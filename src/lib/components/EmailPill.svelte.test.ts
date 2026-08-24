@@ -13,10 +13,10 @@ afterEach(() => {
 
 test('links the address for mail clients', async () => {
   render(EmailPill)
-  const link = page.getByRole('link', { name: 'hello@feedmypixel.com' })
+  const link = page.getByRole('link', { name: 'ben@feedmypixel.com' })
   await expect.element(link).toBeInTheDocument()
   expect(document.querySelector('a.address')?.getAttribute('href')).toBe(
-    'mailto:hello@feedmypixel.com'
+    'mailto:ben@feedmypixel.com'
   )
 })
 
@@ -27,7 +27,7 @@ test('copies the address and confirms it', async () => {
   render(EmailPill)
   await page.getByRole('button', { name: 'Copy email address' }).click()
 
-  expect(writeText).toHaveBeenCalledWith('hello@feedmypixel.com')
+  expect(writeText).toHaveBeenCalledWith('ben@feedmypixel.com')
   await vi.waitFor(() => {
     expect(toasts.items.at(-1)).toMatchObject({
       kind: 'positive',

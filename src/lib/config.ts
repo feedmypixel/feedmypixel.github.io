@@ -1,5 +1,5 @@
 export const siteUrl = 'https://feedmypixel.com'
-export const emailAddress = 'hello@feedmypixel.com'
+export const emailAddress = 'ben@feedmypixel.com'
 
 export const linkedInUrl = 'https://www.linkedin.com/in/benchidgey'
 export const gitHubUrl = 'https://github.com/feedmypixel'
