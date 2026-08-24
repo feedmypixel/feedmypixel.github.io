@@ -20,7 +20,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      'Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and Android apps from that same codebase with Capacitor. Modernising architecture and embedding quality across engineering, delivery and product.',
+      'Leading a greenfield rebuild of the core trading platform on SvelteKit, and building the iOS and Android apps from that same codebase with Capacitor, both in progress. Modernising the architecture and embedding testing, accessibility and delivery practice across engineering and product.',
     tags: [
       'SvelteKit',
       'TypeScript',
@@ -29,7 +29,10 @@ export const roles: Role[] = [
       'iOS',
       'Android',
       'AWS',
+      'Vitest',
+      'Playwright',
       'Accessibility',
+      'Observability',
       'CI/CD'
     ]
   },
@@ -40,8 +43,24 @@ export const roles: Role[] = [
     location: 'Remote',
     type: 'Contract',
     sector: 'Government',
-    summary: 'Building the Core Delivery Platform (Portal) with the DEFRA platform team.',
-    tags: ['Node', 'Hapi', 'GOV.UK', 'JavaScript', 'AWS', 'GitHub Actions']
+    summary:
+      'Designed and built the Core Delivery Platform portal and its APIs from a blank page, with the service templates behind them: a GOV.UK compliant Node frontend, Hapi API or .NET service, plus the infrastructure, observability and tooling around them, created on demand. It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.',
+    tags: [
+      'Node',
+      'Hapi',
+      'MongoDB',
+      'GOV.UK Frontend',
+      'AWS',
+      'Docker',
+      'Vitest',
+      'WDIO',
+      'GitHub Actions',
+      'Accessibility',
+      'Design system',
+      'Templates',
+      'GOV.UK',
+      'JavaScript'
+    ]
   },
   {
     company: 'Wayfair',
@@ -51,14 +70,15 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      'Built the Freight Portal frontend micro-service for the Global Transportation Services team, the place users find information and interact with every Wayfair facility service.',
+      'Built the Freight Portal frontend micro-service for Global Transportation Services, where users find and interact with every Wayfair facility service.',
     tags: [
       'React',
       'TypeScript',
-      'Cypress',
       'Kubernetes',
-      'Accessibility',
+      'Jest',
+      'Cypress',
       'Micro frontend',
+      'Accessibility',
       'DataDog'
     ]
   },
@@ -71,7 +91,16 @@ export const roles: Role[] = [
     sector: 'Retail',
     summary:
       'Tech lead on the Global Customs Platform team, creating the Customs Portal frontend micro-service.',
-    tags: ['React', 'TypeScript', 'Jest', 'Kubernetes', 'Accessibility', 'DataDog', 'BuildKite']
+    tags: [
+      'React',
+      'TypeScript',
+      'Kubernetes',
+      'Jest',
+      'Cypress',
+      'Accessibility',
+      'DataDog',
+      'BuildKite'
+    ]
   },
   {
     company: 'Pret A Manger',
@@ -81,8 +110,21 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      'Built a Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises.',
-    tags: ['Node', 'Next.js', 'TypeScript', 'GCP', 'Terraform', 'Backstage', 'Sentry', 'Postgres']
+      'Built a Backstage plugin serving SRE and Accelerate metrics from a TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and Express template repositories and ran chaos experiments and incident exercises with platform teams.',
+    tags: [
+      'Node',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'GCP',
+      'Lambda',
+      'Terraform',
+      'Backstage',
+      'Postgres',
+      'Sentry',
+      'Jest',
+      'Cypress'
+    ]
   },
   {
     company: 'LifeBox Health',
@@ -91,8 +133,19 @@ export const roles: Role[] = [
     location: 'Brighton / Remote',
     type: 'Contract',
     sector: 'Health',
-    summary: 'Scaling the application for new business.',
-    tags: ['React', 'GraphQL', 'Node', 'AWS', 'Accessibility']
+    summary:
+      'Took on a React codebase grown over several years and stalled midway through the move from class to function components. Brought in functional patterns, testing and quality. Improved both the user experience and the developer experience while working alongside the junior developers on the team.',
+    tags: [
+      'React',
+      'GraphQL',
+      'Node',
+      'AWS',
+      'Lambda',
+      'Jest',
+      'CodeceptJS',
+      'Accessibility',
+      'Mentoring'
+    ]
   },
   {
     company: 'Rewind',
@@ -101,7 +154,8 @@ export const roles: Role[] = [
     location: 'St Albans',
     type: 'Contract',
     sector: 'Mobile',
-    summary: 'Leaflet map work for the Dubai 2020 mobile app.',
+    summary:
+      'Brought in as the specialist to get a late project over the line: the Leaflet mapping inside the Dubai Expo 2020 app.',
     tags: ['Node', 'JavaScript', 'Leaflet', 'Accessibility', 'UX']
   },
   {
@@ -111,8 +165,20 @@ export const roles: Role[] = [
     location: 'London',
     type: 'Contract',
     sector: 'Government',
-    summary: 'Prisoner Escort & Custody Service (PECS).',
-    tags: ['Node', 'GOV.UK', 'Progressive enhancement', 'Accessibility', 'Kubernetes']
+    summary:
+      'Frontend for booking secure moves on the Prisoner Escort and Custody Service, a paper to digital transformation delivered with designers and user researchers. Built document upload as a whole vertical: the multi-file upload component, its controller and API model, size limits and client side error handling, the translations and both unit and end to end coverage. Handed it over on leaving and it stayed in the service for years afterwards.',
+    tags: [
+      'Node',
+      'Express',
+      'GOV.UK',
+      'Nunjucks',
+      'Pattern library',
+      'Progressive enhancement',
+      'Kubernetes',
+      'Jest',
+      'Testcafe',
+      'Accessibility'
+    ]
   },
   {
     company: 'Marks & Spencer',
@@ -121,8 +187,20 @@ export const roles: Role[] = [
     location: 'London',
     type: 'Contract',
     sector: 'Retail',
-    summary: 'Framework team building tooling for the dot-com online business.',
-    tags: ['Node', 'React', 'Architecture', 'Accessibility', 'Pattern library']
+    summary:
+      'Framework team, building the shared tooling and component library used by teams across the dot-com business while it moved off a bespoke in-house JavaScript framework towards React.',
+    tags: [
+      'Node',
+      'Express',
+      'React',
+      'Architecture',
+      'Pattern library',
+      'Concourse',
+      'Jest',
+      'Progressive enhancement',
+      'Accessibility',
+      'Mentoring'
+    ]
   },
   {
     company: 'HM Passport Office',
@@ -132,15 +210,17 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Inherited a legacy appointment booking system and its public journeys, worked out how it behaved and proposed a new roadmap with the design team while managing senior stakeholders. The team rebuilt it in-house as Node microservices.',
+      'Inherited a legacy appointment booking system and its public journeys, established how it actually behaved, then proposed a roadmap with the design team and carried it through senior stakeholders. The team rebuilt it in-house as Node microservices.',
     tags: [
       'Node',
+      'Express',
       'Microservices',
       'GOV.UK Pay',
+      'Home Office Forms',
       'Redis',
-      'Accessibility',
+      'Jest',
       'Progressive enhancement',
-      'Express'
+      'Accessibility'
     ]
   },
   {
@@ -152,7 +232,21 @@ export const roles: Role[] = [
     sector: 'Government',
     summary:
       'Software and infrastructure for the Data Hub team, enabling civil servants to manage the business relationships behind UK trade and investment.',
-    tags: ['Node', 'React', 'Vue', 'Docker', 'Redis', 'Accessibility', 'Pattern library', 'SSO']
+    tags: [
+      'Node',
+      'Express',
+      'React',
+      'Vue',
+      'Nunjucks',
+      'Docker',
+      'Redis',
+      'SSO',
+      'CircleCI',
+      'Nightwatch',
+      'Pattern library',
+      'Accessibility',
+      'Architecture'
+    ]
   },
   {
     company: 'HM Revenue & Customs',
@@ -166,9 +260,12 @@ export const roles: Role[] = [
     tags: [
       'Design system',
       'Pattern library',
+      'Frontend operations',
       'Node',
       'Scala',
       'Sass',
+      'AWS',
+      'Responsive',
       'Accessibility',
       'Documentation',
       'Mentoring'
@@ -187,8 +284,10 @@ export const roles: Role[] = [
       'Frontend architecture',
       'Component library',
       'React',
+      'Node',
       'Scala',
       'Sass',
+      'Responsive',
       'Accessibility',
       'Mentoring'
     ]
@@ -201,8 +300,17 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Built user interfaces for HMRC digital services. Implemented two factor authentication and registration with the Government Gateway team, generic client and server form validation for Identity Verification and the API documentation site.',
-    tags: ['JavaScript', 'Scala', 'Node', 'Sass', 'Accessibility', 'Security', 'Forms']
+      'Built user interfaces for HMRC digital services. Implemented Government Gateway two factor authentication and registration, generic client and server form validation for Identity Verification and the API documentation site.',
+    tags: [
+      'JavaScript',
+      'Scala',
+      'Node',
+      'Sass',
+      'Responsive',
+      'Security',
+      'Forms',
+      'Accessibility'
+    ]
   },
   {
     company: 'Department for Work & Pensions',
@@ -212,8 +320,19 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Analysed a mature Universal Credit codebase and presented frontend improvements, tackling technical debt and building rapid prototyping tools and workflows for the UX and design team.',
-    tags: ['JavaScript', 'Sass', 'FlightJS', 'Accessibility', 'Prototyping', 'Technical debt']
+      'Universal Credit. Analysed a mature codebase and presented frontend improvements, tackled technical debt and built rapid prototyping tools and workflows for the UX and design team.',
+    tags: [
+      'JavaScript',
+      'Node',
+      'Sass',
+      'FlightJS',
+      'Jasmine',
+      'Grunt',
+      'Responsive',
+      'Prototyping',
+      'Accessibility',
+      'Technical debt'
+    ]
   },
   {
     company: 'Guardian News & Media',
@@ -223,16 +342,20 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Media',
     summary:
-      'Client side engineer on the Membership team building the beta responsive site and its tools. Lean agile with Scala and micro JavaScript libraries, pair programming, code review and continuous integration.',
+      'Membership team, building the beta responsive site and its tools. Lean agile with Scala and micro JavaScript libraries, pair programming, code review and continuous integration.',
     tags: [
       'JavaScript',
+      'Node',
       'Scala',
       'Sass',
       'BEM',
       'Responsive',
+      'Jasmine',
+      'Grunt',
+      'CI',
       'Pair programming',
-      'Mentoring',
-      'CI'
+      'Code review',
+      'Mentoring'
     ]
   },
   {
@@ -242,7 +365,7 @@ export const roles: Role[] = [
     location: 'St Albans',
     type: 'Freelance',
     sector: 'Products',
-    summary: 'R&D time between contracts, getting to know AngularJS.',
+    summary: 'Research and development between contracts, getting to know AngularJS.',
     tags: ['Angular', 'JavaScript']
   },
   {
@@ -254,7 +377,17 @@ export const roles: Role[] = [
     sector: 'Telecoms',
     summary:
       'Responsive work across several products: a client dashboard, a globally distributed header injected into many Telekom pages, an SMS to web prototype that became the company Node skeleton and a rebuilt advertising asset platform.',
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive', 'Node', 'Mobile', 'Express', 'Patterns']
+    tags: [
+      'JavaScript',
+      'HTML5',
+      'CSS3',
+      'Responsive',
+      'Node',
+      'Express',
+      'Jessie',
+      'Mobile',
+      'Patterns'
+    ]
   },
   {
     company: 'BBC',
@@ -265,7 +398,17 @@ export const roles: Role[] = [
     sector: 'Media',
     summary:
       'Future Media Core Services on iBroadcast2, a next generation media and metadata publishing platform behind iPlayer, scheduling and BBC websites. Fortnight sprints with PHP, jQuery and Cucumber.',
-    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'TDD', 'BDD', 'REST']
+    tags: [
+      'PHP',
+      'Zend',
+      'JavaScript',
+      'jQuery',
+      'LessCSS',
+      'TDD',
+      'BDD',
+      'REST',
+      'Pair programming'
+    ]
   },
   {
     company: 'eDigitalResearch',
@@ -276,7 +419,7 @@ export const roles: Role[] = [
     sector: 'Research',
     summary:
       'Supported the applications, websites and in-house tools behind customer insight analytics for clients including Sky, BT, Expedia, Virgin and the BBC.',
-    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'PostgreSQL', 'Support']
+    tags: ['PHP', 'Zend', 'JavaScript', 'jQuery', 'MooTools', 'PostgreSQL', 'Support']
   },
   {
     company: 'Freelance',
@@ -286,7 +429,7 @@ export const roles: Role[] = [
     type: 'Freelance',
     sector: 'Arts',
     summary:
-      'Extended my development work across a large dynamic website driven by a hand-built content management system, culminating in the Lazy Gramophone platform.',
+      'Development across a large dynamic website driven by a hand-built content management system, culminating in the Lazy Gramophone platform.',
     tags: ['PHP', 'JavaScript', 'MySQL', 'SEO', 'UX', 'CMS']
   },
   {
@@ -297,8 +440,8 @@ export const roles: Role[] = [
     type: 'Freelance',
     sector: 'Arts',
     summary:
-      'Community website and bespoke CMS for the arts collective and publisher, with editing tools for artists to upload their work, an invite and management facility and comment moderation. Built from the ground up in PHP and MySQL.',
-    tags: ['PHP', 'MySQL', 'JavaScript', 'UX', 'SEO', 'CMS']
+      'A community publishing platform and bespoke CMS for the arts collective and publisher, built from the ground up in PHP and MySQL, with editing tools for artists to manage their own work, an invite and management facility and comment moderation.',
+    tags: ['PHP', 'MySQL', 'JavaScript', 'Photoshop', 'UX', 'SEO', 'CMS']
   },
   {
     company: 'Design Haus',
@@ -307,8 +450,8 @@ export const roles: Role[] = [
     location: 'Southampton',
     type: 'Freelance',
     sector: 'Agency',
-    summary: 'Short overflow stint on an internal system for Diageo.',
-    tags: ['jQuery', 'CSS', 'UX']
+    summary: 'An internal intranet for Diageo, built in jQuery and Mustache.',
+    tags: ['jQuery', 'Mustache', 'CSS', 'Photoshop', 'UX']
   },
   {
     company: 'Trusted Digital',
@@ -317,8 +460,9 @@ export const roles: Role[] = [
     location: 'Brighton',
     type: 'Permanent',
     sector: 'Mobile',
-    summary: 'Interactive SMS marketing services for mobile handsets and the mobile web.',
-    tags: ['XHTML-MP', 'CSS', 'SEO']
+    summary:
+      'Interactive SMS marketing services for mobile handsets and the mobile web, built in Mobile Profile HTML. Making the case for purpose-built mobile experiences years before mobile first became normal practice.',
+    tags: ['XHTML-MP', 'CSS', 'Photoshop', 'SEO']
   },
   {
     company: 'Hotxt',
@@ -338,8 +482,9 @@ export const roles: Role[] = [
     location: 'Brighton',
     type: 'Freelance',
     sector: 'Games',
-    summary: 'Web and mobile media, J2ME game graphics and 3D modelling.',
-    tags: ['Flash', 'Photoshop', '3D', 'Design']
+    summary:
+      'Web and mobile media, J2ME game graphics and 3D modelling, including the 3D work for the Concorde2 website and the Battleships mobile game.',
+    tags: ['Flash', 'Photoshop', '3ds Max', 'Premiere', 'J2ME', 'Design', '3D']
   },
   {
     company: 'Babel Media',
@@ -350,6 +495,14 @@ export const roles: Role[] = [
     sector: 'Games',
     summary:
       'Console TRC certification for PS2 and GameCube, then started the mobile J2ME QA department and grew it from three people to over 150, adapting testing procedures to new workloads and operator requirements.',
-    tags: ['Game QA', 'Mobile QA', 'Certification', 'Process']
+    tags: [
+      'Game QA',
+      'Mobile QA',
+      'Sony TRC',
+      'Microsoft certification',
+      'Test-track Pro',
+      'Process',
+      'Certification'
+    ]
   }
 ]

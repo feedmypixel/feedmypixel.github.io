@@ -79,7 +79,7 @@ def paragraph(style, inner):
     return f'<text:p text:style-name="{style}">{inner}</text:p>'
 
 
-def run(style, text):
+def run_span(style, text):
     return f'<text:span text:style-name="{style}">{escape(text)}</text:span>'
 
 
@@ -92,22 +92,26 @@ def role_head_style(dates):
 
 
 def dated_head(style, left, dates):
-    return paragraph(style, escape(left) + '<text:tab/>' + run('DateStamp', dates))
+    return paragraph(style, escape(left) + '<text:tab/>' + run_span('DateStamp', dates))
 
 
 def skill_row(style, label, items):
     cells = (
-        f'<table:table-cell office:value-type="string">{paragraph(style, run("SkillLabel", label))}</table:table-cell>'
+        f'<table:table-cell office:value-type="string">{paragraph(style, run_span("SkillLabel", label))}</table:table-cell>'
         f'<table:table-cell office:value-type="string">{paragraph(style, escape(items))}</table:table-cell>'
     )
     return f'<table:table-row>{cells}</table:table-row>'
 
 
 def parse(blocks):
-    """Turn the draft's blocks into (kind, payload) pairs, kind being the style name."""
+    """Turn the draft's blocks into (kind, payload) pairs, kind being the style name.
+
+    Experience collapses to a single ('Roles', [...]) pair so the run grouping can see every
+    role at once.
+    """
     out = []
     section = None
-    pending_role = None
+    roles = []
     identity = 0
 
     for block in blocks:
@@ -126,14 +130,14 @@ def parse(blocks):
             continue
 
         if block.startswith('### '):
-            pending_role = block[4:].split(', ', 1)
+            company, title = block[4:].split(', ', 1)
+            if not roles:
+                out.append(('Roles', roles))
+            roles.append({'company': company, 'title': title, 'blocks': []})
             continue
 
-        if pending_role and DATED.match(block):
-            dates, meta = block.split(' · ', 1)
-            out.append((role_head_style(dates), (pending_role[0], dates)))
-            out.append(('RoleTitle', (pending_role[1], meta)))
-            pending_role = None
+        if roles and DATED.match(block) and 'dates' not in roles[-1]:
+            roles[-1]['dates'], roles[-1]['meta'] = block.split(' · ', 1)
             continue
 
         if section == 'Skills':
@@ -152,11 +156,52 @@ def parse(blocks):
             continue
 
         if section == 'Experience':
-            out.append(('RoleBody' if block.endswith('.') else 'RoleTech', block))
+            roles[-1]['blocks'].append(('RoleBody' if block.endswith('.') else 'RoleTech', block))
             continue
 
         out.append(('Statement' if section is None else 'RoleBody', block))
 
+    return out
+
+
+def consecutive_runs(roles):
+    """Consecutive entries at one employer, matching src/lib/role-runs.ts.
+
+    Keying on the company name alone would merge the two Freelance stints that sit years and
+    other jobs apart.
+    """
+    runs = []
+    for role in roles:
+        if runs and runs[-1][0]['company'] == role['company']:
+            runs[-1].append(role)
+            continue
+        runs.append([role])
+    return runs
+
+
+def span_of(run):
+    start = run[-1]['dates'].split(' to ')[0]
+    end = run[0]['dates'].split(' to ')[-1]
+    return start if start == end else f'{start} to {end}'
+
+
+def render_roles(roles):
+    """A run prints its employer and span once; each role carries its own dates in the title."""
+    out = []
+    for run in consecutive_runs(roles):
+        span = span_of(run)
+        out.append(dated_head(role_head_style(span), run[0]['company'], span))
+        for index, role in enumerate(run):
+            meta = role['meta'] if len(run) == 1 else f"{role['dates']} · {role['meta']}"
+            title_style = 'RoleTitle' if index == 0 else 'RoleTitleChapter'
+            out.append(
+                paragraph(title_style, escape(role['title']) + run_span('MetaText', f' · {meta}'))
+            )
+            last = index == len(run) - 1
+            for style, text in role['blocks']:
+                if style == 'RoleTech' and not last:
+                    style = 'RoleTechChapter'
+                out.append(paragraph(style, escape(text)))
     return out
 
 
@@ -186,11 +231,10 @@ def render(parsed):
             )
             skills = []
 
-        if style in ('RoleHeadRecent', 'RoleHeadMid', 'RoleHeadEarly', 'EduHead'):
+        if style == 'Roles':
+            body.extend(render_roles(payload))
+        elif style == 'EduHead':
             body.append(dated_head(style, *payload))
-        elif style == 'RoleTitle':
-            title, meta = payload
-            body.append(paragraph(style, escape(title) + run('MetaText', f' · {meta}')))
         elif style == 'EduDetail' and 'GCSE' in payload:
             marked = GRADE.sub(r'<text:span text:style-name="Grade">\1</text:span>', escape(payload))
             body.append(paragraph(style, marked))
@@ -209,6 +253,10 @@ MUTED = '#4a586b'
 RULE = '#c2ccda'
 PIXEL_BLUE = '#3294fc'
 KEEP = 'fo:keep-with-next="always" '
+TECH_BLOCK = (
+    'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="12.33pt" '
+    'fo:border-left="2pt solid #3294fc" fo:padding-left="8pt"'
+)
 WIDOWS = 'fo:widows="2" fo:orphans="2" '
 RIGHT_TAB = (
     '<style:tab-stops><style:tab-stop style:position="'
@@ -303,14 +351,23 @@ STYLES = ''.join(
             f'{PJS} fo:font-size="9.5pt" fo:font-weight="600" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
+            'RoleTitleChapter',
+            f'{KEEP}fo:margin-top="10pt" fo:margin-bottom="0pt" fo:line-height="13pt"',
+            f'{PJS} fo:font-size="9.5pt" fo:font-weight="600" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
             'RoleBody',
             f'{KEEP}fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
             f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
             'RoleTech',
-            f'fo:margin-top="6pt" fo:margin-bottom="0pt" fo:line-height="12.33pt" '
-            f'fo:border-left="2pt solid {PIXEL_BLUE}" fo:padding-left="8pt"',
+            f'{TECH_BLOCK}',
+            f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
+        ),
+        paragraph_style(
+            'RoleTechChapter',
+            f'{KEEP}{TECH_BLOCK}',
             f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
         ),
         paragraph_style(
@@ -452,9 +509,10 @@ with zipfile.ZipFile(OUTPUT, 'w') as archive:
     archive.writestr('content.xml', content_xml)
     archive.writestr('Pictures/logo.png', logo_png())
 
-from collections import Counter
+roles = next(payload for style, payload in parsed if style == 'Roles')
+runs = consecutive_runs(roles)
+grouped = [f"{run[0]['company']} ×{len(run)}" for run in runs if len(run) > 1]
 
-counts = Counter(style for style, _ in parsed)
-print(f'  blocks: {len(parsed)}')
-print('  ' + ', '.join(f'{name}={count}' for name, count in sorted(counts.items())))
+print(f'  roles: {len(roles)} in {len(runs)} runs')
+print('  grouped: ' + (', '.join(grouped) or 'none'))
 print(f'  written: {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
