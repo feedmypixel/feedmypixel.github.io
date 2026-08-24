@@ -44,7 +44,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      'Designed and built the Core Delivery Platform portal and APIs from a blank page, alongside the service templates behind them: a GOV.UK compliant Node frontend, Hapi API, .NET service, Testing repositories or a GOV.UK compliant Node prototype kit. The portal suite of applications allows developers to create on demand services with the associated infra at the touch of a button. Whilst providing a UI to manage, release and day to day running of services. Providing parity across DEFRAs software offering from its teams. It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.',
+      "Designed and built the Core Delivery Platform portal and APIs from a blank page, with the service templates behind them: a GOV.UK compliant Node frontend, Hapi API, .NET service, testing repository or prototype kit, plus the infrastructure created on demand alongside them. The portal also gives teams a UI to manage, release and run their services day to day, providing parity across DEFRA's software offering. It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.",
     tags: [
       'Node',
       'Hapi',
