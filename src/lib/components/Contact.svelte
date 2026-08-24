@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { asset } from '$app/paths'
   import {
     contactEndpoint,
     digitalMarketplaceUrl,
@@ -147,11 +146,6 @@
         <div>
           <p class="aside-label">Also here</p>
           <ul>
-            <li>
-              <a href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
-                Download CV (PDF)
-              </a>
-            </li>
             <li>
               <a href={digitalMarketplaceUrl} target="_blank" rel="noopener noreferrer">
                 Digital Marketplace<span class="visually-hidden"> (opens in a new tab)</span>

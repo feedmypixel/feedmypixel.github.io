@@ -47,7 +47,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      "<p>Designed and built the Core Delivery Platform portal and APIs from a blank page, providing microservice templates, testing tools, package creation and prototype kits alongside the infrastructure, observability and monitoring behind them, all on demand.</p><p>The portal gives teams a UI to manage, release and run their services and tooling, sitting at the core of DEFRA's software offering and upholding parity and high standards across the estate.</p><p>It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.</p>",
+      "<p>Designed and built the Core Delivery Platform Portal and APIs from a blank page. The Portal is the one-stop developer shop for microservice templates, testing tools, prototype kits and package libraries alongside the supporting platforms infrastructure, observability and monitoring, all on demand.</p><p>The Portal provides an admin UI for the Platform team and gives tenant teams a UI to create, manage, release and run their services, tooling, infra and team users. Sitting at the core of DEFRA's software offering and upholding parity and standards across the estate.</p><p>It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.</p>",
     tags: [
       'JavaScript',
       'CSS',
@@ -210,7 +210,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst REact was brought in to various departments across the business.</p>',
+      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst React was brought in to various departments across the business.</p>',
     tags: [
       'JavaScript',
       'CSS',
