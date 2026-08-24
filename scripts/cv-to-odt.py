@@ -5,14 +5,33 @@ page break the generator cannot see until the document is paginated.
 """
 
 import html
+import os
 import re
 import struct
+import sys
 import zipfile
 import zlib
 from pathlib import Path
 
 SOURCE = Path('tasks/cv-draft.md')
-OUTPUT = Path('tasks/BenChidgeyCV.odt')
+
+# The phone number never enters the repo. It lives in the gitignored .env and reaches only the
+# private build, so the CV published at feedmypixel.com cannot be harvested for it.
+PRIVATE = '--private' in sys.argv[1:]
+OUTPUT = Path('tasks/BenChidgeyCV-private.odt' if PRIVATE else 'tasks/BenChidgeyCV.odt')
+
+
+def phone():
+    if not PRIVATE:
+        return None
+    env = Path('.env')
+    if not env.exists():
+        return os.environ.get('CV_PHONE')
+    for line in env.read_text().splitlines():
+        name, _, value = line.partition('=')
+        if name.strip() == 'CV_PHONE':
+            return value.strip() or None
+    return os.environ.get('CV_PHONE')
 
 LOGO_GRID = 30
 LOGO_SCALE = 16
@@ -72,6 +91,7 @@ CONTENT_WIDTH = '17.4cm'
 
 # The three lines under the name, in the order the draft lists them.
 IDENTITY_LINES = {3: 'IdentityRole', 2: 'IdentityContact', 1: 'IdentityLinks'}
+CV_PHONE = phone()
 
 
 def escape(text):
@@ -128,7 +148,10 @@ def parse(blocks):
             continue
 
         if identity:
-            out.append((IDENTITY_LINES[identity], block))
+            line = IDENTITY_LINES[identity]
+            if line == 'IdentityContact' and CV_PHONE:
+                block = f'{block} · {CV_PHONE}'
+            out.append((line, block))
             identity -= 1
             continue
 
@@ -530,4 +553,5 @@ grouped = [f"{run[0]['company']} ×{len(run)}" for run in runs if len(run) > 1]
 
 print(f'  roles: {len(roles)} in {len(runs)} runs')
 print('  grouped: ' + (', '.join(grouped) or 'none'))
+print(f'  contact: ' + ('email and phone (private build)' if CV_PHONE else 'email only'))
 print(f'  written: {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
