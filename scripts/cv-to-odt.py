@@ -217,7 +217,7 @@ def render(parsed):
     ]
     skills = []
 
-    for style, payload in parsed:
+    for position, (style, payload) in enumerate(parsed):
         if style in ('SkillLineCore', 'SkillLine'):
             skills.append(skill_row(style, *payload))
             continue
@@ -235,6 +235,8 @@ def render(parsed):
             body.extend(render_roles(payload))
         elif style == 'EduHead':
             body.append(dated_head(style, *payload))
+        elif style == 'EduDetail' and parsed[position + 1][0] == 'EduModules':
+            body.append(paragraph('EduDetailKeep', escape(payload)))
         elif style == 'EduDetail' and 'GCSE' in payload:
             marked = GRADE.sub(r'<text:span text:style-name="Grade">\1</text:span>', escape(payload))
             body.append(paragraph(style, marked))
@@ -379,6 +381,11 @@ STYLES = ''.join(
         paragraph_style(
             'EduDetail',
             'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
+            f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
+        ),
+        paragraph_style(
+            'EduDetailKeep',
+            f'{KEEP}fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="15.75pt"',
             f'{PJS} fo:font-size="10.5pt" fo:color="{BODY_INK}"',
         ),
         paragraph_style(
