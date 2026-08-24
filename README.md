@@ -1,7 +1,7 @@
 # feedmypixel.github.io
 
 The feedMyPixel site: a one-page portfolio for Ben Chidgey (contract full-stack engineer) and his
-product Pipes. A statically prerendered SvelteKit app (`@sveltejs/adapter-static`) deployed to GitHub
+product Pipes. A statically pre-rendered SvelteKit app (`@sveltejs/adapter-static`) deployed to GitHub
 Pages at [feedmypixel.com](https://feedmypixel.com).
 
 Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/design output live under
@@ -24,7 +24,7 @@ Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/desig
 ## Stack
 
 - **SvelteKit 2** + **Svelte 5** (runes mode)
-- **Vite 8** for bundling, **adapter-static** (full prerender) for output
+- **Vite 8** for bundling, **adapter-static** (full pre-render) for output
 - **Vitest 4** (browser mode) + **Playwright** (e2e + axe a11y) for tests
 - **ESLint** + **Prettier** + **Stylelint** + **husky** + **lint-staged**
 
@@ -32,6 +32,8 @@ Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/desig
 
 - Node `v24.14.1` (pinned via `.nvmrc`; `.npmrc` enforces it)
 - pnpm (corepack-managed)
+
+Regenerating the CV needs system fonts and LibreOffice on top of that - see [CV](#cv).
 
 ```bash
 nvm use
@@ -67,6 +69,19 @@ The contact form posts to [Web3Forms](https://web3forms.com). Copy `.env.example
 Unit tests run in **Vitest browser mode** against real Chromium, so `pnpm exec playwright install
 chromium` must have run or whole test files skip silently.
 
+### Hooks
+
+husky gates git locally, so PRs are optional rather than required:
+
+| Hook         | Runs                                                  |
+| ------------ | ----------------------------------------------------- |
+| `pre-commit` | gitleaks secret scan, then lint-staged                |
+| `pre-push`   | `pnpm check`, `pnpm security-audit`, `pnpm test:unit` |
+
+`gitleaks` is optional (`brew install gitleaks`) - the hook warns and continues without it, and
+GitHub push protection still applies. `pnpm test:e2e` is the one gate husky skips, so run it by hand
+before a big UI push.
+
 ## Layout
 
 ```
@@ -85,7 +100,7 @@ src/
     ├── +page.svelte             # The one-pager (hero, products, CV search, contact)
     ├── components/              # Public component catalogue
     ├── pipes/privacy/           # Privacy policy for the Pipes extension
-    └── sitemap.xml/             # Sitemap endpoint (prerendered)
+    └── sitemap.xml/             # Sitemap endpoint (pre-rendered)
 
 scripts/cv-to-odt.py             # Renders tasks/cv-draft.md into the CV - see CV below
 static/                          # CV PDF, robots.txt, llms.txt, icons, CNAME - served at root
@@ -123,13 +138,35 @@ owns its own scoped styles using the tokens. No Figma.
 
 `tasks/cv-draft.md` is the words. Everything else is generated from it.
 
+The generator names **Plus Jakarta Sans** and **DM Mono**, so both must be installed as system
+fonts - the `@fontsource` packages the site uses ship `.woff2` only, which a word processor cannot
+load. LibreOffice does the PDF step.
+
 ```bash
-python3 scripts/cv-to-odt.py                                              # → tasks/BenChidgeyCV.odt
-soffice --headless --convert-to pdf --outdir static tasks/BenChidgeyCV.odt # → static/BenChidgeyCV.pdf
+brew install --cask font-plus-jakarta-sans font-dm-mono libreoffice
 ```
 
-The ODT is gitignored, so edit the draft, never the ODT. Rendering needs **Plus Jakarta Sans** and
-**DM Mono** installed locally, and LibreOffice for the PDF step.
+Without Homebrew, both families are SIL Open Font License 1.1 and their `.ttf` files come straight
+from source - drop them in `~/Library/Fonts` (macOS) or `~/.local/share/fonts` (Linux):
+
+- [tokotype/PlusJakartaSans](https://github.com/tokotype/PlusJakartaSans) → `fonts/ttf/` - needs
+  Regular, SemiBold and Bold
+- [googlefonts/dm-mono](https://github.com/googlefonts/dm-mono) → `exports/` - needs Regular and
+  Medium
+
+Then, from the repo root:
+
+```bash
+python3 scripts/cv-to-odt.py   # → tasks/BenChidgeyCV.odt
+
+/Applications/LibreOffice.app/Contents/MacOS/soffice \
+  --headless --convert-to pdf --outdir static tasks/BenChidgeyCV.odt   # → static/BenChidgeyCV.pdf
+```
+
+The macOS cask does not put `soffice` on `PATH`, hence the full path. On Linux it is just `soffice`.
+No Python packages are needed - the generator writes the ODT zip with the standard library alone.
+
+The ODT is gitignored, so edit the draft, never the ODT.
 
 Layout follows [`design/design_handoff_cv/STYLES.md`](./design/design_handoff_cv/STYLES.md), with
 two deliberate deviations: `RoleHeadFirst` collapses into the other tiers (it keys off a page break
@@ -155,7 +192,7 @@ appears. The choice is remembered and can be withdrawn from the footer.
 
 - Per-page title, description, canonical, Open Graph and Twitter cards via `Seo.svelte`
 - JSON-LD `@graph` (`Organization`, `Person`, `WebSite`) built from the CV data
-- `sitemap.xml` (prerendered), `robots.txt`, and an `llms.txt` summary for
+- `sitemap.xml` (pre-rendered), `robots.txt`, and an `llms.txt` summary for
   answer engines
 - `robots.txt` explicitly welcomes answer-engine crawlers, including the retrieval bots
   (`OAI-SearchBot`, `Claude-SearchBot`, `Perplexity-User`) that fetch pages in order to cite them
