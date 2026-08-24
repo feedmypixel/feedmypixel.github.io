@@ -339,19 +339,19 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'RoleHeadRecent',
-            f'{KEEP}fo:margin-top="20pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="30pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'RoleHeadMid',
-            f'{KEEP}fo:margin-top="17pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="26pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
         paragraph_style(
             'RoleHeadEarly',
-            f'{KEEP}fo:margin-top="15pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
+            f'{KEEP}fo:margin-top="22pt" fo:margin-bottom="0pt" fo:line-height="14.4pt"',
             f'{PJS} fo:font-size="12pt" fo:font-weight="600" fo:color="{INK}" fo:letter-spacing="-0.15pt"',
             RIGHT_TAB,
         ),
