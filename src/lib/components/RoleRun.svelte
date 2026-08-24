@@ -32,7 +32,8 @@
 
       {#if solo}
         <p class="title">{only.role.title}</p>
-        <p class="summary">{only.role.summary}</p>
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -- authored in experience.ts, never user input -->
+        <div class="summary">{@html only.role.summary}</div>
         <ul class="tags">
           {#each only.role.tags as tag (tag)}
             <li>
@@ -60,7 +61,8 @@
               {#if !run.metaLabel}
                 <span class="chapter-meta">{chapter.role.type} · {chapter.role.location}</span>
               {/if}
-              <p class="summary">{chapter.role.summary}</p>
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -- authored in experience.ts, never user input -->
+              <div class="summary">{@html chapter.role.summary}</div>
               <ul class="tags">
                 {#each chapter.role.tags as tag (tag)}
                   <li>
@@ -163,6 +165,14 @@
     line-height: var(--line-height-relaxed);
     color: var(--ink-muted);
     text-wrap: pretty;
+  }
+
+  .summary :global(p) {
+    margin: 0;
+  }
+
+  .summary :global(p + p) {
+    margin-top: var(--space-2);
   }
 
   .chapters {

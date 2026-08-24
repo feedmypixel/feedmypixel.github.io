@@ -1,4 +1,5 @@
 import type { Role, RoleType } from './data/experience'
+import { stripHtml } from './strip-html'
 
 export type FacetKind = 'skill' | 'client' | 'sector'
 export type Facet = { label: string; kind: FacetKind; count: number }
@@ -51,7 +52,7 @@ export function searchBlob(role: Role) {
   return [
     role.company,
     role.title,
-    role.summary,
+    stripHtml(role.summary),
     role.sector,
     role.type,
     role.location,
