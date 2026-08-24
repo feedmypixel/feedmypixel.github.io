@@ -15,6 +15,7 @@ Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/desig
 - [Brand](#brand)
 - [Styling](#styling)
 - [Design](#design)
+- [CV](#cv)
 - [Privacy and analytics](#privacy-and-analytics)
 - [SEO and AEO](#seo-and-aeo)
 - [Deploy](#deploy)
@@ -86,6 +87,7 @@ src/
     ├── pipes/privacy/           # Privacy policy for the Pipes extension
     └── sitemap.xml/             # Sitemap endpoint (prerendered)
 
+scripts/cv-to-odt.py             # Renders tasks/cv-draft.md into the CV - see CV below
 static/                          # CV PDF, robots.txt, llms.txt, icons, CNAME - served at root
 e2e/                             # Playwright specs
 ```
@@ -116,6 +118,32 @@ Visual reference (HTML + CSS prototypes from [claude.ai/design](https://claude.a
 under [`design/`](./design). Briefs (`design/brief-*.md`) drive each screen. Use those bundles as
 source-of-truth when implementing - but **don't import the design CSS wholesale**; every component
 owns its own scoped styles using the tokens. No Figma.
+
+## CV
+
+`tasks/cv-draft.md` is the words. Everything else is generated from it.
+
+```bash
+python3 scripts/cv-to-odt.py                                              # → tasks/BenChidgeyCV.odt
+soffice --headless --convert-to pdf --outdir static tasks/BenChidgeyCV.odt # → static/BenChidgeyCV.pdf
+```
+
+The ODT is gitignored, so edit the draft, never the ODT. Rendering needs **Plus Jakarta Sans** and
+**DM Mono** installed locally, and LibreOffice for the PDF step.
+
+Layout follows [`design/design_handoff_cv/STYLES.md`](./design/design_handoff_cv/STYLES.md), with
+two deliberate deviations: `RoleHeadFirst` collapses into the other tiers (it keys off a page break
+the generator cannot see), and `RoleBody`, chapter `RoleTech` and a degree's `EduDetail` carry
+keep-with-next so a technology line, a role or a modules paragraph cannot strand from what it
+belongs to.
+
+Consecutive roles at one employer group into a run - employer and span printed once, each role
+carrying its own dates - matching `src/lib/role-runs.ts`, so the CV and the site's Experience
+section group identically.
+
+> [!IMPORTANT]
+> `src/lib/data/experience.ts` carries the same summaries, and its tags are a superset of the CV's.
+> Nothing enforces that. Edit `cv-draft.md` and the site silently drifts - update both.
 
 ## Privacy and analytics
 
