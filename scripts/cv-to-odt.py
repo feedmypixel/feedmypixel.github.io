@@ -70,6 +70,9 @@ GRADE = re.compile(r'\b([A-D]{1,2})(?=[,.])')
 
 CONTENT_WIDTH = '17.4cm'
 
+# The three lines under the name, in the order the draft lists them.
+IDENTITY_LINES = {3: 'IdentityRole', 2: 'IdentityContact', 1: 'IdentityLinks'}
+
 
 def escape(text):
     return html.escape(text, quote=False)
@@ -119,13 +122,13 @@ def parse(blocks):
             section = block[3:]
             if not out:
                 out.append(('NameTitle', section))
-                identity = 2
+                identity = 3
             else:
                 out.append(('SectionHead', section))
             continue
 
         if identity:
-            out.append(('IdentityRole' if identity == 2 else 'IdentityContact', block))
+            out.append((IDENTITY_LINES[identity], block))
             identity -= 1
             continue
 
@@ -304,7 +307,12 @@ STYLES = ''.join(
         ),
         paragraph_style(
             'IdentityContact',
-            f'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
+            'fo:margin-top="4pt" fo:margin-bottom="0pt" fo:line-height="13.6pt"',
+            f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
+        ),
+        paragraph_style(
+            'IdentityLinks',
+            f'fo:margin-top="3pt" fo:margin-bottom="0pt" fo:line-height="13.6pt" '
             f'fo:border-bottom="2pt solid {INK}" fo:padding-bottom="10pt"',
             f'{DMM} fo:font-size="8.5pt" fo:color="{MUTED}"',
         ),

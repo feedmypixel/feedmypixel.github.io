@@ -12,7 +12,9 @@ they carry across into whatever the document does with them.
 
 Contract full-stack engineer · feedMyPixel Ltd · Remote worldwide, UK based
 
-hello@feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
+hello@feedmypixel.com
+
+feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
 Twenty years building software, mostly public-facing services that have to work for everyone. I take
 a product or a problem and build it end to end: front end, API, infrastructure, tests and the
