@@ -1,4 +1,5 @@
 import { emailAddress, gitHubUrl, linkedInUrl, siteUrl } from '$lib/config'
+import { stripHtml } from '$lib/strip-html'
 import { roles } from '$lib/data/experience'
 import { faqs, serviceFacts, serviceLede } from '$lib/data/services'
 
@@ -26,7 +27,7 @@ const person = {
   hasOccupation: roles.map((role) => ({
     '@type': 'OrganizationRole',
     roleName: role.title,
-    description: role.summary,
+    description: stripHtml(role.summary),
     namedPosition: role.title,
     memberOf: { '@type': 'Organization', name: role.company }
   }))

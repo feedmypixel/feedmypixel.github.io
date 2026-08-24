@@ -50,13 +50,13 @@ SvelteKit, TypeScript, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright
 Mar 2023 to Feb 2026 · Remote · Contract
 
 Designed and built the Core Delivery Platform portal and APIs from a blank page, with the
-service templates behind them: a GOV.UK compliant Node frontend, Hapi API, .NET service, testing
-repository or prototype kit, plus the infrastructure created on demand alongside them. The portal
-also gives teams a UI to manage, release and run their services day to day, providing parity across
-DEFRA's software offering.
+service templates behind them: a GOV.UK compliant Node frontend, Hapi.js API, .NET service, testing
+repository or prototype kit, plus the infrastructure created on demand alongside them.
 
-It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling
-from three to six months down to hours and recovery from failure from a week to under an hour.
+The portal also gives teams a UI to manage, release and run their services day to day, providing
+parity across DEFRA's software offering. It went from a concept to the way software gets built at
+DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from
+failure from a week to under an hour.
 
 Node, Hapi, MongoDB, GOV.UK Frontend, AWS, Docker, Vitest, WDIO, GitHub Actions, Accessibility, Design system,
 Templates, Postgres
