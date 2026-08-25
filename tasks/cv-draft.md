@@ -16,7 +16,7 @@ ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
-Twenty years building software that lasts — simple pieces that combine into reliable systems. I take a need, an idea, a
+Twenty years building software that lasts - simple bricks that combine into reliable systems. I take a need, an idea, a
 problem, and build the product end to end: iteratively, testable, working for everyone on every device.
 
 Currently at Whisky Invest Direct, leading a greenfield rebuild of their trading platform in SvelteKit and TypeScript,
@@ -24,7 +24,7 @@ on Fastify and AWS, with GitLab CI/CD and a design system bridged across the mar
 Hapi.js and AWS for DEFRA, React and Next.js on GCP for Wayfair and Pret, and long-running contracts with the Guardian,
 the BBC, MoJ, HMRC, HMPO and DIT.
 
-Working across code, design, architecture and product means I can make decisions without waiting on handoffs — and ship
+Working across code, design, architecture and product means I can make decisions without waiting on handoffs - and ship
 things that solve the actual problem, on time.
 
 ## Skills
