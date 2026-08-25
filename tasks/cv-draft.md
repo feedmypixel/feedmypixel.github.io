@@ -45,8 +45,8 @@ Leading a greenfield rebuild of the core trading platform and API. Rebuild of th
 of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best
 practice across engineering and product.
 
-TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, AWS, Vitest, Playwright, Accessibility,
-Observability, CI/CD
+TypeScript, JavaScript, CSS, HTML, SvelteKit, Fastify, Capacitor, iOS, Android, AWS, AI, Vitest, Playwright,
+Accessibility, Observability, CI/CD
 
 ### DEFRA, Full-Stack Platform Engineer
 
@@ -59,7 +59,7 @@ offering, holding standards and parity across every service built on it.
 It went from concept to the way software gets built at DEFRA. GDS reported time to first release dropping from
 three-to-six months to hours, and recovery from failure from a week to under an hour.
 
-JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, Docker, Vitest, WDIO, GitHub Actions,
+JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, AI, Docker, Vitest, WDIO, GitHub Actions,
 Accessibility, Design system, Templates, Postgres
 
 ### Wayfair, Software Engineer
