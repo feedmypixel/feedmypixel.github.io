@@ -83,9 +83,13 @@ TypeScript, JavaScript, CSS, HTML, React, Kubernetes, Jest, Cypress, Accessibili
 
 Jan 2021 to Dec 2021 · Remote · Contract
 
-Built a custom developer Backstage platform, Disco. A Backstage plugin serving SRE and Accelerate metrics from a
-TypeScript function and Express API over Postgres. Rolled out Sentry observability with Terraform, created Next.js and
-Express template repositories and ran chaos experiments and incident exercises with platform teams.
+Set up a custom developer portal, Disco, using the Backstage platform from Spotify. A developer data platform that
+obtained and served custom SRE and Accelerate metrics for Pret's digital estate, providing detailed transparency on
+the platform and all of its assets.
+
+Created Next.js and Express template repositories. Rolled out Sentry observability and regularly ran chaos experiments
+and incident exercises with tenant teams to practice diagnosing and debugging issues whilst gaining familiarity with
+how services work on the platform.
 
 TypeScript, JavaScript, CSS, HTML, Node, React, Next.js, GCP, Lambda, Terraform, Backstage, Postgres, Sentry, Jest,
 Cypress
