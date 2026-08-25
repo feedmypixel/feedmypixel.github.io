@@ -16,22 +16,16 @@ ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
-Twenty years building software, long-standing resilient services and products. Simple, Lego bricks that combine to
-create powerful, reliable software. Refinement of complex business functions into software, software that works for
-everyone on all devices.
-I take needs, an idea, an issue and build a product, function, service end to end. In an iterable, testable fashion,
-focusing on quality user experience and robust, maintainable, testable products that provide business value and
-fantastic user experiences.
+Twenty years building software that lasts — simple pieces that combine into reliable systems. I take a need, an idea, a
+problem, and build the product end to end: iteratively, testable, working for everyone on every device.
 
-Recent work is SvelteKit, TypeScript, Node, Fastify, AI and AWS, for Whisky Invest Direct. Working with Hapi.js, AWS,
-JavaScript, CSS and HTML for UK Government, DEFRA. React, TypeScript, GCP, Next.js for Wayfair and Pret. Long-standing
-UK Government, Guardian and BBC contractor with best practices, experiences and strong shop floor learnings gained
-along the way.
+Currently at Whisky Invest Direct, leading a greenfield rebuild of their trading platform in SvelteKit and TypeScript,
+on Fastify and AWS, with GitLab CI/CD and a design system bridged across the marketing site and the portal. Previously
+Hapi.js and AWS for DEFRA, React and Next.js on GCP for Wayfair and Pret, and long-running contracts with the Guardian,
+the BBC, MoJ, HMRC, HMPO and DIT.
 
-Having extensive knowledge and experience around how things work across my engineering discipline is what I provide to
-clients. Delving deep into code, design, architecture and product provides autonomy and answers to then build and
-deliver products that meet needs within time frames. Through best practices and tried and tested methodologies, my
-skills provide business value to you and your users.
+Working across code, design, architecture and product means I can make decisions without waiting on handoffs — and ship
+things that solve the actual problem, on time.
 
 ## Skills
 
@@ -58,12 +52,12 @@ Observability, CI/CD
 
 Mar 2023 to Feb 2026 · Remote · Contract
 
-Designed and built the Core Delivery Platform Portal suite of services from a blank page. The Portal is the developer
-UI at DEFRA and provides tenant teams a UI to create, manage, release and run their services, tooling, infra and teams.
-Sitting at the core of DEFRA's software offering and upholding parity and standards across the estate.
+Designed and built the Core Delivery Platform Portal at DEFRA from a blank page. It's the developer UI that lets tenant
+teams create, release and run their services, tooling and infrastructure, and it sits at the core of DEFRA's software
+offering, holding standards and parity across every service built on it.
 
-It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six
-months down to hours and recovery from failure from a week to under an hour.
+It went from concept to the way software gets built at DEFRA. GDS reported time to first release dropping from
+three-to-six months to hours, and recovery from failure from a week to under an hour.
 
 JavaScript, CSS, HTML, Node, Hapi, MongoDB, GOV.UK Frontend, Nunjucks, AWS, Docker, Vitest, WDIO, GitHub Actions,
 Accessibility, Design system, Templates, Postgres

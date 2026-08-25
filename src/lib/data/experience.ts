@@ -47,7 +47,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      "<p>Designed and built the Core Delivery Platform Portal suite of services from a blank page. The Portal is the developer UI at DEFRA and provides tenant teams a UI to create, manage, release and run their services, tooling, infra and teams. Sitting at the core of DEFRA's software offering and upholding parity and standards across the estate.</p><p>It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six months down to hours and recovery from failure from a week to under an hour.</p>",
+      "<p>Designed and built the Core Delivery Platform Portal at DEFRA from a blank page. It's the developer UI that lets tenant teams create, release and run their services, tooling and infrastructure, and it sits at the core of DEFRA's software offering, holding standards and parity across every service built on it.</p><p>It went from concept to the way software gets built at DEFRA. GDS reported time to first release dropping from three-to-six months to hours, and recovery from failure from a week to under an hour.</p>",
     tags: [
       'JavaScript',
       'CSS',
