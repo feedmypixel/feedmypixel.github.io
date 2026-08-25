@@ -173,7 +173,7 @@
   .step {
     display: none;
     position: absolute;
-    top: 50%;
+    bottom: 16px;
     align-items: center;
     justify-content: center;
     width: 50px;
@@ -186,7 +186,6 @@
     color: var(--brand-text);
     cursor: pointer;
     backdrop-filter: blur(8px);
-    transform: translateY(-50%);
   }
 
   .step:hover {
@@ -280,10 +279,13 @@
     }
 
     .step {
+      top: 50%;
+      bottom: auto;
       background: transparent;
       box-shadow: none;
       color: var(--indicator);
       backdrop-filter: none;
+      transform: translateY(-50%);
     }
 
     .step:hover {
