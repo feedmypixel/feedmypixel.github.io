@@ -59,8 +59,8 @@ Observability, CI/CD
 Mar 2023 to Feb 2026 · Remote · Contract
 
 Designed and built the Core Delivery Platform Portal suite of services from a blank page. The Portal is the developer
-UI at DEFRA and provides tenant teams a UI to create, manage, release and run their services, tooling, infra and team
-users. Sitting at the core of DEFRA's software offering and upholding parity and standards across the estate.
+UI at DEFRA and provides tenant teams a UI to create, manage, release and run their services, tooling, infra and teams.
+Sitting at the core of DEFRA's software offering and upholding parity and standards across the estate.
 
 It went from a concept to the way software gets built at DEFRA. GDS reported first releases falling from three to six
 months down to hours and recovery from failure from a week to under an hour.
