@@ -16,16 +16,32 @@ ben@feedmypixel.com
 
 feedmypixel.com · github.com/feedmypixel · linkedin.com/in/benchidgey
 
-Twenty years building software, mostly long-standing, resilient services that work for everyone on all
-devices. I take a user/business need, an idea, or an issue that needs addressing, and build a product/function/service
+Twenty years building software, mostly long-standing resilient services and products that need to be secure, host large
+numbers of users, have features added, removed and refactored. Simple, Lego bricks that combine to create very
+powerful, reliable software. Most of the time a refinement of a complex business function into software, software that works for
+everyone on all devices.
+I take a user/business need, an idea, or an issue that needs addressing, and build a product/function/service
 end to end: design, front end, API, microservices, infrastructure and more, in an iterable, testable fashion,
 focused on quality user experience and robust, maintainable, testable, resilient products that provide business value
-and fantastic user experiences.
+and fantastic user experiences. I am equally happy as an individual developer or joining a team with multiple
+developers, designers and analysts. Simple, testable, iterable software. Built against user and business needs.
+Most importantly I build what you need and to build what you need I start off by
+understanding what is needed. Going back to basic user/business need and then grabbing my pencils and my sketch pad.
 
-Recent work is SvelteKit, TypeScript, Node, Hapi.js, Fastify, AI and AWS, for Whisky Invest Direct, UK Government,
-Wayfair and Pret. Understanding how things work across the disciplines I work with daily is something I find
-interesting and enjoy, across code, design, architecture, products and business. Being able to tweak, improve and
-build things that meet and surpass user and business needs for the clients I work with is a joy.
+Recent work is SvelteKit, TypeScript, Node, Fastify, AI and AWS, for Whisky Invest Direct. Working with Hapi.js, AWS,
+JavaScript, CSS and HTML for UK Government, DEFRA. React, TypeScript, GCP, Next.js for Wayfair and Pret. Long-standing
+UK Government, Guardian and BBC contractor. Lots of best practices and great learning experiences gained along the way.
+
+Having extensive knowledge and experience around how things work across my disciplines is the offering I provide to
+clients. Delving deep into code, design, architecture and product combined with my knowledge and understanding
+provides autonomy and answers to build and deliver products that meet needs within time frames.
+It enables me to avoid the bear traps and rabbit holes, and through the use of best practices and tried and tested
+methodologies, my skills provide business value from the get-go. If you need direction and solutions to what may
+seem like an unknown or unclear path, I can help. If you need a concrete product that meets your user and business
+needs, I can take care of that. If you need someone to guide you to a new product that currently lives in your head,
+let's have a chat.
+
+I love what I do, as do my clients and their users.
 
 ## Skills
 
