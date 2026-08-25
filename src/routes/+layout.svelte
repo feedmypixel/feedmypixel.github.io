@@ -24,6 +24,7 @@
 <svelte:head>
   <link rel="icon" type="image/png" href={asset('/favicon.png')} />
   <link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')} />
+  <meta name="build-sha" content={__BUILD_SHA__} />
 </svelte:head>
 
 <a class="skip-link" href="#main">Skip to content</a>

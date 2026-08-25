@@ -1,9 +1,22 @@
+import { execSync } from 'node:child_process'
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
 import { sveltekit } from '@sveltejs/kit/vite'
 
+function buildShaFromGitOrCiEnv() {
+  try {
+    return execSync('git rev-parse --short HEAD').toString().trim()
+  } catch {
+    return process.env.GITHUB_SHA?.slice(0, 7) ?? 'dev'
+  }
+}
+
 export default defineConfig({
   plugins: [sveltekit()],
+
+  define: {
+    __BUILD_SHA__: JSON.stringify(buildShaFromGitOrCiEnv())
+  },
 
   /* Stated rather than inherited, so the baseline survives the next Vite major.
      The site already relies on cascade layers, oklch and color-mix. */

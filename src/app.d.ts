@@ -12,6 +12,8 @@ declare global {
   interface Window {
     dataLayer?: unknown[]
   }
+
+  const __BUILD_SHA__: string
 }
 
 export {}
