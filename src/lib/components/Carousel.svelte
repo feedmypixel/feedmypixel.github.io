@@ -81,7 +81,7 @@
         aria-label="Previous screenshot"
         onclick={() => goTo(index - 1)}
       >
-        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path
             d="M10 3.5 5.5 8l4.5 4.5"
             stroke="currentColor"
@@ -97,7 +97,7 @@
         aria-label="Next screenshot"
         onclick={() => goTo(index + 1)}
       >
-        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path
             d="M6 3.5 10.5 8 6 12.5"
             stroke="currentColor"
@@ -140,6 +140,12 @@
     position: relative;
   }
 
+  @media (min-width: 42.5rem) {
+    .frame {
+      padding: 0 64px;
+    }
+  }
+
   .strip {
     display: flex;
     gap: var(--space-4);
@@ -173,24 +179,26 @@
   .step {
     display: none;
     position: absolute;
-    bottom: 16px;
+    top: 50%;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     padding: 0;
-    background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+    background: transparent;
     border: none;
     border-radius: 50%;
-    box-shadow: var(--shadow-sm);
-    color: var(--brand-text);
+    color: var(--ink-muted);
     cursor: pointer;
-    backdrop-filter: blur(8px);
+    transform: translateY(-50%);
+    transition:
+      background 160ms ease,
+      color 160ms ease;
   }
 
   .step:hover {
-    background: var(--surface-raised);
-    color: var(--brand-hover);
+    background: var(--surface-sunken);
+    color: var(--brand-text);
   }
 
   .prev {
@@ -263,33 +271,9 @@
     }
   }
 
-  @media (min-width: 47.5rem) {
+  @media (min-width: 42.5rem) {
     .step {
       display: inline-flex;
-    }
-  }
-
-  @media (min-width: 87.5rem) {
-    .prev {
-      left: -56px;
-    }
-
-    .next {
-      right: -56px;
-    }
-
-    .step {
-      top: 50%;
-      bottom: auto;
-      background: transparent;
-      box-shadow: none;
-      color: var(--indicator);
-      backdrop-filter: none;
-      transform: translateY(-50%);
-    }
-
-    .step:hover {
-      background: color-mix(in srgb, var(--ink) 9%, transparent);
     }
   }
 </style>
