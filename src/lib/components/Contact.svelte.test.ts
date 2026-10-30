@@ -124,8 +124,8 @@ test('a network failure is surfaced, never swallowed', async () => {
 
 test('offers the other ways to get in touch', async () => {
   render(Contact)
-  await expect.element(page.getByRole('link', { name: 'GitHub' })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: 'LinkedIn' })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /^GitHub/ })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /^LinkedIn/ })).toBeInTheDocument()
   expect(document.querySelector<HTMLAnchorElement>('a[href*="linkedin.com"]')?.href).toContain(
     'in/benchidgey'
   )

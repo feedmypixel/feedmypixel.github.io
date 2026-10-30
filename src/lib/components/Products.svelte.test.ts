@@ -15,9 +15,9 @@ test('introduces Pipes', async () => {
 
 test('offers both stores and the source', async () => {
   render(Products)
-  await expect.element(page.getByRole('link', { name: 'Chrome Web Store' })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: 'Firefox Add-ons' })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: 'Source' })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /^Chrome Web Store/ })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /^Firefox Add-ons/ })).toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /^Source/ })).toBeInTheDocument()
 
   const hrefs = [...document.querySelectorAll<HTMLAnchorElement>('a.button')].map(
     (link) => link.href

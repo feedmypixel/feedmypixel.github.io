@@ -13,6 +13,8 @@ test('renders the section links when open and closes on a link click', async () 
   const onclose = vi.fn()
   render(MobileNav, { props: { open: true, onclose } })
   await expect.element(page.getByRole('dialog', { name: 'Menu' })).toBeInTheDocument()
+  // A real link navigation would unload the test iframe.
+  document.addEventListener('click', (event) => event.preventDefault(), { once: true })
   await page.getByRole('link', { name: 'Experience' }).click()
   expect(onclose).toHaveBeenCalled()
 })
