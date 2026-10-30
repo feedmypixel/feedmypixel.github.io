@@ -7,8 +7,12 @@ test('renders the company line and the external links', async () => {
   await expect
     .element(page.getByText('feedMyPixel Ltd · Ben Chidgey · number 08198085 · established 2012'))
     .toBeVisible()
-  await expect.element(page.getByRole('link', { name: /^GitHub/ })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: /^Digital Marketplace/ })).toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: 'GitHub (opens in a new tab)' }))
+    .toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: 'Digital Marketplace (opens in a new tab)' }))
+    .toBeInTheDocument()
   await expect.element(page.getByRole('link', { name: 'Components' })).toBeInTheDocument()
 })
 

@@ -25,12 +25,14 @@ test('a download link saves under the name it is given', () => {
   expect(document.querySelector('a.button')?.getAttribute('download')).toBe('BenChidgeyCV.pdf')
 })
 
-test('an external link opens in a new tab, safely, and says so', () => {
+test('an external link opens in a new tab, safely, and says so', async () => {
   render(ButtonHarness, { props: { href: 'https://example.com', external: true, label: 'Store' } })
   const link = document.querySelector('a.button')
   expect(link?.getAttribute('target')).toBe('_blank')
   expect(link?.getAttribute('rel')).toBe('noopener noreferrer')
-  expect(link?.textContent).toContain('opens in a new tab')
+  await expect
+    .element(page.getByRole('link', { name: 'Store (opens in a new tab)' }))
+    .toBeInTheDocument()
 })
 
 test('an internal link stays in the tab', () => {

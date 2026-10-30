@@ -124,8 +124,15 @@ test('a network failure is surfaced, never swallowed', async () => {
 
 test('offers the other ways to get in touch', async () => {
   render(Contact)
-  await expect.element(page.getByRole('link', { name: /^GitHub/ })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: /^LinkedIn/ })).toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: 'GitHub (opens in a new tab)' }))
+    .toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: 'LinkedIn (opens in a new tab)' }))
+    .toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: 'Digital Marketplace (opens in a new tab)' }))
+    .toBeInTheDocument()
   expect(document.querySelector<HTMLAnchorElement>('a[href*="linkedin.com"]')?.href).toContain(
     'in/benchidgey'
   )

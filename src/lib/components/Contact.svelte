@@ -12,6 +12,7 @@
   import Button from './Button.svelte'
   import Field from './Field.svelte'
   import EmailPill from './EmailPill.svelte'
+  import NewTabHint from './NewTabHint.svelte'
 
   let name = $state('')
   let email = $state('')
@@ -148,17 +149,17 @@
           <ul>
             <li>
               <a href={digitalMarketplaceUrl} target="_blank" rel="noopener noreferrer">
-                Digital Marketplace<span class="visually-hidden"> (opens in a new tab)</span>
+                Digital Marketplace<NewTabHint />
               </a>
             </li>
             <li>
               <a href={gitHubUrl} target="_blank" rel="noopener noreferrer">
-                GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+                GitHub<NewTabHint />
               </a>
             </li>
             <li>
               <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">
-                LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+                LinkedIn<NewTabHint />
               </a>
             </li>
           </ul>

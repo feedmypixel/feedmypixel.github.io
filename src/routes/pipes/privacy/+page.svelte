@@ -1,5 +1,6 @@
 <script lang="ts">
   import Seo from '#lib/components/Seo.svelte'
+  import NewTabHint from '#lib/components/NewTabHint.svelte'
 </script>
 
 <Seo
@@ -89,7 +90,7 @@
   <p>
     Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a>, or
     <a href="https://github.com/feedmypixel/pipes/issues" target="_blank" rel="noopener noreferrer">
-      open an issue<span class="visually-hidden"> (opens in a new tab)</span>
+      open an issue<NewTabHint />
     </a>.
   </p>
 </article>

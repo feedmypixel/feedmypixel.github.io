@@ -2,6 +2,7 @@
   import { resolve } from '$app/paths'
   import Logo from './Logo.svelte'
   import GitHubMark from './GitHubMark.svelte'
+  import NewTabHint from './NewTabHint.svelte'
   import { consent } from '#lib/consent.svelte.js'
 
   const home = resolve('/')
@@ -20,10 +21,10 @@
       <a href="{home}#contact">Contact</a>
       <a href={resolve('/components')}>Components</a>
       <a href="https://www.gov.uk/digital-marketplace" target="_blank" rel="noopener noreferrer">
-        Digital Marketplace<span class="visually-hidden"> (opens in a new tab)</span>
+        Digital Marketplace<NewTabHint />
       </a>
       <a href="https://github.com/feedmypixel" target="_blank" rel="noopener noreferrer">
-        GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+        GitHub<NewTabHint />
       </a>
       <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
       <a
