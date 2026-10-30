@@ -13,7 +13,7 @@ function buildShaFromGitOrCiEnv() {
 }
 
 export default defineConfig({
-  plugins: [sveltekit({ adapter: adapter() })],
+  plugins: [sveltekit({ adapter: adapter(), version: { pollInterval: 0 } })],
 
   define: {
     __BUILD_SHA__: JSON.stringify(buildShaFromGitOrCiEnv())
