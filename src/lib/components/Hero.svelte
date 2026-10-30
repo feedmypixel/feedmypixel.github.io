@@ -16,7 +16,7 @@
     <div class="actions">
       <Button
         variant="solid"
-        href={asset('/BenChidgeyCV.pdf')}
+        href={asset('BenChidgeyCV.pdf')}
         download="BenChidgeyCV.pdf"
         aria-label="Download CV"
       >

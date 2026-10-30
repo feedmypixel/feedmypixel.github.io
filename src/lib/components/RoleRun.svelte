@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { isTagHot, type Chip } from '$lib/cv-filter'
-  import type { Run } from '$lib/role-runs'
+  import { isTagHot, type Chip } from '#lib/cv-filter.js'
+  import type { Run } from '#lib/role-runs.js'
 
   let {
     run,

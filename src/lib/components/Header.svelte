@@ -4,7 +4,7 @@
   import MobileNav from './MobileNav.svelte'
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
-  import { mostVisibleId, indicatorGeometry } from '$lib/nav-indicator'
+  import { mostVisibleId, indicatorGeometry } from '#lib/nav-indicator.js'
 
   const home = resolve('/')
 

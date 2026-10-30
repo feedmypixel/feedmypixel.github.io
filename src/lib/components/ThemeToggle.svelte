@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toasts } from '$lib/toasts.svelte'
+  import { toasts } from '#lib/toasts.svelte.js'
 
   function toggle() {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'

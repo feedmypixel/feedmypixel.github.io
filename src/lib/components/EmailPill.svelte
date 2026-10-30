@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { emailAddress } from '$lib/config'
-  import { toasts } from '$lib/toasts.svelte'
+  import { emailAddress } from '#lib/config.js'
+  import { toasts } from '#lib/toasts.svelte.js'
 
   let { address = emailAddress }: { address?: string } = $props()
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte'
   import { asset } from '$app/paths'
-  import { roles } from '$lib/data/experience'
+  import { roles } from '#lib/data/experience.js'
   import {
     QUICK_FILTERS,
     TYPE_FILTERS,
@@ -15,12 +15,12 @@
     type Chip as FilterChip,
     type Facet,
     type TypeFilter
-  } from '$lib/cv-filter'
+  } from '#lib/cv-filter.js'
   import SearchCombobox from './SearchCombobox.svelte'
   import SegmentedControl from './SegmentedControl.svelte'
   import Chip from './Chip.svelte'
   import RoleRun from './RoleRun.svelte'
-  import { buildRuns } from '$lib/role-runs'
+  import { buildRuns } from '#lib/role-runs.js'
   import EmptyState from './EmptyState.svelte'
   import Button from './Button.svelte'
 
@@ -119,7 +119,7 @@
     <p class="eyebrow">Experience</p>
     <div class="heading-row">
       <h2>Search my CV</h2>
-      <Button variant="solid" href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
+      <Button variant="solid" href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
         <svg
           width="15"
           height="15"
@@ -204,7 +204,7 @@
     <noscript>
       <p class="noscript">
         Search and filtering need JavaScript. The full history is listed below and the
-        <a href={asset('/BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
+        <a href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
       </p>
     </noscript>
   </div>

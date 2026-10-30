@@ -1,34 +1,34 @@
 <script lang="ts">
   import { asset } from '$app/paths'
-  import Seo from '$lib/components/Seo.svelte'
-  import Logo from '$lib/components/Logo.svelte'
-  import ThemeToggle from '$lib/components/ThemeToggle.svelte'
-  import Toast from '$lib/components/Toast.svelte'
-  import Button from '$lib/components/Button.svelte'
-  import EmailPill from '$lib/components/EmailPill.svelte'
-  import Carousel from '$lib/components/Carousel.svelte'
-  import type { Slide } from '$lib/components/Carousel.svelte'
-  import Chip from '$lib/components/Chip.svelte'
-  import SegmentedControl from '$lib/components/SegmentedControl.svelte'
-  import RoleRun from '$lib/components/RoleRun.svelte'
-  import { buildRuns } from '$lib/role-runs'
-  import EmptyState from '$lib/components/EmptyState.svelte'
-  import BackToTop from '$lib/components/BackToTop.svelte'
-  import Services from '$lib/components/Services.svelte'
-  import { roles } from '$lib/data/experience'
-  import { TYPE_FILTERS, type TypeFilter } from '$lib/cv-filter'
-  import { toasts } from '$lib/toasts.svelte'
+  import Seo from '#lib/components/Seo.svelte'
+  import Logo from '#lib/components/Logo.svelte'
+  import ThemeToggle from '#lib/components/ThemeToggle.svelte'
+  import Toast from '#lib/components/Toast.svelte'
+  import Button from '#lib/components/Button.svelte'
+  import EmailPill from '#lib/components/EmailPill.svelte'
+  import Carousel from '#lib/components/Carousel.svelte'
+  import type { Slide } from '#lib/components/Carousel.svelte'
+  import Chip from '#lib/components/Chip.svelte'
+  import SegmentedControl from '#lib/components/SegmentedControl.svelte'
+  import RoleRun from '#lib/components/RoleRun.svelte'
+  import { buildRuns } from '#lib/role-runs.js'
+  import EmptyState from '#lib/components/EmptyState.svelte'
+  import BackToTop from '#lib/components/BackToTop.svelte'
+  import Services from '#lib/components/Services.svelte'
+  import { roles } from '#lib/data/experience.js'
+  import { TYPE_FILTERS, type TypeFilter } from '#lib/cv-filter.js'
+  import { toasts } from '#lib/toasts.svelte.js'
 
   let segment = $state<TypeFilter>('All')
 
   const slides: Slide[] = [
     {
-      src: asset('/pipes/framed-popup.png'),
+      src: asset('pipes/framed-popup.png'),
       alt: 'Pipes: status from your toolbar',
       label: 'Status from your toolbar'
     },
     {
-      src: asset('/pipes/framed-sidepanel.png'),
+      src: asset('pipes/framed-sidepanel.png'),
       alt: 'Pipes: every repo in a side panel',
       label: 'Every repo in a side panel'
     }

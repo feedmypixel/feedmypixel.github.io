@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
+  import NewTabHint from './NewTabHint.svelte'
 
   let {
     variant = 'solid',
@@ -36,7 +37,7 @@
   >
     {@render children()}
     {#if external}
-      <span class="visually-hidden">(opens in a new tab)</span>
+      <NewTabHint />
     {/if}
   </a>
 {:else}

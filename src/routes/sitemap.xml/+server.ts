@@ -1,4 +1,4 @@
-import { siteUrl } from '$lib/config'
+import { siteUrl } from '#lib/config.js'
 
 export const prerender = true
 

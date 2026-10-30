@@ -1,8 +1,8 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import ConsentBanner from './ConsentBanner.svelte'
-import { consent, CONSENT_KEY } from '$lib/consent.svelte'
-import { toasts } from '$lib/toasts.svelte'
+import { consent, CONSENT_KEY } from '#lib/consent.svelte.js'
+import { toasts } from '#lib/toasts.svelte.js'
 
 beforeEach(() => {
   localStorage.removeItem(CONSENT_KEY)
@@ -42,7 +42,7 @@ test('links out to the privacy policy', async () => {
   await vi.waitFor(() => expect(banner()).not.toBeNull())
   const link = document.querySelector<HTMLAnchorElement>('#consent-copy a')
   expect(link?.href).toContain('policies.google.com/privacy')
-  expect(link?.textContent).toContain('Read more')
+  expect(link?.textContent).toBe('Read more (opens in a new tab)')
   expect(link?.getAttribute('target')).toBe('_blank')
   expect(link?.getAttribute('rel')).toBe('noopener noreferrer')
 })

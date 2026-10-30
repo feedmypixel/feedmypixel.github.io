@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { consent } from '$lib/consent.svelte'
-  import { toasts } from '$lib/toasts.svelte'
+  import { consent } from '#lib/consent.svelte.js'
+  import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
+  import NewTabHint from './NewTabHint.svelte'
 
   const FADE_MS = 320
 
@@ -55,7 +56,7 @@
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
         yes and no personal data is collected either way.
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-          Read more<span class="visually-hidden"> (opens in a new tab)</span>
+          Read more<NewTabHint />
         </a>
       </p>
       <div class="actions">

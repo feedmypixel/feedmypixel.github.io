@@ -1,7 +1,7 @@
 import { render } from 'vitest-browser-svelte'
 import RoleRun from './RoleRun.svelte'
-import { buildRuns } from '$lib/role-runs'
-import type { Role } from '$lib/data/experience'
+import { buildRuns } from '#lib/role-runs.js'
+import type { Role } from '#lib/data/experience.js'
 
 const now = new Date('2026-08-23T00:00:00Z')
 

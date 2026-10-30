@@ -1,16 +1,16 @@
 <script lang="ts">
-  import '$lib/styles/app.css'
+  import '#lib/styles/app.css'
   import '@fontsource-variable/plus-jakarta-sans/wght.css'
   import '@fontsource/dm-mono/400.css'
   import '@fontsource/dm-mono/500.css'
   import { asset } from '$app/paths'
-  import Header from '$lib/components/Header.svelte'
-  import Footer from '$lib/components/Footer.svelte'
-  import Toaster from '$lib/components/Toaster.svelte'
-  import BackToTop from '$lib/components/BackToTop.svelte'
-  import ConsentBanner from '$lib/components/ConsentBanner.svelte'
-  import { consent } from '$lib/consent.svelte'
-  import { loadAnalytics } from '$lib/analytics'
+  import Header from '#lib/components/Header.svelte'
+  import Footer from '#lib/components/Footer.svelte'
+  import Toaster from '#lib/components/Toaster.svelte'
+  import BackToTop from '#lib/components/BackToTop.svelte'
+  import ConsentBanner from '#lib/components/ConsentBanner.svelte'
+  import { consent } from '#lib/consent.svelte.js'
+  import { loadAnalytics } from '#lib/analytics.js'
 
   let { children } = $props()
 
@@ -22,8 +22,8 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" type="image/png" href={asset('/favicon.png')} />
-  <link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')} />
+  <link rel="icon" type="image/png" href={asset('favicon.png')} />
+  <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
   <meta name="build-sha" content={__BUILD_SHA__} />
 </svelte:head>
 
