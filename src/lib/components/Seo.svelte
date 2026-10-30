@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { siteUrl } from '$lib/config'
+  import { siteUrl } from '#lib/config.js'
 
   let {
     title,

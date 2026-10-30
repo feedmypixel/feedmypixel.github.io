@@ -1,7 +1,7 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Experience from './Experience.svelte'
-import { roles } from '$lib/data/experience'
+import { roles } from '#lib/data/experience.js'
 
 const rowCount = () => document.querySelectorAll('.rows > li').length
 

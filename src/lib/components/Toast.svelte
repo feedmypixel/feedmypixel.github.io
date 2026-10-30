@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DISMISS_MS, type ToastKind } from '$lib/toasts.svelte'
+  import { DISMISS_MS, type ToastKind } from '#lib/toasts.svelte.js'
 
   let { kind, message, onDismiss }: { kind: ToastKind; message: string; onDismiss: () => void } =
     $props()

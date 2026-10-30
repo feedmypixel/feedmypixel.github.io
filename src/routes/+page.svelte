@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Seo from '$lib/components/Seo.svelte'
-  import Hero from '$lib/components/Hero.svelte'
-  import Products from '$lib/components/Products.svelte'
-  import Experience from '$lib/components/Experience.svelte'
-  import Services from '$lib/components/Services.svelte'
-  import Contact from '$lib/components/Contact.svelte'
-  import { homeStructuredData } from '$lib/seo/structured-data'
+  import Seo from '#lib/components/Seo.svelte'
+  import Hero from '#lib/components/Hero.svelte'
+  import Products from '#lib/components/Products.svelte'
+  import Experience from '#lib/components/Experience.svelte'
+  import Services from '#lib/components/Services.svelte'
+  import Contact from '#lib/components/Contact.svelte'
+  import { homeStructuredData } from '#lib/seo/structured-data.js'
 </script>
 
 <Seo

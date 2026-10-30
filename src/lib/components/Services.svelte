@@ -1,6 +1,6 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
-  import { faqs, serviceFacts, serviceLede } from '$lib/data/services'
+  import { faqs, serviceFacts, serviceLede } from '#lib/data/services.js'
 
   const home = resolve('/')
 </script>

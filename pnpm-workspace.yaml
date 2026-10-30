@@ -1,9 +1,6 @@
 allowBuilds:
   esbuild: true
 
-overrides:
-  cookie: ^0.7.2
-
 auditConfig:
   ignoreGhsas:
     - GHSA-vfj7-8cjw-p6xm

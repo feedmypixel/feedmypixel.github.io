@@ -2,7 +2,7 @@
   import { resolve } from '$app/paths'
   import Logo from './Logo.svelte'
   import GitHubMark from './GitHubMark.svelte'
-  import { consent } from '$lib/consent.svelte'
+  import { consent } from '#lib/consent.svelte.js'
 
   const home = resolve('/')
 </script>

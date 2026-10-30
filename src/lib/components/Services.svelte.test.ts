@@ -1,7 +1,7 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Services from './Services.svelte'
-import { faqs, serviceFacts } from '$lib/data/services'
+import { faqs, serviceFacts } from '#lib/data/services.js'
 
 test('renders every service fact as a term and description', async () => {
   render(Services)

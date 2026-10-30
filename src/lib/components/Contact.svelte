@@ -6,9 +6,9 @@
     gitHubUrl,
     linkedInUrl,
     web3formsKey
-  } from '$lib/config'
-  import { validateContact, errorSummary, type ContactErrors } from '$lib/contact-validation'
-  import { toasts } from '$lib/toasts.svelte'
+  } from '#lib/config.js'
+  import { validateContact, errorSummary, type ContactErrors } from '#lib/contact-validation.js'
+  import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
   import Field from './Field.svelte'
   import EmailPill from './EmailPill.svelte'

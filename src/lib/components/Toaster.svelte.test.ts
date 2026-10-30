@@ -1,7 +1,7 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Toaster from './Toaster.svelte'
-import { toasts } from '$lib/toasts.svelte'
+import { toasts } from '#lib/toasts.svelte.js'
 
 beforeEach(() => {
   toasts.items = []

@@ -1,8 +1,8 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import ConsentBanner from './ConsentBanner.svelte'
-import { consent, CONSENT_KEY } from '$lib/consent.svelte'
-import { toasts } from '$lib/toasts.svelte'
+import { consent, CONSENT_KEY } from '#lib/consent.svelte.js'
+import { toasts } from '#lib/toasts.svelte.js'
 
 beforeEach(() => {
   localStorage.removeItem(CONSENT_KEY)

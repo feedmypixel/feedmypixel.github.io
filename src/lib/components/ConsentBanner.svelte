@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { consent } from '$lib/consent.svelte'
-  import { toasts } from '$lib/toasts.svelte'
+  import { consent } from '#lib/consent.svelte.js'
+  import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
 
   const FADE_MS = 320

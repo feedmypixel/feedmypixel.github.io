@@ -2,6 +2,7 @@ import { execSync } from 'node:child_process'
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
 import { sveltekit } from '@sveltejs/kit/vite'
+import adapter from '@sveltejs/adapter-static'
 
 function buildShaFromGitOrCiEnv() {
   try {
@@ -12,7 +13,7 @@ function buildShaFromGitOrCiEnv() {
 }
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  plugins: [sveltekit({ adapter: adapter() })],
 
   define: {
     __BUILD_SHA__: JSON.stringify(buildShaFromGitOrCiEnv())
@@ -35,7 +36,6 @@ export default defineConfig({
         'e2e/**',
         'playwright.config.ts',
         'playwright.visual.config.ts',
-        'svelte.config.js',
         'vite.config.ts',
         'eslint.config.js',
         'src/app.d.ts',

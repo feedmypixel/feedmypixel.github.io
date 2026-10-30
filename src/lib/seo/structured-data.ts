@@ -1,7 +1,7 @@
-import { emailAddress, gitHubUrl, linkedInUrl, siteUrl } from '$lib/config'
-import { stripHtml } from '$lib/strip-html'
-import { roles } from '$lib/data/experience'
-import { faqs, serviceFacts, serviceLede } from '$lib/data/services'
+import { emailAddress, gitHubUrl, linkedInUrl, siteUrl } from '#lib/config.js'
+import { stripHtml } from '#lib/strip-html.js'
+import { roles } from '#lib/data/experience.js'
+import { faqs, serviceFacts, serviceLede } from '#lib/data/services.js'
 
 const organisation = {
   '@type': 'Organization',

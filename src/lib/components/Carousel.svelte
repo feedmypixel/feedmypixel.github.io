@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { browser } from '$app/environment'
-  import { clampIndex, nearestSlide, scrollOffsetFor } from '$lib/carousel'
+  import { browser } from '$app/env'
+  import { clampIndex, nearestSlide, scrollOffsetFor } from '#lib/carousel.js'
 
   export type Slide = { src: string; alt: string; label: string }
 

@@ -7,22 +7,22 @@
 
   const slides: Slide[] = [
     {
-      src: asset('/pipes/framed-popup.png'),
+      src: asset('pipes/framed-popup.png'),
       alt: 'Pipes: status from your toolbar',
       label: 'Status from your toolbar'
     },
     {
-      src: asset('/pipes/framed-sidepanel.png'),
+      src: asset('pipes/framed-sidepanel.png'),
       alt: 'Pipes: every repo in a side panel',
       label: 'Every repo in a side panel'
     },
     {
-      src: asset('/pipes/framed-options.png'),
+      src: asset('pipes/framed-options.png'),
       alt: 'Pipes: connect GitHub and GitLab',
       label: 'Connect GitHub and GitLab'
     },
     {
-      src: asset('/pipes/framed-notification.png'),
+      src: asset('pipes/framed-notification.png'),
       alt: 'Pipes: loud the moment it breaks',
       label: 'Loud the moment it breaks'
     }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { roleCountLabel, type Facet } from '$lib/cv-filter'
+  import { roleCountLabel, type Facet } from '#lib/cv-filter.js'
 
   let {
     query = $bindable(),
