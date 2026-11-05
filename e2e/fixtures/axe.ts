@@ -1,19 +1,16 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page } from '@playwright/test'
 
-const ENTRANCE_ANIMATION_MAX_MS = 1000
-
 async function waitForEntranceAnimationsToSettle(page: Page) {
-  await page.waitForFunction((maxMs) => {
+  await page.waitForFunction(() => {
     return document.getAnimations().every((animation) => {
       const scrollDriven = animation.timeline !== null && animation.timeline !== document.timeline
       if (scrollDriven) {
         return true
       }
-      const duration = Number(animation.effect?.getComputedTiming().duration ?? 0)
-      return duration > maxMs || animation.playState === 'finished'
+      return animation.playState === 'finished'
     })
-  }, ENTRANCE_ANIMATION_MAX_MS)
+  })
 }
 
 export async function expectNoSeriousA11yViolations(page: Page) {

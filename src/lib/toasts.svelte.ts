@@ -1,7 +1,7 @@
 export type ToastKind = 'info' | 'positive' | 'critical'
 export type Toast = { id: string; kind: ToastKind; message: string }
 
-export const DISMISS_MS = 8000
+const DISMISS_MS = 6000
 
 class ToastStore {
   items = $state<Toast[]>([])

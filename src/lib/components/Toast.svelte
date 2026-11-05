@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DISMISS_MS, type ToastKind } from '#lib/toasts.svelte.js'
+  import type { ToastKind } from '#lib/toasts.svelte.js'
 
   let { kind, message, onDismiss }: { kind: ToastKind; message: string; onDismiss: () => void } =
     $props()
@@ -21,21 +21,16 @@
       <path d="M4 4l8 8M12 4l-8 8" />
     </svg>
   </button>
-  <span class="progress" aria-hidden="true">
-    <span class="progress-fill" style:animation-duration="{DISMISS_MS}ms"></span>
-  </span>
 </div>
 
 <style>
   .toast {
-    position: relative;
     display: flex;
     align-items: flex-start;
     gap: var(--space-4);
     width: 100%;
     max-width: 420px;
-    padding: var(--space-4) var(--space-4) var(--space-5);
-    overflow: hidden;
+    padding: var(--space-4);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     pointer-events: auto;
@@ -82,24 +77,6 @@
     opacity: 1;
   }
 
-  .progress {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    background: var(--toast-progress-track);
-  }
-
-  .progress-fill {
-    display: block;
-    height: 100%;
-    background: var(--toast-progress-fill);
-    animation-name: deplete;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-  }
-
   @keyframes rise {
     from {
       opacity: 0;
@@ -109,22 +86,6 @@
     to {
       opacity: 1;
       transform: none;
-    }
-  }
-
-  @keyframes deplete {
-    from {
-      width: 100%;
-    }
-
-    to {
-      width: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .progress {
-      display: none;
     }
   }
 </style>
