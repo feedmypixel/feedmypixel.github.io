@@ -13,6 +13,12 @@ export function mostVisibleId(entries: SectionEntry[]): string | null {
   return visible.length ? visible[0].target.id : null
 }
 
+const routeSections = new Map([['/status', 'products']])
+
+export function sectionForRoute(routeId: string | null) {
+  return (routeId && routeSections.get(routeId)) ?? null
+}
+
 export function indicatorGeometry(linkRect: Rect, navRect: Rect) {
   return {
     left: Math.round(linkRect.left - navRect.left),

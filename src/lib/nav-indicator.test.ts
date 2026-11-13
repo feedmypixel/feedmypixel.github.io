@@ -1,4 +1,13 @@
-import { mostVisibleId, indicatorGeometry } from './nav-indicator'
+import { mostVisibleId, indicatorGeometry, sectionForRoute } from './nav-indicator'
+
+test('a product page marks Products in the section nav', () => {
+  expect(sectionForRoute('/status')).toBe('products')
+})
+
+test('pages outside a section mark nothing', () => {
+  expect(sectionForRoute('/components')).toBeNull()
+  expect(sectionForRoute(null)).toBeNull()
+})
 
 const entry = (id: string, isIntersecting: boolean, intersectionRatio: number) => ({
   isIntersecting,

@@ -4,7 +4,7 @@
   import MobileNav from './MobileNav.svelte'
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
-  import { mostVisibleId, indicatorGeometry } from '#lib/nav-indicator.js'
+  import { mostVisibleId, indicatorGeometry, sectionForRoute } from '#lib/nav-indicator.js'
 
   const home = resolve('/')
 
@@ -26,8 +26,9 @@
     /* The header lives in the layout and is never remounted, so without reading
        the path here the observer stays bound to the previous page's sections and
        the old link stays marked. Section highlighting belongs to the one-pager:
-       the catalogue renders a Services demo that would otherwise light the nav. */
-    active = null
+       the catalogue renders a Services demo that would otherwise light the nav.
+       A page that belongs to a section, such as a product page, marks that section. */
+    active = sectionForRoute(page.route.id)
     if (page.route.id !== '/') {
       return
     }

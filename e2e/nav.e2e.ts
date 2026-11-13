@@ -24,6 +24,14 @@ test('the catalogue demo section does not light the nav', async ({ page }) => {
   await expect.poll(() => activeLinks(page)).toEqual([])
 })
 
+test('the status product page marks Products and leaving it clears the mark', async ({ page }) => {
+  await page.goto('/status')
+  await expect.poll(() => activeLinks(page)).toEqual(['Products'])
+  await page.getByRole('link', { name: 'Components' }).click()
+  await page.waitForURL('**/components')
+  await expect.poll(() => activeLinks(page)).toEqual([])
+})
+
 test('section highlighting still works on the one-pager', async ({ page }) => {
   await page.goto('/')
   await page.locator('#products').scrollIntoViewIfNeeded()
