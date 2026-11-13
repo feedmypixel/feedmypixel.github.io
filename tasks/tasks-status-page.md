@@ -30,32 +30,34 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/status-page`, not 
 
 ## 1.0 Assets
 
-- [ ] 1.1 Resize script: frames, screens and Pipes shots at 2x display width.
-- [ ] 1.2 Generate into `static/status/` and `static/pipes/`; remove `framed-*.png`.
+- [x] 1.1 Resize script: frames, screens and Pipes shots at 2x display width.
+- [x] 1.2 Generate into `static/status/` and `static/pipes/`; remove `framed-*.png`.
 
 ## 2.0 Bricks
 
-- [ ] 2.1 `Button` `size` prop (default 44px, `lg` 48px), tests.
-- [ ] 2.2 `PixelMark`, `ProductStory`, `ThemedImage`, `StoreBadge`, with tests.
-- [ ] 2.3 `carousel.ts` offset maths, tests first.
-- [ ] 2.4 `Carousel` slide snippet + strip mode; migrate every consumer in the same change.
-- [ ] 2.5 `Seo` image props; `Header` logo label.
+- [x] 2.1 `Button` `size` prop (default 44px, `large` 48px), tests.
+- [x] 2.2 `PixelMark`, `ProductStory`, `ThemedImage`, `Chevron`, `ExternalLink`, `ProductEntry`,
+      `StatusStoreLinks`, with tests where they carry behaviour.
+- [ ] 2.2a `StoreBadge` swap for both products, once the official badge artwork is in.
+- [x] 2.3 `carousel.ts` offset maths, tests first.
+- [x] 2.4 `Carousel` slide snippet + strip mode; every consumer migrated in the same change.
+- [x] 2.5 `Seo` image props; `Header` logo label.
 
 ## 3.0 Home Products
 
-- [ ] 3.1 `ComposedSlide`, status and Pipes slide data.
-- [ ] 3.2 status entry first, Pipes second with a top rule; badges.
-- [ ] 3.3 Update `Products` tests.
+- [x] 3.1 `ComposedSlide`, status and Pipes slide data.
+- [x] 3.2 status entry first, Pipes second with a top rule.
+- [x] 3.3 Update `Products` tests.
 
 ## 4.0 /status
 
-- [ ] 4.1 Route, Seo, sitemap.
-- [ ] 4.2 Hero, screenshots band, build story, more-from.
+- [x] 4.1 Route, Seo, sitemap.
+- [x] 4.2 Hero, screenshots band, build story, more-from.
 
 ## 5.0 Gates
 
-- [ ] 5.1 Design check loop to an empty diff (max 5 iterations), waivers recorded.
-- [ ] 5.2 Paired gallery, both themes, 375 and 1440, viewed.
-- [ ] 5.3 Copy-rule check by node: no em or en dashes, no comma before "and" or "or".
+- [x] 5.1 Design check loop to an empty diff (max 5 iterations), waivers recorded.
+- [x] 5.2 Paired gallery, both themes, 375 and 1440, viewed.
+- [x] 5.3 Copy-rule check by node: no em or en dashes, no comma before "and" or "or".
 - [ ] 5.4 check, lint, unit (file count), e2e + axe, visual baselines regenerated.
 - [ ] 5.5 Independent review on the branch diff.

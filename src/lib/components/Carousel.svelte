@@ -21,7 +21,7 @@
   const enhanced = browser
 
   const current = $derived(clampIndex(index, items.length))
-  const caption = $derived(counterCaption(current, items.length, items[current].label))
+  const caption = $derived(counterCaption(current, items.length, items.at(current)?.label ?? ''))
 
   function slideOffsets(strip: HTMLElement) {
     const slides = [...strip.children] as HTMLElement[]
@@ -41,7 +41,7 @@
     const target = clampIndex(next, items.length)
     index = target
     if (stripEl) {
-      stripEl.scrollTo({ left: slideOffsets(stripEl)[target], behavior: 'smooth' })
+      stripEl.scrollTo({ left: slideOffsets(stripEl).at(target) ?? 0, behavior: 'smooth' })
     }
   }
 

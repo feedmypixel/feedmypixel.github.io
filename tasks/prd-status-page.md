@@ -55,7 +55,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 ### Shared
 
 12. Screenshots follow the site theme with no flash and no JavaScript: both images are in the
-    markup, CSS shows the one matching `html[data-theme]`, and the hidden one is lazy so it is not
+    markup, CSS shows the one matching `html[data-theme]` and the hidden one is lazy so it is not
     fetched. status slide 02 uses the opposite theme.
 13. Store buttons are official badges (decision 1). Pipes uses the Chrome Web Store and Firefox
     Add-ons badges. status shows App Store and Google Play badges only once their URLs exist in
@@ -85,7 +85,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 
 ## 6. Non-goals
 
-- Release, merging to `main`, or adding status to `llms.txt` before go.
+- Release, merging to `main` or adding status to `llms.txt` before go.
 - A blog. Native app pages. A status-branded look (the page uses feedMyPixel's system).
 - Changing the header, footer, hero, Experience, Services or Contact.
 
