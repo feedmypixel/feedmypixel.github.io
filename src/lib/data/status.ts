@@ -98,5 +98,9 @@ export const story = {
   problem:
     'Keeping in touch takes more than it should. A full post feels like a performance and a message out of the blue needs a reason.',
   solution:
-    'status keeps it small. Post an emoji and a few words and your people can react, reply or message you for a natter. A small update is all it takes to start a conversation.'
+    'status keeps it small. Post an emoji and a few words and your people can react, reply or message you for a natter. A small update is all it takes to start a conversation.',
+  product:
+    'A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api. The iPhone and Android apps are Capacitor shells around the live site. Sign in by email link or passkey, no passwords. Push notifications and fingerprint or face app lock. No ads and no tracking.',
+  productSummary:
+    'A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api. iPhone and Android apps are Capacitor shells around the live site. Sign in by email link or passkey. No ads and no tracking.'
 }

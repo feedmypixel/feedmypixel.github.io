@@ -60,9 +60,9 @@
       name="status"
       pitch="An emoji and your status: break the ice and spark a conversation. React, reply and natter."
       story={{
-        ...statusStory,
-        product:
-          'A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api. iPhone and Android apps are Capacitor shells around the live site. Sign in by email link or passkey. No ads and no tracking.'
+        problem: statusStory.problem,
+        solution: statusStory.solution,
+        product: statusStory.productSummary
       }}
     >
       {#snippet links()}

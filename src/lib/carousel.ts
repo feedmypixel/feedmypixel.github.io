@@ -24,6 +24,28 @@ export function indexFromOffsets(scrollLeft: number, offsets: number[], atEnd: b
   return best
 }
 
+const SETTLE_TOLERANCE_PX = 2
+
+export function settledIndex({
+  scrollLeft,
+  offsets,
+  maxScroll,
+  current
+}: {
+  scrollLeft: number
+  offsets: number[]
+  maxScroll: number
+  current: number
+}) {
+  const reachable = offsets.map((offset) => Math.min(offset, maxScroll))
+  const currentOffset = reachable.at(current)
+  if (currentOffset !== undefined && Math.abs(currentOffset - scrollLeft) <= SETTLE_TOLERANCE_PX) {
+    return current
+  }
+  const atEnd = scrollLeft >= maxScroll - SETTLE_TOLERANCE_PX
+  return indexFromOffsets(scrollLeft, reachable, atEnd)
+}
+
 const twoDigits = (value: number) => String(value).padStart(2, '0')
 
 export function counterCaption(index: number, count: number, label: string) {

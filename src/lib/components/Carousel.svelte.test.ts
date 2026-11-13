@@ -83,10 +83,12 @@ test('swiping the strip moves the caption with it', async () => {
   await expect.element(page.getByText('02 / 03  Every repo in a side panel')).toBeVisible()
 })
 
-test('narrow slides show several at once and the last dot lights at the end of the strip', async () => {
-  renderCarousel('200px')
+test('with every narrow slide in view, the chosen dot stays chosen after the strip settles', async () => {
+  renderCarousel('150px')
   const strip = document.querySelector<HTMLElement>('.strip')!
   expect(strip.scrollWidth).toBeLessThanOrEqual(strip.clientWidth + 1)
+  document.querySelectorAll<HTMLButtonElement>('.dot')[1].click()
   strip.dispatchEvent(new Event('scroll'))
-  await vi.waitFor(() => expect(currentDot()).toBe(2))
+  await new Promise((resolve) => setTimeout(resolve, 300))
+  expect(currentDot()).toBe(1)
 })

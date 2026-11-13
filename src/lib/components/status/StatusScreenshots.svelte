@@ -2,9 +2,6 @@
   import { frames, story } from '#lib/data/status.js'
   import Carousel from '../Carousel.svelte'
   import ProductStory from '../ProductStory.svelte'
-
-  const product =
-    'A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api. The iPhone and Android apps are Capacitor shells around the live site. Sign in by email link or passkey, no passwords. Push notifications and fingerprint or face app lock. No ads and no tracking.'
 </script>
 
 <section id="screenshots" class="screenshots">
@@ -39,7 +36,7 @@
       {/snippet}
     </Carousel>
 
-    <ProductStory {...story} {product} />
+    <ProductStory problem={story.problem} solution={story.solution} product={story.product} />
   </div>
 </section>
 

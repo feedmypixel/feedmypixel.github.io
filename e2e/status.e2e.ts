@@ -31,6 +31,25 @@ test('the chevrons move the frame strip and its counter on /status', async ({ pa
   await expect(counter(page, 'status store screenshots')).toHaveText('02 / 07  People')
 })
 
+test('a frame near the end stays chosen when the strip cannot scroll to its start', async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/status')
+  const strip = page.getByLabel('status store screenshots', { exact: true })
+  await strip.scrollIntoViewIfNeeded()
+  await page.locator('#screenshots').getByRole('button', { name: 'Show Year' }).click()
+  await expect
+    .poll(() =>
+      strip.evaluate((element) =>
+        Math.round(element.scrollWidth - element.clientWidth - element.scrollLeft)
+      )
+    )
+    .toBeLessThanOrEqual(2)
+  await page.waitForTimeout(400)
+  await expect(counter(page, 'status store screenshots')).toHaveText('05 / 07  Year')
+})
+
 test('the chevrons move the home status carousel and it stays put', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/#products')

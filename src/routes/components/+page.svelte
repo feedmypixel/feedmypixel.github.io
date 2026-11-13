@@ -138,8 +138,9 @@
   <section aria-labelledby="story-h">
     <h2 id="story-h">Product story</h2>
     <ProductStory
-      {...statusStory}
-      product="A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api."
+      problem={statusStory.problem}
+      solution={statusStory.solution}
+      product={statusStory.productSummary}
     />
   </section>
 

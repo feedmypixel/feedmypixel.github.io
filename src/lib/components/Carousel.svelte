@@ -1,7 +1,7 @@
 <script lang="ts" generics="Item extends { label: string }">
   import type { Snippet } from 'svelte'
   import { browser } from '$app/env'
-  import { clampIndex, counterCaption, indexFromOffsets } from '#lib/carousel.js'
+  import { clampIndex, counterCaption, settledIndex } from '#lib/carousel.js'
   import Chevron from './Chevron.svelte'
 
   let {
@@ -33,15 +33,24 @@
     if (!stripEl) {
       return
     }
-    const atEnd = stripEl.scrollLeft + stripEl.clientWidth >= stripEl.scrollWidth - 2
-    index = indexFromOffsets(stripEl.scrollLeft, slideOffsets(stripEl), atEnd)
+    index = settledIndex({
+      scrollLeft: stripEl.scrollLeft,
+      offsets: slideOffsets(stripEl),
+      maxScroll: maxScroll(stripEl),
+      current
+    })
+  }
+
+  function maxScroll(strip: HTMLElement) {
+    return strip.scrollWidth - strip.clientWidth
   }
 
   function goTo(next: number) {
     const target = clampIndex(next, items.length)
     index = target
     if (stripEl) {
-      stripEl.scrollTo({ left: slideOffsets(stripEl).at(target) ?? 0, behavior: 'smooth' })
+      const offset = slideOffsets(stripEl).at(target) ?? 0
+      stripEl.scrollTo({ left: Math.min(offset, maxScroll(stripEl)), behavior: 'smooth' })
     }
   }
 
