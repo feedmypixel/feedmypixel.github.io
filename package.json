@@ -26,6 +26,7 @@
     "test:unit": "TZ=UTC vitest run --coverage",
     "test:e2e": "playwright test",
     "test:a11y": "playwright test e2e/a11y.e2e.ts",
+    "design:check": "node scripts/design/design-check.mjs",
     "test:visual": "playwright test -c playwright.visual.config.ts",
     "test:visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
     "security-audit": "pnpm audit --audit-level=moderate",

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>status - an emoji and your status | feedMyPixel</title>
+<meta name="description" content="status: an emoji and your status. Break the ice and spark a conversation. React, reply and natter. Built by Ben Chidgey with SvelteKit, Fastify and Claude.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="status - an emoji and your status">
+<meta property="og:description" content="Break the ice and spark a conversation. React, reply and natter. How and why I built status with SvelteKit, Fastify and Claude.">
+<meta property="og:image" content="https://status.me/og.png">
+<meta property="og:site_name" content="feedMyPixel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="status - an emoji and your status">
+<meta name="twitter:description" content="Break the ice and spark a conversation. React, reply and natter.">
+<meta name="twitter:image" content="https://status.me/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  body{ margin:0; background:var(--surface-page); }
+  :root{
+    --neutral-50:#fbfcfe; --neutral-100:#f4f7fa; --neutral-150:#e9eef5; --neutral-200:#dbe3ed;
+    --neutral-300:#c2ccda; --neutral-400:#94a1b3; --neutral-500:#66748a; --neutral-600:#4a586b;
+    --neutral-700:#374355; --neutral-800:#1c2635; --neutral-900:#111a26; --neutral-950:#0a1020;
+    --blue-50:#eaf3ff; --blue-100:#d2e6ff; --blue-200:#a9ceff; --blue-300:#73b0ff;
+    --blue-400:#3294fc; --blue-500:#1a7ef0; --blue-600:#1267d1; --blue-700:#0f52a8;
+    --surface-page:#fbfcfe; --surface-raised:#ffffff; --surface-sunken:#f1f5fa;
+    --surface-inset:#e5ebf4; --surface-overlay:#ffffff;
+    --border-subtle:var(--neutral-150); --border-default:var(--neutral-200); --border-strong:var(--neutral-300);
+    --ink-strong:var(--neutral-950); --ink:var(--neutral-800); --ink-muted:var(--neutral-600);
+    --ink-subtle:#5d6b80; --ink-onbrand:#ffffff;
+    --brand:var(--blue-400); --brand-hover:var(--blue-500); --brand-active:var(--blue-600);
+    --brand-tint:var(--blue-50); --brand-tint-strong:var(--blue-100);
+    --link:var(--blue-700); --link-hover:var(--blue-600);
+    --button-bg:#1267d1; --button-bg-hover:#0f52a8; --button-ink:#ffffff; --brand-text:#0f52a8;
+    --mood-positive:oklch(0.49 0.12 150); --mood-positive-tint:oklch(0.95 0.04 150);
+    --mood-caution:oklch(0.70 0.13 75); --mood-critical:oklch(0.52 0.16 25); --mood-critical-tint:oklch(0.95 0.03 25);
+    --mood-info:#1267d1; --mood-accent:oklch(0.56 0.14 290);
+    --solid-positive:oklch(0.48 0.12 150); --solid-critical:oklch(0.50 0.17 25); --solid-info:#0f52a8;
+    --field-bg:#ffffff; --field-border:var(--neutral-300); --field-border-focus:var(--indicator);
+    --field-invalid:var(--mood-critical); --field-placeholder:var(--ink-subtle);
+    --font-display:'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-text:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono:'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+    --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700;
+    --size-xs:0.75rem; --size-sm:0.875rem; --size-base:1rem; --size-md:1.125rem; --size-lg:1.25rem;
+    --size-xl:clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem); --size-2xl:clamp(1.625rem, 1.4rem + 0.9vw, 2.125rem); --size-3xl:clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem); --size-4xl:clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem); --size-5xl:clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+    --leading-tight:1.1; --leading-snug:1.25; --leading-normal:1.5; --leading-relaxed:1.65;
+    --tracking-tight:-0.02em; --tracking-normal:0; --tracking-wide:0.04em;
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem; --space-5:1.25rem;
+    --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem; --space-20:5rem; --space-24:6rem;
+    --gutter:clamp(1.25rem, 4vw, 3rem);
+    --band:clamp(4rem, 2.5rem + 6vw, 8rem);
+    --radius-pixel:2px; --radius-sm:3px; --radius-md:4px; --radius-lg:4px; --radius-xl:4px; --radius-2xl:6px; --radius-pill:6px;
+    --shadow-sm:0 1px 2px rgba(20,26,39,0.04);
+    --shadow-md:0 1px 3px rgba(20,26,39,0.06);
+    --shadow-lg:0 8px 24px -12px rgba(20,26,39,0.15);
+    --ease-standard:cubic-bezier(0.2,0.8,0.2,1); --ease-emphasized:cubic-bezier(0.16,1,0.3,1);
+    --dur-fast:120ms; --dur:200ms; --dur-slow:320ms;
+    --z-header:100; --z-overlay:200; --z-toast:400;
+    --focus-ring-color:rgba(18,103,209,0.55); --focus-ring:0 0 0 3px var(--focus-ring-color);
+    --indicator:#1267d1;
+    --accent:var(--brand); --accent-text:var(--brand-text);
+    --scrim:rgb(10 16 32 / 40%); --header-height:4.25rem; --container-max:77.5rem;
+  }
+  [data-theme="dark"]{
+    --surface-page:#0a0b0e; --surface-raised:#1b1e26; --surface-sunken:#13151c;
+    --surface-inset:#23262f; --surface-overlay:#1b1e26;
+    --border-subtle:#262a33; --border-default:#333843; --border-strong:#454b58;
+    --ink-strong:#f3f6fb; --ink:#d6deea; --ink-muted:#93a1ba; --ink-subtle:#7888a2;
+    --brand:#4f9dfd; --brand-hover:#73b0ff; --brand-active:#a9ceff; --brand-tint:#122236; --brand-tint-strong:#16304b;
+    --link:#73b0ff; --link-hover:#a9ceff;
+    --button-bg:#4f9dfd; --button-bg-hover:#73b0ff; --button-ink:#0b0f18; --brand-text:#4f9dfd;
+    --mood-positive:oklch(0.78 0.15 150); --mood-critical:oklch(0.74 0.16 25);
+    --mood-positive-tint:#0f2417; --mood-critical-tint:#2a1414;
+    --mood-info:#73b0ff;
+    --field-bg:#0d121b; --field-border:#38445c;
+    --field-invalid:oklch(0.74 0.16 25); --field-border-focus:#4f9dfd;
+    --focus-ring:0 0 0 3px rgba(79,157,253,0.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 1px 3px rgba(0,0,0,0.4);
+    --shadow-lg:0 10px 28px -12px rgba(0,0,0,0.55);
+    --focus-ring-color:rgba(79,157,253,0.55);
+    --indicator:#4f9dfd;
+    --accent:var(--brand); --accent-text:var(--brand-text);
+    --scrim:rgb(0 0 0 / 55%);
+  }
+  .fmp-sun{ display:inline-flex; } .fmp-moon{ display:none; }
+  [data-theme="dark"] .fmp-sun{ display:none; } [data-theme="dark"] .fmp-moon{ display:inline-flex; }
+  :focus-visible{ outline:2px solid var(--indicator); outline-offset:2px; border-radius:var(--radius-sm); }
+  ::selection{ background:var(--brand-tint-strong); color:var(--ink-strong); }
+  a{ color:var(--link); }
+  .fmp-chrome:hover{ text-decoration:underline !important; text-underline-offset:3px; }
+  .fmp-nolink, .fmp-nolink:hover{ text-decoration:none !important; }
+  .fmp-strip{ scrollbar-width:none; -ms-overflow-style:none; }
+  .fmp-strip::-webkit-scrollbar{ display:none; }
+  .fmp-caro-btn:hover{ background:color-mix(in srgb, var(--ink) 9%, transparent); color:var(--brand-hover); }
+  /* Phone frames are 1:2 portrait, so the strip shows several at a fixed frame
+     width instead of one slide per viewport. The chevrons keep their own gutter
+     exactly as on the Pipes carousel; below 680px they go and swipe carries it. */
+  .fmp-caro-frame{ padding:0 64px; }
+  .fmp-caro-prev, .fmp-caro-next{ background:transparent; color:var(--indicator); }
+  .fmp-caro-prev:hover, .fmp-caro-next:hover{ background:color-mix(in srgb, var(--ink) 9%, transparent); }
+  @media (max-width:680px){
+    .fmp-caro-frame{ padding:0; }
+    .fmp-caro-prev, .fmp-caro-next{ display:none; }
+  }
+  .fmp-ghost:hover{ border-color:var(--indicator) !important; color:var(--brand-text) !important; }
+  .fmp-solid:hover{ background-color:var(--button-bg-hover) !important; }
+  .fmp-prose a{ color:var(--link); text-decoration:underline; text-underline-offset:3px; }
+  .fmp-prose a:hover{ color:var(--link-hover); text-decoration:none; }
+  .fmp-prose p{ margin:0; }
+  .fmp-dot{ width:24px; height:24px; }
+  .fmp-dot > span{ width:10px; height:10px; }
+  .fmp-toc a:hover{ color:var(--ink-strong) !important; }
+  .fmp-top{ opacity:0; visibility:hidden; transform:translateY(8px); }
+  .fmp-top[data-show="true"]{ opacity:1; visibility:visible; transform:none; }
+  @media (min-width:760px){
+    [data-hero-actions]{ flex-direction:row !important; align-items:center !important; }
+  }
+  @media (min-width:960px){
+    [data-story-grid]{ grid-template-columns:220px minmax(0,1fr) !important; gap:var(--space-16) !important; }
+    [data-story-aside]{ position:sticky; top:calc(var(--header-height) + var(--space-8)); }
+  }
+  @media (max-width:759px){
+    [data-desk-only]{ display:none !important; }
+    [data-mob-only]{ display:flex !important; }
+    .fmp-dot{ width:28px; height:28px; }
+    .fmp-dot > span{ width:14px; height:14px; }
+  }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto !important; } *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; } }
+</style>
+</helmet>
+
+<div id="top" data-theme="{{ theme }}" style="font-family:var(--font-text); color:var(--ink); background-color:var(--surface-page); min-height:100vh; display:flex; flex-direction:column;">
+
+  <a href="#main" style="position:absolute; left:var(--space-4); top:-3.5rem; z-index:var(--z-toast); background-color:var(--button-bg); color:var(--button-ink); padding:var(--space-2) var(--space-4); border-radius:var(--radius-md); font-size:var(--size-sm); font-weight:var(--weight-semibold); text-decoration:none; transition:top var(--dur) var(--ease-standard);" style-focus="top:var(--space-4);">Skip to content</a>
+
+  <header style="position:sticky; top:0; z-index:var(--z-header); background:color-mix(in srgb, var(--surface-page) 88%, transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border-subtle);">
+    <div style="max-width:1240px; margin:0 auto; padding:var(--space-3) var(--gutter); display:flex; align-items:center; justify-content:space-between; gap:var(--space-4);">
+      <a href="feedMyPixel.dc.html" aria-label="feedMyPixel home" style="display:inline-flex; align-items:center; gap:var(--space-3); text-decoration:none;">
+        <svg width="26" height="26" viewBox="0 0 30 30" aria-hidden="true" style="display:block; flex:none;"><rect width="30" height="30" rx="2" fill="var(--brand)"></rect><rect x="5" y="5" width="5" height="5" fill="#fff"></rect><rect x="12" y="5" width="5" height="5" fill="#fff"></rect></svg>
+        <span style="font-family:var(--font-display); font-size:var(--size-base); font-weight:var(--weight-semibold); color:var(--ink-strong); letter-spacing:var(--tracking-tight);">feedMyPixel</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:var(--space-2);">
+        <nav data-desk-only aria-label="Site" style="display:flex; align-items:center; gap:var(--space-1);">
+          <a href="feedMyPixel.dc.html#products" class="fmp-chrome" style="font-size:var(--size-sm); font-weight:var(--weight-medium); color:var(--ink-muted); text-decoration:none; padding:var(--space-2) var(--space-3); border-radius:var(--radius-md);">Products</a>
+          <a href="feedMyPixel.dc.html#experience" class="fmp-chrome" style="font-size:var(--size-sm); font-weight:var(--weight-medium); color:var(--ink-muted); text-decoration:none; padding:var(--space-2) var(--space-3); border-radius:var(--radius-md);">Experience</a>
+          <a href="feedMyPixel.dc.html#contact" class="fmp-chrome" style="font-size:var(--size-sm); font-weight:var(--weight-medium); color:var(--ink-muted); text-decoration:none; padding:var(--space-2) var(--space-3); border-radius:var(--radius-md);">Contact</a>
+        </nav>
+        <button type="button" onClick="{{ toggleMobile }}" aria-label="{{ mobileLabel }}" aria-expanded="{{ mobileOpen }}" aria-controls="mobile-nav" data-mob-only style="width:40px; height:40px; display:none; align-items:center; justify-content:center; background:transparent; border:1px solid var(--border-default); border-radius:var(--radius-md); color:var(--ink-muted); cursor:pointer; padding:0;" style-hover="color:var(--ink-strong); border-color:var(--border-strong);">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="{{ burgerPath }}"></path></svg>
+        </button>
+        <button type="button" onClick="{{ toggleTheme }}" aria-label="Switch colour theme" title="Switch colour theme" style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:transparent; border:1px solid var(--border-default); border-radius:var(--radius-md); color:var(--ink-muted); cursor:pointer; padding:0;" style-hover="color:var(--ink-strong); border-color:var(--border-strong);">
+          <span class="fmp-sun" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"></path></svg></span>
+          <span class="fmp-moon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1z"></path></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ mobileNavOpen }}" hint-placeholder-val="{{ false }}">
+    <nav id="mobile-nav" aria-label="Site" data-mob-only style="display:none; position:sticky; top:var(--header-height); z-index:95; background:var(--surface-raised); border-bottom:1px solid var(--border-default); box-shadow:var(--shadow-md); flex-direction:column; padding:var(--space-2) var(--gutter) var(--space-4);">
+      <a href="feedMyPixel.dc.html" class="fmp-chrome" style="display:block; padding:var(--space-3) 0; font-size:var(--size-base); font-weight:var(--weight-medium); color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border-subtle);">Home</a>
+      <a href="feedMyPixel.dc.html#products" class="fmp-chrome" style="display:block; padding:var(--space-3) 0; font-size:var(--size-base); font-weight:var(--weight-medium); color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border-subtle);">Products</a>
+      <a href="feedMyPixel.dc.html#experience" class="fmp-chrome" style="display:block; padding:var(--space-3) 0; font-size:var(--size-base); font-weight:var(--weight-medium); color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border-subtle);">Experience</a>
+      <a href="feedMyPixel.dc.html#contact" class="fmp-chrome" style="display:block; padding:var(--space-3) 0; font-size:var(--size-base); font-weight:var(--weight-medium); color:var(--ink); text-decoration:none;">Contact</a>
+    </nav>
+  </sc-if>
+
+  <main id="main" style="flex:1 0 auto;">
+
+    <!-- ============ HERO ============ -->
+    <section data-screen-label="Hero" style="border-bottom:1px solid var(--border-subtle);">
+      <div style="max-width:1240px; margin:0 auto; padding:var(--band) var(--gutter);">
+        <nav aria-label="Breadcrumb" style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle); margin:0 0 var(--space-6); display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-2);">
+          <a href="feedMyPixel.dc.html" class="fmp-chrome" style="color:var(--ink-subtle); text-decoration:none;">feedMyPixel</a>
+          <span aria-hidden="true">/</span>
+          <a href="feedMyPixel.dc.html#products" class="fmp-chrome" style="color:var(--ink-subtle); text-decoration:none;">Products</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page" style="color:var(--ink-muted);">status</span>
+        </nav>
+        <div style="display:flex; align-items:center; gap:var(--space-4);">
+          <span aria-hidden="true" style="display:flex; gap:4px; flex:none;"><span style="width:14px; height:14px; background:var(--accent);"></span><span style="width:14px; height:14px; background:var(--accent); opacity:0.45;"></span></span>
+          <h1 style="font-family:var(--font-display); font-weight:var(--weight-bold); font-size:var(--size-5xl); line-height:var(--leading-tight); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:0;">status</h1>
+        </div>
+        <p style="font-family:var(--font-display); font-size:var(--size-2xl); font-weight:var(--weight-medium); line-height:var(--leading-snug); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:var(--space-8) 0 0; max-width:30ch; text-wrap:balance;">An emoji and your status: break the ice and spark a conversation.</p>
+        <p style="font-size:var(--size-lg); line-height:var(--leading-snug); color:var(--ink-muted); margin:var(--space-4) 0 0; max-width:46ch; text-wrap:pretty;">React, reply and natter. Post an emoji and a few words. Your people react, reply or message you for a natter.</p>
+
+        <div data-hero-actions style="display:flex; flex-direction:column; align-items:flex-start; gap:var(--space-3); margin-top:var(--space-10);">
+          <a href="https://status.me" class="fmp-solid" style="display:inline-flex; align-items:center; gap:var(--space-3); min-height:48px; padding:0 var(--space-6); background-color:var(--button-bg); color:var(--button-ink); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-base); font-weight:var(--weight-semibold);">Open status.me</a>
+          <a href="https://apps.apple.com/" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:48px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-base); font-weight:var(--weight-semibold);">App Store</a>
+          <a href="https://play.google.com/" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:48px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-base); font-weight:var(--weight-semibold);">Google Play</a>
+        </div>
+
+        <p style="font-family:var(--font-mono); font-size:var(--size-xs); line-height:var(--leading-relaxed); color:var(--ink-subtle); margin:var(--space-16) 0 0; padding-top:var(--space-6); border-top:1px solid var(--border-subtle); max-width:64ch;">Web, iPhone and Android &middot; No ads &middot; No tracking &middot; For 13 and over &middot; Soft launched on the web, November 2026</p>
+      </div>
+    </section>
+
+    <!-- ============ SCREENSHOTS + PROBLEM / SOLUTION / PRODUCT ============ -->
+    <section id="screenshots" data-screen-label="Screenshots" style="border-bottom:1px solid var(--border-subtle); background:var(--surface-sunken);">
+      <div style="max-width:1240px; margin:0 auto; padding:var(--band) var(--gutter); display:flex; flex-direction:column; gap:var(--space-12);">
+        <div>
+          <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--accent-text); font-weight:var(--weight-medium); margin:0 0 var(--space-4);">Screenshots</p>
+          <h2 style="font-family:var(--font-display); font-size:var(--size-3xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:0; max-width:26ch; text-wrap:balance;">Post. React. Reply. Natter.</h2>
+        </div>
+
+        <figure style="margin:0; display:flex; flex-direction:column; gap:var(--space-4);">
+          <div class="fmp-caro-frame" style="position:relative;">
+            <div ref="{{ stripRef }}" onScroll="{{ onStripScroll }}" class="fmp-strip" tabindex="0" aria-label="status store screenshots" style="position:relative; display:flex; gap:var(--space-4); overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:var(--space-1);">
+              <sc-for list="{{ frames }}" as="f" hint-placeholder-count="7">
+                <figure style="flex:0 0 auto; width:clamp(200px, 24vw, 280px); margin:0; scroll-snap-align:start; display:flex; flex-direction:column; gap:var(--space-3);">
+                  <div style="background:var(--surface-raised); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:1206 / 2622;">
+                    <img src="{{ f.src }}" alt="{{ f.alt }}" loading="lazy" width="1206" height="2622" style="display:block; width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <figcaption style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); display:flex; gap:var(--space-3);"><span style="color:var(--ink-subtle);">{{ f.num }}</span><span>{{ f.label }}</span></figcaption>
+                </figure>
+              </sc-for>
+            </div>
+            <button type="button" onClick="{{ prevSlide }}" aria-label="Previous screenshot" class="fmp-caro-btn fmp-caro-prev" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:none; cursor:pointer; padding:0; transition:background 160ms ease;"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <button type="button" onClick="{{ nextSlide }}" aria-label="Next screenshot" class="fmp-caro-btn fmp-caro-next" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:none; cursor:pointer; padding:0; transition:background 160ms ease;"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+          </div>
+          <figcaption style="display:flex; align-items:center; justify-content:space-between; gap:var(--space-4);">
+            <span style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted);">{{ slideCaption }}</span>
+            <span role="tablist" aria-label="Choose screenshot" style="display:flex; gap:var(--space-2); flex:none;">
+              <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="7">
+                <button type="button" role="tab" class="fmp-dot" aria-label="{{ dot.label }}" aria-selected="{{ dot.selected }}" onClick="{{ dot.onSelect }}" style="display:inline-flex; align-items:center; justify-content:center; border:none; padding:0; background:transparent; cursor:pointer;"><span style="{{ dot.style }}"></span></button>
+              </sc-for>
+            </span>
+          </figcaption>
+        </figure>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:var(--space-8); padding-top:var(--space-4);">
+          <div>
+            <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--mood-critical); font-weight:var(--weight-semibold); margin:0 0 var(--space-3);">Problem</p>
+            <p style="font-size:var(--size-base); line-height:var(--leading-relaxed); color:var(--ink); margin:0;">Keeping in touch takes more than it should. A full post feels like a performance and a message out of the blue needs a reason.</p>
+          </div>
+          <div>
+            <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--brand-text); font-weight:var(--weight-semibold); margin:0 0 var(--space-3);">Solution</p>
+            <p style="font-size:var(--size-base); line-height:var(--leading-relaxed); color:var(--ink); margin:0;">status keeps it small. Post an emoji and a few words and your people can react, reply or message you for a natter. A small update is all it takes to start a conversation.</p>
+          </div>
+          <div>
+            <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--mood-positive); font-weight:var(--weight-semibold); margin:0 0 var(--space-3);">Product</p>
+            <p style="font-size:var(--size-base); line-height:var(--leading-relaxed); color:var(--ink); margin:0;">A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api. The iPhone and Android apps are Capacitor shells around the live site. Sign in by email link or passkey, no passwords. Push notifications and fingerprint or face app lock. No ads and no tracking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUILD STORY ============ -->
+    <section id="story" data-screen-label="Build story" style="border-bottom:1px solid var(--border-subtle);">
+      <div style="max-width:1240px; margin:0 auto; padding:var(--band) var(--gutter);">
+        <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--accent-text); font-weight:var(--weight-medium); margin:0 0 var(--space-4);">The build story</p>
+        <h2 style="font-family:var(--font-display); font-size:var(--size-3xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:0; max-width:24ch; text-wrap:balance;">How and why I built status, with Claude, on SvelteKit</h2>
+
+        <div data-story-grid style="display:grid; grid-template-columns:1fr; gap:var(--space-10); margin-top:var(--space-12); align-items:start;">
+          <aside data-story-aside style="display:flex; flex-direction:column; gap:var(--space-8);">
+            <nav class="fmp-toc" aria-label="In this story" style="display:flex; flex-direction:column; gap:var(--space-2);">
+              <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle); margin:0 0 var(--space-2);">In this story</p>
+              <a href="#why" style="font-size:var(--size-sm); color:var(--ink-muted); text-decoration:none; padding:var(--space-1) 0;">Why I built it</a>
+              <a href="#how" style="font-size:var(--size-sm); color:var(--ink-muted); text-decoration:none; padding:var(--space-1) 0;">How it's built</a>
+              <a href="#claude" style="font-size:var(--size-sm); color:var(--ink-muted); text-decoration:none; padding:var(--space-1) 0;">Built with Claude</a>
+              <a href="#try" style="font-size:var(--size-sm); color:var(--ink-muted); text-decoration:none; padding:var(--space-1) 0;">Try it</a>
+              <a href="#thanks" style="font-size:var(--size-sm); color:var(--ink-muted); text-decoration:none; padding:var(--space-1) 0;">Thanks</a>
+            </nav>
+            <dl style="margin:0; padding-top:var(--space-6); border-top:1px solid var(--border-subtle); display:grid; grid-template-columns:1fr; gap:var(--space-4);">
+              <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+                <dt style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle);">Web</dt>
+                <dd class="fmp-prose" style="margin:0; font-size:var(--size-sm); color:var(--ink);"><a href="https://svelte.dev/docs/kit">SvelteKit</a>, <a href="https://svelte.dev">Svelte 5</a>, <a href="https://www.typescriptlang.org">TypeScript</a></dd>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+                <dt style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle);">Api</dt>
+                <dd class="fmp-prose" style="margin:0; font-size:var(--size-sm); color:var(--ink);"><a href="https://fastify.dev">Fastify</a>, <a href="https://www.postgresql.org">PostgreSQL</a></dd>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+                <dt style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle);">Apps</dt>
+                <dd class="fmp-prose" style="margin:0; font-size:var(--size-sm); color:var(--ink);"><a href="https://capacitorjs.com">Capacitor</a>, <a href="https://apps.apple.com/">iPhone</a> and <a href="https://play.google.com/">Android</a></dd>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+                <dt style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--ink-subtle);">Built with</dt>
+                <dd class="fmp-prose" style="margin:0; font-size:var(--size-sm); color:var(--ink);"><a href="https://claude.ai/design">Claude Design</a>, <a href="https://claude.com/product/claude-code">Claude Code</a></dd>
+              </div>
+            </dl>
+          </aside>
+
+          <article class="fmp-prose" style="max-width:66ch; display:flex; flex-direction:column; gap:var(--space-5); font-size:var(--size-md); line-height:var(--leading-relaxed); color:var(--ink); text-wrap:pretty;">
+            <h3 id="why" style="font-family:var(--font-display); font-size:var(--size-xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:0; scroll-margin-top:calc(var(--header-height) + var(--space-6));">Why I built it</h3>
+            <p>For me status is about breaking the ice. Reaching out to people can take real effort and sometimes it means saying something in a group chat. status is a simple way to say what you're up to and start a conversation. Your people see it pop up and can react or comment. If they want to chat more they can message you privately. If they want to take it elsewhere, to WhatsApp, Zoom or FaceTime, they can.</p>
+            <p>Everything has a status already: WhatsApp, Slack, Facebook. But there it sits on the side, something few people use in an app built for something else. status brings it up front and centre.</p>
+
+            <h3 id="how" style="font-family:var(--font-display); font-size:var(--size-xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:var(--space-8) 0 0; scroll-margin-top:calc(var(--header-height) + var(--space-6));">How it's built</h3>
+            <p>Simplicity and speed: one thing, done well. I chose <a href="https://svelte.dev/docs/kit">SvelteKit</a> and <a href="https://fastify.dev">Fastify</a> because they are easy to work with and modern. <a href="https://www.typescriptlang.org">TypeScript</a> makes my life easier. The iPhone and Android apps are <a href="https://capacitorjs.com">Capacitor</a> shells around the live site. Capacitor has worked very well with SvelteKit.</p>
+
+            <figure style="margin:var(--space-6) 0 0; display:flex; flex-direction:column; gap:var(--space-3);">
+              <div class="fmp-strip" tabindex="0" aria-label="status screens" style="display:flex; gap:var(--space-3); overflow-x:auto; scroll-snap-type:x proximity; padding:var(--space-4); background:var(--surface-inset); border-radius:var(--radius-lg);">
+                <sc-for list="{{ screens }}" as="s" hint-placeholder-count="9">
+                  <div style="flex:0 0 auto; width:clamp(132px, 14vw, 168px); scroll-snap-align:start; display:flex; flex-direction:column; gap:var(--space-2);">
+                    <div style="background:var(--surface-raised); border:1px solid var(--border-default); border-radius:var(--radius-md); overflow:hidden; aspect-ratio:1206 / 2622;">
+                      <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" width="1206" height="2622" style="display:block; width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <span style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted);">{{ s.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <figcaption style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted);">{{ screensCaption }}</figcaption>
+            </figure>
+
+            <h3 id="claude" style="font-family:var(--font-display); font-size:var(--size-xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:var(--space-8) 0 0; scroll-margin-top:calc(var(--header-height) + var(--space-6));">Built with Claude</h3>
+            <p>I start with detailed requirements, written like architecture decision records (ADRs). From those <a href="https://github.com/snarktank/ai-dev-tasks">ai-dev-tasks</a> makes a product requirements document (PRD) and a task list. Then I write briefs for <a href="https://claude.ai/design">Claude Design</a> (CD to its friends). A handoff I'm happy with usually takes a few tweaks in CD. <a href="https://claude.com/product/claude-code">Claude Code</a> (CC) then builds it with <a href="https://github.com/feedmypixel/principles">my own skills for design to code and for principles</a>, so there are rules for how things are built and a way for CC to know the build matches the design.</p>
+            <p>Claude is great when:</p>
+            <ul style="margin:0; padding-left:1.25em; display:flex; flex-direction:column; gap:var(--space-2);">
+              <li>you give it the right context</li>
+              <li>a harness for how to build and what to build</li>
+              <li>Keep the instructions, rules, tests, context and skills up to date and lean</li>
+              <li>use <a href="https://github.com/JuliusBrussee/caveman">caveman</a> to keep Claude concise</li>
+              <li><a href="https://www.rtk-ai.app/">rtk</a> to save tokens</li>
+              <li>my own hooks stop reams of stale comments</li>
+            </ul>
+            <p>I steered all the way: writing the ADRs and PRDs and teaching it how to build through skills and context. Then I checked what was built by looking over, making sure its done correctly and iterating and teching if its not. The final polish came from using the flows as a user would. That's where the tweaks come from that make it work as a whole.</p>
+            <p style="padding:var(--space-5) var(--space-6); background:var(--surface-sunken); border-radius:var(--radius-lg); color:var(--ink-strong); font-weight:var(--weight-medium);">My tip: pay attention. If you don't tell the robots how to behave and then check how they behaved, you'll get something you didn't ask for.</p>
+
+            <h3 id="try" style="font-family:var(--font-display); font-size:var(--size-xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:var(--space-8) 0 0; scroll-margin-top:calc(var(--header-height) + var(--space-6));">Try it</h3>
+            <p>This has been an immense amount of fun: a modern web app plus iPhone and Android apps, built with SvelteKit, Fastify and <a href="https://claude.com">Claude</a>. Try it at <a href="https://status.me">status.me</a> or in the <a href="https://apps.apple.com/">App Store</a> and <a href="https://play.google.com/">Google Play</a>.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:var(--space-3); margin-top:var(--space-2);">
+              <a href="https://status.me" class="fmp-solid" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background-color:var(--button-bg); color:var(--button-ink); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">Open status.me</a>
+              <a href="https://apps.apple.com/" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">App Store</a>
+              <a href="https://play.google.com/" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">Google Play</a>
+            </div>
+
+            <h3 id="thanks" style="font-family:var(--font-display); font-size:var(--size-xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:var(--space-8) 0 0; scroll-margin-top:calc(var(--header-height) + var(--space-6));">Thanks</h3>
+            <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--size-base);">
+              <li><a href="https://svelte.dev/docs/kit">SvelteKit</a></li>
+              <li><a href="https://fastify.dev">Fastify</a></li>
+              <li><a href="https://capacitorjs.com">Capacitor</a></li>
+              <li><a href="https://claude.com">Claude</a> by <a href="https://www.anthropic.com">Anthropic</a></li>
+              <li><a href="https://github.com/snarktank">Ryan Carson</a> for <a href="https://github.com/snarktank/ai-dev-tasks">ai-dev-tasks</a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WAY BACK ============ -->
+    <section id="more" data-screen-label="More from feedMyPixel" style="background:var(--surface-sunken); border-bottom:1px solid var(--border-subtle);">
+      <div style="max-width:1240px; margin:0 auto; padding:var(--band) var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:var(--space-8);">
+        <div>
+          <p style="font-family:var(--font-mono); font-size:var(--size-xs); letter-spacing:var(--tracking-wide); color:var(--accent-text); font-weight:var(--weight-medium); margin:0 0 var(--space-4);">More from feedMyPixel</p>
+          <h2 style="font-family:var(--font-display); font-size:var(--size-2xl); font-weight:var(--weight-semibold); letter-spacing:var(--tracking-tight); color:var(--ink-strong); margin:0; max-width:24ch; text-wrap:balance;">status is the second product. Pipes came first.</h2>
+          <p style="font-size:var(--size-base); line-height:var(--leading-relaxed); color:var(--ink-muted); margin:var(--space-4) 0 0; max-width:50ch; text-wrap:pretty;">Twenty years of contract work for the Guardian, the BBC and UK government, a searchable CV and a way to get in touch are all on the home page.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-3);">
+          <a href="feedMyPixel.dc.html" class="fmp-solid" style="display:inline-flex; align-items:center; gap:var(--space-2); min-height:44px; padding:0 var(--space-5); background-color:var(--button-bg); color:var(--button-ink); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"></path></svg>Home</a>
+          <a href="feedMyPixel.dc.html#products" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">Pipes</a>
+          <a href="feedMyPixel.dc.html#experience" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">Experience</a>
+          <a href="feedMyPixel.dc.html#contact" class="fmp-ghost" style="display:inline-flex; align-items:center; min-height:44px; padding:0 var(--space-5); background:var(--surface-raised); color:var(--ink-strong); border:1px solid var(--border-default); border-radius:var(--radius-md); text-decoration:none; font-size:var(--size-sm); font-weight:var(--weight-semibold);">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:var(--surface-page);">
+    <div style="max-width:1240px; margin:0 auto; padding:var(--space-10) var(--gutter); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-6);">
+      <div style="display:flex; align-items:center; gap:var(--space-3);">
+        <svg width="22" height="22" viewBox="0 0 30 30" aria-hidden="true" style="display:block; flex:none;"><rect width="30" height="30" rx="2" fill="var(--brand)"></rect><rect x="5" y="5" width="5" height="5" fill="#fff"></rect><rect x="12" y="5" width="5" height="5" fill="#fff"></rect></svg>
+        <span style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-subtle);">feedMyPixel Ltd &middot; Ben Chidgey &middot; St Albans, UK</span>
+      </div>
+      <nav aria-label="Footer" style="display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-5);">
+        <a href="feedMyPixel.dc.html#products" class="fmp-chrome" style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); text-decoration:none;">Products</a>
+        <a href="feedMyPixel.dc.html#experience" class="fmp-chrome" style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); text-decoration:none;">Experience</a>
+        <a href="feedMyPixel.dc.html#contact" class="fmp-chrome" style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); text-decoration:none;">Contact</a>
+        <a href="https://status.me" class="fmp-chrome" style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); text-decoration:none;">status.me</a>
+        <a href="https://github.com/feedmypixel" class="fmp-chrome" style="font-family:var(--font-mono); font-size:var(--size-xs); color:var(--ink-muted); text-decoration:none;">GitHub</a>
+        <a href="https://github.com/feedmypixel/feedmypixel.github.io" aria-label="This site's source on GitHub" title="This site's source on GitHub" class="fmp-nolink" style="width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border-default); border-radius:50%; color:var(--ink-muted);" style-hover="color:var(--ink-strong); border-color:var(--border-strong);"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.35c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.83-2.15-.09-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.17 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.66 3.95.29.24.54.72.54 1.45v2.15c0 .21.15.46.55.38A8 8 0 0 0 8 0z"></path></svg></a>
+      </nav>
+    </div>
+  </footer>
+
+  <button type="button" onClick="{{ scrollTop }}" class="fmp-top fmp-caro-btn" data-show="{{ showTop }}" aria-label="Back to top" title="Back to top" style="position:fixed; bottom:var(--space-5); right:var(--space-5); z-index:var(--z-header); width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; background:var(--surface-raised); border:1px solid var(--border-default); border-radius:50%; color:var(--ink-muted); cursor:pointer; padding:0; box-shadow:var(--shadow-md); transition:opacity var(--dur) var(--ease-standard), transform var(--dur) var(--ease-standard), visibility var(--dur);"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V4m0 0L4 8m4-4 4 4"></path></svg></button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;screensTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;follow&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;follow&quot;,&quot;light&quot;,&quot;dark&quot;],&quot;section&quot;:&quot;Build story screens&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light', slide: 0, mobileOpen: false, showTop: false };
+
+  componentDidMount() {
+    try { const t = localStorage.getItem('fmp-theme'); if (t === 'light' || t === 'dark') this.setState({ theme: t }); } catch (e) {}
+    this._onScroll = () => { const show = window.scrollY > 600; if (show !== this.state.showTop) this.setState({ showTop: show }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); }
+
+  scrollStrip(i) {
+    const el = this._strip; if (!el) return;
+    const kid = el.children[i]; if (!kid) return;
+    this._busy = true;
+    clearTimeout(this._busyT);
+    this._busyT = setTimeout(() => { this._busy = false; }, 700);
+    el.scrollTo({ left: kid.offsetLeft, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const FRAMES = [
+      { file: '01-everyone', label: 'Everyone' },
+      { file: '02-people', label: 'People' },
+      { file: '03-emoji', label: 'Emoji' },
+      { file: '04-react', label: 'React' },
+      { file: '05-year', label: 'Year' },
+      { file: '06-natter', label: 'Natter' },
+      { file: '07-no-ads', label: 'No ads' }
+    ];
+    const SCREENS = ['home', 'composer', 'replies', 'reactions', 'discover', 'search', 'messages', 'profile', 'activity'];
+    const n = FRAMES.length;
+    const si = Math.max(0, Math.min(n - 1, this.state.slide));
+    const pad = (i) => String(i + 1).padStart(2, '0');
+
+    const screensTheme = this.props.screensTheme ?? 'follow';
+    const screensDir = screensTheme === 'follow' ? this.state.theme : screensTheme;
+
+    const dots = FRAMES.map((f, i) => ({
+      key: 'd' + i, label: 'Show ' + f.label,
+      selected: i === si ? 'true' : 'false',
+      onSelect: () => { this.setState({ slide: i }); this.scrollStrip(i); },
+      style: 'width:10px; height:10px; border:none; padding:0; cursor:pointer; background:var(--indicator); border-radius:1px; transition:opacity var(--dur) var(--ease-standard), transform var(--dur) var(--ease-standard); ' +
+        (i === si ? 'opacity:1; transform:scale(1);' : 'opacity:0.32; transform:scale(0.8);')
+    }));
+
+    return {
+      theme: this.state.theme,
+      toggleTheme: () => {
+        const next = this.state.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('fmp-theme', next); } catch (e) {}
+        this.setState({ theme: next });
+      },
+      mobileNavOpen: this.state.mobileOpen,
+      mobileOpen: this.state.mobileOpen ? 'true' : 'false',
+      mobileLabel: this.state.mobileOpen ? 'Close menu' : 'Open menu',
+      burgerPath: this.state.mobileOpen ? 'M3.5 3.5l9 9M12.5 3.5l-9 9' : 'M2.5 4.5h11M2.5 8h11M2.5 11.5h11',
+      toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
+
+      frames: FRAMES.map((f, i) => ({ key: f.file, src: 'uploads/1206x2622/' + f.file + '.png', alt: 'status store screenshot ' + pad(i) + ': ' + f.label, num: pad(i), label: f.label })),
+      slideCaption: pad(si) + ' / ' + pad(n - 1) + '  ' + FRAMES[si].label,
+      dots,
+      stripRef: (el) => { this._strip = el; },
+      onStripScroll: (e) => {
+        if (this._busy) return;
+        const el = e.target; const kids = el.children; if (!kids.length) return;
+        let i = 0;
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) i = n - 1;
+        else { let best = Infinity; for (let k = 0; k < kids.length; k++) { const d = Math.abs(kids[k].offsetLeft - el.scrollLeft); if (d < best) { best = d; i = k; } } }
+        if (i !== this.state.slide) this.setState({ slide: i });
+      },
+      prevSlide: () => { const i = Math.max(0, si - 1); this.setState({ slide: i }); this.scrollStrip(i); },
+      nextSlide: () => { const i = Math.min(n - 1, si + 1); this.setState({ slide: i }); this.scrollStrip(i); },
+
+      screens: SCREENS.map((s, i) => ({ key: s, src: 'uploads/1206x2622/' + screensDir + '/' + pad(i) + '-' + s + '.png', alt: 'status ' + s + ' screen, ' + screensDir + ' theme', label: s })),
+      screensCaption: 'Nine screens, ' + screensDir + ' theme. Web app in a Capacitor shell, so the phone apps and the site are the same build.',
+
+      showTop: this.state.showTop ? 'true' : 'false',
+      scrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' })
+    };
+  }
+}
+</script>
+</body>
+</html>

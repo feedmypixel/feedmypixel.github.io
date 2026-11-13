@@ -1,0 +1,45 @@
+{
+  "status": {
+    "viewports": [375, 1440],
+    "themes": ["light", "dark"],
+    "mock": "design/status-v7/mocks-pinned/render/Status.dc.html",
+    "builtRoute": "/status",
+    "elements": {
+      "hero.title": { "mock": "main h1", "built": "main h1" },
+      "hero.actions": { "mock": "[data-hero-actions]", "built": "[data-hero-actions]" },
+      "hero.action": { "mock": "[data-hero-actions] a", "built": "[data-hero-actions] a" },
+      "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
+      "screenshots.strip": {
+        "mock": "[aria-label='status store screenshots']",
+        "built": "[aria-label='status store screenshots']"
+      },
+      "screenshots.dots": {
+        "mock": "#screenshots [role='tab']",
+        "built": "#screenshots [role='tab']"
+      },
+      "story.heading": { "mock": "#story h2", "built": "#story h2" },
+      "story.grid": { "mock": "[data-story-grid]", "built": "[data-story-grid]" },
+      "story.aside": { "mock": "[data-story-aside]", "built": "[data-story-aside]" },
+      "more.heading": { "mock": "#more h2", "built": "#more h2" }
+    }
+  },
+  "home-products": {
+    "viewports": [375, 1440],
+    "themes": ["light", "dark"],
+    "mock": "design/status-v7/mocks-pinned/render/feedMyPixel.dc.html",
+    "mockFrame": "#products",
+    "builtRoute": "/#products",
+    "elements": {
+      "products.heading": { "mock": "#products h2", "built": "#products h2" },
+      "status.title": { "mock": "#products h3", "built": "#products h3" },
+      "status.strip": {
+        "mock": "[aria-label='status screenshots']",
+        "built": "[aria-label='status screenshots']"
+      },
+      "status.slide": { "mock": "[data-status-slide]", "built": "[data-status-slide]" },
+      "status.caption": { "mock": "[data-status-cap]", "built": "[data-status-cap]" },
+      "status.phones": { "mock": "[data-status-phones]", "built": "[data-status-phones]" },
+      "status.dots": { "mock": "#products [role='tab']", "built": "#products [role='tab']" }
+    }
+  }
+}
