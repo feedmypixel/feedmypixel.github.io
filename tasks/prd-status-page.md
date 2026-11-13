@@ -4,7 +4,7 @@ Source: `design_handoff_status_v7` (Claude Design, 13 Nov 2026), pinned at `desi
 The render is the spec. Where this file and the render disagree, the render wins unless a decision
 below says otherwise. Build inventory: `design/status-v7/inventory.md`.
 
-**Not for release.** Built on `feat/status-page`. Nothing merges to `main` (which deploys) until the
+**Not for release.** Built on `feat/product-pages`, which also carries the Pipes page; both release together. Nothing merges to `main` (which deploys) until the
 status apps are through store review and Ben says go.
 
 ## 1. Overview

@@ -1,6 +1,6 @@
 # Tasks: status product page and Products carousel rework
 
-From [`prd-status-page.md`](prd-status-page.md). Branch `feat/status-page`, not merged until go.
+From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (status and Pipes pages release together), not merged until go.
 
 ## Relevant files
 
@@ -25,7 +25,7 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/status-page`, not 
 
 ## 0.0 Setup
 
-- [x] 0.1 Branch `feat/status-page`, pin the mocks, inventory, design-check tooling.
+- [x] 0.1 Branch `feat/product-pages`, pin the mocks, inventory, design-check tooling.
 - [ ] 0.2 Badge artwork from the official sources (needs Ben's OK to download).
 
 ## 1.0 Assets
