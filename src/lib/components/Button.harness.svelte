@@ -3,6 +3,7 @@
 
   let {
     variant = 'solid',
+    size = 'default',
     href,
     download,
     external = false,
@@ -10,6 +11,7 @@
     label
   }: {
     variant?: 'solid' | 'ghost'
+    size?: 'default' | 'large'
     href?: string
     download?: string
     external?: boolean
@@ -18,4 +20,4 @@
   } = $props()
 </script>
 
-<Button {variant} {href} {download} {external} {onclick}>{label}</Button>
+<Button {variant} {size} {href} {download} {external} {onclick}>{label}</Button>

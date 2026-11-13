@@ -9,6 +9,11 @@ export const pipesChromeUrl =
 export const pipesFirefoxUrl = 'https://addons.mozilla.org/firefox/addon/pipes/'
 export const pipesSourceUrl = 'https://github.com/feedmypixel/pipes'
 
+export const statusUrl = 'https://status.me'
+export const statusShareImage = { url: 'https://status.me/og.png', width: 1200, height: 630 }
+export const statusAppStoreUrl: string | undefined = undefined
+export const statusGooglePlayUrl: string | undefined = undefined
+
 export const analyticsId = 'G-9LQ8KHG828'
 
 export const contactEndpoint = 'https://api.web3forms.com/submit'

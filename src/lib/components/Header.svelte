@@ -78,7 +78,11 @@
 
 <header class="header" class:drawer-open={drawerOpen}>
   <div class="inner">
-    <a href="{home}#top" class="brand" aria-label="feedMyPixel, back to top">
+    <a
+      href="{home}#top"
+      class="brand"
+      aria-label={page.route.id === '/' ? 'feedMyPixel, back to top' : 'feedMyPixel, home'}
+    >
       <Logo size={26} />
       <span class="wordmark">feedMyPixel</span>
     </a>

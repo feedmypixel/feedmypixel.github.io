@@ -7,56 +7,74 @@ test('anchors the products section for the nav', () => {
   expect(document.querySelector('section#products')).not.toBeNull()
 })
 
-test('introduces Pipes', async () => {
+test('shows status first and Pipes second', () => {
   render(Products)
-  await expect.element(page.getByRole('heading', { name: 'Pipes' })).toBeInTheDocument()
-  await expect.element(page.getByText(/CI\/CD pipeline monitoring/)).toBeVisible()
+  const names = [...document.querySelectorAll('h3')].map((heading) => heading.textContent)
+  expect(names).toEqual(['status', 'Pipes'])
 })
 
-test('offers both stores and the source', async () => {
+test('status links out to the app and in to its build story', async () => {
   render(Products)
-  await expect.element(page.getByRole('link', { name: /^Chrome Web Store/ })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: /^Firefox Add-ons/ })).toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: /^Source/ })).toBeInTheDocument()
-
-  const hrefs = [...document.querySelectorAll<HTMLAnchorElement>('a.button')].map(
-    (link) => link.href
-  )
-  expect(hrefs[0]).toContain('chromewebstore.google.com/detail/')
-  expect(hrefs[1]).toContain('addons.mozilla.org/firefox/addon/pipes')
-  expect(hrefs[2]).toContain('github.com/feedmypixel/pipes')
+  const open = page.getByRole('link', { name: /^Open status\.me/ })
+  await expect.element(open).toHaveAttribute('href', 'https://status.me')
+  await expect.element(open).toHaveAttribute('target', '_blank')
+  const story = page.getByRole('link', { name: 'How I built it' })
+  await expect.element(story).toHaveAttribute('href', expect.stringMatching(/status$/))
+  expect(story.element().getAttribute('target')).toBeNull()
 })
 
-test('the store and source links leave the site in a new tab, safely', () => {
+test('status store links stay hidden until the apps are listed', async () => {
   render(Products)
-  const links = [...document.querySelectorAll<HTMLAnchorElement>('a.button')]
-  expect(links).toHaveLength(3)
-  links.forEach((link) => {
-    expect(link.getAttribute('target')).toBe('_blank')
-    expect(link.getAttribute('rel')).toBe('noopener noreferrer')
-    expect(link.textContent).toContain('opens in a new tab')
-  })
+  await expect.element(page.getByRole('link', { name: /App Store/ })).not.toBeInTheDocument()
+  await expect.element(page.getByRole('link', { name: /Google Play/ })).not.toBeInTheDocument()
 })
 
-test('tells the problem, solution and product story', async () => {
+test('Pipes offers both stores and the source, each in a new tab', async () => {
   render(Products)
-  await expect.element(page.getByText('Problem')).toBeVisible()
-  await expect.element(page.getByText('Solution')).toBeVisible()
-  await expect.element(page.getByText('Product', { exact: true })).toBeVisible()
+  const chrome = page.getByRole('link', { name: /^Chrome Web Store/ })
+  const firefox = page.getByRole('link', { name: /^Firefox Add-ons/ })
+  const source = page.getByRole('link', { name: /^Source/ })
+  await expect
+    .element(chrome)
+    .toHaveAttribute('href', expect.stringContaining('chromewebstore.google.com/detail/'))
+  await expect
+    .element(firefox)
+    .toHaveAttribute('href', expect.stringContaining('addons.mozilla.org/firefox/addon/pipes'))
+  await expect
+    .element(source)
+    .toHaveAttribute('href', expect.stringContaining('github.com/feedmypixel/pipes'))
+  for (const link of [chrome, firefox, source]) {
+    await expect.element(link).toHaveAttribute('rel', 'noopener noreferrer')
+  }
 })
 
-test('shows the Pipes screenshots', () => {
+test('each product tells its problem, solution and product story', () => {
   render(Products)
-  expect(document.querySelectorAll('.strip img')).toHaveLength(4)
+  const labels = [...document.querySelectorAll('.label')].map((label) => label.textContent)
+  expect(labels).toEqual(['Problem', 'Solution', 'Product', 'Problem', 'Solution', 'Product'])
 })
 
-test('the three story labels sit on the same line as each other', () => {
+test('status has seven composed slides and Pipes four', () => {
   render(Products)
-  const tops = [...document.querySelectorAll<HTMLElement>('.story .label')].map(
-    (label) =>
-      Math.round(label.getBoundingClientRect().top) -
-      Math.round((label.parentElement as HTMLElement).getBoundingClientRect().top)
-  )
-  expect(tops).toHaveLength(3)
-  expect(new Set(tops).size).toBe(1)
+  const strips = document.querySelectorAll('.strip')
+  expect(strips[0].getAttribute('aria-label')).toBe('status screenshots')
+  expect(strips[0].querySelectorAll('.slide .caption')).toHaveLength(7)
+  expect(strips[1].getAttribute('aria-label')).toBe('Pipes screenshots')
+  expect(strips[1].querySelectorAll('.slide .caption')).toHaveLength(4)
+})
+
+test('the second status slide shows the opposite theme so home is not shown twice alike', () => {
+  render(Products)
+  const [first, second] = document.querySelectorAll('.strip')[0].querySelectorAll(':scope > .slide')
+  const lightOf = (slide: Element) => slide.querySelector('img.light')?.getAttribute('src')
+  expect(lightOf(first)).toContain('/light/01-home')
+  expect(lightOf(second)).toContain('/dark/01-home')
+})
+
+test('Pipes screenshots follow the theme with a light and a dark file each', () => {
+  render(Products)
+  const pipes = document.querySelectorAll('.strip')[1]
+  expect(pipes.querySelectorAll('img.light')).toHaveLength(4)
+  expect(pipes.querySelectorAll('img.dark')).toHaveLength(4)
+  expect(pipes.querySelector('img.dark')?.getAttribute('src')).toContain('pipes/popup-dark.png')
 })

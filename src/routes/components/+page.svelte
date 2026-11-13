@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { asset } from '$app/paths'
+  import { asset, resolve } from '$app/paths'
   import Seo from '#lib/components/Seo.svelte'
   import Logo from '#lib/components/Logo.svelte'
   import ThemeToggle from '#lib/components/ThemeToggle.svelte'
@@ -7,7 +7,11 @@
   import Button from '#lib/components/Button.svelte'
   import EmailPill from '#lib/components/EmailPill.svelte'
   import Carousel from '#lib/components/Carousel.svelte'
-  import type { Slide } from '#lib/components/Carousel.svelte'
+  import ComposedSlide from '#lib/components/ComposedSlide.svelte'
+  import Chevron from '#lib/components/Chevron.svelte'
+  import PixelMark from '#lib/components/PixelMark.svelte'
+  import ProductStory from '#lib/components/ProductStory.svelte'
+  import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
   import Chip from '#lib/components/Chip.svelte'
   import SegmentedControl from '#lib/components/SegmentedControl.svelte'
   import RoleRun from '#lib/components/RoleRun.svelte'
@@ -21,18 +25,19 @@
 
   let segment = $state<TypeFilter>('All')
 
-  const slides: Slide[] = [
-    {
-      src: asset('pipes/framed-popup.png'),
+  const pipesSlide = {
+    label: 'Status from your toolbar',
+    sub: 'One click through to the run that failed.',
+    shot: {
+      light: asset('pipes/popup-light.png'),
+      dark: asset('pipes/popup-dark.png'),
       alt: 'Pipes: status from your toolbar',
-      label: 'Status from your toolbar'
-    },
-    {
-      src: asset('pipes/framed-sidepanel.png'),
-      alt: 'Pipes: every repo in a side panel',
-      label: 'Every repo in a side panel'
+      width: 880,
+      height: 1000
     }
-  ]
+  }
+
+  const slideNumber = (index: number) => String(index + 1).padStart(2, '0')
 </script>
 
 <Seo
@@ -84,8 +89,58 @@
   <section aria-labelledby="carousel-h">
     <h2 id="carousel-h">Carousel</h2>
     <div class="carousel-demo">
-      <Carousel {slides} label="Example screenshots" />
+      <Carousel items={statusSlides.slice(0, 3)} label="Example screenshots">
+        {#snippet slide(item, index)}
+          <ComposedSlide
+            number={slideNumber(index)}
+            caption={item.label}
+            sub={item.sub}
+            shots={item.shots}
+            layout="phones"
+          />
+        {/snippet}
+      </Carousel>
     </div>
+  </section>
+
+  <section aria-labelledby="composed-h">
+    <h2 id="composed-h">Composed slide</h2>
+    <p class="note">
+      Caption beside a screenshot that follows the site theme. Phones for status, a wide window for
+      Pipes. Stacks below 760px.
+    </p>
+    <div class="carousel-demo">
+      <ComposedSlide
+        number="01"
+        caption={pipesSlide.label}
+        sub={pipesSlide.sub}
+        shots={[pipesSlide.shot]}
+        layout="wide"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="pixel-h">
+    <h2 id="pixel-h">Pixel mark and chevron</h2>
+    <div class="row">
+      <PixelMark />
+      <PixelMark size="large" />
+      <Chevron direction="left" />
+      <Chevron direction="right" />
+      <Button variant="ghost" href={resolve('/status')}>
+        How I built it
+        <Chevron direction="right" />
+      </Button>
+      <Button variant="solid" size="large" href="https://status.me">Large button</Button>
+    </div>
+  </section>
+
+  <section aria-labelledby="story-h">
+    <h2 id="story-h">Product story</h2>
+    <ProductStory
+      {...statusStory}
+      product="A SvelteKit and Svelte 5 web app with a Fastify and PostgreSQL api."
+    />
   </section>
 
   <section aria-labelledby="chip-h">

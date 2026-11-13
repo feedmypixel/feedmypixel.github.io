@@ -55,7 +55,11 @@ export default defineConfig(
     }
   },
   {
-    files: ['src/lib/components/Button.svelte', 'src/lib/components/Contact.svelte'],
+    files: [
+      'src/lib/components/Button.svelte',
+      'src/lib/components/Contact.svelte',
+      'src/lib/components/ExternalLink.svelte'
+    ],
     rules: {
       'svelte/no-navigation-without-resolve': 'off'
     }

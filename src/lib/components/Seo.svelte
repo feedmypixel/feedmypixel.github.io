@@ -5,11 +5,19 @@
     title,
     description,
     path = '/',
-    structuredData
-  }: { title: string; description: string; path?: string; structuredData?: string } = $props()
+    structuredData,
+    image = { url: `${siteUrl}/og-image.png`, width: 1200, height: 630 },
+    imageAlt = 'feedMyPixel - Ben Chidgey, contract full-stack engineer'
+  }: {
+    title: string
+    description: string
+    path?: string
+    structuredData?: string
+    image?: { url: string; width: number; height: number }
+    imageAlt?: string
+  } = $props()
 
   const canonical = $derived(`${siteUrl}${path}`)
-  const ogImage = `${siteUrl}/og-image.png`
   const safeStructuredData = $derived(structuredData?.replaceAll('<', '\\u003c'))
 </script>
 
@@ -24,19 +32,16 @@
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content="en_GB" />
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="feedMyPixel - Ben Chidgey, contract full-stack engineer" />
+  <meta property="og:image" content={image.url} />
+  <meta property="og:image:width" content={String(image.width)} />
+  <meta property="og:image:height" content={String(image.height)} />
+  <meta property="og:image:alt" content={imageAlt} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
-  <meta
-    name="twitter:image:alt"
-    content="feedMyPixel - Ben Chidgey, contract full-stack engineer"
-  />
+  <meta name="twitter:image" content={image.url} />
+  <meta name="twitter:image:alt" content={imageAlt} />
 
   {#if safeStructuredData}
     {@html `<script type="application/ld+json">${safeStructuredData}<\/script>`}

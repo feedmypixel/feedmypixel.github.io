@@ -4,6 +4,7 @@
 
   let {
     variant = 'solid',
+    size = 'default',
     href,
     download,
     external = false,
@@ -14,6 +15,7 @@
     ...rest
   }: {
     variant?: 'solid' | 'ghost'
+    size?: 'default' | 'large'
     href?: string
     download?: string
     external?: boolean
@@ -28,6 +30,7 @@
 {#if href}
   <a
     class="button {variant}"
+    class:large={size === 'large'}
     {href}
     {download}
     target={external ? '_blank' : undefined}
@@ -41,7 +44,14 @@
     {/if}
   </a>
 {:else}
-  <button class="button {variant}" {type} {disabled} {onclick} {...rest}>
+  <button
+    class="button {variant}"
+    class:large={size === 'large'}
+    {type}
+    {disabled}
+    {onclick}
+    {...rest}
+  >
     {@render children()}
   </button>
 {/if}
@@ -69,6 +79,15 @@
 
   .button:hover {
     text-decoration: none;
+  }
+
+  .large {
+    min-height: 48px;
+    font-size: var(--font-size-base);
+  }
+
+  .large.solid {
+    padding-inline: var(--button-padding-inline, var(--space-6));
   }
 
   .solid {

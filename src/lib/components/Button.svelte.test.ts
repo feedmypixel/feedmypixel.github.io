@@ -15,6 +15,19 @@ test('renders a button when given no href', async () => {
   await expect.element(page.getByRole('button', { name: 'Send message' })).toBeInTheDocument()
 })
 
+test('the large size is a 48px target with base-size text', () => {
+  render(ButtonHarness, { props: { size: 'large', label: 'Open status.me' } })
+  const button = document.querySelector<HTMLElement>('.button')!
+  const style = getComputedStyle(button)
+  expect(style.minHeight).toBe('48px')
+  expect(style.fontSize).toBe(getComputedStyle(document.documentElement).fontSize)
+})
+
+test('the default size stays a 44px target', () => {
+  render(ButtonHarness, { props: { label: 'Source' } })
+  expect(getComputedStyle(document.querySelector('.button')!).minHeight).toBe('44px')
+})
+
 test('carries the ghost variant', () => {
   render(ButtonHarness, { props: { variant: 'ghost', label: 'Source' } })
   expect(document.querySelector('.button')?.classList.contains('ghost')).toBe(true)

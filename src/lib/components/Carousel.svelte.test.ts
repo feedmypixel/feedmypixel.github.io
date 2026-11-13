@@ -1,25 +1,22 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
-import Carousel from './Carousel.svelte'
+import CarouselHarness from './Carousel.harness.svelte'
 
-const slides = [
-  { src: '/pipes/framed-popup.png', alt: 'Popup', label: 'Status from your toolbar' },
-  { src: '/pipes/framed-sidepanel.png', alt: 'Side panel', label: 'Every repo in a side panel' },
-  { src: '/pipes/framed-options.png', alt: 'Options', label: 'Connect GitHub and GitLab' }
-]
-
-const renderCarousel = () => render(Carousel, { props: { slides, label: 'Pipes screenshots' } })
+const renderCarousel = (slideWidth?: string) => render(CarouselHarness, { props: { slideWidth } })
 
 const clickStep = (direction: 'prev' | 'next') =>
   document.querySelector<HTMLButtonElement>(`.${direction}`)?.click()
 
-test('renders every slide with dimensions so the layout does not shift', () => {
+const currentDot = () =>
+  [...document.querySelectorAll('.dot')].findIndex(
+    (dot) => dot.getAttribute('aria-current') === 'true'
+  )
+
+const caption = () => document.querySelector('.caption')?.textContent
+
+test('renders every slide through the snippet', () => {
   renderCarousel()
-  const images = document.querySelectorAll<HTMLImageElement>('.strip img')
-  expect(images).toHaveLength(3)
-  expect(images[0].getAttribute('width')).toBe('1280')
-  expect(images[0].getAttribute('height')).toBe('800')
-  expect(images[0].getAttribute('loading')).toBe('lazy')
+  expect(document.querySelectorAll('.strip .card')).toHaveLength(3)
 })
 
 test('the scroll strip is labelled and keyboard reachable', () => {
@@ -29,58 +26,67 @@ test('the scroll strip is labelled and keyboard reachable', () => {
   expect(strip?.getAttribute('tabindex')).toBe('0')
 })
 
-test('captions the first slide and marks its dot current', async () => {
+test('captions the first slide with its number out of the total', () => {
   renderCarousel()
-  await expect.element(page.getByText('Status from your toolbar')).toBeVisible()
-  const dots = document.querySelectorAll('.dot')
-  expect(dots[0].getAttribute('aria-current')).toBe('true')
+  expect(caption()).toBe('01 / 03  Status from your toolbar')
+  expect(currentDot()).toBe(0)
 })
 
 test('a dot moves the carousel to that slide', async () => {
   renderCarousel()
   document.querySelectorAll<HTMLButtonElement>('.dot')[2].click()
-  await expect.element(page.getByText('Connect GitHub and GitLab')).toBeVisible()
-  expect(document.querySelectorAll('.dot')[2].getAttribute('aria-current')).toBe('true')
+  await vi.waitFor(() => expect(caption()).toBe('03 / 03  Connect GitHub and GitLab'))
+  expect(currentDot()).toBe(2)
 })
 
 test('next advances and previous goes back', async () => {
   renderCarousel()
   clickStep('next')
-  await expect.element(page.getByText('Every repo in a side panel')).toBeVisible()
+  await vi.waitFor(() => expect(currentDot()).toBe(1))
   clickStep('prev')
-  await expect.element(page.getByText('Status from your toolbar')).toBeVisible()
+  await vi.waitFor(() => expect(currentDot()).toBe(0))
 })
 
-test('previous stops at the first slide', async () => {
+test('previous stops at the first slide', () => {
   renderCarousel()
   clickStep('prev')
-  expect(document.querySelectorAll('.dot')[0].getAttribute('aria-current')).toBe('true')
+  expect(currentDot()).toBe(0)
 })
 
 test('next stops at the last slide', async () => {
   renderCarousel()
   for (let click = 0; click < 4; click++) {
     clickStep('next')
-    await vi.waitFor(() => {
-      expect(document.querySelector('.dot[aria-current="true"]')).not.toBeNull()
-    })
   }
-  const dots = [...document.querySelectorAll('.dot')]
+  await vi.waitFor(() => expect(currentDot()).toBe(2))
+})
+
+test('next scrolls the strip to the start of the following slide', async () => {
+  renderCarousel()
   const strip = document.querySelector<HTMLElement>('.strip')!
-  expect({
-    currentIndex: dots.findIndex((dot) => dot.getAttribute('aria-current') === 'true'),
-    scrollLeft: Math.round(strip.scrollLeft),
-    clientWidth: strip.clientWidth
-  }).toMatchObject({ currentIndex: 2 })
+  const slides = [...strip.children] as HTMLElement[]
+  clickStep('next')
+  await vi.waitFor(() =>
+    expect(Math.round(strip.scrollLeft)).toBe(slides[1].offsetLeft - slides[0].offsetLeft)
+  )
+  await new Promise((resolve) => setTimeout(resolve, 300))
+  expect(currentDot()).toBe(1)
 })
 
 test('swiping the strip moves the caption with it', async () => {
   renderCarousel()
   const strip = document.querySelector<HTMLElement>('.strip')!
-  strip.scrollLeft = strip.clientWidth + 16
+  const slides = [...strip.children] as HTMLElement[]
+  strip.scrollTo({ left: slides[1].offsetLeft - slides[0].offsetLeft, behavior: 'instant' })
   strip.dispatchEvent(new Event('scroll'))
-  await vi.waitFor(() => {
-    expect(document.querySelectorAll('.dot')[1].getAttribute('aria-current')).toBe('true')
-  })
-  await expect.element(page.getByText('Every repo in a side panel')).toBeVisible()
+  await vi.waitFor(() => expect(currentDot()).toBe(1))
+  await expect.element(page.getByText('02 / 03  Every repo in a side panel')).toBeVisible()
+})
+
+test('narrow slides show several at once and the last dot lights at the end of the strip', async () => {
+  renderCarousel('200px')
+  const strip = document.querySelector<HTMLElement>('.strip')!
+  expect(strip.scrollWidth).toBeLessThanOrEqual(strip.clientWidth + 1)
+  strip.dispatchEvent(new Event('scroll'))
+  await vi.waitFor(() => expect(currentDot()).toBe(2))
 })

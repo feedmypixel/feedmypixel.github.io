@@ -7,6 +7,7 @@ export const prerender = true
 const pages = [
   { path: '/', priority: '1.0' },
   { path: '/components', priority: '0.5' },
+  { path: '/status', priority: '0.8' },
   { path: '/pipes/privacy', priority: '0.3' }
 ]
 

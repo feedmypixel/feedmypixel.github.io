@@ -1,37 +1,47 @@
-<script lang="ts">
+<script lang="ts" generics="Item extends { label: string }">
+  import type { Snippet } from 'svelte'
   import { browser } from '$app/env'
-  import { clampIndex, nearestSlide, scrollOffsetFor } from '#lib/carousel.js'
+  import { clampIndex, counterCaption, indexFromOffsets } from '#lib/carousel.js'
+  import Chevron from './Chevron.svelte'
 
-  export type Slide = { src: string; alt: string; label: string }
-
-  let { slides, label }: { slides: Slide[]; label: string } = $props()
+  let {
+    items,
+    label,
+    slideWidth = '100%',
+    slide
+  }: {
+    items: Item[]
+    label: string
+    slideWidth?: string
+    slide: Snippet<[Item, number]>
+  } = $props()
 
   let index = $state(0)
   let stripEl: HTMLElement | undefined = $state()
   const enhanced = browser
 
-  const caption = $derived(slides[clampIndex(index, slides.length)].label)
+  const current = $derived(clampIndex(index, items.length))
+  const caption = $derived(counterCaption(current, items.length, items[current].label))
 
-  function slideWidth(strip: HTMLElement) {
-    return strip.clientWidth + 16
+  function slideOffsets(strip: HTMLElement) {
+    const slides = [...strip.children] as HTMLElement[]
+    const origin = slides[0]?.offsetLeft ?? 0
+    return slides.map((slideElement) => slideElement.offsetLeft - origin)
   }
 
   function syncFromScroll() {
     if (!stripEl) {
       return
     }
-    const midpoints = [...stripEl.children].map((slide) => {
-      const el = slide as HTMLElement
-      return el.offsetLeft + el.offsetWidth / 2
-    })
-    index = nearestSlide(stripEl.scrollLeft + stripEl.clientWidth / 2, midpoints)
+    const atEnd = stripEl.scrollLeft + stripEl.clientWidth >= stripEl.scrollWidth - 2
+    index = indexFromOffsets(stripEl.scrollLeft, slideOffsets(stripEl), atEnd)
   }
 
   function goTo(next: number) {
-    const target = clampIndex(next, slides.length)
+    const target = clampIndex(next, items.length)
     index = target
     if (stripEl) {
-      stripEl.scrollTo({ left: scrollOffsetFor(target, slideWidth(stripEl)), behavior: 'smooth' })
+      stripEl.scrollTo({ left: slideOffsets(stripEl)[target], behavior: 'smooth' })
     }
   }
 
@@ -65,11 +75,12 @@
       role="group"
       tabindex="0"
       aria-label={label}
+      style:--slide-width={slideWidth}
       onscroll={onScroll}
     >
-      {#each slides as slide (slide.src)}
+      {#each items as item, itemIndex (itemIndex)}
         <div class="slide">
-          <img src={slide.src} alt={slide.alt} width="1280" height="800" loading="lazy" />
+          {@render slide(item, itemIndex)}
         </div>
       {/each}
     </div>
@@ -79,33 +90,17 @@
         class="step prev"
         type="button"
         aria-label="Previous screenshot"
-        onclick={() => goTo(index - 1)}
+        onclick={() => goTo(current - 1)}
       >
-        <svg width="26" height="26" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M10 3.5 5.5 8l4.5 4.5"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <Chevron direction="left" size={26} />
       </button>
       <button
         class="step next"
         type="button"
         aria-label="Next screenshot"
-        onclick={() => goTo(index + 1)}
+        onclick={() => goTo(current + 1)}
       >
-        <svg width="26" height="26" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M6 3.5 10.5 8 6 12.5"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <Chevron direction="right" size={26} />
       </button>
     {/if}
   </div>
@@ -114,13 +109,13 @@
     <span class="caption">{caption}</span>
     {#if enhanced}
       <span class="dots" role="group" aria-label="Choose screenshot">
-        {#each slides as slide, i (slide.src)}
+        {#each items as item, itemIndex (itemIndex)}
           <button
             class="dot"
             type="button"
-            aria-label="Show {slide.label}"
-            aria-current={i === index ? 'true' : undefined}
-            onclick={() => goTo(i)}
+            aria-label="Show {item.label}"
+            aria-current={itemIndex === current ? 'true' : undefined}
+            onclick={() => goTo(itemIndex)}
           ></button>
         {/each}
       </span>
@@ -161,19 +156,10 @@
   }
 
   .slide {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
-    overflow: hidden;
-    background: var(--surface-raised);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-  }
-
-  .slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 10;
+    display: flex;
+    flex: 0 0 var(--slide-width);
+    min-width: 0;
+    scroll-snap-align: start;
   }
 
   .step {
