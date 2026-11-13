@@ -36,6 +36,14 @@ test('shows nine screens, each with a light and a dark image', () => {
   expect(strip?.querySelectorAll('img.dark')).toHaveLength(9)
 })
 
+test('the screens move like the other carousels, with arrows, dots and a counter', () => {
+  render(StatusStory)
+  const carousel = document.querySelector('#story figure.carousel')!
+  expect(carousel.querySelectorAll('.step')).toHaveLength(2)
+  expect(carousel.querySelectorAll('.dot')).toHaveLength(9)
+  expect(carousel.querySelector('figcaption > .caption')?.textContent).toBe('01 / 09  home')
+})
+
 test('names the screens by file stem', () => {
   render(StatusStory)
   const names = [...document.querySelectorAll('.screen-name')].map((name) => name.textContent)

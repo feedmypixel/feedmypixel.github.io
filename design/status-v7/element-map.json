@@ -124,22 +124,28 @@
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
         }
       },
       "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
       "story.paragraph": { "mock": "#story article > p:first-of-type", "built": "#story article > p:first-of-type" },
-      "story.screens": { "mock": "[aria-label='status screens']", "built": "[aria-label='status screens']" },
+      "story.screens": {
+        "mock": "[aria-label='status screens']",
+        "built": "[aria-label='status screens']",
+        "waiver": "Ben chose the shared Carousel (arrows, dots, counter) over the inset scroll strip, 13 Nov 2026 (PRD decision 18)"
+      },
       "story.screen": {
         "mock": "[aria-label='status screens'] > div > div",
         "built": "[aria-label='status screens'] .card"
       },
       "story.screensCaption": {
         "mock": "#story article figure > figcaption",
-        "built": "#story article figure > figcaption",
+        "built": "#story article .screens-note",
         "ignore": {
           "text": "theme word dropped from the caption (PRD decision 4)",
-          "children": "the mock template wraps interpolated text in a span"
+          "children": "the mock template wraps interpolated text in a span",
+          "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
         }
       },
       "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks)" },

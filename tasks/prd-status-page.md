@@ -82,6 +82,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 15 | Links gap | `--space-3` for both entries, as rendered. |
 | 16 | "Claude is great when:" bullets | Verbatim. |
 | 17 | Pipes Solution comma | Repo wording (no comma before "and"). |
+| 18 | Build-story screens | The shared Carousel with arrows, dots and a counter, not the inset scroll strip (Ben, after review). |
 
 ## 6. Non-goals
 

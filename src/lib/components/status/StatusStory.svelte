@@ -5,6 +5,12 @@
   import StatusStoreLinks from '../StatusStoreLinks.svelte'
   import ThemedImage from '../ThemedImage.svelte'
   import ExternalLink from '../ExternalLink.svelte'
+  import Carousel from '../Carousel.svelte'
+
+  const screenSlides = screens.map((screen) => ({
+    label: screenName(screen),
+    shot: screenShot(screen)
+  }))
 
   const sections = [
     { id: 'why', label: 'Why I built it' },
@@ -98,30 +104,32 @@
           site. Capacitor has worked very well with SvelteKit.
         </p>
 
-        <figure class="screens">
-          <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-          <div class="strip" role="group" tabindex="0" aria-label="status screens">
-            {#each screens as screen (screen)}
-              {@const shot = screenShot(screen)}
+        <div class="screens">
+          <Carousel
+            items={screenSlides}
+            label="status screens"
+            slideWidth="clamp(132px, 14vw, 168px)"
+          >
+            {#snippet slide(item)}
               <div class="screen">
-                <div class="card" style:aspect-ratio="{shot.width} / {shot.height}">
+                <div class="card" style:aspect-ratio="{item.shot.width} / {item.shot.height}">
                   <ThemedImage
-                    light={shot.light}
-                    dark={shot.dark}
-                    alt={shot.alt}
-                    width={shot.width}
-                    height={shot.height}
+                    light={item.shot.light}
+                    dark={item.shot.dark}
+                    alt={item.shot.alt}
+                    width={item.shot.width}
+                    height={item.shot.height}
                   />
                 </div>
-                <span class="screen-name">{screenName(screen)}</span>
+                <span class="screen-name">{item.label}</span>
               </div>
-            {/each}
-          </div>
-          <figcaption>
+            {/snippet}
+          </Carousel>
+          <p class="screens-note">
             Nine screens. Web app in a Capacitor shell, so the phone apps and the site are the same
             build.
-          </figcaption>
-        </figure>
+          </p>
+        </div>
 
         <h3 id="claude">Built with Claude</h3>
         <p>
@@ -327,22 +335,11 @@
     margin-top: var(--space-6);
   }
 
-  .strip {
-    display: flex;
-    gap: var(--space-3);
-    padding: var(--space-4);
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    background: var(--surface-inset);
-    border-radius: var(--radius-lg);
-  }
-
   .screen {
     display: flex;
-    flex: 0 0 clamp(132px, 14vw, 168px);
+    flex: 1;
     flex-direction: column;
     gap: var(--space-2);
-    scroll-snap-align: start;
   }
 
   .card {
@@ -359,7 +356,7 @@
   }
 
   .screen-name,
-  figcaption {
+  .screens-note {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--ink-muted);
