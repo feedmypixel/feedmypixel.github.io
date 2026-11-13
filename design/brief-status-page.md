@@ -1,5 +1,7 @@
 # feedMyPixel - status product page brief
 
+**DRAFT - on hold.** Do not build or publish the `/status` page until Ben says go.
+
 Two parts. **Part 1 is for Ben to fill in.** Part 2 is the brief for
 [claude.ai/design](https://claude.ai/design), already written from known facts. Once Part 1 is done,
 its answers go into the Part 2 copy and the whole file goes to Claude Design.

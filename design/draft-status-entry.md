@@ -1,5 +1,7 @@
 # Draft: status entry for Products
 
+**DRAFT - on hold.** Do not add this to the home page until Ben says go.
+
 Draft for Ben to review. Not on the site. Follows the Pipes entry in `Products.svelte`: name, pitch,
 buttons, carousel, then problem, solution and product.
 
