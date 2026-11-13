@@ -127,6 +127,9 @@ uses feedMyPixel's system. status's own look shows only through its screenshots.
 - **Privacy:** no ads and no tracking. For 13 and over.
 - **Launch:** soft launched on the web in early November 2026. No other dates.
 - **Links:** status.me, App Store and Google Play. All three are live by the time the page ships.
+  Show the store links as the official App Store and Google Play badges. Decided after the brief
+  went to CD, so it is added at build time. Pipes gets the Chrome Web Store and Firefox Add-ons
+  badges at the same time.
 - **Share image:** status.me serves `og.png`. Reuse it.
 
 ### Screenshots
