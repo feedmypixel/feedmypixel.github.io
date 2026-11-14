@@ -1,77 +1,36 @@
 <script lang="ts">
   import { frames, story } from '#lib/data/status.js'
   import Carousel from '../Carousel.svelte'
-  import ProductStory from '../ProductStory.svelte'
+  import ProductScreenshots from '../product/ProductScreenshots.svelte'
 </script>
 
-<section id="screenshots" class="screenshots">
-  <div class="container inner">
-    <div>
-      <p class="eyebrow">Screenshots</p>
-      <h2>Post. React. Reply. Natter.</h2>
-    </div>
-
-    <Carousel
-      items={frames}
-      label="status store screenshots"
-      slideWidth="clamp(200px, 24vw, 280px)"
-    >
-      {#snippet slide(frame)}
-        <figure class="frame">
-          <div class="card" style:aspect-ratio="{frame.width} / {frame.height}">
-            <img
-              src={frame.src}
-              alt={frame.alt}
-              width={frame.width}
-              height={frame.height}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <figcaption>
-            <span class="number">{frame.number}</span>
-            <span>{frame.label}</span>
-          </figcaption>
-        </figure>
-      {/snippet}
-    </Carousel>
-
-    <ProductStory problem={story.problem} solution={story.solution} product={story.product} />
-  </div>
-</section>
+<ProductScreenshots
+  heading="Post. React. Reply. Natter."
+  story={{ problem: story.problem, solution: story.solution, product: story.product }}
+>
+  <Carousel items={frames} label="status store screenshots" slideWidth="clamp(200px, 24vw, 280px)">
+    {#snippet slide(frame)}
+      <figure class="frame">
+        <div class="card" style:aspect-ratio="{frame.width} / {frame.height}">
+          <img
+            src={frame.src}
+            alt={frame.alt}
+            width={frame.width}
+            height={frame.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption>
+          <span class="number">{frame.number}</span>
+          <span>{frame.label}</span>
+        </figcaption>
+      </figure>
+    {/snippet}
+  </Carousel>
+</ProductScreenshots>
 
 <style>
-  .screenshots {
-    background: var(--surface-sunken);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-    padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 26ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
-  }
-
   .frame {
     display: flex;
     flex: 1;

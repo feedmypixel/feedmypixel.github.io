@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { asset, resolve } from '$app/paths'
+  import { resolve } from '$app/paths'
   import Seo from '#lib/components/Seo.svelte'
   import Logo from '#lib/components/Logo.svelte'
   import ThemeToggle from '#lib/components/ThemeToggle.svelte'
@@ -11,7 +11,11 @@
   import Chevron from '#lib/components/Chevron.svelte'
   import PixelMark from '#lib/components/PixelMark.svelte'
   import ProductStory from '#lib/components/ProductStory.svelte'
+  import StoreBadge from '#lib/components/StoreBadge.svelte'
   import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
+  import { slides as pipesSlides } from '#lib/data/pipes.js'
+  import { slideNumber } from '#lib/carousel.js'
+  import { pipesChromeUrl, pipesFirefoxUrl } from '#lib/config.js'
   import Chip from '#lib/components/Chip.svelte'
   import SegmentedControl from '#lib/components/SegmentedControl.svelte'
   import RoleRun from '#lib/components/RoleRun.svelte'
@@ -25,19 +29,7 @@
 
   let segment = $state<TypeFilter>('All')
 
-  const pipesSlide = {
-    label: 'Status from your toolbar',
-    sub: 'One click through to the run that failed.',
-    shot: {
-      light: asset('pipes/popup-light.png'),
-      dark: asset('pipes/popup-dark.png'),
-      alt: 'Pipes: status from your toolbar',
-      width: 880,
-      height: 1000
-    }
-  }
-
-  const slideNumber = (index: number) => String(index + 1).padStart(2, '0')
+  const [pipesSlide] = pipesSlides
 </script>
 
 <Seo
@@ -76,6 +68,16 @@
       <Button variant="ghost">Clear all filters</Button>
       <Button variant="solid" href="https://example.com">Solid link</Button>
       <Button variant="ghost" href="https://example.com">Ghost link</Button>
+    </div>
+  </section>
+
+  <section aria-labelledby="badge-h">
+    <h2 id="badge-h">Store badge</h2>
+    <p class="note">The official store artwork, 52px, or 56px in a hero.</p>
+    <div class="row">
+      <StoreBadge store="chrome" href={pipesChromeUrl} />
+      <StoreBadge store="firefox" href={pipesFirefoxUrl} />
+      <StoreBadge store="chrome" href={pipesChromeUrl} size="large" />
     </div>
   </section>
 

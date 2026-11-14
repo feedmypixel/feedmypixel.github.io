@@ -8,6 +8,7 @@ export const pipesChromeUrl =
   'https://chromewebstore.google.com/detail/pipes-watch-your-cicd-pip/aoijidjpiiphnblbeddcmmfkbdildnpl'
 export const pipesFirefoxUrl = 'https://addons.mozilla.org/firefox/addon/pipes/'
 export const pipesSourceUrl = 'https://github.com/feedmypixel/pipes'
+export const pipesShareImage = { url: `${siteUrl}/pipes/og-image.png`, width: 1400, height: 560 }
 
 export const statusUrl = 'https://status.me'
 export const statusShareImage = { url: 'https://status.me/og.png', width: 1200, height: 630 }

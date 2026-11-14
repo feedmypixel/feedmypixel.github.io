@@ -1,4 +1,5 @@
 import { asset } from '$app/paths'
+import { slideNumber } from '#lib/carousel.js'
 import type { Shot } from '#lib/components/ComposedSlide.svelte'
 
 const SCREEN_WIDTH = 660
@@ -83,7 +84,7 @@ const storeFrames = [
 ] as const
 
 export const frames = storeFrames.map((frame, index) => {
-  const number = String(index + 1).padStart(2, '0')
+  const number = slideNumber(index)
   return {
     ...frame,
     number,

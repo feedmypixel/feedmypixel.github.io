@@ -1,4 +1,4 @@
-import { clampIndex, counterCaption, indexFromOffsets, settledIndex } from './carousel'
+import { clampIndex, counterCaption, indexFromOffsets, settledIndex, slideNumber } from './carousel'
 
 test('clampIndex keeps the index inside the slide range', () => {
   expect(clampIndex(-2, 4)).toBe(0)
@@ -64,4 +64,9 @@ test('counterCaption numbers the slide out of the total', () => {
   expect(counterCaption(3, 4, 'Loud the moment it breaks')).toBe(
     '04 / 04  Loud the moment it breaks'
   )
+})
+
+test('slideNumber counts from 01', () => {
+  expect(slideNumber(0)).toBe('01')
+  expect(slideNumber(11)).toBe('12')
 })

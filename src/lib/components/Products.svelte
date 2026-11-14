@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { asset, resolve } from '$app/paths'
+  import { resolve } from '$app/paths'
   import Button from './Button.svelte'
   import Carousel from './Carousel.svelte'
   import Chevron from './Chevron.svelte'
@@ -7,47 +7,11 @@
   import GitHubMark from './GitHubMark.svelte'
   import ProductEntry from './ProductEntry.svelte'
   import StatusStoreLinks from './StatusStoreLinks.svelte'
+  import PipesCarousel from './pipes/PipesCarousel.svelte'
+  import { slideNumber } from '#lib/carousel.js'
   import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
+  import { pitch as pipesPitch, story as pipesStory } from '#lib/data/pipes.js'
   import { pipesChromeUrl, pipesFirefoxUrl, pipesSourceUrl, statusUrl } from '#lib/config.js'
-
-  const pipesShot = (
-    view: 'popup' | 'sidepanel' | 'options' | 'failure-notification',
-    label: string,
-    width: number,
-    height: number
-  ) => ({
-    light: asset(`pipes/${view}-light.png`),
-    dark: asset(`pipes/${view}-dark.png`),
-    alt: `Pipes: ${label.toLowerCase()}`,
-    width,
-    height,
-    frame: view === 'failure-notification' ? ('notification' as const) : ('window' as const)
-  })
-
-  const pipesSlides = [
-    {
-      label: 'Status from your toolbar',
-      sub: 'One click through to the run that failed.',
-      shot: pipesShot('popup', 'Status from your toolbar', 880, 1000)
-    },
-    {
-      label: 'Every repo in a side panel',
-      sub: 'GitHub Actions and GitLab CI/CD, grouped how you choose.',
-      shot: pipesShot('sidepanel', 'Every repo in a side panel', 1080, 880)
-    },
-    {
-      label: 'Connect GitHub and GitLab',
-      sub: 'Your tokens never leave your browser. No server.',
-      shot: pipesShot('options', 'Connect GitHub and GitLab', 1360, 1200)
-    },
-    {
-      label: 'Loud the moment it breaks',
-      sub: 'A notification the moment a default branch fails.',
-      shot: pipesShot('failure-notification', 'Loud the moment it breaks', 728, 170)
-    }
-  ]
-
-  const slideNumber = (index: number) => String(index + 1).padStart(2, '0')
 </script>
 
 <section id="products" class="products">
@@ -69,7 +33,7 @@
         <Button variant="solid" external href={statusUrl}>Open status.me</Button>
         <StatusStoreLinks />
         <Button variant="ghost" href={resolve('/status')}>
-          How I built it
+          How I built it<span class="visually-hidden"> status</span>
           <Chevron direction="right" />
         </Button>
       {/snippet}
@@ -88,19 +52,7 @@
       {/snippet}
     </ProductEntry>
 
-    <ProductEntry
-      name="Pipes"
-      divided
-      pitch="CI/CD pipeline monitoring that lives in your browser and goes loud the moment a default branch breaks."
-      story={{
-        problem:
-          'You find out the default branch is broken from a teammate on Slack, not from your own tools. Pipeline dashboards live in tabs you forget to open.',
-        solution:
-          'Pipes watches the repos you choose across GitHub Actions and GitLab CI/CD and surfaces the status in your toolbar. Loud when the default branch fails, quiet when it is green.',
-        product:
-          'A browser extension built on Manifest V3 with Svelte 5 and TypeScript, shipping on Chrome and Firefox. Fully client-side: no server, no tracking, your tokens never leave your browser.'
-      }}
-    >
+    <ProductEntry name="Pipes" divided pitch={pipesPitch} story={pipesStory}>
       {#snippet links()}
         <Button variant="solid" external href={pipesChromeUrl}>Chrome Web Store</Button>
         <Button variant="ghost" external href={pipesFirefoxUrl}>Firefox Add-ons</Button>
@@ -108,19 +60,13 @@
           <GitHubMark />
           Source
         </Button>
+        <Button variant="ghost" href={resolve('/pipes')}>
+          How I built it<span class="visually-hidden"> Pipes</span>
+          <Chevron direction="right" />
+        </Button>
       {/snippet}
       {#snippet screenshots()}
-        <Carousel items={pipesSlides} label="Pipes screenshots">
-          {#snippet slide(item, index)}
-            <ComposedSlide
-              number={slideNumber(index)}
-              caption={item.label}
-              sub={item.sub}
-              shots={[item.shot]}
-              layout="wide"
-            />
-          {/snippet}
-        </Carousel>
+        <PipesCarousel />
       {/snippet}
     </ProductEntry>
   </div>
@@ -158,7 +104,7 @@
   .lede {
     max-width: 50ch;
     margin-top: var(--space-4);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     line-height: var(--line-height-snug);
     color: var(--ink-muted);
     text-wrap: pretty;

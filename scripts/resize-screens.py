@@ -1,7 +1,8 @@
-"""Build web-sized status screenshots from the pinned design originals.
+"""Build web-sized status and Pipes screenshots from the pinned design originals.
 
-Store frames and plain screens become WebP; pipe screenshots are already small and are
-copied byte-for-byte. Run from the repo root: python3 -I scripts/resize-screens.py
+Store frames, plain screens and the Pipes framed store set become WebP; pipe screenshots and
+the Pipes share image are already small and are copied byte-for-byte.
+Run from the repo root: python3 -I scripts/resize-screens.py
 """
 
 import shutil
@@ -13,6 +14,7 @@ from PIL import Image
 RENDER_DIRECTORY = Path('design/status-v7/mocks-pinned/render')
 UPLOADS_DIRECTORY = RENDER_DIRECTORY / 'uploads/1206x2622'
 PIPES_SOURCE_DIRECTORY = RENDER_DIRECTORY / 'assets/pipes'
+PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
 
 FRAMES_DIRECTORY = Path('static/status/frames')
 SCREENS_DIRECTORY = Path('static/status/screens')
@@ -20,7 +22,10 @@ PIPES_DIRECTORY = Path('static/pipes')
 
 FRAME_WIDTH = 560
 SCREEN_WIDTH = 660
+FRAMED_WIDTH = 1040
 WEBP_QUALITY = 85
+
+FRAMED_SHOTS = ['1-sidepanel-dark', '2-author-light', '3-popup-dark', '4-notification', '5-options-dark']
 
 THEMES = ['light', 'dark']
 PIPE_VIEWS = ['popup', 'sidepanel', 'options', 'failure-notification']
@@ -53,12 +58,22 @@ def main():
     for theme in THEMES:
         for source in sorted((UPLOADS_DIRECTORY / theme).glob('*.png')):
             jobs.append((source, SCREENS_DIRECTORY / theme / f'{source.stem}.webp', SCREEN_WIDTH))
+    for shot in FRAMED_SHOTS:
+        jobs.append((
+            PIPES_PAGE_SOURCE_DIRECTORY / 'framed' / f'{shot}.png',
+            PIPES_DIRECTORY / 'framed' / f'{shot}.webp',
+            FRAMED_WIDTH,
+        ))
 
     pipe_jobs = [
         (PIPES_SOURCE_DIRECTORY / f'{view}-{theme}.png', PIPES_DIRECTORY / f'{view}-{theme}.png')
         for view in PIPE_VIEWS
         for theme in THEMES
     ]
+    pipe_jobs.append((
+        PIPES_PAGE_SOURCE_DIRECTORY / 'framed' / '7-marquee-tile.png',
+        PIPES_DIRECTORY / 'og-image.png',
+    ))
 
     missing = [source for source, *_ in jobs + pipe_jobs if not source.is_file()]
     if not jobs or missing:

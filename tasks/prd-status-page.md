@@ -100,7 +100,7 @@ Tokens only, scoped component CSS, existing bricks first (`Button`, `Carousel`, 
 
 - `Carousel` gains a slide snippet and an offset-based strip mode; pure maths lives in
   `carousel.ts` with tests.
-- Design check: `pnpm design:check` with `design/status-v7/element-map.json`.
+- Design check: `pnpm design:check` with `design/element-map.json`.
 - Hero section carries class `hero` so the scroll reveal in `patterns.css` skips it.
 
 ## 9. Success metrics

@@ -28,7 +28,7 @@ test('the status page does not scroll sideways on a phone', async ({ page }) => 
 
 test('the home page links to the status build story', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('link', { name: 'How I built it' }).click()
+  await page.getByRole('link', { name: 'How I built it status' }).click()
   await page.waitForURL('**/status')
   await expect(page.getByRole('heading', { level: 1, name: 'status' })).toBeVisible()
 })

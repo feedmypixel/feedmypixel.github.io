@@ -18,9 +18,23 @@ test('status links out to the app and in to its build story', async () => {
   const open = page.getByRole('link', { name: /^Open status\.me/ })
   await expect.element(open).toHaveAttribute('href', 'https://status.me')
   await expect.element(open).toHaveAttribute('target', '_blank')
-  const story = page.getByRole('link', { name: 'How I built it' })
+  const story = page.getByRole('link', { name: 'How I built it status' })
   await expect.element(story).toHaveAttribute('href', expect.stringMatching(/status$/))
   expect(story.element().getAttribute('target')).toBeNull()
+})
+
+test('Pipes links in to its build story', async () => {
+  render(Products)
+  const story = page.getByRole('link', { name: 'How I built it Pipes' })
+  await expect.element(story).toHaveAttribute('href', expect.stringMatching(/\/pipes$/))
+  expect(story.element().getAttribute('target')).toBeNull()
+})
+
+test('Pipes Solution has no comma before and', () => {
+  render(Products)
+  expect(document.body.textContent).toContain(
+    'GitHub Actions and GitLab CI/CD and surfaces the status in your toolbar'
+  )
 })
 
 test('status store links stay hidden until the apps are listed', async () => {

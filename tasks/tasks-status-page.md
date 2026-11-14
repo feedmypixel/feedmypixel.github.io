@@ -21,12 +21,13 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (st
 - `src/lib/config.ts` - status URLs.
 - `scripts/resize-screens.py` - derivatives from pinned originals.
 - `static/status/`, `static/pipes/`, `static/badges/` - assets.
-- `design/status-v7/element-map.json` - design check map and waivers.
+- `design/element-map.json` - design check map and waivers.
 
 ## 0.0 Setup
 
 - [x] 0.1 Branch `feat/product-pages`, pin the mocks, inventory, design-check tooling.
-- [ ] 0.2 Badge artwork from the official sources (needs Ben's OK to download).
+- [ ] 0.2 Badge artwork from the official sources. Chrome and Firefox in (Pipes page); App Store
+      downloaded, not added; Google Play needs Ben (Partner Marketing Hub terms).
 
 ## 1.0 Assets
 
@@ -38,7 +39,8 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (st
 - [x] 2.1 `Button` `size` prop (default 44px, `large` 48px), tests.
 - [x] 2.2 `PixelMark`, `ProductStory`, `ThemedImage`, `Chevron`, `ExternalLink`, `ProductEntry`,
       `StatusStoreLinks`, with tests where they carry behaviour.
-- [ ] 2.2a `StoreBadge` swap for both products, once the official badge artwork is in.
+- [ ] 2.2a status store badges through `StoreBadge` (built with the Pipes page), once the store URLs
+      and the Google Play artwork are in.
 - [x] 2.3 `carousel.ts` offset maths, tests first.
 - [x] 2.4 `Carousel` slide snippet + strip mode; every consumer migrated in the same change.
 - [x] 2.5 `Seo` image props; `Header` logo label.

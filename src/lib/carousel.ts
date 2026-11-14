@@ -48,6 +48,8 @@ export function settledIndex({
 
 const twoDigits = (value: number) => String(value).padStart(2, '0')
 
+export const slideNumber = (index: number) => twoDigits(index + 1)
+
 export function counterCaption(index: number, count: number, label: string) {
-  return `${twoDigits(index + 1)} / ${twoDigits(count)}  ${label}`
+  return `${slideNumber(index)} / ${twoDigits(count)}  ${label}`
 }

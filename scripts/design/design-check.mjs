@@ -7,7 +7,7 @@ import { extractSpec } from './extract.mjs'
 import { diffSpecs } from './diff.mjs'
 
 const ROOT = join(import.meta.dirname, '../..')
-const ELEMENT_MAP_PATH = 'design/status-v7/element-map.json'
+const ELEMENT_MAP_PATH = 'design/element-map.json'
 const PREVIEW_PORT = 4173
 const PREVIEW_URL = `http://localhost:${PREVIEW_PORT}`
 const THEME_STORAGE_KEY = 'fmp-theme'
