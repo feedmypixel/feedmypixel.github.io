@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" role="img" aria-label="feedMyPixel">
+  <rect width="30" height="30" rx="2" fill="#4f9dfd"/>
+  <rect x="5" y="5" width="5" height="5" fill="#fff"/>
+  <rect x="12" y="5" width="5" height="5" fill="#fff"/>
+</svg>
