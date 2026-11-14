@@ -153,10 +153,9 @@ Firefox from one codebase. Put the screens carousel in this section, as on statu
 
 **Built with Claude**
 
-The same workflow as status: requirements first, a task list with ai-dev-tasks, a design pass in
-Claude Design, then the build in Claude Code with my own skills. Reuse the status page's "Built
-with Claude" section, with Pipes in place of status. Pipes came first, so this is where the
-workflow started.
+Requirements first, a task list with ai-dev-tasks, a design pass in Claude Design, then the build
+in Claude Code with my own skills. Pipes came first, so this is where that workflow started. Use
+the same layout as the status page's "Built with Claude" section.
 
 **Try it**
 
