@@ -55,11 +55,7 @@ export default defineConfig(
     }
   },
   {
-    files: [
-      'src/lib/components/Button.svelte',
-      'src/lib/components/Contact.svelte',
-      'src/lib/components/RoleRun.svelte'
-    ],
+    files: ['src/lib/components/Button.svelte', 'src/lib/components/Contact.svelte'],
     rules: {
       'svelte/no-navigation-without-resolve': 'off'
     }
