@@ -5,9 +5,19 @@
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
   import Button from '../Button.svelte'
+  import ShotCard from '../ShotCard.svelte'
 </script>
 
-<BuildStory heading="How and why I built Pipes, with Claude.">
+<BuildStory
+  heading="How and why I built Pipes, with Claude."
+  sections={[
+    { id: 'why', label: 'Why I built it' },
+    { id: 'how', label: "How it's built" },
+    { id: 'claude', label: 'Built with Claude' },
+    { id: 'try', label: 'Try it' },
+    { id: 'thanks', label: 'Thanks' }
+  ]}
+>
   {#snippet stack()}
     <div>
       <dt>Extension</dt>
@@ -76,7 +86,7 @@
   <div class="framed">
     <Carousel items={framed} label="Pipes store screenshots">
       {#snippet slide(shot)}
-        <div class="card" style:aspect-ratio="{shot.width} / {shot.height}">
+        <ShotCard width={shot.width} height={shot.height}>
           <img
             src={shot.src}
             alt={shot.alt}
@@ -85,7 +95,7 @@
             loading="lazy"
             decoding="async"
           />
-        </div>
+        </ShotCard>
       {/snippet}
     </Carousel>
   </div>
@@ -130,20 +140,5 @@
 <style>
   .framed {
     margin-top: var(--space-6);
-  }
-
-  .card {
-    flex: 1;
-    overflow: hidden;
-    background: var(--surface-inset);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-lg);
-  }
-
-  .card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 </style>

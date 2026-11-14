@@ -3,21 +3,15 @@
 
   let {
     heading,
+    sections,
     stack,
     children
   }: {
     heading: string
+    sections: { id: string; label: string }[]
     stack: Snippet
     children: Snippet
   } = $props()
-
-  const sections = [
-    { id: 'why', label: 'Why I built it' },
-    { id: 'how', label: "How it's built" },
-    { id: 'claude', label: 'Built with Claude' },
-    { id: 'try', label: 'Try it' },
-    { id: 'thanks', label: 'Thanks' }
-  ]
 </script>
 
 <section id="story" class="story">

@@ -102,7 +102,8 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links, the new-tab hints and the privacy section (PRD decision 21) differ",
+          "box.height": "the privacy section adds its list and desktop carousel (PRD decision 21)"
         }
       },
       "story.aside": {
@@ -112,8 +113,20 @@
           "text": "store links render as plain text until the apps are listed (PRD decision 1); external links carry the new-tab hint"
         }
       },
-      "story.toc": { "mock": "nav[aria-label='In this story']", "built": "nav[aria-label='In this story']" },
-      "story.tocLink": { "mock": "nav[aria-label='In this story'] a", "built": "nav[aria-label='In this story'] a" },
+      "story.toc": {
+        "mock": "nav[aria-label='In this story']",
+        "built": "nav[aria-label='In this story']",
+        "ignore": {
+          "text": "the contents gain the privacy section (PRD decision 21)",
+          "children": "the contents gain the privacy section (PRD decision 21)",
+          "box.height": "the contents gain the privacy section (PRD decision 21)"
+        }
+      },
+      "story.tocLink": {
+        "mock": "nav[aria-label='In this story'] a",
+        "built": "nav[aria-label='In this story'] a",
+        "ignore": { "count": "the contents gain the privacy section (PRD decision 21)" }
+      },
       "story.stack": {
         "mock": "#story dl",
         "built": "#story dl",
@@ -135,11 +148,16 @@
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
-          "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links, the new-tab hints and the privacy section (PRD decision 21) differ",
+          "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18); the privacy section adds a heading, list and carousel (PRD decision 21)",
+          "box.height": "the privacy section adds its list and desktop carousel (PRD decision 21)"
         }
       },
-      "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
+      "story.subheading": {
+        "mock": "#story article h3",
+        "built": "#story article h3",
+        "ignore": { "count": "the privacy section adds a sixth heading (PRD decision 21)" }
+      },
       "story.paragraph": { "mock": "#story article > p:first-of-type", "built": "#story article > p:first-of-type" },
       "story.screens": {
         "mock": "[aria-label='status screens']",
@@ -164,7 +182,7 @@
           "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
         }
       },
-      "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks)" },
+      "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks, .controls)" },
       "story.tip": { "mock": "#story article p[style*='surface-sunken']", "built": "#story article .tip" },
       "story.thanks": { "mock": "#story article ul[style*='list-style']", "built": "#story article ul.thanks" }
     }
@@ -351,7 +369,7 @@
       },
       "story.framedCard": {
         "mock": "[aria-label='Pipes store screenshots'] > div",
-        "built": "[aria-label='Pipes store screenshots'] .card"
+        "built": "[aria-label='Pipes store screenshots'] .shot-card"
       },
       "story.framedCounter": {
         "mock": "#story figure > figcaption > span:first-child",
@@ -438,19 +456,19 @@
       "slide": {
         "mock": "[data-status-slide]",
         "built": "#products .strip > .slide > .slide",
-        "ignore": { "count": "status gains an eighth slide, You decide who gets in (status PRD decision 21)" }
+        "ignore": { "count": "status gains three privacy and control slides (status PRD decision 21)" }
       },
       "slide.captionColumn": {
         "mock": "[data-status-cap]",
         "built": "#products .caption-column",
-        "ignore": { "count": "status gains an eighth slide (status PRD decision 21)" }
+        "ignore": { "count": "status gains three privacy and control slides (status PRD decision 21)" }
       },
       "slide.number": {
         "mock": "[data-status-cap] > span",
         "built": "#products .caption-column .number",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains an eighth slide (status PRD decision 21)"
+          "count": "status gains three privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.caption": {
@@ -458,7 +476,7 @@
         "built": "#products .caption-column .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains an eighth slide (status PRD decision 21)"
+          "count": "status gains three privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.sub": {
@@ -466,7 +484,7 @@
         "built": "#products .caption-column .sub",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains an eighth slide (status PRD decision 21)"
+          "count": "status gains three privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.shots": {
@@ -474,7 +492,7 @@
         "built": "#products .shots",
         "ignore": {
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "count": "status gains an eighth slide (status PRD decision 21)"
+          "count": "status gains three privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.phone": {
@@ -499,7 +517,7 @@
         "built": "#products figcaption > .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "text": "the status counter runs to 08 with the eighth slide (status PRD decision 21)"
+          "text": "the status counter runs to 10 with the privacy and control slides (status PRD decision 21)"
         }
       },
       "story.label": {

@@ -1,5 +1,6 @@
 import { asset } from '$app/paths'
 import { slideNumber } from '#lib/carousel.js'
+import { articleShot } from '#lib/data/article-shot.js'
 
 type View = 'popup' | 'sidepanel' | 'options' | 'failure-notification'
 
@@ -61,9 +62,6 @@ export const story = {
 export const pitch =
   'CI/CD pipeline monitoring that lives in your browser and goes loud the moment a default branch breaks.'
 
-const FRAMED_WIDTH = 1040
-const FRAMED_HEIGHT = 650
-
 const framedFiles = [
   { file: '1-sidepanel-dark', label: 'Side panel' },
   { file: '2-author-light', label: 'Author attribution' },
@@ -76,6 +74,5 @@ export const framed = framedFiles.map(({ file, label }, index) => ({
   label,
   src: asset(`pipes/framed/${file}.webp`),
   alt: `Pipes store screenshot ${slideNumber(index)}: ${label}`,
-  width: FRAMED_WIDTH,
-  height: FRAMED_HEIGHT
+  ...articleShot
 }))

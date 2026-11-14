@@ -1,5 +1,6 @@
 import { asset } from '$app/paths'
 import { slideNumber } from '#lib/carousel.js'
+import { articleShot } from '#lib/data/article-shot.js'
 import type { Shot } from '#lib/components/ComposedSlide.svelte'
 
 const SCREEN_WIDTH = 660
@@ -19,7 +20,7 @@ export const screens = [
   '09-activity'
 ] as const
 
-type Screen = (typeof screens)[number] | '10-privacy'
+type Screen = (typeof screens)[number]
 
 export const screenName = (screen: Screen) => screen.slice(3)
 
@@ -34,6 +35,80 @@ export function screenShot(screen: Screen, { inverted = false } = {}): Shot {
     height: SCREEN_HEIGHT
   }
 }
+
+type PhoneMoment =
+  | '01b-report-reasons'
+  | '02-block-mute'
+  | '04-message-request'
+  | '05-follow-requests'
+  | '06-private-page'
+
+type DesktopMoment = Exclude<PhoneMoment, '01b-report-reasons'> | '03-hidden'
+
+function controlShot(moment: PhoneMoment, shows: string): Shot {
+  return {
+    light: asset(`status/screens/light/control-${moment}.webp`),
+    dark: asset(`status/screens/dark/control-${moment}.webp`),
+    alt: `status on a phone: ${shows}`,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT
+  }
+}
+
+const desktopShot = (moment: DesktopMoment, label: string) => ({
+  label,
+  light: asset(`status/desktop/light/control-${moment}.webp`),
+  dark: asset(`status/desktop/dark/control-${moment}.webp`),
+  alt: `status on a desktop browser: ${label}`,
+  ...articleShot
+})
+
+export const controlOnDesktop = [
+  desktopShot('06-private-page', 'Private page'),
+  desktopShot('05-follow-requests', 'Follow requests'),
+  desktopShot('04-message-request', 'Message requests'),
+  desktopShot('02-block-mute', 'Mute, block and report'),
+  desktopShot('03-hidden', 'Mature content hidden')
+]
+
+export const controls = [
+  {
+    icon: '🔒',
+    term: 'Your page',
+    text: 'Public or private so people ask to follow and you approve them.'
+  },
+  {
+    icon: '👋',
+    term: 'Follows',
+    text: 'Unfollow anyone or remove someone from your followers.'
+  },
+  {
+    icon: '✉️',
+    term: 'Messages from',
+    text: "Anyone, mutuals only or nobody. Messages from people you don't know arrive as requests you accept or decline."
+  },
+  {
+    icon: '🙈',
+    term: 'Mute, block and report',
+    text: 'Mute or block anyone; report any status, reply, message or page.'
+  },
+  {
+    icon: '👁️',
+    term: 'Hide mature or adult content',
+    text: 'On by default, so sweary or adult posts arrive blurred until you tap the eye.'
+  },
+  {
+    icon: '🟢',
+    term: 'Show online status',
+    text: "Turn it off and nobody sees when you're on and you see no one's."
+  },
+  {
+    icon: '🔑',
+    term: 'Passkeys',
+    text: 'No password to steal: sign in with your face, fingerprint or screen lock.'
+  },
+  { icon: '🗑️', term: 'Delete your account', text: 'Any time.' }
+]
 
 export const slides = [
   {
@@ -73,8 +148,24 @@ export const slides = [
   },
   {
     label: 'You decide who gets in',
-    sub: 'Private page, message requests, mute, block and report.',
-    shots: [screenShot('10-privacy')]
+    sub: 'Make your page private so people ask to follow and you approve them.',
+    shots: [
+      controlShot('06-private-page', 'a private page with a follow button'),
+      controlShot('05-follow-requests', 'follow requests to accept or decline')
+    ]
+  },
+  {
+    label: 'Messages on your terms',
+    sub: "Messages from people you don't know arrive as requests you accept or decline.",
+    shots: [controlShot('04-message-request', 'message requests to accept or decline')]
+  },
+  {
+    label: 'Mute, block and report',
+    sub: 'Mute or block anyone; report any status, reply, message or page.',
+    shots: [
+      controlShot('02-block-mute', 'a page menu with mute, block and report'),
+      controlShot('01b-report-reasons', 'the reasons to report someone')
+    ]
   }
 ]
 

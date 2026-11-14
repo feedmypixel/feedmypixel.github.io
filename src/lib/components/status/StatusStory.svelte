@@ -1,12 +1,13 @@
 <script lang="ts">
   import { statusAppStoreUrl, statusGooglePlayUrl, statusUrl } from '#lib/config.js'
-  import { screenName, screenShot, screens } from '#lib/data/status.js'
+  import { controlOnDesktop, controls, screenName, screenShot, screens } from '#lib/data/status.js'
   import Button from '../Button.svelte'
   import StatusStoreLinks from '../StatusStoreLinks.svelte'
   import ThemedImage from '../ThemedImage.svelte'
   import ExternalLink from '../ExternalLink.svelte'
   import Carousel from '../Carousel.svelte'
   import BuildStory from '../product/BuildStory.svelte'
+  import ShotCard from '../ShotCard.svelte'
 
   const screenSlides = screens.map((screen) => ({
     label: screenName(screen),
@@ -22,7 +23,17 @@
   {/if}
 {/snippet}
 
-<BuildStory heading="How and why I built status, with Claude, on SvelteKit">
+<BuildStory
+  heading="How and why I built status, with Claude, on SvelteKit"
+  sections={[
+    { id: 'why', label: 'Why I built it' },
+    { id: 'how', label: "How it's built" },
+    { id: 'control', label: 'You decide who gets in' },
+    { id: 'claude', label: 'Built with Claude' },
+    { id: 'try', label: 'Try it' },
+    { id: 'thanks', label: 'Thanks' }
+  ]}
+>
   {#snippet stack()}
     <div>
       <dt>Web</dt>
@@ -104,6 +115,33 @@
     </p>
   </div>
 
+  <h3 id="control">You decide who gets in</h3>
+  <p>Private page, message requests, mute, block and report.</p>
+  <ul class="controls">
+    {#each controls as control (control.term)}
+      <li>
+        <span class="icon" aria-hidden="true">{control.icon}</span>
+        <span><strong>{control.term}</strong>: {control.text}</span>
+      </li>
+    {/each}
+  </ul>
+
+  <div class="desktop">
+    <Carousel items={controlOnDesktop} label="status privacy controls on desktop">
+      {#snippet slide(shot)}
+        <ShotCard width={shot.width} height={shot.height}>
+          <ThemedImage
+            light={shot.light}
+            dark={shot.dark}
+            alt={shot.alt}
+            width={shot.width}
+            height={shot.height}
+          />
+        </ShotCard>
+      {/snippet}
+    </Carousel>
+  </div>
+
   <h3 id="claude">Built with Claude</h3>
   <p>
     I start with detailed requirements, written like architecture decision records (ADRs). From
@@ -171,6 +209,25 @@
 </BuildStory>
 
 <style>
+  .controls {
+    gap: var(--space-3);
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .controls li {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .icon {
+    flex: none;
+  }
+
+  .desktop {
+    margin-top: var(--space-6);
+  }
+
   .screens {
     --screen-width: 60%;
 
