@@ -1,6 +1,6 @@
 # feedMyPixel - Pipes product page brief
 
-**DRAFT.** Not for Claude Design until Ben has filled in Part 1.
+**Ready for Claude Design** once Ben confirms the go-live month (Part 2, Facts).
 
 Two parts. **Part 1 is for Ben to fill in.** Part 2 is the brief for
 [claude.ai/design](https://claude.ai/design), already written from known facts. Once Part 1 is done,
@@ -17,14 +17,19 @@ Rough notes are fine. Claude tidies them into the same voice but keeps your word
 
 What was missing, who it is for and what made you start. Two or three sentences.
 
->
+> At my current contract we use GitLab and for my work I use GitHub. I also have multiple repositories on both and I
+> wanted a simple way I can see what state my Pull Requests (PRs) and Merge Requests (MRs) are in. As well as seeing
+> my teammates and getting alerted when main fails
 
 ### 2. One build decision
 
 The one you would defend in a thread. For example fully client-side with no server, read-only
 tokens kept in the browser or Chrome and Firefox from one codebase. What you chose and why.
 
->
+> I didn't need this to be a server ran project and felt like something in the browser was ideal as this is where I
+> am when making applications. Something on the side that I can easily see. Something without the need to safely
+> store a users token on a server. I had also always wanted to build a browser extension as I use them a lot so this
+> felt perfect
 
 ### 3. Building with Claude
 
@@ -32,25 +37,25 @@ Was it the same workflow as status (requirements, ai-dev-tasks, Claude Design, C
 skills) or different? Pipes came first, so anything you learned here that shaped status is worth a
 line.
 
->
+> Same as status
 
 ### 4. Off limits
 
 Anything not to say publicly, such as installs, ratings or timelines.
 
->
+> Nope
 
 ### 5. Dates and numbers
 
 When Pipes went live in the Chrome Web Store and Firefox Add-ons. Should the page print it?
 
->
+> Put the month it went live
 
 ### 6. Anything else
 
 Screens to feature or leave out, a quote, a thank-you, a call to action.
 
->
+> I use it daily, its incredibly useful expecially when working with multiple repositories and multiple developers
 
 ## Part 2 - brief for Claude Design
 
@@ -66,9 +71,13 @@ must be reused as-is. **Ship the same `_ds/` back with this drop** so the confor
 
 **Use the status page as the template.** `/status` from `design_handoff_status_v7` is built and is
 the pattern: breadcrumb hero, screenshots band with a carousel, Problem / Solution / Product, the
-build story with a sticky contents list and stack list, then "More from feedMyPixel". Change the
-content, not the structure. One change from v7: every scrolling strip uses the shared carousel
-(arrows, dots, counter). The build-story inset scroll strip was replaced by it.
+build story with a sticky contents list and stack list. Change the content, not the structure.
+Two changes from v7, already built:
+
+- Every scrolling strip uses the shared carousel (arrows, dots, counter). The build-story inset
+  scroll strip was replaced by it. On a phone the dots drop below the counter when they do not fit.
+- The "More from feedMyPixel" section was removed. The breadcrumb and the header lead back. Do not
+  add it to Pipes.
 
 ### Why this page exists
 
@@ -80,6 +89,8 @@ built it" link here and this page links back.
 ### Facts
 
 - **Name:** Pipes.
+- **Live since:** June 2026 in the Chrome Web Store and Firefox Add-ons. Print the month, as status
+  prints its fact line. (Month to be confirmed by Ben.)
 - **Pitch:** CI/CD pipeline monitoring that lives in your browser and goes loud the moment a
   default branch breaks.
 - **Problem:** You find out the default branch is broken from a teammate on Slack, not from your own
@@ -113,12 +124,48 @@ like the status one helps. Attach both folders from the pipes repo.
 1. **Hero:** breadcrumb, name, pitch, lead, store badges and Source.
 2. **Screenshots.**
 3. **Problem / Solution / Product,** matching the home page entry.
-4. **The build story:** Ben's words from Part 1. Long-form reading, comfortable measure.
-5. **A way back** to the home page and to status.
+4. **The build story:** the copy below. Long-form reading, comfortable measure. Same sections,
+   contents list and stack list as status.
+
+Nothing after the build story: the footer follows, as on status.
 
 ### Build story copy
 
-Filled in from Part 1 once Ben has answered.
+Ben's words, tidied. Use them verbatim. Nothing is off limits.
+
+**Heading:** How and why I built Pipes, with Claude.
+
+**Why I built it**
+
+At my current contract we use GitLab and for my own work I use GitHub. I have repositories on both
+and I wanted a simple way to see what state my pull requests and merge requests are in. I also
+wanted to see my teammates' work and get alerted when main fails.
+
+**How it's built**
+
+This didn't need a server. The browser is where I am when I'm making applications, so something on
+the side that I can easily see felt ideal. No server also means no user tokens to store safely on
+one: your tokens stay in your browser. I had always wanted to build a browser extension too. I use
+them a lot so this felt perfect.
+
+Then the stack: Svelte 5, TypeScript, Vite and the crxjs plugin on Manifest V3, with Chrome and
+Firefox from one codebase. Put the screens carousel in this section, as on status.
+
+**Built with Claude**
+
+The same workflow as status: requirements first, a task list with ai-dev-tasks, a design pass in
+Claude Design, then the build in Claude Code with my own skills. Reuse the status page's "Built
+with Claude" section, with Pipes in place of status. Pipes came first, so this is where the
+workflow started.
+
+**Try it**
+
+I use it daily. It's incredibly useful, especially when working with multiple repositories and
+multiple developers. Then the Chrome Web Store and Firefox Add-ons badges.
+
+**Thanks**
+
+Svelte, crxjs, Claude by Anthropic and Ryan Carson for ai-dev-tasks. Same format as status.
 
 ### Copy rules
 
