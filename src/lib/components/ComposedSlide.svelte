@@ -39,6 +39,7 @@
         class="shot"
         data-frame={shot.frame ?? 'window'}
         style:aspect-ratio="{shot.width} / {shot.height}"
+        style:--ratio={shot.width / shot.height}
       >
         <ThemedImage
           light={shot.light}
@@ -166,23 +167,38 @@
       padding: var(--space-10) var(--space-6) var(--space-10) var(--space-10);
     }
 
+    /* Sized from the column's own box so every shot shows whole, never cropped. */
     .shots {
       flex: 1.1 1 0;
+      align-items: center;
       height: auto;
-      padding: 8% var(--space-8) 0;
+      padding: var(--space-8);
+      container-type: size;
     }
 
     .phones .shot {
+      align-self: flex-start;
       width: auto;
-      height: 104%;
+      height: 88cqh;
+      border-bottom: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+    }
+
+    .phones .shot:only-child {
+      align-self: center;
+      height: 100cqh;
     }
 
     .phones .shot + .shot {
       display: block;
+      align-self: flex-end;
+      margin-top: 0;
     }
 
     .wide .shot {
       align-self: center;
+      width: min(100cqw, 100cqh * var(--ratio));
+      margin-bottom: 0;
     }
   }
 </style>

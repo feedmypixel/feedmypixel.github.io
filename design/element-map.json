@@ -254,7 +254,10 @@
         "mock": "#screenshots [data-status-phones]",
         "built": "#screenshots .shots",
         "ignore": {
-          "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)"
+          "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
+          "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
+          "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
+          "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)"
         }
       },
       "screenshots.shot": {
@@ -463,7 +466,10 @@
         "built": "#products .shots",
         "ignore": {
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "count": "status gains three privacy and control slides (status PRD decision 21)"
+          "count": "status gains three privacy and control slides (status PRD decision 21)",
+          "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
+          "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
+          "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)"
         }
       },
       "slide.phone": {
@@ -472,7 +478,10 @@
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "count": "the hidden theme image of each pair is not counted on the built side"
+          "count": "the hidden theme image of each pair is not counted on the built side",
+          "box.width": "phones fit whole inside the column, not 104% tall and cropped (status PRD decision 22)",
+          "box.height": "phones fit whole inside the column, not 104% tall and cropped (status PRD decision 22)",
+          "colour.borderColor": "phones fit whole, so they carry a bottom border too (status PRD decision 22)"
         }
       },
       "pipes.shot": {

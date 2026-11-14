@@ -85,6 +85,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 19 | "More from feedMyPixel" section | Removed (Ben, after review). The header nav already leads back. |
 | 20 | Build-story screens on a phone | 60% of the strip below 760px (about 215px), not 132px, so they can be read (Ben, after review). Unchanged from 760px. |
 | 21 | Privacy and control | Show control being used, not a settings page (Ben, 14 Nov 2026). Home gains three slides from real iPhone captures: "You decide who gets in" (private page, follow requests), "Messages on your terms" (message requests) and "Mute, block and report" (the person menu, report reasons). A `/status` build-story section with the eight-item list and desktop shots, and the 08 Control store frame, were built and then removed (Ben: the desktop shots did not work). |
+| 22 | Screenshots whole, not cropped | From 760px every composed-slide shot fits inside the shot column with even padding: phones at 88% of its height (one top, one bottom when paired, 100% when alone), wide Pipes shots as large as fits. The mock ran phones to 104% and cropped them at the slide's bottom edge (Ben, after review: "you clearly have the space"). Below 760px is unchanged. |
 
 ## 6. Non-goals
 
