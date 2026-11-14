@@ -426,38 +426,44 @@
       },
       "slide": {
         "mock": "[data-status-slide]",
-        "built": "#products .strip > .slide > .slide"
+        "built": "#products .strip > .slide > .slide",
+        "ignore": { "count": "status gains an eighth slide, You decide who gets in (status PRD decision 21)" }
       },
       "slide.captionColumn": {
         "mock": "[data-status-cap]",
-        "built": "#products .caption-column"
+        "built": "#products .caption-column",
+        "ignore": { "count": "status gains an eighth slide (status PRD decision 21)" }
       },
       "slide.number": {
         "mock": "[data-status-cap] > span",
         "built": "#products .caption-column .number",
         "ignore": {
-          "children": "the mock template wraps interpolated text in a span"
+          "children": "the mock template wraps interpolated text in a span",
+          "count": "status gains an eighth slide (status PRD decision 21)"
         }
       },
       "slide.caption": {
         "mock": "[data-status-cap] > p:nth-of-type(1)",
         "built": "#products .caption-column .caption",
         "ignore": {
-          "children": "the mock template wraps interpolated text in a span"
+          "children": "the mock template wraps interpolated text in a span",
+          "count": "status gains an eighth slide (status PRD decision 21)"
         }
       },
       "slide.sub": {
         "mock": "[data-status-cap] > p:nth-of-type(2)",
         "built": "#products .caption-column .sub",
         "ignore": {
-          "children": "the mock template wraps interpolated text in a span"
+          "children": "the mock template wraps interpolated text in a span",
+          "count": "status gains an eighth slide (status PRD decision 21)"
         }
       },
       "slide.shots": {
         "mock": "[data-status-phones]",
         "built": "#products .shots",
         "ignore": {
-          "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)"
+          "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
+          "count": "status gains an eighth slide (status PRD decision 21)"
         }
       },
       "slide.phone": {
@@ -481,7 +487,8 @@
         "mock": "#products figcaption > span:first-child",
         "built": "#products figcaption > .caption",
         "ignore": {
-          "children": "the mock template wraps interpolated text in a span"
+          "children": "the mock template wraps interpolated text in a span",
+          "text": "the status counter runs to 08 with the eighth slide (status PRD decision 21)"
         }
       },
       "story.label": {

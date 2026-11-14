@@ -19,7 +19,7 @@ export const screens = [
   '09-activity'
 ] as const
 
-type Screen = (typeof screens)[number]
+type Screen = (typeof screens)[number] | '10-privacy'
 
 export const screenName = (screen: Screen) => screen.slice(3)
 
@@ -70,6 +70,11 @@ export const slides = [
     label: 'No ads. No tracking.',
     sub: 'Sign in by email link or passkey. For 13 and over.',
     shots: [screenShot('05-discover'), screenShot('09-activity')]
+  },
+  {
+    label: 'You decide who gets in',
+    sub: 'Private page, message requests, mute, block and report.',
+    shots: [screenShot('10-privacy')]
   }
 ]
 

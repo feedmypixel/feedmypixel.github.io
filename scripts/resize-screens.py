@@ -12,7 +12,8 @@ from pathlib import Path
 from PIL import Image
 
 RENDER_DIRECTORY = Path('design/status-v7/mocks-pinned/render')
-UPLOADS_DIRECTORY = RENDER_DIRECTORY / 'uploads/1206x2622'
+FRAMES_SOURCE_DIRECTORY = RENDER_DIRECTORY / 'uploads/1206x2622'
+SCREENS_SOURCE_DIRECTORY = Path('design/status-captures')
 PIPES_SOURCE_DIRECTORY = Path('design/pipes-captures')
 PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
 
@@ -53,10 +54,10 @@ def report(destination, dimensions):
 
 def main():
     jobs = []
-    for source in sorted(UPLOADS_DIRECTORY.glob('*.png')):
+    for source in sorted(FRAMES_SOURCE_DIRECTORY.glob('*.png')):
         jobs.append((source, FRAMES_DIRECTORY / f'{source.stem}.webp', FRAME_WIDTH))
     for theme in THEMES:
-        for source in sorted((UPLOADS_DIRECTORY / theme).glob('*.png')):
+        for source in sorted((SCREENS_SOURCE_DIRECTORY / theme).glob('*.png')):
             jobs.append((source, SCREENS_DIRECTORY / theme / f'{source.stem}.webp', SCREEN_WIDTH))
     for shot in FRAMED_SHOTS:
         jobs.append((
@@ -77,7 +78,7 @@ def main():
 
     missing = [source for source, *_ in jobs + pipe_jobs if not source.is_file()]
     if not jobs or missing:
-        print(f'Missing sources: {missing or UPLOADS_DIRECTORY}', file=sys.stderr)
+        print(f'Missing sources: {missing or FRAMES_SOURCE_DIRECTORY}', file=sys.stderr)
         sys.exit(1)
 
     for source, destination, width in jobs:
