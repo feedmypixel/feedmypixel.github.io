@@ -29,7 +29,7 @@
     gap: var(--space-4);
     width: 100%;
     max-width: 420px;
-    padding: var(--space-4);
+    padding: var(--space-3);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     pointer-events: auto;
