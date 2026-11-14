@@ -28,7 +28,7 @@
       used to call those providers' APIs on your behalf.
     </li>
     <li>
-      <strong>Accounts and settings</strong>: the hosts you connect, the repositories you watch, and
+      <strong>Accounts and settings</strong>: the hosts you connect, the repositories you watch and
       your notification preferences.
     </li>
     <li>
@@ -41,7 +41,7 @@
   <p>
     All of the above lives in <code>chrome.storage.local</code> on your own machine. It is
     <strong>never synced</strong>
-    to other devices, <strong>never logged</strong>, and
+    to other devices, <strong>never logged</strong> and
     <strong>never transmitted to us or any third party</strong>. There is no Pipes server to send it
     to.
   </p>
@@ -88,7 +88,7 @@
 
   <h2>Contact</h2>
   <p>
-    Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a>, or
+    Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a> or
     <a href="https://github.com/feedmypixel/pipes/issues" target="_blank" rel="noopener noreferrer">
       open an issue<NewTabHint />
     </a>.

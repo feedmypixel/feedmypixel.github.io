@@ -13,7 +13,7 @@ Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
 ## Products
 
 - [Pipes](https://github.com/feedmypixel/pipes): CI/CD pipeline monitoring as a browser extension.
-  Watches GitHub Actions and GitLab CI/CD, and goes loud the moment a default branch breaks. Fully
+  Watches GitHub Actions and GitLab CI/CD and goes loud the moment a default branch breaks. Fully
   client-side - no server, no tracking. Published on the Chrome Web Store and Firefox Add-ons.
 
 ## Pages
