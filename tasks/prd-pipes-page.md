@@ -75,6 +75,7 @@ page Pipes entry gains a "How I built it" link to it.
 | 11 | Framed store set | Not themed (it is the store listing as published). WebP derivatives at 2x display width from the pinned originals, by `scripts/resize-screens.py`. |
 | 12 | Element map | Moves from `design/status-v7/` to `design/element-map.json` now it covers more than one bundle. The home surface points at the v8 home mock. |
 | 13 | Share image | The bundle's `marquee.png` is a 960x720 side-panel crop; the README's 1400x560 is `framed/7-marquee-tile.png`, the store marquee. The tile is used, as `og-image.png` like the site's own. |
+| 14 | "Why I built it" abbreviations | "pull requests (PRs) and merge requests (MRs)" (Ben, after review). |
 
 ## 6. Non-goals
 

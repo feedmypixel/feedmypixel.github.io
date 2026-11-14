@@ -53,8 +53,9 @@
     At my current contract we use <ExternalLink href="https://about.gitlab.com">GitLab</ExternalLink
     >
     and for my own work I use <ExternalLink href="https://github.com">GitHub</ExternalLink>. I have
-    repositories on both and I wanted a simple way to see what state my pull requests and merge
-    requests are in. I also wanted to see my teammates' work and get alerted when main fails.
+    repositories on both and I wanted a simple way to see what state my pull requests (PRs) and
+    merge requests (MRs) are in. I also wanted to see my teammates' work and get alerted when main
+    fails.
   </p>
 
   <h3 id="how">How it's built</h3>

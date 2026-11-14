@@ -138,7 +138,7 @@ Ben's words, tidied. Use them verbatim. Nothing is off limits.
 **Why I built it**
 
 At my current contract we use GitLab and for my own work I use GitHub. I have repositories on both
-and I wanted a simple way to see what state my pull requests and merge requests are in. I also
+and I wanted a simple way to see what state my pull requests (PRs) and merge requests (MRs) are in. I also
 wanted to see my teammates' work and get alerted when main fails.
 
 **How it's built**

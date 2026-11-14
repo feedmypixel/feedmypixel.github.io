@@ -294,7 +294,7 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint"
+          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint; (PRs) and (MRs) added (decision 14)"
         }
       },
       "story.aside": {
@@ -328,7 +328,7 @@
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint",
+          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint; (PRs) and (MRs) added (decision 14)",
           "children": "the framed set sits in a wrapper around the shared Carousel, which owns its figure (as status, status PRD decision 18)"
         }
       },
@@ -336,7 +336,9 @@
       "story.paragraph": {
         "mock": "#story article > p:first-of-type",
         "built": "#story article > p:first-of-type",
-        "ignore": { "text": "external links carry the new-tab hint" }
+        "ignore": {
+          "text": "external links carry the new-tab hint; Ben added (PRs) and (MRs), 14 Nov 2026 (Pipes PRD decision 14)"
+        }
       },
       "story.framed": {
         "mock": "[aria-label='Pipes store screenshots']",

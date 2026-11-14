@@ -22,6 +22,13 @@ test('contents links match one heading per section', () => {
   expect(hrefs).toEqual(sectionIds.map((id) => `#${id}`))
 })
 
+test('spells out PRs and MRs in why I built it', () => {
+  render(PipesStory)
+  expect(document.body.textContent?.replace(/\s+/g, ' ')).toContain(
+    'my pull requests (PRs) and merge requests (MRs) are in'
+  )
+})
+
 test('lists the stack', () => {
   render(PipesStory)
   const terms = [...document.querySelectorAll('dt')].map((term) => term.textContent)
