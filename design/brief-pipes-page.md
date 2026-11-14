@@ -139,7 +139,7 @@ Ben's words, tidied. Use them verbatim. Nothing is off limits.
 
 At my current gig we use GitLab and for my own work I use GitHub. I have multiple repositories on
 both and I wanted a simple way to see what state my pull requests (PRs) and merge requests (MRs) are
-in. I also wanted to be able to see my teammates' work and get alerted when main fails. Add this to
+in. I also wanted to be able to see my teammates work and get alerted when main fails. Add this to
 a team and it becomes a very simple way to see what's going on with your work.
 
 **How it's built**

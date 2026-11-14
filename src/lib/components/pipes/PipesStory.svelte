@@ -52,7 +52,7 @@
     At my current gig we use <ExternalLink href="https://about.gitlab.com">GitLab</ExternalLink>
     and for my own work I use <ExternalLink href="https://github.com">GitHub</ExternalLink>. I have
     multiple repositories on both and I wanted a simple way to see what state my pull requests (PRs)
-    and merge requests (MRs) are in. I also wanted to be able to see my teammates' work and get
+    and merge requests (MRs) are in. I also wanted to be able to see my teammates work and get
     alerted when main fails. Add this to a team and it becomes a very simple way to see what's going
     on with your work.
   </p>
