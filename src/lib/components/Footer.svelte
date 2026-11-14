@@ -20,9 +20,6 @@
       <a href="{home}#services">Services</a>
       <a href="{home}#contact">Contact</a>
       <a href={resolve('/components')}>Components</a>
-      <a href="https://www.gov.uk/digital-marketplace" target="_blank" rel="noopener noreferrer">
-        Digital Marketplace<NewTabHint />
-      </a>
       <a href="https://github.com/feedmypixel" target="_blank" rel="noopener noreferrer">
         GitHub<NewTabHint />
       </a>

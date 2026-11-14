@@ -3,7 +3,6 @@ export const emailAddress = 'ben@feedmypixel.com'
 
 export const linkedInUrl = 'https://www.linkedin.com/in/benchidgey'
 export const gitHubUrl = 'https://github.com/feedmypixel'
-export const digitalMarketplaceUrl = 'https://www.gov.uk/digital-marketplace'
 
 export const pipesChromeUrl =
   'https://chromewebstore.google.com/detail/pipes-watch-your-cicd-pip/aoijidjpiiphnblbeddcmmfkbdildnpl'
