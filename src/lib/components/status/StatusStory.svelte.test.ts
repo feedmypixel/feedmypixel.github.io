@@ -2,38 +2,7 @@ import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import StatusStory from './StatusStory.svelte'
 
-const sectionIds = ['why', 'how', 'control', 'claude', 'try', 'thanks']
-
-test('lists the eight privacy controls, each named', () => {
-  render(StatusStory)
-  const terms = [...document.querySelectorAll('.controls strong')].map((term) => term.textContent)
-  expect(terms).toEqual([
-    'Your page',
-    'Follows',
-    'Messages from',
-    'Mute, block and report',
-    'Hide mature or adult content',
-    'Show online status',
-    'Passkeys',
-    'Delete your account'
-  ])
-})
-
-test('shows the controls on desktop in both themes', () => {
-  render(StatusStory)
-  const strip = document.querySelector('[aria-label="status privacy controls on desktop"]')!
-  expect(strip.querySelectorAll('img.light')).toHaveLength(5)
-  expect(strip.querySelectorAll('img.dark')).toHaveLength(5)
-})
-
-test('each desktop card shows only the image for the current theme', () => {
-  render(StatusStory)
-  const card = document.querySelector(
-    '[aria-label="status privacy controls on desktop"] .shot-card'
-  )!
-  expect(getComputedStyle(card.querySelector('img.light')!).display).not.toBe('none')
-  expect(getComputedStyle(card.querySelector('img.dark')!).display).toBe('none')
-})
+const sectionIds = ['why', 'how', 'claude', 'try', 'thanks']
 
 test('has the story anchor and heading', async () => {
   render(StatusStory)

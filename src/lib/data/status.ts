@@ -1,6 +1,5 @@
 import { asset } from '$app/paths'
 import { slideNumber } from '#lib/carousel.js'
-import { articleShot } from '#lib/data/article-shot.js'
 import type { Shot } from '#lib/components/ComposedSlide.svelte'
 
 const SCREEN_WIDTH = 660
@@ -43,8 +42,6 @@ type PhoneMoment =
   | '05-follow-requests'
   | '06-private-page'
 
-type DesktopMoment = Exclude<PhoneMoment, '01b-report-reasons'> | '03-hidden'
-
 function controlShot(moment: PhoneMoment, shows: string): Shot {
   return {
     light: asset(`status/screens/light/control-${moment}.webp`),
@@ -54,61 +51,6 @@ function controlShot(moment: PhoneMoment, shows: string): Shot {
     height: SCREEN_HEIGHT
   }
 }
-
-const desktopShot = (moment: DesktopMoment, label: string) => ({
-  label,
-  light: asset(`status/desktop/light/control-${moment}.webp`),
-  dark: asset(`status/desktop/dark/control-${moment}.webp`),
-  alt: `status on a desktop browser: ${label}`,
-  ...articleShot
-})
-
-export const controlOnDesktop = [
-  desktopShot('06-private-page', 'Private page'),
-  desktopShot('05-follow-requests', 'Follow requests'),
-  desktopShot('04-message-request', 'Message requests'),
-  desktopShot('02-block-mute', 'Mute, block and report'),
-  desktopShot('03-hidden', 'Mature content hidden')
-]
-
-export const controls = [
-  {
-    icon: '🔒',
-    term: 'Your page',
-    text: 'Public or private so people ask to follow and you approve them.'
-  },
-  {
-    icon: '👋',
-    term: 'Follows',
-    text: 'Unfollow anyone or remove someone from your followers.'
-  },
-  {
-    icon: '✉️',
-    term: 'Messages from',
-    text: "Anyone, mutuals only or nobody. Messages from people you don't know arrive as requests you accept or decline."
-  },
-  {
-    icon: '🙈',
-    term: 'Mute, block and report',
-    text: 'Mute or block anyone; report any status, reply, message or page.'
-  },
-  {
-    icon: '👁️',
-    term: 'Hide mature or adult content',
-    text: 'On by default, so sweary or adult posts arrive blurred until you tap the eye.'
-  },
-  {
-    icon: '🟢',
-    term: 'Show online status',
-    text: "Turn it off and nobody sees when you're on and you see no one's."
-  },
-  {
-    icon: '🔑',
-    term: 'Passkeys',
-    text: 'No password to steal: sign in with your face, fingerprint or screen lock.'
-  },
-  { icon: '🗑️', term: 'Delete your account', text: 'Any time.' }
-]
 
 export const slides = [
   {
@@ -176,8 +118,7 @@ const storeFrames = [
   { file: '04-react', label: 'React' },
   { file: '05-year', label: 'Year' },
   { file: '06-natter', label: 'Natter' },
-  { file: '07-no-ads', label: 'No ads' },
-  { file: '08-control', label: 'Control' }
+  { file: '07-no-ads', label: 'No ads' }
 ] as const
 
 export const frames = storeFrames.map((frame, index) => {

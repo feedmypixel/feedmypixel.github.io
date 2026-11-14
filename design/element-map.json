@@ -49,11 +49,7 @@
         }
       },
       "hero.facts": { "mock": "[data-hero-actions] + p", "built": "main .hero .facts" },
-      "screenshots.section": {
-        "mock": "#screenshots",
-        "built": "#screenshots",
-        "ignore": { "text": "an eighth store frame, 08 Control (PRD decision 21)" }
-      },
+      "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
       "screenshots.eyebrow": { "mock": "#screenshots h2 ~ *, #screenshots p:has(+ h2)", "built": "#screenshots .eyebrow" },
       "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
       "screenshots.strip": {
@@ -62,32 +58,25 @@
         "ignore": {
           "children": "Carousel wraps every slide in a snap item; the figure sits inside it",
           "box.paddingBottom": "one Carousel strip recipe for all three carousels; the 4px only shows as space under the frames",
-          "box.borderRadius": "one Carousel strip recipe for all three carousels; each frame card carries its own --radius-lg",
-          "text": "an eighth store frame, 08 Control (PRD decision 21)"
+          "box.borderRadius": "one Carousel strip recipe for all three carousels; each frame card carries its own --radius-lg"
         }
       },
       "screenshots.frame": {
         "mock": "[aria-label='status store screenshots'] > figure",
-        "built": "[aria-label='status store screenshots'] > .slide > figure",
-        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
+        "built": "[aria-label='status store screenshots'] > .slide > figure"
       },
       "screenshots.card": {
         "mock": "[aria-label='status store screenshots'] > figure > div",
-        "built": "[aria-label='status store screenshots'] .card",
-        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
+        "built": "[aria-label='status store screenshots'] .card"
       },
       "screenshots.frameCaption": {
         "mock": "[aria-label='status store screenshots'] > figure > figcaption",
-        "built": "[aria-label='status store screenshots'] figcaption",
-        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
+        "built": "[aria-label='status store screenshots'] figcaption"
       },
       "screenshots.counter": {
         "mock": "#screenshots figure:has(.fmp-caro-frame) > figcaption > span:first-child",
         "built": "#screenshots .carousel > figcaption > .caption",
-        "ignore": {
-          "children": "the mock template wraps interpolated text in a span",
-          "text": "the counter runs to 08 with the eighth store frame (PRD decision 21)"
-        }
+        "ignore": { "children": "the mock template wraps interpolated text in a span" }
       },
       "screenshots.storyLabel": {
         "mock": "#screenshots div[style*='grid-template-columns'] > div > p:first-child",
@@ -102,8 +91,7 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links, the new-tab hints and the privacy section (PRD decision 21) differ",
-          "box.height": "the privacy section adds its list and desktop carousel (PRD decision 21)"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ"
         }
       },
       "story.aside": {
@@ -113,20 +101,8 @@
           "text": "store links render as plain text until the apps are listed (PRD decision 1); external links carry the new-tab hint"
         }
       },
-      "story.toc": {
-        "mock": "nav[aria-label='In this story']",
-        "built": "nav[aria-label='In this story']",
-        "ignore": {
-          "text": "the contents gain the privacy section (PRD decision 21)",
-          "children": "the contents gain the privacy section (PRD decision 21)",
-          "box.height": "the contents gain the privacy section (PRD decision 21)"
-        }
-      },
-      "story.tocLink": {
-        "mock": "nav[aria-label='In this story'] a",
-        "built": "nav[aria-label='In this story'] a",
-        "ignore": { "count": "the contents gain the privacy section (PRD decision 21)" }
-      },
+      "story.toc": { "mock": "nav[aria-label='In this story']", "built": "nav[aria-label='In this story']" },
+      "story.tocLink": { "mock": "nav[aria-label='In this story'] a", "built": "nav[aria-label='In this story'] a" },
       "story.stack": {
         "mock": "#story dl",
         "built": "#story dl",
@@ -148,16 +124,11 @@
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links, the new-tab hints and the privacy section (PRD decision 21) differ",
-          "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18); the privacy section adds a heading, list and carousel (PRD decision 21)",
-          "box.height": "the privacy section adds its list and desktop carousel (PRD decision 21)"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
         }
       },
-      "story.subheading": {
-        "mock": "#story article h3",
-        "built": "#story article h3",
-        "ignore": { "count": "the privacy section adds a sixth heading (PRD decision 21)" }
-      },
+      "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
       "story.paragraph": { "mock": "#story article > p:first-of-type", "built": "#story article > p:first-of-type" },
       "story.screens": {
         "mock": "[aria-label='status screens']",
@@ -182,7 +153,7 @@
           "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
         }
       },
-      "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks, .controls)" },
+      "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks)" },
       "story.tip": { "mock": "#story article p[style*='surface-sunken']", "built": "#story article .tip" },
       "story.thanks": { "mock": "#story article ul[style*='list-style']", "built": "#story article ul.thanks" }
     }
@@ -369,7 +340,7 @@
       },
       "story.framedCard": {
         "mock": "[aria-label='Pipes store screenshots'] > div",
-        "built": "[aria-label='Pipes store screenshots'] .shot-card"
+        "built": "[aria-label='Pipes store screenshots'] .card"
       },
       "story.framedCounter": {
         "mock": "#story figure > figcaption > span:first-child",

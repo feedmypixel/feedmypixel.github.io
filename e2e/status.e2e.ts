@@ -47,10 +47,10 @@ test('the chevrons move the frame strip and its counter on /status', async ({ pa
   const strip = page.getByLabel('status store screenshots', { exact: true })
   await strip.scrollIntoViewIfNeeded()
   await page.locator('#screenshots').getByRole('button', { name: 'Next screenshot' }).click()
-  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 08  People')
+  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 07  People')
   await expect.poll(() => strip.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0)
   await page.waitForTimeout(400)
-  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 08  People')
+  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 07  People')
 })
 
 test('a frame near the end stays chosen when the strip cannot scroll to its start', async ({
@@ -69,7 +69,7 @@ test('a frame near the end stays chosen when the strip cannot scroll to its star
     )
     .toBeLessThanOrEqual(2)
   await page.waitForTimeout(400)
-  await expect(counter(page, 'status store screenshots')).toHaveText('06 / 08  Natter')
+  await expect(counter(page, 'status store screenshots')).toHaveText('06 / 07  Natter')
 })
 
 test('the chevrons move the home status carousel and it stays put', async ({ page }) => {
