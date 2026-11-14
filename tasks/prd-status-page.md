@@ -16,7 +16,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 
 ## 2. Goals
 
-1. Ship `/status`: hero, screenshots, problem / solution / product, build story, way back.
+1. Ship `/status`: hero, screenshots, problem / solution / product, build story.
 2. Add status to home Products, above Pipes, linking to `/status`.
 3. Rework both home carousels to composed slides whose screenshots follow light and dark.
 4. Spec diff against the pinned mocks: 0 defects (or reasoned waivers) at 375 and 1440, both themes.
@@ -39,7 +39,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
    caption (`01 / 07  Everyone`), then Problem / Solution / Product.
 4. Build story: sticky table of contents and stack list from 960px; article with five sections,
    the nine-screen strip inside "How it's built", the tip box and the repeated actions.
-5. More from feedMyPixel: copy and four buttons back to the home page.
+5. More from feedMyPixel: removed (decision 19).
 6. Share image `https://status.me/og.png`, title "status - an emoji and your status | feedMyPixel".
 7. Listed in `sitemap.xml`.
 
@@ -83,6 +83,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 16 | "Claude is great when:" bullets | Verbatim. |
 | 17 | Pipes Solution comma | Repo wording (no comma before "and"). |
 | 18 | Build-story screens | The shared Carousel with arrows, dots and a counter, not the inset scroll strip (Ben, after review). |
+| 19 | "More from feedMyPixel" section | Removed (Ben, after review). The header nav already leads back. |
 
 ## 6. Non-goals
 

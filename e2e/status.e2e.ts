@@ -8,8 +8,22 @@ const counter = (page: Page, stripLabel: string) =>
 test('the status page renders and links back to the home page', async ({ page }) => {
   await page.goto('/status')
   await expect(page.getByRole('heading', { level: 1, name: 'status' })).toBeVisible()
-  await page.getByRole('link', { name: 'Home', exact: true }).click()
+  await page
+    .getByRole('navigation', { name: 'Breadcrumb' })
+    .getByRole('link', { name: 'feedMyPixel', exact: true })
+    .click()
   await page.waitForURL((url) => url.pathname === '/')
+})
+
+test('the status page does not scroll sideways on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 })
+  await page.goto('/status')
+  await expect(page.locator('#story figcaption .dot').first()).toBeVisible()
+  const { scrollWidth, clientWidth } = await page.evaluate(() => {
+    const { scrollWidth, clientWidth } = document.documentElement
+    return { scrollWidth, clientWidth }
+  })
+  expect(scrollWidth).toBe(clientWidth)
 })
 
 test('the home page links to the status build story', async ({ page }) => {

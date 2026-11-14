@@ -234,7 +234,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-10);
     align-items: start;
     margin-top: var(--space-12);

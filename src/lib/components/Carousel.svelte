@@ -207,11 +207,14 @@
   figcaption {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--space-4);
   }
 
   .caption {
+    flex: 1 1 0;
+    max-width: max-content;
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--ink-muted);

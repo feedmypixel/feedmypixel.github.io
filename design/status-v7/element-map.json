@@ -10,8 +10,8 @@
     ],
     "mock": "design/status-v7/mocks-pinned/render/Status.dc.html",
     "builtRoute": "/status",
-    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); }",
-    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged.",
+    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } @media (max-width: 959px) { [data-story-grid] { grid-template-columns: minmax(0, 1fr) !important; } }",
+    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged. Below 960px the mock's story grid column is a bare 1fr, so the screens strip stretches it to 870px and the page scrolls sideways at 375; the build uses minmax(0, 1fr), as the mock already does from 960px.",
     "elements": {
       "hero.section": {
         "mock": "main > section:first-child",
@@ -144,25 +144,14 @@
         "built": "#story article .screens-note",
         "ignore": {
           "text": "theme word dropped from the caption (PRD decision 4)",
+          "box.height": "the shorter caption (PRD decision 4) wraps to one line fewer at 375",
           "children": "the mock template wraps interpolated text in a span",
           "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
         }
       },
       "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks)" },
       "story.tip": { "mock": "#story article p[style*='surface-sunken']", "built": "#story article .tip" },
-      "story.thanks": { "mock": "#story article ul[style*='list-style']", "built": "#story article ul.thanks" },
-      "more.section": { "mock": "#more", "built": "#more" },
-      "more.heading": { "mock": "#more h2", "built": "#more h2" },
-      "more.lede": { "mock": "#more h2 + p", "built": "#more .lede" },
-      "more.action": {
-        "mock": "#more a",
-        "built": "#more .actions > a",
-        "ignore": {
-          "colour.borderColor": "Button brick recipe, shared by every button on the site",
-          "layout.justifyContent": "Button brick recipe, shared by every button on the site",
-          "box.gap": "Button brick recipe: icon gap is --space-3 on every icon button (Source, How I built it, Home)"
-        }
-      }
+      "story.thanks": { "mock": "#story article ul[style*='list-style']", "built": "#story article ul.thanks" }
     }
   },
   "home-products": {

@@ -15,7 +15,7 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (st
 - `src/lib/components/StoreBadge.svelte` - new.
 - `src/lib/components/ComposedSlide.svelte` - new.
 - `src/lib/components/Products.svelte` - status entry, composed slides.
-- `src/lib/components/status/*.svelte` - hero, screenshots, story, more.
+- `src/lib/components/status/*.svelte` - hero, screenshots, story.
 - `src/routes/status/+page.svelte` - new route.
 - `src/routes/sitemap.xml/+server.ts` - add `/status`.
 - `src/lib/config.ts` - status URLs.
@@ -52,7 +52,7 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (st
 ## 4.0 /status
 
 - [x] 4.1 Route, Seo, sitemap.
-- [x] 4.2 Hero, screenshots band, build story, more-from.
+- [x] 4.2 Hero, screenshots band, build story (more-from removed, decision 19).
 
 ## 5.0 Gates
 
