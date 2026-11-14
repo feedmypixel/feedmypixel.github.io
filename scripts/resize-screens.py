@@ -13,7 +13,7 @@ from PIL import Image
 
 RENDER_DIRECTORY = Path('design/status-v7/mocks-pinned/render')
 UPLOADS_DIRECTORY = RENDER_DIRECTORY / 'uploads/1206x2622'
-PIPES_SOURCE_DIRECTORY = RENDER_DIRECTORY / 'assets/pipes'
+PIPES_SOURCE_DIRECTORY = Path('design/pipes-captures')
 PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
 
 FRAMES_DIRECTORY = Path('static/status/frames')
