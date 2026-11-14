@@ -131,8 +131,8 @@ test('offers the other ways to get in touch', async () => {
     .element(page.getByRole('link', { name: 'LinkedIn (opens in a new tab)' }))
     .toBeInTheDocument()
   await expect
-    .element(page.getByRole('link', { name: 'Digital Marketplace (opens in a new tab)' }))
-    .toBeInTheDocument()
+    .element(page.getByRole('link', { name: /Digital Marketplace/ }))
+    .not.toBeInTheDocument()
   expect(document.querySelector<HTMLAnchorElement>('a[href*="linkedin.com"]')?.href).toContain(
     'in/benchidgey'
   )

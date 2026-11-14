@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     contactEndpoint,
-    digitalMarketplaceUrl,
     emailAddress,
     gitHubUrl,
     linkedInUrl,
@@ -147,11 +146,6 @@
         <div>
           <p class="aside-label">Also here</p>
           <ul>
-            <li>
-              <a href={digitalMarketplaceUrl} target="_blank" rel="noopener noreferrer">
-                Digital Marketplace<NewTabHint />
-              </a>
-            </li>
             <li>
               <a href={gitHubUrl} target="_blank" rel="noopener noreferrer">
                 GitHub<NewTabHint />

@@ -10,10 +10,10 @@ test('renders the company line and the external links', async () => {
   await expect
     .element(page.getByRole('link', { name: 'GitHub (opens in a new tab)' }))
     .toBeInTheDocument()
-  await expect
-    .element(page.getByRole('link', { name: 'Digital Marketplace (opens in a new tab)' }))
-    .toBeInTheDocument()
   await expect.element(page.getByRole('link', { name: 'Components' })).toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: /Digital Marketplace/ }))
+    .not.toBeInTheDocument()
 })
 
 test('section links are root-relative so they work from any page', () => {

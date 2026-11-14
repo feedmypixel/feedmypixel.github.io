@@ -13,14 +13,14 @@ export type Role = {
 
 export const roles: Role[] = [
   {
-    company: 'WhiskyInvestDirect',
+    company: 'Whisky Invest Direct',
     title: 'Full-Stack Engineer',
     dates: 'Apr 2026 - present',
     location: 'Remote / London',
     type: 'Contract',
     sector: 'Fintech',
     summary:
-      '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best practice across engineering and product.</p>',
+      '<p>Leading a greenfield rebuild of the core trading platform and API. Rebuild of the iOS and Android apps. Modernising of the architecture and embedding User Experience, Developer Experience, testing, accessibility and delivery best practice across engineering and product.</p><p>Website: <a href="https://www.whiskyinvestdirect.com" target="_blank" rel="noopener noreferrer">whiskyinvestdirect.com<span class="visually-hidden"> (opens in a new tab)</span></a></p>',
     tags: [
       'TypeScript',
       'JavaScript',
