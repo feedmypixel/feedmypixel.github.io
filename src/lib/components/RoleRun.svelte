@@ -1,6 +1,7 @@
 <script lang="ts">
   import { isTagHot, type Chip } from '#lib/cv-filter.js'
   import type { Run } from '#lib/role-runs.js'
+  import NewTabHint from './NewTabHint.svelte'
 
   let {
     run,
@@ -28,7 +29,15 @@
     </div>
 
     <div class="what">
-      <h3>{run.company}</h3>
+      <h3>
+        {#if run.url}
+          <a href={run.url} target="_blank" rel="noopener noreferrer">
+            {run.company}<NewTabHint />
+          </a>
+        {:else}
+          {run.company}
+        {/if}
+      </h3>
 
       {#if solo}
         <p class="title">{only.role.title}</p>

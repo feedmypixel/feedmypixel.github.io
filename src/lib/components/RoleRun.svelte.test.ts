@@ -143,3 +143,25 @@ test('tags still render when no handler is passed', () => {
   const tag = document.querySelector<HTMLButtonElement>('.tag')!
   expect(() => tag.click()).not.toThrow()
 })
+
+test('a company with a website links to it in a new tab', () => {
+  render(RoleRun, {
+    props: {
+      run: runFor([role('Only', 'Jan 2020 - Jan 2021', { url: 'https://acme.example' })]),
+      chips: [],
+      query: ''
+    }
+  })
+  const link = document.querySelector<HTMLAnchorElement>('h3 a')!
+  expect(link.getAttribute('href')).toBe('https://acme.example')
+  expect(link.getAttribute('target')).toBe('_blank')
+  expect(link.getAttribute('rel')).toContain('noopener')
+  expect(link.textContent).toContain('Acme')
+})
+
+test('a company without a website is plain text', () => {
+  render(RoleRun, {
+    props: { run: runFor([role('Only', 'Jan 2020 - Jan 2021')]), chips: [], query: '' }
+  })
+  expect(document.querySelector('h3 a')).toBeNull()
+})

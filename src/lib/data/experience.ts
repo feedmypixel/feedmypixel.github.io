@@ -2,6 +2,7 @@ export type RoleType = 'Contract' | 'Freelance' | 'Permanent'
 
 export type Role = {
   company: string
+  url?: string
   title: string
   dates: string
   type: RoleType
@@ -13,7 +14,8 @@ export type Role = {
 
 export const roles: Role[] = [
   {
-    company: 'WhiskyInvestDirect',
+    company: 'Whisky Invest Direct',
+    url: 'https://www.whiskyinvestdirect.com',
     title: 'Full-Stack Engineer',
     dates: 'Apr 2026 - present',
     location: 'Remote / London',

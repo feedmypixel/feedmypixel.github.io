@@ -9,6 +9,7 @@ export type Chapter = {
 
 export type Run = {
   company: string
+  url?: string
   chapters: Chapter[]
   spanLabel: string
   tenureLabel: string | null
@@ -84,6 +85,7 @@ export function buildRuns(roles: Role[], now: Date): Run[] {
 
     return {
       company: entries[0].company,
+      url: entries[0].url,
       chapters,
       spanLabel: spanLabelFor(entries),
       tenureLabel: entries.length > 1 && tenureMonths > 0 ? describeMonths(tenureMonths) : null,
