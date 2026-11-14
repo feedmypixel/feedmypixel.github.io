@@ -9,8 +9,7 @@
   <span class="message">{message}</span>
   <button class="dismiss" type="button" aria-label="Dismiss notification" onclick={onDismiss}>
     <svg
-      width="12"
-      height="12"
+      class="cross"
       viewBox="0 0 16 16"
       fill="none"
       stroke="currentColor"
@@ -58,12 +57,18 @@
   }
 
   .dismiss {
+    --target: 26px;
+    --cross: 12px;
+    --cross-inset: calc((var(--target) - var(--cross)) / -2);
+
     display: inline-flex;
     flex: none;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
+    width: var(--target);
+    height: var(--target);
+    margin-top: var(--cross-inset);
+    margin-right: var(--cross-inset);
     padding: 0;
     background: transparent;
     border: none;
@@ -75,6 +80,11 @@
 
   .dismiss:hover {
     opacity: 1;
+  }
+
+  .cross {
+    width: var(--cross);
+    height: var(--cross);
   }
 
   @keyframes rise {

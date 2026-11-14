@@ -15,6 +15,16 @@ test('carries the info mood', () => {
   expect(document.querySelector('.toast')?.getAttribute('data-kind')).toBe('info')
 })
 
+test('the cross sits in the top right corner, on the padding edge', () => {
+  render(Toast, { props: { kind: 'info', message: 'Light theme on', onDismiss: () => {} } })
+  const toast = document.querySelector('.toast')!
+  const padding = Number.parseFloat(getComputedStyle(toast).paddingTop)
+  const box = toast.getBoundingClientRect()
+  const cross = document.querySelector('.dismiss svg')!.getBoundingClientRect()
+  expect(Math.round(cross.top - box.top)).toBe(padding)
+  expect(Math.round(box.right - cross.right)).toBe(padding)
+})
+
 test('calls onDismiss when the close button is clicked', async () => {
   const onDismiss = vi.fn()
   render(Toast, { props: { kind: 'critical', message: 'Could not copy', onDismiss } })
