@@ -145,8 +145,20 @@
   }
 
   @media (min-width: 42.5rem) {
+    .frame,
+    figcaption {
+      padding-inline: 64px;
+    }
+  }
+
+  /* From here the page margin is wide enough to hold the chevrons, so the slides take the full width. */
+  @media (min-width: 80rem) {
     .frame {
-      padding: 0 64px;
+      margin-inline: -64px;
+    }
+
+    figcaption {
+      padding-inline: 0;
     }
   }
 
@@ -220,7 +232,7 @@
 
   .dots {
     display: flex;
-    flex: none;
+    flex: 0 0 100%;
     gap: var(--space-2);
   }
 
@@ -255,6 +267,10 @@
   }
 
   @media (min-width: 47.5rem) {
+    .dots {
+      flex-basis: auto;
+    }
+
     .dot {
       width: 24px;
       height: 24px;

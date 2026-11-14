@@ -83,7 +83,7 @@
   </p>
 
   <div class="screens">
-    <Carousel items={screenSlides} label="status screens" slideWidth="clamp(132px, 14vw, 168px)">
+    <Carousel items={screenSlides} label="status screens" slideWidth="var(--screen-width)">
       {#snippet slide(item)}
         <div class="screen">
           <div class="card" style:aspect-ratio="{item.shot.width} / {item.shot.height}">
@@ -172,6 +172,8 @@
 
 <style>
   .screens {
+    --screen-width: 60%;
+
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
@@ -211,5 +213,11 @@
     color: var(--ink-strong);
     background: var(--surface-sunken);
     border-radius: var(--radius-lg);
+  }
+
+  @media (min-width: 47.5rem) {
+    .screens {
+      --screen-width: clamp(132px, 14vw, 168px);
+    }
   }
 </style>

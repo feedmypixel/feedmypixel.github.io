@@ -5,7 +5,6 @@
   import Button from '../Button.svelte'
   import GitHubMark from '../GitHubMark.svelte'
   import ProductHero from '../product/ProductHero.svelte'
-  import StoreBadge from '../StoreBadge.svelte'
 </script>
 
 <ProductHero
@@ -14,8 +13,8 @@
   lead="Watches the repos you choose across GitHub Actions and GitLab CI/CD. A badge in your toolbar, a popup for a glance and a side panel to keep open."
 >
   {#snippet actions()}
-    <StoreBadge store="chrome" href={pipesChromeUrl} size="large" />
-    <StoreBadge store="firefox" href={pipesFirefoxUrl} size="large" />
+    <Button variant="solid" size="large" external href={pipesChromeUrl}>Chrome Web Store</Button>
+    <Button variant="ghost" size="large" external href={pipesFirefoxUrl}>Firefox Add-ons</Button>
     <Button variant="ghost" size="large" external href={pipesSourceUrl}>
       <GitHubMark />
       Source

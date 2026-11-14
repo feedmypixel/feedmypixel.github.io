@@ -44,27 +44,9 @@ test('the chevrons move the framed store set and its counter', async ({ page }) 
   await expect(counter(page, 'Pipes store screenshots')).toHaveText('02 / 05  Author attribution')
 })
 
-test('the build story points at the status workflow section', async ({ page }) => {
-  await page.goto('/pipes')
-  await page.getByRole('link', { name: 'that workflow' }).click()
-  await page.waitForURL('**/status#claude')
-  await expect(page.locator('#claude')).toBeInViewport()
-})
-
 test('the fact line links to the privacy policy', async ({ page }) => {
   await page.goto('/pipes')
   await page.getByRole('link', { name: 'Privacy policy' }).click()
   await page.waitForURL('**/pipes/privacy')
   await expect(page.getByRole('heading', { level: 1, name: 'Privacy policy' })).toBeVisible()
-})
-
-test('the store badge artwork loads', async ({ page }) => {
-  await page.goto('/pipes')
-  const badges = page.locator('.hero .badge img')
-  await expect(badges).toHaveCount(2)
-  for (const badge of await badges.all()) {
-    await expect
-      .poll(() => badge.evaluate((image: HTMLImageElement) => image.naturalWidth))
-      .toBeGreaterThan(0)
-  }
 })

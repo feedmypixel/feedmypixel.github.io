@@ -34,14 +34,14 @@ page Pipes entry gains a "How I built it" link to it.
 
 1. Prerendered route at `/pipes` inside the existing header, footer and theme.
 2. Hero: breadcrumb `feedMyPixel / Products / Pipes`, pixel pair beside h1 "Pipes", pitch, lead,
-   actions (Chrome Web Store badge, Firefox Add-ons badge, ghost "Source" with the GitHub mark),
+   actions (solid "Chrome Web Store", ghost "Firefox Add-ons", ghost "Source" with the GitHub mark),
    fact line with a "Privacy policy" link to `/pipes/privacy` (render copy, June 2026).
 3. Screenshots band: eyebrow, h2, the home page Pipes carousel unchanged (four composed slides,
    theme-following shots, counter `01 / 04  Status from your toolbar`), then Problem / Solution /
    Product with the home page copy.
 4. Build story: sticky table of contents and stack list from 960px; article with five sections;
    the framed store set carousel (five 1280x800 shots, counter `01 / 05  Side panel`) after the
-   stack paragraph in "How it's built"; "Built with Claude" as one paragraph; both badges at 52px
+   stack paragraph in "How it's built"; "Built with Claude" as one paragraph; both store buttons
    under "Try it".
 5. Nothing after the build story but the footer.
 6. Title "Pipes - CI/CD pipeline monitoring in your browser | feedMyPixel", render description,
@@ -55,7 +55,7 @@ page Pipes entry gains a "How I built it" link to it.
 
 ### Shared
 
-9. Store badges are the official artwork (Google, Mozilla), not the render's HTML drawings.
+9. Store links are the site's own buttons, not badges (decision 4).
 10. External links open a new tab and carry the visually hidden "(opens in a new tab)" hint.
 
 ## 5. Decisions (taken at build)
@@ -65,17 +65,19 @@ page Pipes entry gains a "How I built it" link to it.
 | 1 | Live month | June 2026 (Ben). |
 | 2 | Sharing with `/status` | Extract `ProductHero`, `ProductScreenshots` and `BuildStory` from the status sections; status migrates in the same change. Two pages showing the same thing is one component with different content. |
 | 3 | Pipes slides and copy | Move from `Products.svelte` to `src/lib/data/pipes.ts`; home and `/pipes` read the same data. |
-| 4 | Badge artwork | Chrome: Google's bordered "Available in the Chrome Web Store" PNG. The borderless one has grey text on a transparent ground that disappears in dark mode. Firefox: Mozilla's "Get the add-on" SVG. Heights 56px (hero) and 52px ("Try it"), as rendered. |
-| 5 | Badge names | Image alt text from the render's labels ("Available in the Chrome Web Store", "Get the add-on for Firefox") plus the new-tab hint, as every external link. |
-| 6 | Badge hover | `--shadow-md` as a drop shadow, so it follows the artwork's own shape and clear space. The artwork carries its own border, so the render's border colour change has nothing to act on. |
+| 4 | Store links | The site's own buttons (solid Chrome, ghost Firefox), as the home entry. The official badges were built and dropped: next to each other they took the eye (Ben, after review). Same for status's App Store and Google Play. |
+| 5 | (merged into 4) | |
+| 6 | (merged into 4) | |
 | 7 | Store URLs | The real listings already in `config.ts`, not the render's placeholders. |
 | 8 | Header and footer | Unchanged site-wide (status decision 8). The render's "Pipes privacy" footer link is not added; the fact line links to the policy. |
-| 9 | "that workflow" link | `/status#claude`, internal. |
+| 9 | "that workflow" sentence | Removed with its `/status#claude` link (Ben, after review). |
 | 10 | Carousel internals | The repo's `Carousel` as on `/status` (status decisions 5 and 6): settle-then-sync guard, dots as `role=group` with `aria-current`. |
 | 11 | Framed store set | Not themed (it is the store listing as published). WebP derivatives at 2x display width from the pinned originals, by `scripts/resize-screens.py`. |
 | 12 | Element map | Moves from `design/status-v7/` to `design/element-map.json` now it covers more than one bundle. The home surface points at the v8 home mock. |
 | 13 | Share image | The bundle's `marquee.png` is a 960x720 side-panel crop; the README's 1400x560 is `framed/7-marquee-tile.png`, the store marquee. The tile is used, as `og-image.png` like the site's own. |
-| 14 | "Why I built it" abbreviations | "pull requests (PRs) and merge requests (MRs)" (Ben, after review). |
+| 14 | "Why I built it" copy | Ben's rewrite after review: "current gig", "multiple repositories", "(PRs)" and "(MRs)", "to be able to see" and the closing line about teams. Apostrophes kept in "teammates'" and "what's", full stop added. |
+| 15 | "How it's built" opening | Ben's rewrite after review: "The browser is where I am a lot... out of the corner of my eye felt ideal. I had always wanted to build a browser extension as I use them a lot, so this ticked all the boxes." The no-server and tokens sentences go (the hero facts and Product copy still say both). "this felt ticked" read as "this ticked". |
+| 16 | Carousel caption row | On a phone the dots always sit on their own row under the counter, so they do not jump between slides. From 680px the counter and dots align with the slides' edges. From 1280px the slides take the full content width and the chevrons sit in the page margin (Ben, after review). Applies to every carousel. |
 
 ## 6. Non-goals
 

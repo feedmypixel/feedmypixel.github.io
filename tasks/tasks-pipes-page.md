@@ -10,7 +10,6 @@ release together), not merged until go.
 - `src/lib/components/product/BuildStory.svelte` - new, from `StatusStory`.
 - `src/lib/components/status/*.svelte` - status content on the shared sections.
 - `src/lib/components/pipes/*.svelte` - new: hero, screenshots, story.
-- `src/lib/components/StoreBadge.svelte` - new.
 - `src/lib/components/Products.svelte` - Pipes data from `data/pipes.ts`, "How I built it".
 - `src/lib/data/pipes.ts` - new: slides, story copy, framed set.
 - `src/lib/config.ts` - Pipes share image.
@@ -18,14 +17,14 @@ release together), not merged until go.
 - `src/routes/sitemap.xml/+server.ts` - add `/pipes`.
 - `scripts/resize-screens.py` - framed set derivatives.
 - `scripts/design/design-check.mjs` - map path.
-- `static/pipes/`, `static/badges/` - assets.
+- `static/pipes/` - assets.
 - `design/element-map.json` - moved; `pipes` surface added.
 - `e2e/pipes.e2e.ts` - new.
+- `e2e/carousel.e2e.ts` - new: dots hold still on a phone, caption row aligns with the slides.
 - `src/lib/components/pipes/PipesCarousel.svelte` - new, the Pipes carousel for home and `/pipes`.
 - `src/lib/carousel.ts` - `slideNumber`, replacing five copies.
-- `src/lib/components/Carousel.svelte` - caption keeps its width; dots wrap below on a phone.
-- `src/routes/components/+page.svelte` - `StoreBadge` entry; Pipes slide from `data/pipes.ts`.
-- `eslint.config.js` - `StoreBadge` links off-site, like `ExternalLink`.
+- `src/lib/components/Carousel.svelte` - caption row (decision 16).
+- `src/routes/components/+page.svelte` - Pipes slide from `data/pipes.ts`.
 
 ## 0.0 Setup
 
@@ -34,7 +33,7 @@ release together), not merged until go.
 
 ## 1.0 Assets
 
-- [x] 1.1 Badges into `static/badges/`.
+- [x] 1.1 Store badges: added, then dropped for the site's own buttons (decision 4).
 - [x] 1.2 Framed set WebP derivatives and the share image (`og-image.png`, decision 13) into
       `static/pipes/`.
 
@@ -42,7 +41,8 @@ release together), not merged until go.
 
 - [x] 2.1 `ProductHero`, `ProductScreenshots`, `BuildStory`; status migrated, its tests and design
       check unchanged.
-- [x] 2.2 `StoreBadge`, tests, catalogue entry.
+- [x] 2.2 Carousel caption row: dots still on a phone, aligned with the slides, full width from
+      1280px (decision 16), e2e on every page.
 
 ## 3.0 Home Products
 

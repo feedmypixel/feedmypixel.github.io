@@ -22,10 +22,18 @@ test('contents links match one heading per section', () => {
   expect(hrefs).toEqual(sectionIds.map((id) => `#${id}`))
 })
 
-test('spells out PRs and MRs in why I built it', () => {
+test('uses the edited copy in why I built it and how it is built', () => {
   render(PipesStory)
-  expect(document.body.textContent?.replace(/\s+/g, ' ')).toContain(
-    'my pull requests (PRs) and merge requests (MRs) are in'
+  const text = document.body.textContent?.replace(/\s+/g, ' ')
+  expect(text).toContain('my pull requests (PRs) and merge requests (MRs) are in')
+  expect(text).toContain(
+    "Add this to a team and it becomes a very simple way to see what's going on with your work."
+  )
+  expect(text).toContain(
+    "The browser is where I am a lot when I'm making applications, so something on the side that I can easily read out of the corner of my eye felt ideal."
+  )
+  expect(text).toContain(
+    'I had always wanted to build a browser extension as I use them a lot, so this ticked all the boxes.'
   )
 })
 
@@ -54,19 +62,23 @@ test('the framed carousel sits in How it is built, after the stack paragraph', (
   expect(carousel.compareDocumentPosition(claude) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
 
-test('Built with Claude is one paragraph pointing at the status workflow', async () => {
+test('Built with Claude is one paragraph, with no tip box or list', () => {
   render(PipesStory)
-  const workflow = page.getByRole('link', { name: 'that workflow' })
-  await expect.element(workflow).toHaveAttribute('href', '/status#claude')
+  const text = document.body.textContent?.replace(/\s+/g, ' ')
+  expect(text).toContain('with my own skills (opens in a new tab).')
+  expect(text).not.toContain('Pipes came first')
   expect(document.querySelectorAll('#story article ul')).toHaveLength(1)
   expect(document.querySelector('.tip')).toBeNull()
 })
 
-test('Try it offers both store badges at 52px', () => {
+test('Try it offers both stores, Chrome first as the solid action', () => {
   render(PipesStory)
-  const badges = document.querySelectorAll('#story .actions .badge img')
-  expect(badges).toHaveLength(2)
-  badges.forEach((badge) => expect(badge.getBoundingClientRect().height).toBe(52))
+  const actions = [...document.querySelectorAll('#story .actions > a.button')]
+  expect(actions.map((action) => action.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
+    'Chrome Web Store (opens in a new tab)',
+    'Firefox Add-ons (opens in a new tab)'
+  ])
+  expect(actions[0].classList.contains('solid')).toBe(true)
 })
 
 test('opens every external link in a new tab', () => {

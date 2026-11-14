@@ -26,6 +26,14 @@ test('the status page does not scroll sideways on a phone', async ({ page }) => 
   expect(scrollWidth).toBe(clientWidth)
 })
 
+test('the build-story screens are big enough to read on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 })
+  await page.goto('/status')
+  const firstScreen = page.getByLabel('status screens', { exact: true }).locator('.card').first()
+  const box = await firstScreen.boundingBox()
+  expect(box?.width).toBeGreaterThanOrEqual(200)
+})
+
 test('the home page links to the status build story', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('link', { name: 'How I built it status' }).click()

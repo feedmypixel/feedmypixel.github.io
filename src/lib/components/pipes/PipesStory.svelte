@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { resolve } from '$app/paths'
   import { pipesChromeUrl, pipesFirefoxUrl, pipesSourceUrl } from '#lib/config.js'
   import { framed } from '#lib/data/pipes.js'
   import Carousel from '../Carousel.svelte'
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
-  import StoreBadge from '../StoreBadge.svelte'
+  import Button from '../Button.svelte'
 </script>
 
 <BuildStory heading="How and why I built Pipes, with Claude.">
@@ -50,20 +49,19 @@
 
   <h3 id="why">Why I built it</h3>
   <p>
-    At my current contract we use <ExternalLink href="https://about.gitlab.com">GitLab</ExternalLink
-    >
+    At my current gig we use <ExternalLink href="https://about.gitlab.com">GitLab</ExternalLink>
     and for my own work I use <ExternalLink href="https://github.com">GitHub</ExternalLink>. I have
-    repositories on both and I wanted a simple way to see what state my pull requests (PRs) and
-    merge requests (MRs) are in. I also wanted to see my teammates' work and get alerted when main
-    fails.
+    multiple repositories on both and I wanted a simple way to see what state my pull requests (PRs)
+    and merge requests (MRs) are in. I also wanted to be able to see my teammates' work and get
+    alerted when main fails. Add this to a team and it becomes a very simple way to see what's going
+    on with your work.
   </p>
 
   <h3 id="how">How it's built</h3>
   <p>
-    This didn't need a server. The browser is where I am when I'm making applications, so something
-    on the side that I can easily see felt ideal. No server also means no user tokens to store
-    safely on one: your tokens stay in your browser. I had always wanted to build a browser
-    extension too. I use them a lot so this felt perfect.
+    The browser is where I am a lot when I'm making applications, so something on the side that I
+    can easily read out of the corner of my eye felt ideal. I had always wanted to build a browser
+    extension as I use them a lot, so this ticked all the boxes.
   </p>
   <p>
     Then the stack: <ExternalLink href="https://svelte.dev">Svelte 5</ExternalLink>,
@@ -101,7 +99,7 @@
       >Claude Code</ExternalLink
     > with <ExternalLink href="https://github.com/feedmypixel/principles"
       >my own skills</ExternalLink
-    >. Pipes came first, so this is where <a href="{resolve('/status')}#claude">that workflow</a> started.
+    >.
   </p>
 
   <h3 id="try">Try it</h3>
@@ -110,8 +108,8 @@
     multiple developers.
   </p>
   <div class="actions">
-    <StoreBadge store="chrome" href={pipesChromeUrl} />
-    <StoreBadge store="firefox" href={pipesFirefoxUrl} />
+    <Button variant="solid" external href={pipesChromeUrl}>Chrome Web Store</Button>
+    <Button variant="ghost" external href={pipesFirefoxUrl}>Firefox Add-ons</Button>
   </div>
 
   <h3 id="thanks">Thanks</h3>

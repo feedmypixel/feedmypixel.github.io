@@ -137,16 +137,16 @@ Ben's words, tidied. Use them verbatim. Nothing is off limits.
 
 **Why I built it**
 
-At my current contract we use GitLab and for my own work I use GitHub. I have repositories on both
-and I wanted a simple way to see what state my pull requests (PRs) and merge requests (MRs) are in. I also
-wanted to see my teammates' work and get alerted when main fails.
+At my current gig we use GitLab and for my own work I use GitHub. I have multiple repositories on
+both and I wanted a simple way to see what state my pull requests (PRs) and merge requests (MRs) are
+in. I also wanted to be able to see my teammates' work and get alerted when main fails. Add this to
+a team and it becomes a very simple way to see what's going on with your work.
 
 **How it's built**
 
-This didn't need a server. The browser is where I am when I'm making applications, so something on
-the side that I can easily see felt ideal. No server also means no user tokens to store safely on
-one: your tokens stay in your browser. I had always wanted to build a browser extension too. I use
-them a lot so this felt perfect.
+The browser is where I am a lot when I'm making applications, so something on the side that I can
+easily read out of the corner of my eye felt ideal. I had always wanted to build a browser extension
+as I use them a lot, so this ticked all the boxes.
 
 Then the stack: Svelte 5, TypeScript, Vite and the crxjs plugin on Manifest V3, with Chrome and
 Firefox from one codebase. Put the screens carousel in this section, as on status.
@@ -154,7 +154,7 @@ Firefox from one codebase. Put the screens carousel in this section, as on statu
 **Built with Claude**
 
 Requirements first, a task list with ai-dev-tasks, a design pass in Claude Design, then the build
-in Claude Code with my own skills. Pipes came first, so this is where that workflow started. Use
+in Claude Code with my own skills. Use
 the same layout as the status page's "Built with Claude" section.
 
 **Try it**

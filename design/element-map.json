@@ -10,8 +10,8 @@
     ],
     "mock": "design/status-v7/mocks-pinned/render/Status.dc.html",
     "builtRoute": "/status",
-    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } @media (max-width: 959px) { [data-story-grid] { grid-template-columns: minmax(0, 1fr) !important; } } figure:has(> .fmp-caro-frame) > figcaption { flex-wrap: wrap !important; row-gap: var(--space-2) !important; }",
-    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged. Below 960px the mock's story grid column is a bare 1fr, so the screens strip stretches it to 870px and the page scrolls sideways at 375; the build uses minmax(0, 1fr), as the mock already does from 960px. The pipes v8 handoff makes every carousel figcaption wrap (gap space-2 space-4) so the dots drop below the counter on a phone, as Ben chose; this mock predates it.",
+    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } @media (max-width: 959px) { [data-story-grid] { grid-template-columns: minmax(0, 1fr) !important; } } figure:has(> .fmp-caro-frame) > figcaption { flex-wrap: wrap !important; row-gap: var(--space-2) !important; } @media (min-width: 680px) { figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 64px; } } @media (min-width: 1280px) { .fmp-caro-frame { margin-inline: -64px; } figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 0; } }",
+    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged. Below 960px the mock's story grid column is a bare 1fr, so the screens strip stretches it to 870px and the page scrolls sideways at 375; the build uses minmax(0, 1fr), as the mock already does from 960px. The pipes v8 handoff makes every carousel figcaption wrap (gap space-2 space-4) so the dots drop below the counter on a phone, as Ben chose; this mock predates it. Carousel caption row aligned with the slides, and slides full width from 1280px with the chevrons in the margin (Ben, Pipes PRD decision 16).",
     "elements": {
       "hero.section": {
         "mock": "main > section:first-child",
@@ -137,7 +137,11 @@
       },
       "story.screen": {
         "mock": "[aria-label='status screens'] > div > div",
-        "built": "[aria-label='status screens'] .card"
+        "built": "[aria-label='status screens'] .card",
+        "ignore": {
+          "box.width": "screens are 60% of the strip on a phone so they can be read (PRD decision 20)",
+          "box.height": "screens are 60% of the strip on a phone so they can be read (PRD decision 20)"
+        }
       },
       "story.screensCaption": {
         "mock": "#story article figure > figcaption",
@@ -159,14 +163,14 @@
     "themes": ["light", "dark"],
     "mock": "design/pipes-v8/mocks-pinned/render/Pipes.dc.html",
     "builtRoute": "/pipes",
-    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } @media (max-width: 959px) { [data-story-grid] { grid-template-columns: minmax(0, 1fr) !important; } }",
-    "mockStyleReason": "Same corrections as the status surface: the live site's body and heading line-heights and --gutter, and the story grid's minmax(0, 1fr) below 960px.",
+    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } @media (max-width: 959px) { [data-story-grid] { grid-template-columns: minmax(0, 1fr) !important; } } @media (min-width: 680px) { figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 64px; } } @media (min-width: 1280px) { .fmp-caro-frame { margin-inline: -64px; } figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 0; } }",
+    "mockStyleReason": "Same corrections as the status surface: the live site's body and heading line-heights and --gutter, the story grid's minmax(0, 1fr) below 960px, and the carousel caption row and full-width slides (Ben, Pipes PRD decision 16).",
     "elements": {
       "hero.section": {
         "mock": "main > section:first-child",
         "built": "main section.hero",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text, not drawn text (Pipes PRD decision 4); external links carry the new-tab hint"
+          "text": "the site's own buttons, not store badges (Pipes PRD decision 4); external links carry the new-tab hint"
         }
       },
       "hero.breadcrumb": {
@@ -189,33 +193,18 @@
         "mock": "[data-hero-actions]",
         "built": "main .hero .actions",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint"
+          "text": "the site's own buttons, not store badges (Pipes PRD decision 4); external links carry the new-tab hint",
+          "box.height": "48px hero buttons, not 56px store badges (Pipes PRD decision 4)"
         }
       },
       "hero.badge": {
         "mock": "[data-hero-actions] a.fmp-badge",
-        "built": "main .hero .actions > a.badge",
-        "ignore": {
-          "text": "official artwork, named by alt text (Pipes PRD decision 4)",
-          "children": "official artwork is one image (Pipes PRD decision 4)",
-          "type.fontSize": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.fontWeight": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.lineHeight": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.letterSpacing": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "colour.color": "official artwork carries its own colours (Pipes PRD decision 4)",
-          "colour.backgroundColor": "official artwork carries its own colours (Pipes PRD decision 4)",
-          "colour.borderColor": "official artwork carries its own border (Pipes PRD decision 4)",
-          "box.paddingRight": "official artwork carries its own clear space (Pipes PRD decision 4)",
-          "box.paddingLeft": "official artwork carries its own clear space (Pipes PRD decision 4)",
-          "box.gap": "official artwork is one image (Pipes PRD decision 4)",
-          "box.width": "official artwork keeps its own proportions at the rendered height (Pipes PRD decision 4)",
-          "box.borderWidth": "official artwork carries its own border (Pipes PRD decision 4)",
-          "layout.alignItems": "official artwork is one image (Pipes PRD decision 4)"
-        }
+        "built": "main .hero .actions > a.button:not(:last-child)",
+        "waiver": "Ben chose the site's own buttons over store badges, 14 Nov 2026 (Pipes PRD decision 4)"
       },
       "hero.action": {
         "mock": "[data-hero-actions] a.fmp-ghost",
-        "built": "main .hero .actions > a.button",
+        "built": "main .hero .actions > a.button:last-child",
         "ignore": {
           "text": "external links carry the visually hidden new-tab hint, as on every external Button",
           "colour.borderColor": "Button brick recipe, shared by every button on the site",
@@ -294,7 +283,7 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint; (PRs) and (MRs) added (decision 14)"
+          "text": "the site's own buttons, not store badges (Pipes PRD decision 4); external links carry the new-tab hint; Ben's copy edits (decisions 14 and 15)"
         }
       },
       "story.aside": {
@@ -328,7 +317,7 @@
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4); external links carry the new-tab hint; (PRs) and (MRs) added (decision 14)",
+          "text": "the site's own buttons, not store badges (Pipes PRD decision 4); external links carry the new-tab hint; Ben's copy edits (decisions 14 and 15)",
           "children": "the framed set sits in a wrapper around the shared Carousel, which owns its figure (as status, status PRD decision 18)"
         }
       },
@@ -337,7 +326,8 @@
         "mock": "#story article > p:first-of-type",
         "built": "#story article > p:first-of-type",
         "ignore": {
-          "text": "external links carry the new-tab hint; Ben added (PRs) and (MRs), 14 Nov 2026 (Pipes PRD decision 14)"
+          "text": "external links carry the new-tab hint; Ben added (PRs) and (MRs), 14 Nov 2026 (Pipes PRD decision 14)",
+          "box.height": "the added (PRs) and (MRs) wrap one line longer at 375 (Pipes PRD decision 14)"
         }
       },
       "story.framed": {
@@ -361,30 +351,14 @@
         "mock": "#story article > div:has(> .fmp-badge)",
         "built": "#story article > .actions",
         "ignore": {
-          "text": "store badges are the official artwork, named by alt text (Pipes PRD decision 4)",
-          "box.height": "the official artwork is narrower than the drawn badges, so both fit on one row at 375 (Pipes PRD decision 4)"
+          "text": "the site's own buttons, not store badges (Pipes PRD decision 4); external links carry the new-tab hint",
+          "box.height": "the site's own buttons, not store badges (Pipes PRD decision 4)"
         }
       },
       "story.tryBadge": {
         "mock": "#story article a.fmp-badge",
-        "built": "#story article a.badge",
-        "ignore": {
-          "text": "official artwork, named by alt text (Pipes PRD decision 4)",
-          "children": "official artwork is one image (Pipes PRD decision 4)",
-          "type.fontSize": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.fontWeight": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.lineHeight": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "type.letterSpacing": "official artwork, not drawn text (Pipes PRD decision 4)",
-          "colour.color": "official artwork carries its own colours (Pipes PRD decision 4)",
-          "colour.backgroundColor": "official artwork carries its own colours (Pipes PRD decision 4)",
-          "colour.borderColor": "official artwork carries its own border (Pipes PRD decision 4)",
-          "box.paddingRight": "official artwork carries its own clear space (Pipes PRD decision 4)",
-          "box.paddingLeft": "official artwork carries its own clear space (Pipes PRD decision 4)",
-          "box.gap": "official artwork is one image (Pipes PRD decision 4)",
-          "box.width": "official artwork keeps its own proportions at the rendered height (Pipes PRD decision 4)",
-          "box.borderWidth": "official artwork carries its own border (Pipes PRD decision 4)",
-          "layout.alignItems": "official artwork is one image (Pipes PRD decision 4)"
-        }
+        "built": "#story article .actions > a.button",
+        "waiver": "Ben chose the site's own buttons over store badges, 14 Nov 2026 (Pipes PRD decision 4)"
       },
       "story.thanks": {
         "mock": "#story article ul",
@@ -405,8 +379,8 @@
     "mock": "design/pipes-v8/mocks-pinned/render/feedMyPixel.dc.html",
     "mockFrame": "#products",
     "builtRoute": "/#products",
-    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } figure:has(> .fmp-caro-frame) > figcaption { flex-wrap: wrap !important; row-gap: var(--space-2) !important; }",
-    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged. The pipes v8 README makes every carousel figcaption wrap (gap space-2 space-4) so the dots drop below the counter on a phone, but its home render was not updated to match.",
+    "mockStyle": "body { line-height: var(--leading-normal); } h1, h2, h3, h4, h5, h6 { line-height: var(--leading-snug); } :root, [data-theme] { --gutter: clamp(1rem, 4vw, 3rem); } figure:has(> .fmp-caro-frame) > figcaption { flex-wrap: wrap !important; row-gap: var(--space-2) !important; } @media (min-width: 680px) { figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 64px; } } @media (min-width: 1280px) { .fmp-caro-frame { margin-inline: -64px; } figure:has(> .fmp-caro-frame) > figcaption { padding-inline: 0; } }",
+    "mockStyleReason": "The live site sets body and heading line-heights (base.css) and a live-tuned --gutter (tokens.css); the mock export has none of them. All predate this handoff, which says tokens are unchanged. The pipes v8 README makes every carousel figcaption wrap (gap space-2 space-4) so the dots drop below the counter on a phone, but its home render was not updated to match. Carousel caption row aligned with the slides, and slides full width from 1280px with the chevrons in the margin (Ben, Pipes PRD decision 16).",
     "elements": {
       "products.heading": {
         "mock": "#products h2",

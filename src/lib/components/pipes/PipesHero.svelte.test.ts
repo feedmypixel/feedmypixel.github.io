@@ -9,10 +9,10 @@ test('names the product in the headline and the breadcrumb', async () => {
   expect(current?.textContent).toBe('Pipes')
 })
 
-test('offers both store badges and the source, each in a new tab', async () => {
+test('offers both stores and the source, each in a new tab', async () => {
   render(PipesHero)
-  const chrome = page.getByRole('link', { name: /^Available in the Chrome Web Store/ })
-  const firefox = page.getByRole('link', { name: /^Get the add-on for Firefox/ })
+  const chrome = page.getByRole('link', { name: /^Chrome Web Store/ })
+  const firefox = page.getByRole('link', { name: /^Firefox Add-ons/ })
   const source = page.getByRole('link', { name: /^Source/ })
   await expect
     .element(chrome)
@@ -26,11 +26,11 @@ test('offers both store badges and the source, each in a new tab', async () => {
   }
 })
 
-test('hero badges are the 56px size', () => {
+test('the hero leads with Chrome as the solid action, all at the large size', () => {
   render(PipesHero)
-  const badges = document.querySelectorAll('.actions .badge img')
-  expect(badges).toHaveLength(2)
-  badges.forEach((badge) => expect(badge.getBoundingClientRect().height).toBe(56))
+  const actions = [...document.querySelectorAll('.actions > a.button')]
+  expect(actions.map((action) => action.classList.contains('solid'))).toEqual([true, false, false])
+  actions.forEach((action) => expect(action.classList.contains('large')).toBe(true))
 })
 
 test('the fact line links to the privacy policy on this site', async () => {

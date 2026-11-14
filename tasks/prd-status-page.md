@@ -57,15 +57,14 @@ pre-framed images to slides composed live, with screenshots that follow the site
 12. Screenshots follow the site theme with no flash and no JavaScript: both images are in the
     markup, CSS shows the one matching `html[data-theme]` and the hidden one is lazy so it is not
     fetched. status slide 02 uses the opposite theme.
-13. Store buttons are official badges (decision 1). Pipes uses the Chrome Web Store and Firefox
-    Add-ons badges. status shows App Store and Google Play badges only once their URLs exist in
-    `config.ts`.
+13. Store links are the site's own buttons (decision 1). status shows App Store and Google Play
+    buttons only once their URLs exist in `config.ts`.
 
 ## 5. Decisions (taken at build, from the inventory's open questions)
 
 | # | Question | Decision |
 |---|---|---|
-| 1 | Store links | Official badges for both products (Ben). status badges hidden until real URLs (no dead links). |
+| 1 | Store links | The site's own buttons for both products (Ben, 14 Nov 2026, after the official badges took the eye on `/pipes`). status store buttons hidden until real URLs (no dead links). |
 | 2 | Typo line | "Then I checked what was built by looking it over, making sure it's done correctly and iterating and teaching if it's not." (Ben) |
 | 3 | `screensTheme` tweak | Dropped. Screens follow the site theme. |
 | 4 | Theme mechanism | CSS image pair (FR12). Theme-dependent words leave the caption and alts: "Nine screens." |
@@ -84,6 +83,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 17 | Pipes Solution comma | Repo wording (no comma before "and"). |
 | 18 | Build-story screens | The shared Carousel with arrows, dots and a counter, not the inset scroll strip (Ben, after review). |
 | 19 | "More from feedMyPixel" section | Removed (Ben, after review). The header nav already leads back. |
+| 20 | Build-story screens on a phone | 60% of the strip below 760px (about 215px), not 132px, so they can be read (Ben, after review). Unchanged from 760px. |
 
 ## 6. Non-goals
 
