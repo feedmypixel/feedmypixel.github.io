@@ -18,11 +18,11 @@ test('carries the info mood', () => {
 test('the cross sits in the top right corner, on the padding edge', () => {
   render(Toast, { props: { kind: 'info', message: 'Light theme on', onDismiss: () => {} } })
   const toast = document.querySelector('.toast')!
-  const padding = Number.parseFloat(getComputedStyle(toast).paddingTop)
+  const { paddingTop, paddingRight } = getComputedStyle(toast)
   const box = toast.getBoundingClientRect()
   const cross = document.querySelector('.dismiss svg')!.getBoundingClientRect()
-  expect(Math.round(cross.top - box.top)).toBe(padding)
-  expect(Math.round(box.right - cross.right)).toBe(padding)
+  expect(Math.round(cross.top - box.top)).toBe(Number.parseFloat(paddingTop))
+  expect(Math.round(box.right - cross.right)).toBe(Number.parseFloat(paddingRight))
 })
 
 test('calls onDismiss when the close button is clicked', async () => {
