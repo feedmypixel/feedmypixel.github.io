@@ -49,7 +49,11 @@
         }
       },
       "hero.facts": { "mock": "[data-hero-actions] + p", "built": "main .hero .facts" },
-      "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
+      "screenshots.section": {
+        "mock": "#screenshots",
+        "built": "#screenshots",
+        "ignore": { "text": "an eighth store frame, 08 Control (PRD decision 21)" }
+      },
       "screenshots.eyebrow": { "mock": "#screenshots h2 ~ *, #screenshots p:has(+ h2)", "built": "#screenshots .eyebrow" },
       "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
       "screenshots.strip": {
@@ -58,25 +62,32 @@
         "ignore": {
           "children": "Carousel wraps every slide in a snap item; the figure sits inside it",
           "box.paddingBottom": "one Carousel strip recipe for all three carousels; the 4px only shows as space under the frames",
-          "box.borderRadius": "one Carousel strip recipe for all three carousels; each frame card carries its own --radius-lg"
+          "box.borderRadius": "one Carousel strip recipe for all three carousels; each frame card carries its own --radius-lg",
+          "text": "an eighth store frame, 08 Control (PRD decision 21)"
         }
       },
       "screenshots.frame": {
         "mock": "[aria-label='status store screenshots'] > figure",
-        "built": "[aria-label='status store screenshots'] > .slide > figure"
+        "built": "[aria-label='status store screenshots'] > .slide > figure",
+        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
       },
       "screenshots.card": {
         "mock": "[aria-label='status store screenshots'] > figure > div",
-        "built": "[aria-label='status store screenshots'] .card"
+        "built": "[aria-label='status store screenshots'] .card",
+        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
       },
       "screenshots.frameCaption": {
         "mock": "[aria-label='status store screenshots'] > figure > figcaption",
-        "built": "[aria-label='status store screenshots'] figcaption"
+        "built": "[aria-label='status store screenshots'] figcaption",
+        "ignore": { "count": "an eighth store frame, 08 Control (PRD decision 21)" }
       },
       "screenshots.counter": {
         "mock": "#screenshots figure:has(.fmp-caro-frame) > figcaption > span:first-child",
         "built": "#screenshots .carousel > figcaption > .caption",
-        "ignore": { "children": "the mock template wraps interpolated text in a span" }
+        "ignore": {
+          "children": "the mock template wraps interpolated text in a span",
+          "text": "the counter runs to 08 with the eighth store frame (PRD decision 21)"
+        }
       },
       "screenshots.storyLabel": {
         "mock": "#screenshots div[style*='grid-template-columns'] > div > p:first-child",

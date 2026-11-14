@@ -10,10 +10,10 @@ test('has the screenshots anchor and heading', async () => {
     .toHaveTextContent('Post. React. Reply. Natter.')
 })
 
-test('shows the seven store frames, lazy and sized', () => {
+test('shows the eight store frames, lazy and sized', () => {
   render(StatusScreenshots)
   const images = document.querySelectorAll('.strip img')
-  expect(images).toHaveLength(7)
+  expect(images).toHaveLength(8)
   images.forEach((image) => {
     expect(image.getAttribute('loading')).toBe('lazy')
     expect(image.getAttribute('width')).not.toBeNull()
@@ -28,6 +28,7 @@ test('numbers each frame and labels the strip', () => {
   )
   expect(captions[0]).toBe('01 Everyone')
   expect(captions[6]).toBe('07 No ads')
+  expect(captions[7]).toBe('08 Control')
   expect(document.querySelector('[aria-label="status store screenshots"]')).not.toBeNull()
 })
 

@@ -84,7 +84,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 18 | Build-story screens | The shared Carousel with arrows, dots and a counter, not the inset scroll strip (Ben, after review). |
 | 19 | "More from feedMyPixel" section | Removed (Ben, after review). The header nav already leads back. |
 | 20 | Build-story screens on a phone | 60% of the strip below 760px (about 215px), not 132px, so they can be read (Ben, after review). Unchanged from 760px. |
-| 21 | Privacy and control slide | Eighth home slide, "You decide who gets in" / "Private page, message requests, mute, block and report.", over `10-privacy`. Wording from Claude Design's status.me landing page (CD651), so both places agree (Ben, 14 Nov 2026). The matching `/status` store frame (08-control) follows from the stat session. |
+| 21 | Privacy and control slide | Eighth home slide, "You decide who gets in" / "Private page, message requests, mute, block and report.", over `10-privacy`. Wording from Claude Design's status.me landing page (CD651), so both places agree (Ben, 14 Nov 2026). `/status` gains the matching eighth store frame, 08 Control, from the stat-ui store listing. |
 
 ## 6. Non-goals
 

@@ -11,9 +11,8 @@ from pathlib import Path
 
 from PIL import Image
 
-RENDER_DIRECTORY = Path('design/status-v7/mocks-pinned/render')
-FRAMES_SOURCE_DIRECTORY = RENDER_DIRECTORY / 'uploads/1206x2622'
 SCREENS_SOURCE_DIRECTORY = Path('design/status-captures')
+FRAMES_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'frames'
 PIPES_SOURCE_DIRECTORY = Path('design/pipes-captures')
 PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
 

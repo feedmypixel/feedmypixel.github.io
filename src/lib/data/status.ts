@@ -85,7 +85,8 @@ const storeFrames = [
   { file: '04-react', label: 'React' },
   { file: '05-year', label: 'Year' },
   { file: '06-natter', label: 'Natter' },
-  { file: '07-no-ads', label: 'No ads' }
+  { file: '07-no-ads', label: 'No ads' },
+  { file: '08-control', label: 'Control' }
 ] as const
 
 export const frames = storeFrames.map((frame, index) => {

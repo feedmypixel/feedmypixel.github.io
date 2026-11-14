@@ -4,5 +4,9 @@ The status app screens in both themes, 1206x2622, from the stat session's sweep 
 14 Nov 2026 (`~/Documents/Stat/store-shots/2026-11-14/`, which has the full set of 17 and a README).
 Only the screens the site uses are kept here: 01 to 09 and 10-privacy.
 
-`scripts/resize-screens.py` turns them into `static/status/screens/`. To refresh: copy a new set
-here with the same names and run the script.
+`frames/` holds the eight App Store store frames at 1206x2622 from the stat-ui store listing
+(`docs/store-listing/frames/app-store/1206x2622/`, 14 Nov 2026): 01 to 07 unchanged, plus
+08-control.
+
+`scripts/resize-screens.py` turns them into `static/status/screens/` and `static/status/frames/`.
+To refresh: copy a new set here with the same names and run the script.
