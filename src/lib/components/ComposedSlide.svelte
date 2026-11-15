@@ -243,18 +243,18 @@
 
     .devices .shot:nth-child(2) {
       display: block;
-      top: calc(var(--cluster-top) + 21 * var(--unit));
+      top: calc(var(--cluster-top) + 9 * var(--unit));
       left: var(--cluster-inset);
       z-index: 1;
-      width: calc(46 * var(--unit) * var(--ratio));
+      width: calc(58 * var(--unit) * var(--ratio));
     }
 
     .devices .shot:nth-child(3) {
       display: block;
-      top: calc(var(--cluster-top) + 35 * var(--unit));
+      top: calc(var(--cluster-top) + 23 * var(--unit));
       right: calc(var(--cluster-inset) + 4 * var(--unit));
       z-index: 2;
-      width: calc(32 * var(--unit) * var(--ratio));
+      width: calc(44 * var(--unit) * var(--ratio));
     }
   }
 </style>
