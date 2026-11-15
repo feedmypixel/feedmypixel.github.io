@@ -69,7 +69,8 @@
     <ExternalLink href="https://www.instagram.com">Instagram</ExternalLink>,
     <ExternalLink href="https://zoom.us">Zoom</ExternalLink>,
     <ExternalLink href="https://www.snapchat.com">Snapchat</ExternalLink>,
-    <ExternalLink href="https://www.tiktok.com">TikTok</ExternalLink> or FaceTime, they can.
+    <ExternalLink href="https://www.tiktok.com">TikTok</ExternalLink>, FaceTime or anywhere else,
+    they can.
   </p>
   <p>
     If you wish to have a private group you can, "Katsu anyone? 🍛". Or if you wish to tell everyone
