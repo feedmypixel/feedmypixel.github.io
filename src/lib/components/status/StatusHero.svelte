@@ -15,7 +15,7 @@
     <StatusStoreLinks size="large" />
   {/snippet}
   {#snippet facts()}
-    Web, iPhone and Android · No ads · No tracking · For 13 and over · Soft launched on the web,
-    autumn 2026
+    Web now · iPhone and Android coming very soon · No ads · No tracking · For 13 and over · Soft
+    launched on the web, autumn 2026
   {/snippet}
 </ProductHero>

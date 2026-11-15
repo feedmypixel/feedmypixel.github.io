@@ -55,7 +55,10 @@
       "hero.facts": {
         "mock": "[data-hero-actions] + p",
         "built": "main .hero .facts",
-        "ignore": { "text": "launch dated autumn 2026, not November 2026 (Ben, 15 Nov 2026)" }
+        "ignore": {
+          "text": "launch dated autumn 2026; the apps are coming very soon (Ben, 15 Nov 2026, status PRD decision 34)",
+          "box.height": "the apps are coming very soon, so the facts run a line longer (status PRD decision 34)"
+        }
       },
       "screenshots.section": {
         "mock": "#screenshots",

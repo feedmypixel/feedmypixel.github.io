@@ -96,6 +96,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 31 | Copy a link to any section | Every h2 and h3 (not h1, not CV job cards, not FAQ questions) shows a link icon on hover, always on touch screens. A click copies the URL to that heading and shows "✓ Copied" for two seconds; without the clipboard it jumps to the heading. The icon sits inside the heading, `--space-1` after the last word; the heading takes its name from its text alone (Ben, 15 Nov 2026). |
 | 32 | One section header | `SectionHeader` (eyebrow and heading) replaces six copies; `HeadingLink` owns heading type through a `size` prop; section headings share the mocks' 26ch measure; 32ch read too long (Ben, 15 Nov 2026). |
 | 33 | One slide split | `wide` slides use the same caption-to-screenshot split as `phones`, so captions get room for one line; Pipes shots are about 8% smaller than under decision 25. `devices` keeps 2.6 parts (Ben, 15 Nov 2026). |
+| 34 | Apps coming very soon | Until the stores list status, the hero facts say "Web now · iPhone and Android coming very soon" and Try it says "The iPhone and Android apps are coming very soon." Store links and buttons go in when Ben says the apps are live (Ben, 15 Nov 2026). |
 
 ## 6. Non-goals
 

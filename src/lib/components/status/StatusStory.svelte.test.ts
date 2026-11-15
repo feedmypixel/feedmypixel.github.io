@@ -72,6 +72,7 @@ test('shows no store links while the apps are not live', () => {
   expect(hrefs.some((href) => href?.includes('apple.com') || href?.includes('play.google'))).toBe(
     false
   )
-  expect(document.body.textContent).toContain('iPhone')
-  expect(document.body.textContent).toContain('Google Play')
+  expect(document.body.textContent?.replace(/\s+/g, ' ')).toContain(
+    'The iPhone and Android apps are coming very soon'
+  )
 })

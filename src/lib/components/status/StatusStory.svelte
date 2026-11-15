@@ -144,9 +144,8 @@
   <p>
     This has been an immense amount of fun: a modern web app plus iPhone and Android apps, built
     with SvelteKit, Fastify and <ExternalLink href="https://claude.com">Claude</ExternalLink>. Try
-    it at <ExternalLink href={statusUrl}>status.me</ExternalLink> or in the
-    {@render storeLink(statusAppStoreUrl, 'App Store')} and
-    {@render storeLink(statusGooglePlayUrl, 'Google Play')}.
+    it at <ExternalLink href={statusUrl}>status.me</ExternalLink>. The iPhone and Android apps are
+    coming very soon.
   </p>
   <div class="actions">
     <Button variant="solid" external href={statusUrl}>Open status.me</Button>
