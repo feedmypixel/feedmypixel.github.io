@@ -19,31 +19,25 @@ const slide = (view: View, label: string, sub: string, width: number, height: nu
 })
 
 export const slides = [
-  slide(
-    'popup',
-    'Status from your toolbar',
-    'One click through to the run that failed.',
-    880,
-    1000
-  ),
+  slide('popup', 'Status from your toolbar', 'One click through to the run that failed', 880, 1000),
   slide(
     'sidepanel',
     'Every repo in a side panel',
-    'GitHub Actions and GitLab CI/CD, grouped how you choose.',
+    'GitHub Actions and GitLab CI/CD, grouped how you choose',
     1080,
     880
   ),
   slide(
     'options',
     'Connect GitHub and GitLab',
-    'Your tokens never leave your browser. No server.',
+    'Your tokens never leave your browser. No server',
     1360,
     1200
   ),
   slide(
     'failure-notification',
     'Loud the moment it breaks',
-    'A notification the moment a default branch fails.',
+    'A notification the moment a default branch fails',
     728,
     170
   )

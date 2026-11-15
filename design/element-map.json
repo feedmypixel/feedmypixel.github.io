@@ -203,7 +203,11 @@
         "ignore": { "text": "live date is summer 2026, not June 2026 (PRD decision 1)" }
       },
       "hero.factsLink": { "mock": "[data-hero-actions] + p a", "built": "main .hero .facts a" },
-      "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
+      "screenshots.section": {
+        "mock": "#screenshots",
+        "built": "#screenshots",
+        "ignore": { "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)" }
+      },
       "screenshots.eyebrow": {
         "mock": "#screenshots p:has(+ h2)",
         "built": "#screenshots .eyebrow"
@@ -213,17 +217,22 @@
         "mock": "[aria-label='Pipes screenshots']",
         "built": "[aria-label='Pipes screenshots']",
         "ignore": {
-          "children": "Carousel wraps every slide in a snap item; the composed slide sits inside it"
+          "children": "Carousel wraps every slide in a snap item; the composed slide sits inside it",
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
         }
       },
       "screenshots.slide": {
         "mock": "#screenshots [data-status-slide]",
-        "built": "#screenshots .strip > .slide > .slide"
+        "built": "#screenshots .strip > .slide > .slide",
+        "ignore": { "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)" }
       },
       "screenshots.captionColumn": {
         "mock": "#screenshots [data-status-cap]",
         "built": "#screenshots .caption-column",
-        "ignore": { "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)" }
+        "ignore": {
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
+        }
       },
       "screenshots.number": {
         "mock": "#screenshots [data-status-cap] > span",
@@ -247,7 +256,8 @@
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
           "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
-          "box.height": "the narrower caption column wraps the line once more (status PRD decision 25)"
+          "box.height": "the narrower caption column wraps the line once more (status PRD decision 25)",
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
         }
       },
       "screenshots.shots": {
@@ -435,12 +445,18 @@
       "slide": {
         "mock": "[data-status-slide]",
         "built": "#products .strip > .slide > .slide",
-        "ignore": { "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)" }
+        "ignore": {
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)",
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
+        }
       },
       "slide.captionColumn": {
         "mock": "[data-status-cap]",
         "built": "#products .caption-column",
-        "ignore": { "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)" }
+        "ignore": {
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)",
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
+        }
       },
       "slide.number": {
         "mock": "[data-status-cap] > span",
@@ -462,6 +478,7 @@
         "mock": "[data-status-cap] > p:nth-of-type(2)",
         "built": "#products .caption-column .sub",
         "ignore": {
+          "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)",
           "children": "the mock template wraps interpolated text in a span",
           "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)"
         }

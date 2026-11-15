@@ -88,6 +88,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 23 | Build-story carousel | The nine-screen strip is replaced by a `StatusCarousel` of four composed slides showing the web app on desktop and tablet ("status on the web"), from the stat session's 15 Nov web captures (`design/status-captures/web/`). Ben: the strip was hard to see and added little. Image tiles with drawn device frames were tried and rejected. |
 | 24 | One slide style for status | Every status carousel uses composed slides (Ben, 15 Nov 2026: "PARITY"). The `/status` screenshots band shows the same `StatusCarousel` as home, as `/pipes` reuses its home carousel; the seven App Store frames are gone. Home and `/status` gain "Everything everywhere" / "Made for all screens." (Ben's words): desktop, tablet and phone in one cluster (`devices` layout), so the carousel runs to 12. Its screens come from one seeded world (`design/status-captures/web/`, including `phone/`). Dots wrap on a phone so 12 never scroll the page sideways. |
 | 25 | Wide and device shots read without zooming | From 760px the `wide` and `devices` shot columns take 2.6 parts of the slide to the caption's 1, with 24px padding, for status and Pipes alike (Ben, 15 Nov 2026, via the stat session: the web screens were unreadable). |
+| 26 | Slide sub-lines | No closing full stop on any carousel slide's sub-line, status and Pipes (Ben, 15 Nov 2026). "Made for all shapes and sizes" shows desktop, tablet and phone (`devices`). |
 
 ## 6. Non-goals
 

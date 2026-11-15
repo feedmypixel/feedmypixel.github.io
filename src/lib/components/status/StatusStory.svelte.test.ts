@@ -32,8 +32,8 @@ test('shows the web app on desktop and tablet as composed slides that follow the
   const carousel = document.querySelector('#story figure.carousel')!
   const strip = carousel.querySelector('[aria-label="status on the web"]')!
   expect(strip.querySelectorAll('.slide .caption')).toHaveLength(4)
-  expect(strip.querySelectorAll('img.light')).toHaveLength(5)
-  expect(strip.querySelectorAll('img.dark')).toHaveLength(5)
+  expect(strip.querySelectorAll('img.light')).toHaveLength(6)
+  expect(strip.querySelectorAll('img.dark')).toHaveLength(6)
   expect(carousel.querySelector('figcaption > .caption')?.textContent).toBe(
     '01 / 04  Replies, with room to read'
   )
