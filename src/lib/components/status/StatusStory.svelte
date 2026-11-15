@@ -131,7 +131,7 @@
   <ul>
     <li>you give it the right context</li>
     <li>a harness for how to build and what to build</li>
-    <li>Keep the instructions, rules, tests, context and skills up to date and lean</li>
+    <li>keep the instructions, rules, tests, context and skills up to date and lean</li>
     <li>
       use <ExternalLink href="https://github.com/JuliusBrussee/caveman">caveman</ExternalLink> to keep
       Claude concise

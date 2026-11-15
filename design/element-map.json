@@ -153,7 +153,11 @@
           "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
         }
       },
-      "story.bullets": { "mock": "#story article ul:not([style*='list-style'])", "built": "#story article ul:not(.thanks)" },
+      "story.bullets": {
+        "mock": "#story article ul:not([style*='list-style'])",
+        "built": "#story article ul:not(.thanks)",
+        "ignore": { "text": "\"keep the instructions\" lower case like the other bullets (PRD decision 16)" }
+      },
       "story.tip": { "mock": "#story article p[style*='surface-sunken']", "built": "#story article .tip" },
       "story.thanks": { "mock": "#story article ul[style*='list-style']", "built": "#story article ul.thanks" }
     }
