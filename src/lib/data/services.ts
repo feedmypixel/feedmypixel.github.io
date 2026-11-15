@@ -12,11 +12,11 @@ export const serviceLede =
   'different suppliers.'
 
 export const serviceFacts: ServiceFact[] = [
-  { label: 'Engagement', value: 'Contract.' },
-  { label: 'Length', value: 'Any.' },
-  { label: 'Project size', value: "Small to huge. Let's chat about what you need." },
-  { label: 'Location', value: 'Remote worldwide, based in the UK.' },
-  { label: 'Availability', value: 'Open to conversation.' }
+  { label: 'Engagement', value: 'Contract' },
+  { label: 'Length', value: 'Any' },
+  { label: 'Project size', value: "Small to huge. Let's chat about what you need" },
+  { label: 'Location', value: 'Remote worldwide, based in the UK' },
+  { label: 'Availability', value: 'Open to conversation' }
 ]
 
 export const faqs: Faq[] = [
