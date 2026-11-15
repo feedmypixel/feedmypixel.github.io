@@ -177,8 +177,8 @@ export const webSlides: Slide[] = [
     layout: 'wide'
   },
   {
-    label: 'Made for tablets',
-    sub: 'The phone apps wrap the live site, so a tablet gets the same status.',
+    label: 'Made for all shapes and sizes',
+    sub: 'The phone apps wrap the live site, so every screen gets the same status.',
     shots: [
       webShot('tablet', '03-profile', 'a profile with its week and year'),
       webShot('tablet', '04-messages', 'a conversation')
