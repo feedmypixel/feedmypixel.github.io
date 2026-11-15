@@ -71,7 +71,8 @@ chromium` must have run or whole test files skip silently.
 
 ### Hooks
 
-husky gates git locally, so PRs are optional rather than required:
+husky gates git locally. Every change still reaches `main` through a pull request, so the full CI
+checks run before anything deploys:
 
 | Hook         | Runs                                                  |
 | ------------ | ----------------------------------------------------- |
