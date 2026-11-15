@@ -91,7 +91,8 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ"
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "box.height": "Ben's group and broadcast paragraph lengthens the story (PRD decision 30)"
         }
       },
       "story.aside": {
@@ -133,11 +134,20 @@
         "built": "#story article",
         "ignore": {
           "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "box.height": "Ben's group and broadcast paragraph lengthens the story (PRD decision 30)",
           "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
         }
       },
       "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
-      "story.paragraph": { "mock": "#story article > p:first-of-type", "built": "#story article > p:first-of-type" },
+      "story.paragraph": {
+        "mock": "#story article > p:first-of-type",
+        "built": "#story article > p:first-of-type",
+        "ignore": {
+          "text": "the take-it-elsewhere line names and links more apps (PRD decision 30)",
+          "children": "the take-it-elsewhere line names and links more apps (PRD decision 30)",
+          "box.height": "the take-it-elsewhere line names and links more apps (PRD decision 30)"
+        }
+      },
       "story.screens": {
         "mock": "[aria-label='status screens']",
         "built": "[aria-label='status on the web']",

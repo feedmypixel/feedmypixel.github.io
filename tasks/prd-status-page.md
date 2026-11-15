@@ -92,6 +92,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 27 | Contents follow the reader | On both product pages the "In this story" link for the section being read is highlighted (`aria-current`, brand left rule), the last one at the bottom of the page (Ben, 15 Nov 2026). |
 | 28 | One sentence, no full stop | A line of copy that is one sentence has no closing full stop, site-wide: pitches, headings, ledes, list items (Ben, 15 Nov 2026). |
 | 29 | Slide copy in Ben's words | status slide sub-lines rewritten: a status, not a square; no "full post" line; reply to a status; the profile shows your week and your year; no age line; profile, not page (Ben, 15 Nov 2026). |
+| 30 | Groups, broadcasts and elsewhere | "Why I built it" gains Ben's paragraph on private groups and broadcasting and the take-it-elsewhere line links WhatsApp, Instagram, Zoom, Snapchat and TikTok (Ben, 15 Nov 2026). |
 
 ## 6. Non-goals
 
