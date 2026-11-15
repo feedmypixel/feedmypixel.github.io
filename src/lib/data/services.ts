@@ -34,7 +34,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you work remotely and where?',
     answer:
-      "I work remotely, worldwide, from the UK. I'll shift my hours to overlap with your team and travel for a kickoff when it helps."
+      "I work remotely, worldwide or from the UK. I'll shift my hours to overlap with your team and travel for a kickoff when it helps."
   },
   {
     question: 'Do you use AI?',

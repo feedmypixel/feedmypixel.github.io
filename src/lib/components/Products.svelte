@@ -3,6 +3,7 @@
   import Button from './Button.svelte'
   import Chevron from './Chevron.svelte'
   import GitHubMark from './GitHubMark.svelte'
+  import SectionHeader from './SectionHeader.svelte'
   import ProductEntry from './ProductEntry.svelte'
   import StatusStoreLinks from './StatusStoreLinks.svelte'
   import PipesCarousel from './pipes/PipesCarousel.svelte'
@@ -14,8 +15,7 @@
 
 <section id="products" class="products">
   <div class="container inner">
-    <p class="eyebrow">Products</p>
-    <h2>Real tools for real needs</h2>
+    <SectionHeader eyebrow="Products" heading="Real tools for real needs" />
     <p class="lede">Designed, built and shipped end to end</p>
 
     <ProductEntry
@@ -68,25 +68,6 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 26ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
   }
 
   .lede {

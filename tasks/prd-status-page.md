@@ -93,6 +93,9 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 28 | One sentence, no full stop | A line of copy that is one sentence has no closing full stop, site-wide: pitches, headings, ledes, list items (Ben, 15 Nov 2026). |
 | 29 | Slide copy in Ben's words | status slide sub-lines rewritten: a status, not a square; no "full post" line; reply to a status; the profile shows your week and your year; no age line; profile, not page (Ben, 15 Nov 2026). |
 | 30 | Groups, broadcasts and elsewhere | "Why I built it" gains Ben's paragraph on private groups and broadcasting and the take-it-elsewhere line links WhatsApp, Instagram, Zoom, Snapchat and TikTok (Ben, 15 Nov 2026). |
+| 31 | Copy a link to any section | Every h2 and h3 (not h1, not CV job cards, not FAQ questions) shows a link icon on hover, always on touch screens. A click copies the URL to that heading and shows "✓ Copied" for two seconds; without the clipboard it jumps to the heading. The icon sits inside the heading, `--space-1` after the last word; the heading takes its name from its text alone (Ben, 15 Nov 2026). |
+| 32 | One section header | `SectionHeader` (eyebrow and heading) replaces six copies; `HeadingLink` owns heading type through a `size` prop; section headings share a 32ch measure, a little longer than the mocks' 24ch and 26ch, which gave no reason (Ben, 15 Nov 2026). |
+| 33 | One slide split | `wide` slides use the same caption-to-screenshot split as `phones`, so captions get room for one line; Pipes shots are about 8% smaller than under decision 25. `devices` keeps 2.6 parts (Ben, 15 Nov 2026). |
 
 ## 6. Non-goals
 

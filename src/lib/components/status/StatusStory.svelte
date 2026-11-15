@@ -6,6 +6,7 @@
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
   import StatusCarousel from './StatusCarousel.svelte'
+  import HeadingLink from '../HeadingLink.svelte'
 </script>
 
 {#snippet storeLink(url: string | undefined, name: string)}
@@ -59,7 +60,7 @@
     </div>
   {/snippet}
 
-  <h3 id="why">Why I built it</h3>
+  <HeadingLink level={3} size="xl" id="why" text="Why I built it" />
   <p>
     For me status is about breaking the ice. Reaching out to people can take real effort and
     sometimes it means saying something in a group chat. status is a simple way to say what you're
@@ -82,7 +83,7 @@
     centre.
   </p>
 
-  <h3 id="how">How it's built</h3>
+  <HeadingLink level={3} size="xl" id="how" text="How it's built" />
   <p>
     Simplicity and speed: one thing, done well. I chose
     <ExternalLink href="https://svelte.dev/docs/kit">SvelteKit</ExternalLink> and
@@ -98,7 +99,7 @@
     <StatusCarousel slides={webSlides} label="status on the web" />
   </div>
 
-  <h3 id="claude">Built with Claude</h3>
+  <HeadingLink level={3} size="xl" id="claude" text="Built with Claude" />
   <p>
     I start with detailed requirements, written like architecture decision records (ADRs). From
     those <ExternalLink href="https://github.com/snarktank/ai-dev-tasks">ai-dev-tasks</ExternalLink> makes
@@ -139,7 +140,7 @@
     behaved, you'll get something you didn't ask for.
   </p>
 
-  <h3 id="try">Try it</h3>
+  <HeadingLink level={3} size="xl" id="try" text="Try it" />
   <p>
     This has been an immense amount of fun: a modern web app plus iPhone and Android apps, built
     with SvelteKit, Fastify and <ExternalLink href="https://claude.com">Claude</ExternalLink>. Try
@@ -152,7 +153,7 @@
     <StatusStoreLinks />
   </div>
 
-  <h3 id="thanks">Thanks</h3>
+  <HeadingLink level={3} size="xl" id="thanks" text="Thanks" />
   <ul class="thanks">
     <li><ExternalLink href="https://svelte.dev/docs/kit">SvelteKit</ExternalLink></li>
     <li><ExternalLink href="https://fastify.dev">Fastify</ExternalLink></li>

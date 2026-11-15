@@ -20,6 +20,9 @@
   import { buildRuns } from '#lib/role-runs.js'
   import EmptyState from '#lib/components/EmptyState.svelte'
   import BackToTop from '#lib/components/BackToTop.svelte'
+  import Eyebrow from '#lib/components/Eyebrow.svelte'
+  import HeadingLink from '#lib/components/HeadingLink.svelte'
+  import SectionHeader from '#lib/components/SectionHeader.svelte'
   import Services from '#lib/components/Services.svelte'
   import { roles } from '#lib/data/experience.js'
   import { TYPE_FILTERS, type TypeFilter } from '#lib/cv-filter.js'
@@ -38,7 +41,7 @@
 
 <div class="container catalogue">
   <header class="intro">
-    <p class="eyebrow">Reference</p>
+    <Eyebrow text="Reference" />
     <h1>Component catalogue</h1>
     <p class="lede">Every brick this site is built from, in each of its states</p>
   </header>
@@ -184,6 +187,19 @@
     <Services />
   </section>
 
+  <section aria-labelledby="section-header-h">
+    <h2 id="section-header-h">Section header</h2>
+    <SectionHeader eyebrow="Eyebrow" heading="A section heading with a copy-link icon" />
+  </section>
+
+  <section aria-labelledby="heading-link-h">
+    <h2 id="heading-link-h">Heading link sizes</h2>
+    <p class="note">Hover a heading to show its link; click it to copy the address</p>
+    <HeadingLink level={3} size="2xl" id="catalogue-2xl" text="Product name, 2xl" />
+    <HeadingLink level={3} size="xl" id="catalogue-xl" text="Story section, xl" />
+    <HeadingLink level={3} size="lg" id="catalogue-lg" text="Policy section, lg" />
+  </section>
+
   <section aria-labelledby="totop-h">
     <h2 id="totop-h">Back to top</h2>
     <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px</p>
@@ -227,13 +243,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
   }
 
   h1 {

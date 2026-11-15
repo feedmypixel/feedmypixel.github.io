@@ -1,6 +1,8 @@
 <script lang="ts">
   import Seo from '#lib/components/Seo.svelte'
   import NewTabHint from '#lib/components/NewTabHint.svelte'
+  import Eyebrow from '#lib/components/Eyebrow.svelte'
+  import HeadingLink from '#lib/components/HeadingLink.svelte'
 </script>
 
 <Seo
@@ -10,7 +12,7 @@
 />
 
 <article class="container policy">
-  <p class="eyebrow">Pipes</p>
+  <Eyebrow text="Pipes" />
   <h1>Privacy policy</h1>
   <p class="updated">Last updated: 13 June 2026</p>
 
@@ -20,7 +22,7 @@
     is no Pipes server and your data never reaches us.
   </p>
 
-  <h2>What data Pipes handles</h2>
+  <HeadingLink size="lg" text="What data Pipes handles" />
   <p>Pipes stores the following on your device, via <code>chrome.storage.local</code>:</p>
   <ul>
     <li>
@@ -37,7 +39,7 @@
     </li>
   </ul>
 
-  <h2>How your data is stored</h2>
+  <HeadingLink size="lg" text="How your data is stored" />
   <p>
     All of the above lives in <code>chrome.storage.local</code> on your own machine. It is
     <strong>never synced</strong>
@@ -46,14 +48,14 @@
     to.
   </p>
 
-  <h2>Where your data is sent</h2>
+  <HeadingLink size="lg" text="Where your data is sent" />
   <p>
     Your token and API requests go <strong>only</strong> to the Git host you connected them to (GitHub
     or GitLab, including a self-hosted instance you add). Pipes makes no other network requests: no analytics,
     no telemetry, no third-party services.
   </p>
 
-  <h2>Why the data is needed</h2>
+  <HeadingLink size="lg" text="Why the data is needed" />
   <ul>
     <li>The token authenticates the read-only API calls that fetch your pipeline status</li>
     <li>
@@ -65,14 +67,14 @@
     </li>
   </ul>
 
-  <h2>Permissions</h2>
+  <HeadingLink size="lg" text="Permissions" />
   <p>
     Tokens are requested as <strong>read-only</strong> (GitHub fine-grained: Actions + Pull requests
     read; GitLab <code>read_api</code>). Pipes cannot push, merge or modify anything in your
     repositories.
   </p>
 
-  <h2>Data retention and deletion</h2>
+  <HeadingLink size="lg" text="Data retention and deletion" />
   <p>
     Your data stays on your device until you remove it. You can delete a token or account from the
     extension's options at any time and <strong
@@ -80,12 +82,12 @@
     >.
   </p>
 
-  <h2>Changes to this policy</h2>
+  <HeadingLink size="lg" text="Changes to this policy" />
   <p>
     If Pipes' data handling ever changes, this page will be updated with a new "last updated" date
   </p>
 
-  <h2>Contact</h2>
+  <HeadingLink size="lg" text="Contact" />
   <p>
     Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a> or
     <a href="https://github.com/feedmypixel/pipes/issues" target="_blank" rel="noopener noreferrer">
@@ -101,16 +103,8 @@
     padding-block: var(--band);
   }
 
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
   h1 {
+    margin-top: var(--space-4);
     font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-semibold);
@@ -134,15 +128,11 @@
     text-wrap: pretty;
   }
 
-  h2 {
+  .policy :global(h2) {
     margin-top: var(--space-10);
-    font-family: var(--font-display);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--ink-strong);
   }
 
-  p:not(.eyebrow, .updated, .lede),
+  p:not(.updated, .lede),
   li {
     margin-top: var(--space-4);
     line-height: var(--line-height-relaxed);

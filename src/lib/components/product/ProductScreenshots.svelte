@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
+  import SectionHeader from '../SectionHeader.svelte'
   import ProductStory from '../ProductStory.svelte'
 
   let {
@@ -15,10 +16,7 @@
 
 <section id="screenshots" class="screenshots">
   <div class="container inner">
-    <div>
-      <p class="eyebrow">Screenshots</p>
-      <h2>{heading}</h2>
-    </div>
+    <SectionHeader eyebrow="Screenshots" {heading} />
 
     {@render children()}
 
@@ -37,24 +35,5 @@
     flex-direction: column;
     gap: var(--space-12);
     padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 26ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
   }
 </style>

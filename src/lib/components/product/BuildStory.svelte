@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
   import { passedSectionIndex } from '#lib/story-section.js'
+  import SectionHeader from '../SectionHeader.svelte'
 
   let {
     heading,
@@ -45,8 +46,7 @@
 
 <section id="story" class="story">
   <div class="container inner">
-    <p class="eyebrow">The build story</p>
-    <h2>{heading}</h2>
+    <SectionHeader eyebrow="The build story" {heading} />
 
     <div class="grid">
       <aside>
@@ -78,25 +78,6 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 24ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
   }
 
   .grid {
@@ -180,12 +161,6 @@
 
   article :global(h3) {
     margin-top: var(--space-8);
-    scroll-margin-top: calc(var(--header-height) + var(--space-6));
-    font-family: var(--font-display);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   article :global(h3:first-child) {

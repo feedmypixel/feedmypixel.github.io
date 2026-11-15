@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
+  import HeadingLink from './HeadingLink.svelte'
   import PixelMark from './PixelMark.svelte'
   import ProductStory from './ProductStory.svelte'
 
@@ -24,7 +25,7 @@
   <div class="intro">
     <div class="name">
       <PixelMark />
-      <h3>{name}</h3>
+      <HeadingLink level={3} size="2xl" text={name} />
     </div>
     <p class="pitch">{pitch}</p>
     <div class="links">
@@ -60,14 +61,6 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-  }
-
-  h3 {
-    font-family: var(--font-display);
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .pitch {

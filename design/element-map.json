@@ -63,7 +63,14 @@
         "ignore": { "text": "the store frames are replaced by the home status carousel (PRD decision 24)" }
       },
       "screenshots.eyebrow": { "mock": "#screenshots h2 ~ *, #screenshots p:has(+ h2)", "built": "#screenshots .eyebrow" },
-      "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
+      "screenshots.heading": {
+        "mock": "#screenshots h2",
+        "built": "#screenshots h2",
+        "ignore": {
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+        }
+      },
       "screenshots.strip": {
         "mock": "[aria-label='status store screenshots']",
         "built": "[aria-label='status screenshots']",
@@ -86,7 +93,15 @@
         "mock": "#screenshots div[style*='grid-template-columns'] > div > p:last-child",
         "built": "#screenshots .story .text"
       },
-      "story.heading": { "mock": "#story h2", "built": "#story h2" },
+      "story.heading": {
+        "mock": "#story h2",
+        "built": "#story h2",
+        "ignore": {
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.width": "section headings share a 32ch measure (status PRD decision 32)",
+          "box.height": "section headings share a 32ch measure, so this one sits on one line (status PRD decision 32)"
+        }
+      },
       "story.grid": {
         "mock": "[data-story-grid]",
         "built": "#story .grid",
@@ -138,7 +153,11 @@
           "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
         }
       },
-      "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
+      "story.subheading": {
+        "mock": "#story article h3",
+        "built": "#story article h3",
+        "ignore": { "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)" }
+      },
       "story.paragraph": {
         "mock": "#story article > p:first-of-type",
         "built": "#story article > p:first-of-type",
@@ -241,7 +260,12 @@
       "screenshots.heading": {
         "mock": "#screenshots h2",
         "built": "#screenshots h2",
-        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+        "ignore": {
+          "text": "one sentence has no closing full stop (Ben, status PRD decision 28)",
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)",
+          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+        }
       },
       "screenshots.strip": {
         "mock": "[aria-label='Pipes screenshots']",
@@ -260,7 +284,7 @@
         "mock": "#screenshots [data-status-cap]",
         "built": "#screenshots .caption-column",
         "ignore": {
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
           "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
         }
       },
@@ -269,7 +293,7 @@
         "built": "#screenshots .caption-column .number",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)"
         }
       },
       "screenshots.caption": {
@@ -277,7 +301,7 @@
         "built": "#screenshots .caption-column .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)"
         }
       },
       "screenshots.sub": {
@@ -285,7 +309,7 @@
         "built": "#screenshots .caption-column .sub",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
           "box.height": "the narrower caption column wraps the line once more (status PRD decision 25)",
           "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
         }
@@ -298,9 +322,9 @@
           "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
-          "box.paddingLeft": "wide shots take more of the slide so they can be read (status PRD decision 25)",
-          "box.paddingRight": "wide shots take more of the slide so they can be read (status PRD decision 25)",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+          "box.paddingLeft": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
+          "box.paddingRight": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)"
         }
       },
       "screenshots.shot": {
@@ -309,8 +333,8 @@
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
           "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
-          "box.height": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
+          "box.height": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)"
         }
       },
       "screenshots.counter": {
@@ -329,7 +353,12 @@
       "story.heading": {
         "mock": "#story h2",
         "built": "#story h2",
-        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+        "ignore": {
+          "text": "one sentence has no closing full stop (Ben, status PRD decision 28)",
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.height": "section headings share a 32ch measure, so this one sits on one line (status PRD decision 32)",
+          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+        }
       },
       "story.grid": {
         "mock": "[data-story-grid]",
@@ -378,7 +407,11 @@
           "children": "the framed set sits in a wrapper around the shared Carousel, which owns its figure (as status, status PRD decision 18)"
         }
       },
-      "story.subheading": { "mock": "#story article h3", "built": "#story article h3" },
+      "story.subheading": {
+        "mock": "#story article h3",
+        "built": "#story article h3",
+        "ignore": { "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)" }
+      },
       "story.paragraph": {
         "mock": "#story article > p:first-of-type",
         "built": "#story article > p:first-of-type",
@@ -441,11 +474,20 @@
     "elements": {
       "products.heading": {
         "mock": "#products h2",
-        "built": "#products h2"
+        "built": "#products h2",
+        "ignore": {
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)",
+          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+        }
       },
       "entry.name": {
         "mock": "#products h3",
-        "built": "#products h3"
+        "built": "#products h3",
+        "ignore": {
+          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
+          "box.width": "the copy-link icon sits inside the heading, widening it (status PRD decision 31)"
+        }
       },
       "entry.mark": {
         "mock": "#products div:has(> h3) > span[aria-hidden] > span",
@@ -552,8 +594,8 @@
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
-          "box.height": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+          "box.width": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)",
+          "box.height": "shots are sized by the composed slide's column split (status PRD decisions 25 and 33)"
         }
       },
       "carousel.counter": {

@@ -10,6 +10,7 @@
   import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
   import Field from './Field.svelte'
+  import SectionHeader from './SectionHeader.svelte'
   import EmailPill from './EmailPill.svelte'
   import NewTabHint from './NewTabHint.svelte'
 
@@ -75,8 +76,7 @@
 
 <section id="contact" class="contact">
   <div class="container inner">
-    <p class="eyebrow">Contact</p>
-    <h2>Like to build something together?</h2>
+    <SectionHeader eyebrow="Contact" heading="Like to build something together?" />
     <p class="lede">Available worldwide and remote, happy to accommodate different timezones</p>
 
     <div class="grid">
@@ -170,25 +170,6 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 24ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
   }
 
   .lede {

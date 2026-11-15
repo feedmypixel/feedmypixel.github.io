@@ -1,18 +1,14 @@
 <script lang="ts">
+  import { copyText } from '#lib/clipboard.js'
   import { emailAddress } from '#lib/config.js'
   import { toasts } from '#lib/toasts.svelte.js'
 
   let { address = emailAddress }: { address?: string } = $props()
 
   async function copy() {
-    if (!navigator.clipboard?.writeText) {
-      toasts.push('critical', 'Could not copy, select the address instead')
-      return
-    }
-    try {
-      await navigator.clipboard.writeText(address)
+    if (await copyText(address)) {
       toasts.push('positive', 'Email address copied')
-    } catch {
+    } else {
       toasts.push('critical', 'Could not copy, select the address instead')
     }
   }

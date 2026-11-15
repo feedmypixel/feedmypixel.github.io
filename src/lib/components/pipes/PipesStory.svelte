@@ -5,6 +5,7 @@
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
   import Button from '../Button.svelte'
+  import HeadingLink from '../HeadingLink.svelte'
 </script>
 
 <BuildStory
@@ -56,7 +57,7 @@
     </div>
   {/snippet}
 
-  <h3 id="why">Why I built it</h3>
+  <HeadingLink level={3} size="xl" id="why" text="Why I built it" />
   <p>
     At my current gig we use <ExternalLink href="https://about.gitlab.com">GitLab</ExternalLink>
     and for my own work I use <ExternalLink href="https://github.com">GitHub</ExternalLink>. I have
@@ -66,7 +67,7 @@
     on with your work.
   </p>
 
-  <h3 id="how">How it's built</h3>
+  <HeadingLink level={3} size="xl" id="how" text="How it's built" />
   <p>
     The browser is where I am a lot when I'm making applications, so something on the side that I
     can easily read out of the corner of my eye felt ideal. I had always wanted to build a browser
@@ -99,7 +100,7 @@
     </Carousel>
   </div>
 
-  <h3 id="claude">Built with Claude</h3>
+  <HeadingLink level={3} size="xl" id="claude" text="Built with Claude" />
   <p>
     Requirements first, a task list with <ExternalLink
       href="https://github.com/snarktank/ai-dev-tasks">ai-dev-tasks</ExternalLink
@@ -111,7 +112,7 @@
     >
   </p>
 
-  <h3 id="try">Try it</h3>
+  <HeadingLink level={3} size="xl" id="try" text="Try it" />
   <p>
     I use it daily. It's incredibly useful, especially when working with multiple repositories and
     multiple developers.
@@ -121,7 +122,7 @@
     <Button variant="ghost" external href={pipesFirefoxUrl}>Firefox Add-ons</Button>
   </div>
 
-  <h3 id="thanks">Thanks</h3>
+  <HeadingLink level={3} size="xl" id="thanks" text="Thanks" />
   <ul class="thanks">
     <li><ExternalLink href="https://svelte.dev">Svelte</ExternalLink></li>
     <li><ExternalLink href="https://crxjs.dev">crxjs</ExternalLink></li>

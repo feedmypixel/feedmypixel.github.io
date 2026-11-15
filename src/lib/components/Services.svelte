@@ -1,14 +1,14 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
   import { faqs, serviceFacts, serviceLede } from '#lib/data/services.js'
+  import SectionHeader from './SectionHeader.svelte'
 
   const home = resolve('/')
 </script>
 
 <section id="services" class="services">
   <div class="container inner">
-    <p class="eyebrow">Services</p>
-    <h2>How this works. What working with me looks like</h2>
+    <SectionHeader eyebrow="Services" heading="How this works. What working with me looks like" />
 
     <div class="grid">
       <div>
@@ -57,25 +57,6 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .eyebrow {
-    margin-bottom: var(--space-4);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--tracking-wide);
-    color: var(--brand-text);
-  }
-
-  h2 {
-    max-width: 26ch;
-    font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
-    text-wrap: balance;
   }
 
   .grid {

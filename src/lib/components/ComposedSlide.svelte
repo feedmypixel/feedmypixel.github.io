@@ -210,7 +210,6 @@
     }
 
     .wide {
-      flex-grow: 2.6;
       padding: var(--space-6);
     }
 
