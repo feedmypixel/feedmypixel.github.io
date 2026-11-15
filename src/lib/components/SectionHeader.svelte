@@ -23,7 +23,7 @@
   }
 
   .heading-row > :global(h2) {
-    max-width: 32ch;
+    max-width: 26ch;
   }
 
   .with-actions {

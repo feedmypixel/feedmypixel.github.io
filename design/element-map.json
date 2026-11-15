@@ -66,10 +66,7 @@
       "screenshots.heading": {
         "mock": "#screenshots h2",
         "built": "#screenshots h2",
-        "ignore": {
-          "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
-          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
-        }
+        "ignore": { "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)" }
       },
       "screenshots.strip": {
         "mock": "[aria-label='status store screenshots']",
@@ -98,8 +95,7 @@
         "built": "#story h2",
         "ignore": {
           "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
-          "box.width": "section headings share a 32ch measure (status PRD decision 32)",
-          "box.height": "section headings share a 32ch measure, so this one sits on one line (status PRD decision 32)"
+          "box.width": "section headings share the 26ch measure; the story mock used 24ch (status PRD decision 32)"
         }
       },
       "story.grid": {
@@ -263,8 +259,7 @@
         "ignore": {
           "text": "one sentence has no closing full stop (Ben, status PRD decision 28)",
           "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
-          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)",
-          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)"
         }
       },
       "screenshots.strip": {
@@ -356,8 +351,8 @@
         "ignore": {
           "text": "one sentence has no closing full stop (Ben, status PRD decision 28)",
           "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
-          "box.height": "section headings share a 32ch measure, so this one sits on one line (status PRD decision 32)",
-          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+          "box.width": "section headings share the 26ch measure; the story mock used 24ch (status PRD decision 32)",
+          "box.height": "at 26ch this heading fits one line; the story mock's 24ch made two (status PRD decision 32)"
         }
       },
       "story.grid": {
@@ -477,8 +472,7 @@
         "built": "#products h2",
         "ignore": {
           "children": "the copy-link icon and Copied note sit inside the heading (status PRD decision 31)",
-          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)",
-          "box.width": "section headings share a 32ch measure (status PRD decision 32)"
+          "box.height": "on touch screens the always-shown copy-link icon can take the heading onto another line (status PRD decision 31)"
         }
       },
       "entry.name": {
