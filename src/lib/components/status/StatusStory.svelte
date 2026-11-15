@@ -113,7 +113,11 @@
       Claude concise
     </li>
     <li><ExternalLink href="https://www.rtk-ai.app/">rtk</ExternalLink> to save tokens</li>
-    <li>my own hooks stop reams of stale comments</li>
+    <li>
+      utilise hooks for things like cleaning up worktrees and pruning docker and stopping local
+      servers, stopping claude going wild with comments and many other helpful tasks hooked into
+      claudes lifecycle
+    </li>
   </ul>
   <p>
     I steered all the way: writing the ADRs and PRDs and teaching it how to build through skills and
