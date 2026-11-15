@@ -4,6 +4,7 @@
   import '@fontsource/dm-mono/400.css'
   import '@fontsource/dm-mono/500.css'
   import { asset } from '$app/paths'
+  import { afterNavigate, onNavigate } from '$app/navigation'
   import Header from '#lib/components/Header.svelte'
   import Footer from '#lib/components/Footer.svelte'
   import Toaster from '#lib/components/Toaster.svelte'
@@ -13,6 +14,14 @@
   import { loadAnalytics } from '#lib/analytics.js'
 
   let { children } = $props()
+
+  // The smooth scroll is for in-page links. A new page lands at its top instantly.
+  onNavigate(() => {
+    document.documentElement.style.scrollBehavior = 'auto'
+  })
+  afterNavigate(() => {
+    document.documentElement.style.removeProperty('scroll-behavior')
+  })
 
   $effect(() => {
     if (consent.choice === 'granted') {

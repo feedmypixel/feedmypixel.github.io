@@ -70,7 +70,7 @@
   </p>
   <p>
     If you wish to have a private group you can, "Katsu anyone? 🍛". Or if you wish to tell everyone
-    what your up to broadcast away "Hollipops time 🏝️"
+    what your up to broadcast away "Holipops time 🏝️"
   </p>
   <p>
     Everything has a status already: WhatsApp, Slack, Facebook. But there it sits on the side,
