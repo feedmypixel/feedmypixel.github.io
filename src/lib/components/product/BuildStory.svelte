@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
+  import { passedSectionIndex } from '#lib/story-section.js'
 
   let {
     heading,
@@ -12,6 +13,34 @@
     stack: Snippet
     children: Snippet
   } = $props()
+
+  let current = $state<string>()
+
+  $effect(() => {
+    const headings = sections
+      .map((section) => document.getElementById(section.id))
+      .filter((heading): heading is HTMLElement => heading !== null)
+    let frame = 0
+
+    function update() {
+      frame = 0
+      const tops = headings.map((heading) => heading.getBoundingClientRect().top)
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1
+      current = headings[passedSectionIndex(tops, window.innerHeight / 3, { atBottom })]?.id
+    }
+
+    function onScroll() {
+      frame ||= requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  })
 </script>
 
 <section id="story" class="story">
@@ -24,7 +53,9 @@
         <nav aria-label="In this story">
           <p class="nav-label">In this story</p>
           {#each sections as section (section.id)}
-            <a href="#{section.id}">{section.label}</a>
+            <a href="#{section.id}" aria-current={current === section.id ? 'true' : undefined}
+              >{section.label}</a
+            >
           {/each}
         </nav>
 
@@ -98,13 +129,23 @@
 
   nav a {
     padding-block: var(--space-1);
+    padding-left: var(--space-3);
     font-size: var(--font-size-sm);
     color: var(--ink-muted);
     text-decoration: none;
+    border-left: 2px solid var(--border-subtle);
+    transition:
+      color var(--transition) var(--ease-standard),
+      border-color var(--transition) var(--ease-standard);
   }
 
   nav a:hover {
     color: var(--ink-strong);
+  }
+
+  nav a[aria-current='true'] {
+    color: var(--ink-strong);
+    border-left-color: var(--brand);
   }
 
   .stack {

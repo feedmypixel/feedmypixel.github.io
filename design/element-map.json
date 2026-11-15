@@ -98,7 +98,15 @@
         }
       },
       "story.toc": { "mock": "nav[aria-label='In this story']", "built": "nav[aria-label='In this story']" },
-      "story.tocLink": { "mock": "nav[aria-label='In this story'] a", "built": "nav[aria-label='In this story'] a" },
+      "story.tocLink": {
+        "mock": "nav[aria-label='In this story'] a",
+        "built": "nav[aria-label='In this story'] a",
+        "ignore": {
+          "box.paddingLeft": "contents links carry a left rule that marks the section being read (PRD decision 27)",
+          "colour.borderColor": "contents links carry a left rule that marks the section being read (PRD decision 27)",
+          "colour.color": "the section being read is highlighted (PRD decision 27)"
+        }
+      },
       "story.stack": {
         "mock": "#story dl",
         "built": "#story dl",
@@ -315,7 +323,12 @@
       },
       "story.tocLink": {
         "mock": "nav[aria-label='In this story'] a",
-        "built": "nav[aria-label='In this story'] a"
+        "built": "nav[aria-label='In this story'] a",
+        "ignore": {
+          "box.paddingLeft": "contents links carry a left rule that marks the section being read (status PRD decision 27)",
+          "colour.borderColor": "contents links carry a left rule that marks the section being read (status PRD decision 27)",
+          "colour.color": "the section being read is highlighted (status PRD decision 27)"
+        }
       },
       "story.stack": {
         "mock": "#story dl",
