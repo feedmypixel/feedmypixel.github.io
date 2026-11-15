@@ -16,6 +16,6 @@
   {/snippet}
   {#snippet facts()}
     Web, iPhone and Android · No ads · No tracking · For 13 and over · Soft launched on the web,
-    November 2026
+    autumn 2026
   {/snippet}
 </ProductHero>

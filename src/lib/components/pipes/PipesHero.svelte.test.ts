@@ -39,7 +39,7 @@ test('the fact line links to the privacy policy on this site', async () => {
   await expect.element(policy).toHaveAttribute('href', '/pipes/privacy')
   expect(policy.element().getAttribute('target')).toBeNull()
   expect(document.querySelector('.facts')?.textContent?.replace(/\s+/g, ' ')).toContain(
-    'Live in the Chrome Web Store and Firefox Add-ons, June 2026'
+    'Live in the Chrome Web Store and Firefox Add-ons, summer 2026'
   )
 })
 

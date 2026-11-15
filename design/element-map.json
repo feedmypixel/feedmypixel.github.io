@@ -48,7 +48,11 @@
           "layout.justifyContent": "Button brick recipe, shared by every button on the site"
         }
       },
-      "hero.facts": { "mock": "[data-hero-actions] + p", "built": "main .hero .facts" },
+      "hero.facts": {
+        "mock": "[data-hero-actions] + p",
+        "built": "main .hero .facts",
+        "ignore": { "text": "launch dated autumn 2026, not November 2026 (Ben, 15 Nov 2026)" }
+      },
       "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
       "screenshots.eyebrow": { "mock": "#screenshots h2 ~ *, #screenshots p:has(+ h2)", "built": "#screenshots .eyebrow" },
       "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
@@ -216,7 +220,11 @@
           "box.gap": "Button brick recipe, shared by every button on the site"
         }
       },
-      "hero.facts": { "mock": "[data-hero-actions] + p", "built": "main .hero .facts" },
+      "hero.facts": {
+        "mock": "[data-hero-actions] + p",
+        "built": "main .hero .facts",
+        "ignore": { "text": "live date is summer 2026, not June 2026 (PRD decision 1)" }
+      },
       "hero.factsLink": { "mock": "[data-hero-actions] + p a", "built": "main .hero .facts a" },
       "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
       "screenshots.eyebrow": {

@@ -35,7 +35,7 @@ page Pipes entry gains a "How I built it" link to it.
 1. Prerendered route at `/pipes` inside the existing header, footer and theme.
 2. Hero: breadcrumb `feedMyPixel / Products / Pipes`, pixel pair beside h1 "Pipes", pitch, lead,
    actions (solid "Chrome Web Store", ghost "Firefox Add-ons", ghost "Source" with the GitHub mark),
-   fact line with a "Privacy policy" link to `/pipes/privacy` (render copy, June 2026).
+   fact line with a "Privacy policy" link to `/pipes/privacy` (render copy, summer 2026).
 3. Screenshots band: eyebrow, h2, the home page Pipes carousel unchanged (four composed slides,
    theme-following shots, counter `01 / 04  Status from your toolbar`), then Problem / Solution /
    Product with the home page copy.
@@ -62,7 +62,7 @@ page Pipes entry gains a "How I built it" link to it.
 
 | # | Question | Decision |
 |---|---|---|
-| 1 | Live month | June 2026 (Ben). |
+| 1 | Live month | Summer 2026 (Ben, 15 Nov 2026; was June 2026). |
 | 2 | Sharing with `/status` | Extract `ProductHero`, `ProductScreenshots` and `BuildStory` from the status sections; status migrates in the same change. Two pages showing the same thing is one component with different content. |
 | 3 | Pipes slides and copy | Move from `Products.svelte` to `src/lib/data/pipes.ts`; home and `/pipes` read the same data. |
 | 4 | Store links | The site's own buttons (solid Chrome, ghost Firefox), as the home entry. The official badges were built and dropped: next to each other they took the eye (Ben, after review). Same for status's App Store and Google Play. |

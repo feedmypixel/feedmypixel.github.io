@@ -23,6 +23,6 @@
   {#snippet facts()}
     Chrome and Firefox · No server · No tracking · Read-only tokens, kept in your browser ·
     <a href={resolve('/pipes/privacy')}>Privacy policy</a> · Live in the Chrome Web Store and Firefox
-    Add-ons, June 2026
+    Add-ons, summer 2026
   {/snippet}
 </ProductHero>
