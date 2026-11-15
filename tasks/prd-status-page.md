@@ -90,6 +90,8 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 25 | Wide and device shots read without zooming | From 760px the `wide` and `devices` shot columns take 2.6 parts of the slide to the caption's 1, with 24px padding, for status and Pipes alike (Ben, 15 Nov 2026, via the stat session: the web screens were unreadable). |
 | 26 | Slide sub-lines | No closing full stop on any carousel slide's sub-line, status and Pipes (Ben, 15 Nov 2026). "Made for all shapes and sizes" shows desktop, tablet and phone (`devices`). |
 | 27 | Contents follow the reader | On both product pages the "In this story" link for the section being read is highlighted (`aria-current`, brand left rule), the last one at the bottom of the page (Ben, 15 Nov 2026). |
+| 28 | One sentence, no full stop | A line of copy that is one sentence has no closing full stop, site-wide: pitches, headings, ledes, list items (Ben, 15 Nov 2026). |
+| 29 | Slide copy in Ben's words | status slide sub-lines rewritten: a status, not a square; no "full post" line; reply to a status; the profile shows your week and your year; no age line; profile, not page (Ben, 15 Nov 2026). |
 
 ## 6. Non-goals
 

@@ -7,7 +7,7 @@ test('has the screenshots anchor and heading', async () => {
   expect(document.querySelector('section#screenshots')).not.toBeNull()
   await expect
     .element(page.getByRole('heading', { level: 2 }))
-    .toHaveTextContent('A popup for a glance, a side panel to keep open.')
+    .toHaveTextContent('A popup for a glance, a side panel to keep open')
 })
 
 test('shows the home page Pipes carousel, counting four slides', () => {

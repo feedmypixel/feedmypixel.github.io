@@ -32,7 +32,7 @@
 
 <Seo
   title="Components - feedMyPixel"
-  description="The component catalogue behind feedmypixel.com - every brick in its states, light and dark."
+  description="The component catalogue behind feedmypixel.com - every brick in its states, light and dark"
   path="/components"
 />
 
@@ -40,7 +40,7 @@
   <header class="intro">
     <p class="eyebrow">Reference</p>
     <h1>Component catalogue</h1>
-    <p class="lede">Every brick this site is built from, in each of its states.</p>
+    <p class="lede">Every brick this site is built from, in each of its states</p>
   </header>
 
   <section aria-labelledby="logo-h">
@@ -186,7 +186,7 @@
 
   <section aria-labelledby="totop-h">
     <h2 id="totop-h">Back to top</h2>
-    <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px.</p>
+    <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px</p>
     <BackToTop />
   </section>
 

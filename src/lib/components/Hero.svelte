@@ -11,7 +11,7 @@
   <div class="container inner">
     <p class="eyebrow">Ben Chidgey - contract full-stack engineer</p>
     <h1>Software that makes you smile</h1>
-    <p class="lede">Twenty years building for the Guardian, the BBC and UK government.</p>
+    <p class="lede">Twenty years building for the Guardian, the BBC and UK government</p>
 
     <div class="actions">
       <Button

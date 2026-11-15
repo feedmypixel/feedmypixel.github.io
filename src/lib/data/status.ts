@@ -73,25 +73,25 @@ export const slides: Slide[] = [
   },
   {
     label: 'Bring your people',
-    sub: 'Follow friends and family. Everyone gets a square',
+    sub: 'Follow friends and family. Everyone gets a status',
     shots: [screenShot('01-home', { inverted: true })],
     layout: 'phones'
   },
   {
     label: 'Your status with an emoji',
-    sub: 'One emoji, one line. A full post is not required',
+    sub: 'One emoji, one line',
     shots: [screenShot('02-composer')],
     layout: 'phones'
   },
   {
     label: 'React and reply, spark that conversation',
-    sub: 'React with an emoji or reply under the status',
+    sub: 'React with an emoji or reply to a status',
     shots: [screenShot('03-replies'), screenShot('04-reactions')],
     layout: 'phones'
   },
   {
     label: 'Your week, your year',
-    sub: 'Every status becomes a square on your profile',
+    sub: 'Your profile shows your week and your year in emoji',
     shots: [screenShot('08-profile')],
     layout: 'phones'
   },
@@ -103,7 +103,7 @@ export const slides: Slide[] = [
   },
   {
     label: 'No ads. No tracking.',
-    sub: 'Sign in by email link or passkey. For 13 and over',
+    sub: 'Sign in by email link or passkey',
     shots: [screenShot('05-discover'), screenShot('09-activity')],
     layout: 'phones'
   },
@@ -119,7 +119,7 @@ export const slides: Slide[] = [
   },
   {
     label: 'You decide who gets in',
-    sub: 'Make your page private so people ask to follow and you approve them',
+    sub: 'Make your profile private and approve who follows you',
     shots: [
       controlShot('06-private-page', 'a private page with a follow button'),
       controlShot('05-follow-requests', 'follow requests to accept or decline')
@@ -134,7 +134,7 @@ export const slides: Slide[] = [
   },
   {
     label: 'Mute, block and report',
-    sub: 'Mute or block anyone; report any status, reply, message or page',
+    sub: 'Mute or block anyone; report any status, reply, message or profile',
     shots: [
       controlShot('01-report', 'a status menu with report'),
       controlShot('01b-report-reasons', 'the reasons to report someone')

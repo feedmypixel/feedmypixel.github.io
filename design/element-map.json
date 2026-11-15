@@ -26,7 +26,11 @@
       "hero.current": { "mock": "nav[aria-label='Breadcrumb'] [aria-current]", "built": "nav[aria-label='Breadcrumb'] [aria-current]" },
       "hero.mark": { "mock": "main div:has(> h1) > span > span", "built": "main .title .mark > span" },
       "hero.title": { "mock": "main h1", "built": "main h1" },
-      "hero.pitch": { "mock": "main div:has(> h1) + p", "built": "main .hero .pitch" },
+      "hero.pitch": {
+        "mock": "main div:has(> h1) + p",
+        "built": "main .hero .pitch",
+        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+      },
       "hero.lead": { "mock": "main div:has(> h1) + p + p", "built": "main .hero .lead" },
       "hero.actions": {
         "mock": "[data-hero-actions]",
@@ -180,7 +184,11 @@
       },
       "hero.mark": { "mock": "main div:has(> h1) > span > span", "built": "main .title .mark > span" },
       "hero.title": { "mock": "main h1", "built": "main h1" },
-      "hero.pitch": { "mock": "main div:has(> h1) + p", "built": "main .hero .pitch" },
+      "hero.pitch": {
+        "mock": "main div:has(> h1) + p",
+        "built": "main .hero .pitch",
+        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+      },
       "hero.lead": { "mock": "main div:has(> h1) + p + p", "built": "main .hero .lead" },
       "hero.actions": {
         "mock": "[data-hero-actions]",
@@ -220,7 +228,11 @@
         "mock": "#screenshots p:has(+ h2)",
         "built": "#screenshots .eyebrow"
       },
-      "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
+      "screenshots.heading": {
+        "mock": "#screenshots h2",
+        "built": "#screenshots h2",
+        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+      },
       "screenshots.strip": {
         "mock": "[aria-label='Pipes screenshots']",
         "built": "[aria-label='Pipes screenshots']",
@@ -304,7 +316,11 @@
         "mock": "#screenshots div[style*='grid-template-columns'] > div > p:last-child",
         "built": "#screenshots .story .text"
       },
-      "story.heading": { "mock": "#story h2", "built": "#story h2" },
+      "story.heading": {
+        "mock": "#story h2",
+        "built": "#story h2",
+        "ignore": { "text": "one sentence has no closing full stop (Ben, status PRD decision 28)" }
+      },
       "story.grid": {
         "mock": "[data-story-grid]",
         "built": "#story .grid",
@@ -467,6 +483,7 @@
         "mock": "[data-status-cap]",
         "built": "#products .caption-column",
         "ignore": {
+          "box.height": "shorter slide copy in Ben's words (status PRD decision 29)",
           "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)",
           "text": "slide sub-lines have no closing full stop (Ben, status PRD decision 26)"
         }

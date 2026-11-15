@@ -5,7 +5,7 @@
 
 <Seo
   title="Pipes privacy policy - feedMyPixel"
-  description="How Pipes handles your data: fully client-side, no backend, nothing ever sent to us."
+  description="How Pipes handles your data: fully client-side, no backend, nothing ever sent to us"
   path="/pipes/privacy"
 />
 
@@ -25,15 +25,15 @@
   <ul>
     <li>
       <strong>Access tokens</strong>: the read-only GitHub / GitLab personal access tokens you add,
-      used to call those providers' APIs on your behalf.
+      used to call those providers' APIs on your behalf
     </li>
     <li>
       <strong>Accounts and settings</strong>: the hosts you connect, the repositories you watch and
-      your notification preferences.
+      your notification preferences
     </li>
     <li>
       <strong>Pipeline snapshots</strong>: the latest status Pipes fetched for your watched
-      repositories, cached so the UI is instant and to detect when a status changes.
+      repositories, cached so the UI is instant and to detect when a status changes
     </li>
   </ul>
 
@@ -55,14 +55,13 @@
 
   <h2>Why the data is needed</h2>
   <ul>
-    <li>The token authenticates the read-only API calls that fetch your pipeline status.</li>
+    <li>The token authenticates the read-only API calls that fetch your pipeline status</li>
     <li>
       Accounts, watched repositories and settings configure what Pipes watches and how it notifies
-      you.
+      you
     </li>
     <li>
-      Snapshots power the at-a-glance UI and let Pipes notify you the moment a default branch
-      breaks.
+      Snapshots power the at-a-glance UI and let Pipes notify you the moment a default branch breaks
     </li>
   </ul>
 
@@ -83,7 +82,7 @@
 
   <h2>Changes to this policy</h2>
   <p>
-    If Pipes' data handling ever changes, this page will be updated with a new "last updated" date.
+    If Pipes' data handling ever changes, this page will be updated with a new "last updated" date
   </p>
 
   <h2>Contact</h2>
@@ -91,7 +90,7 @@
     Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a> or
     <a href="https://github.com/feedmypixel/pipes/issues" target="_blank" rel="noopener noreferrer">
       open an issue<NewTabHint />
-    </a>.
+    </a>
   </p>
 </article>
 

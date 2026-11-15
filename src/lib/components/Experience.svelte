@@ -136,7 +136,7 @@
         Download CV
       </Button>
     </div>
-    <p class="lede">Type to filter or just scroll the timeline.</p>
+    <p class="lede">Type to filter or just scroll the timeline</p>
   </div>
 
   <div class="container controls">

@@ -9,7 +9,7 @@ test('has the story anchor and heading', async () => {
   expect(document.querySelector('section#story')).not.toBeNull()
   await expect
     .element(page.getByRole('heading', { level: 2 }))
-    .toHaveTextContent('How and why I built Pipes, with Claude.')
+    .toHaveTextContent('How and why I built Pipes, with Claude')
 })
 
 test('contents links match one heading per section', () => {
@@ -65,7 +65,7 @@ test('the framed carousel sits in How it is built, after the stack paragraph', (
 test('Built with Claude is one paragraph, with no tip box or list', () => {
   render(PipesStory)
   const text = document.body.textContent?.replace(/\s+/g, ' ')
-  expect(text).toContain('with my own skills (opens in a new tab).')
+  expect(text).toContain('with my own skills (opens in a new tab)')
   expect(text).not.toContain('Pipes came first')
   expect(document.querySelectorAll('#story article ul')).toHaveLength(1)
   expect(document.querySelector('.tip')).toBeNull()

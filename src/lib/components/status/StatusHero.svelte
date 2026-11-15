@@ -7,7 +7,7 @@
 
 <ProductHero
   name="status"
-  pitch="An emoji and your status: break the ice and spark a conversation."
+  pitch="An emoji and your status: break the ice and spark a conversation"
   lead="React, reply and natter. Post an emoji and a few words. Your people react, reply or message you for a natter."
 >
   {#snippet actions()}

@@ -30,13 +30,7 @@ export const slides = [
     1080,
     880
   ),
-  slide(
-    'options',
-    'Connect GitHub and GitLab',
-    'Your tokens never leave your browser. No server',
-    1360,
-    1200
-  ),
+  slide('options', 'Connect GitHub and GitLab', 'Your tokens never leave your browser', 1360, 1200),
   slide(
     'failure-notification',
     'Loud the moment it breaks',
@@ -56,7 +50,7 @@ export const story = {
 }
 
 export const pitch =
-  'CI/CD pipeline monitoring that lives in your browser and goes loud the moment a default branch breaks.'
+  'CI/CD pipeline monitoring that lives in your browser and goes loud the moment a default branch breaks'
 
 const FRAMED_WIDTH = 1040
 const FRAMED_HEIGHT = 650

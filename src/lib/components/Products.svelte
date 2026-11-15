@@ -16,7 +16,7 @@
   <div class="container inner">
     <p class="eyebrow">Products</p>
     <h2>Real tools for real needs</h2>
-    <p class="lede">Designed, built and shipped end to end.</p>
+    <p class="lede">Designed, built and shipped end to end</p>
 
     <ProductEntry
       name="status"

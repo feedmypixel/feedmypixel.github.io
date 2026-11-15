@@ -77,7 +77,7 @@
   <div class="container inner">
     <p class="eyebrow">Contact</p>
     <h2>Like to build something together?</h2>
-    <p class="lede">Available worldwide and remote, happy to accommodate different timezones.</p>
+    <p class="lede">Available worldwide and remote, happy to accommodate different timezones</p>
 
     <div class="grid">
       <form method="post" action={contactEndpoint} novalidate onsubmit={onSubmit}>

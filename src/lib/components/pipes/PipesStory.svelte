@@ -8,7 +8,7 @@
 </script>
 
 <BuildStory
-  heading="How and why I built Pipes, with Claude."
+  heading="How and why I built Pipes, with Claude"
   sections={[
     { id: 'why', label: 'Why I built it' },
     { id: 'how', label: "How it's built" },
@@ -79,7 +79,7 @@
     <ExternalLink href="https://crxjs.dev">crxjs</ExternalLink> plugin on
     <ExternalLink href="https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3"
       >Manifest V3</ExternalLink
-    >, with Chrome and Firefox from one codebase.
+    >, with Chrome and Firefox from one codebase
   </p>
 
   <div class="framed">
@@ -108,7 +108,7 @@
       >Claude Code</ExternalLink
     > with <ExternalLink href="https://github.com/feedmypixel/principles"
       >my own skills</ExternalLink
-    >.
+    >
   </p>
 
   <h3 id="try">Try it</h3>
