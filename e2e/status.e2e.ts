@@ -81,7 +81,7 @@ test('the chevrons move the home status carousel and it stays put', async ({ pag
     .getByRole('button', { name: 'Next screenshot' })
   await next.click()
   await next.click()
-  await expect(counter(page, 'status screenshots')).toHaveText('03 / 10  Your status with an emoji')
+  await expect(counter(page, 'status screenshots')).toHaveText('03 / 11  Your status with an emoji')
   await page.waitForTimeout(800)
   const slideWidth = await strip.evaluate((element) => element.clientWidth + 16)
   await expect

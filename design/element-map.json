@@ -442,19 +442,19 @@
       "slide": {
         "mock": "[data-status-slide]",
         "built": "#products .strip > .slide > .slide",
-        "ignore": { "count": "status gains three privacy and control slides (status PRD decision 21)" }
+        "ignore": { "count": "status gains four privacy and control slides (status PRD decision 21)" }
       },
       "slide.captionColumn": {
         "mock": "[data-status-cap]",
         "built": "#products .caption-column",
-        "ignore": { "count": "status gains three privacy and control slides (status PRD decision 21)" }
+        "ignore": { "count": "status gains four privacy and control slides (status PRD decision 21)" }
       },
       "slide.number": {
         "mock": "[data-status-cap] > span",
         "built": "#products .caption-column .number",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains three privacy and control slides (status PRD decision 21)"
+          "count": "status gains four privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.caption": {
@@ -462,7 +462,7 @@
         "built": "#products .caption-column .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains three privacy and control slides (status PRD decision 21)"
+          "count": "status gains four privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.sub": {
@@ -470,7 +470,7 @@
         "built": "#products .caption-column .sub",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains three privacy and control slides (status PRD decision 21)"
+          "count": "status gains four privacy and control slides (status PRD decision 21)"
         }
       },
       "slide.shots": {
@@ -478,7 +478,7 @@
         "built": "#products .shots",
         "ignore": {
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "count": "status gains three privacy and control slides (status PRD decision 21)",
+          "count": "status gains four privacy and control slides (status PRD decision 21)",
           "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)"
@@ -509,7 +509,7 @@
         "built": "#products figcaption > .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "text": "the status counter runs to 10 with the privacy and control slides (status PRD decision 21)"
+          "text": "the status counter runs to 11 with the privacy and control slides (status PRD decision 21)"
         }
       },
       "story.label": {

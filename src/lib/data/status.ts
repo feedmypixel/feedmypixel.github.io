@@ -36,8 +36,10 @@ export function screenShot(screen: Screen, { inverted = false } = {}): Shot {
 }
 
 type PhoneMoment =
+  | '01-report'
   | '01b-report-reasons'
-  | '02-block-mute'
+  | '03-hidden'
+  | '03c-confirm'
   | '04-message-request'
   | '05-follow-requests'
   | '06-private-page'
@@ -105,8 +107,16 @@ export const slides = [
     label: 'Mute, block and report',
     sub: 'Mute or block anyone; report any status, reply, message or page.',
     shots: [
-      controlShot('02-block-mute', 'a page menu with mute, block and report'),
+      controlShot('01-report', 'a status menu with report'),
       controlShot('01b-report-reasons', 'the reasons to report someone')
+    ]
+  },
+  {
+    label: 'Mature content stays hidden',
+    sub: 'Mature or adult content stays blurred until you choose to see it.',
+    shots: [
+      controlShot('03-hidden', 'a blurred status with a closed eye'),
+      controlShot('03c-confirm', 'a prompt asking to show mature or adult content')
     ]
   }
 ]
