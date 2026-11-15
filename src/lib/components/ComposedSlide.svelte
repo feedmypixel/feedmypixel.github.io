@@ -207,6 +207,11 @@
       margin-top: 0;
     }
 
+    .wide {
+      flex-grow: 2.6;
+      padding: var(--space-6);
+    }
+
     .wide .shot {
       align-self: center;
       width: min(100cqw, 100cqh * var(--ratio));

@@ -53,12 +53,12 @@ function controlShot(moment: PhoneMoment, shows: string): Shot {
 type Device = keyof typeof WEB_SIZES
 type WebView = '01-home' | '02-replies' | '03-profile' | '04-messages'
 
-function webShot(device: Device, view: WebView, shows: string): Shot {
+function webShot(device: Device, view: WebView, shows: string, size = WEB_SIZES[device]): Shot {
   return {
     light: asset(`status/web/${device}/light/${view}.webp`),
     dark: asset(`status/web/${device}/dark/${view}.webp`),
     alt: `status on a ${device}: ${shows}`,
-    ...WEB_SIZES[device]
+    ...size
   }
 }
 
@@ -168,7 +168,12 @@ export const webSlides: Slide[] = [
   {
     label: 'Natter beside your inbox',
     sub: 'Conversations open right next to your messages.',
-    shots: [webShot('desktop', '04-messages', 'a conversation beside the inbox')],
+    shots: [
+      webShot('desktop', '04-messages', 'a conversation beside the inbox', {
+        width: 1440,
+        height: 844
+      })
+    ],
     layout: 'wide'
   },
   {

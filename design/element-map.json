@@ -219,22 +219,33 @@
       },
       "screenshots.captionColumn": {
         "mock": "#screenshots [data-status-cap]",
-        "built": "#screenshots .caption-column"
+        "built": "#screenshots .caption-column",
+        "ignore": { "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)" }
       },
       "screenshots.number": {
         "mock": "#screenshots [data-status-cap] > span",
         "built": "#screenshots .caption-column .number",
-        "ignore": { "children": "the mock template wraps interpolated text in a span" }
+        "ignore": {
+          "children": "the mock template wraps interpolated text in a span",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+        }
       },
       "screenshots.caption": {
         "mock": "#screenshots [data-status-cap] > p:nth-of-type(1)",
         "built": "#screenshots .caption-column .caption",
-        "ignore": { "children": "the mock template wraps interpolated text in a span" }
+        "ignore": {
+          "children": "the mock template wraps interpolated text in a span",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
+        }
       },
       "screenshots.sub": {
         "mock": "#screenshots [data-status-cap] > p:nth-of-type(2)",
         "built": "#screenshots .caption-column .sub",
-        "ignore": { "children": "the mock template wraps interpolated text in a span" }
+        "ignore": {
+          "children": "the mock template wraps interpolated text in a span",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.height": "the narrower caption column wraps the line once more (status PRD decision 25)"
+        }
       },
       "screenshots.shots": {
         "mock": "#screenshots [data-status-phones]",
@@ -243,7 +254,10 @@
           "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
           "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
-          "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)"
+          "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
+          "box.paddingLeft": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.paddingRight": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)"
         }
       },
       "screenshots.shot": {
@@ -251,7 +265,9 @@
         "built": "#screenshots .wide .shot",
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
-          "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)"
+          "children": "each shot is a wrapper holding the light and dark image pair (status PRD FR12)",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.height": "wide shots take more of the slide so they can be read (status PRD decision 25)"
         }
       },
       "screenshots.counter": {
@@ -475,7 +491,9 @@
         "built": "#products .entry.divided .wide .shot",
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)"
+          "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
+          "box.width": "wide shots take more of the slide so they can be read (status PRD decision 25)",
+          "box.height": "wide shots take more of the slide so they can be read (status PRD decision 25)"
         }
       },
       "carousel.counter": {
