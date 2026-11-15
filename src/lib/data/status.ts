@@ -1,35 +1,31 @@
 import { asset } from '$app/paths'
-import { slideNumber } from '#lib/carousel.js'
-import type { Shot } from '#lib/components/ComposedSlide.svelte'
+import type { Layout, Shot } from '#lib/components/ComposedSlide.svelte'
 
 const SCREEN_WIDTH = 660
 const SCREEN_HEIGHT = 1435
-const FRAME_WIDTH = 560
-const FRAME_HEIGHT = 1218
+const WEB_SIZES = {
+  desktop: { width: 1440, height: 900 },
+  tablet: { width: 820, height: 1180 },
+  phone: { width: SCREEN_WIDTH, height: SCREEN_HEIGHT }
+}
 
-export const screens = [
-  '01-home',
-  '02-composer',
-  '03-replies',
-  '04-reactions',
-  '05-discover',
-  '06-search',
-  '07-messages',
-  '08-profile',
-  '09-activity'
-] as const
+type Screen =
+  | '01-home'
+  | '02-composer'
+  | '03-replies'
+  | '04-reactions'
+  | '05-discover'
+  | '07-messages'
+  | '08-profile'
+  | '09-activity'
 
-type Screen = (typeof screens)[number]
-
-export const screenName = (screen: Screen) => screen.slice(3)
-
-export function screenShot(screen: Screen, { inverted = false } = {}): Shot {
+function screenShot(screen: Screen, { inverted = false } = {}): Shot {
   const light = asset(`status/screens/light/${screen}.webp`)
   const dark = asset(`status/screens/dark/${screen}.webp`)
   return {
     light: inverted ? dark : light,
     dark: inverted ? light : dark,
-    alt: `status ${screenName(screen)} screen`,
+    alt: `status ${screen.slice(3)} screen`,
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT
   }
@@ -54,41 +50,72 @@ function controlShot(moment: PhoneMoment, shows: string): Shot {
   }
 }
 
-export const slides = [
+type Device = keyof typeof WEB_SIZES
+type WebView = '01-home' | '02-replies' | '03-profile' | '04-messages'
+
+function webShot(device: Device, view: WebView, shows: string): Shot {
+  return {
+    light: asset(`status/web/${device}/light/${view}.webp`),
+    dark: asset(`status/web/${device}/dark/${view}.webp`),
+    alt: `status on a ${device}: ${shows}`,
+    ...WEB_SIZES[device]
+  }
+}
+
+type Slide = { label: string; sub: string; shots: Shot[]; layout: Layout }
+
+export const slides: Slide[] = [
   {
     label: 'How is everyone?',
     sub: 'Post an emoji and a few words. Your people see it pop up.',
-    shots: [screenShot('01-home'), screenShot('03-replies')]
+    shots: [screenShot('01-home'), screenShot('03-replies')],
+    layout: 'phones'
   },
   {
     label: 'Bring your people',
     sub: 'Follow friends and family. Everyone gets a square.',
-    shots: [screenShot('01-home', { inverted: true })]
+    shots: [screenShot('01-home', { inverted: true })],
+    layout: 'phones'
   },
   {
     label: 'Your status with an emoji',
     sub: 'One emoji, one line. A full post is not required.',
-    shots: [screenShot('02-composer')]
+    shots: [screenShot('02-composer')],
+    layout: 'phones'
   },
   {
     label: 'React and reply, spark that conversation',
     sub: 'React with an emoji or reply under the status.',
-    shots: [screenShot('03-replies'), screenShot('04-reactions')]
+    shots: [screenShot('03-replies'), screenShot('04-reactions')],
+    layout: 'phones'
   },
   {
     label: 'Your week, your year',
     sub: 'Every status becomes a square on your profile.',
-    shots: [screenShot('08-profile')]
+    shots: [screenShot('08-profile')],
+    layout: 'phones'
   },
   {
     label: 'Natter more, privately',
     sub: 'Take it to a private message when there is more to say.',
-    shots: [screenShot('07-messages')]
+    shots: [screenShot('07-messages')],
+    layout: 'phones'
   },
   {
     label: 'No ads. No tracking.',
     sub: 'Sign in by email link or passkey. For 13 and over.',
-    shots: [screenShot('05-discover'), screenShot('09-activity')]
+    shots: [screenShot('05-discover'), screenShot('09-activity')],
+    layout: 'phones'
+  },
+  {
+    label: 'Everything everywhere',
+    sub: 'Made for all screens.',
+    shots: [
+      webShot('desktop', '01-home', 'the home feed'),
+      webShot('tablet', '02-replies', 'a status open to its replies'),
+      webShot('phone', '03-profile', 'a profile with its week and year')
+    ],
+    layout: 'devices'
   },
   {
     label: 'You decide who gets in',
@@ -96,12 +123,14 @@ export const slides = [
     shots: [
       controlShot('06-private-page', 'a private page with a follow button'),
       controlShot('05-follow-requests', 'follow requests to accept or decline')
-    ]
+    ],
+    layout: 'phones'
   },
   {
     label: 'Messages on your terms',
     sub: "Messages from people you don't know arrive as requests you accept or decline.",
-    shots: [controlShot('04-message-request', 'message requests to accept or decline')]
+    shots: [controlShot('04-message-request', 'message requests to accept or decline')],
+    layout: 'phones'
   },
   {
     label: 'Mute, block and report',
@@ -109,7 +138,8 @@ export const slides = [
     shots: [
       controlShot('01-report', 'a status menu with report'),
       controlShot('01b-report-reasons', 'the reasons to report someone')
-    ]
+    ],
+    layout: 'phones'
   },
   {
     label: 'Mature content stays hidden',
@@ -117,31 +147,40 @@ export const slides = [
     shots: [
       controlShot('03-hidden', 'a blurred status with a closed eye'),
       controlShot('03c-confirm', 'a prompt asking to show mature or adult content')
-    ]
+    ],
+    layout: 'phones'
   }
 ]
 
-const storeFrames = [
-  { file: '01-everyone', label: 'Everyone' },
-  { file: '02-people', label: 'People' },
-  { file: '03-emoji', label: 'Emoji' },
-  { file: '04-react', label: 'React' },
-  { file: '05-year', label: 'Year' },
-  { file: '06-natter', label: 'Natter' },
-  { file: '07-no-ads', label: 'No ads' }
-] as const
-
-export const frames = storeFrames.map((frame, index) => {
-  const number = slideNumber(index)
-  return {
-    ...frame,
-    number,
-    src: asset(`status/frames/${frame.file}.webp`),
-    alt: `status store screenshot ${number}: ${frame.label}`,
-    width: FRAME_WIDTH,
-    height: FRAME_HEIGHT
+export const webSlides: Slide[] = [
+  {
+    label: 'Replies, with room to read',
+    sub: 'Open a status and the whole conversation sits beside the feed.',
+    shots: [webShot('desktop', '02-replies', 'a status open to its replies')],
+    layout: 'wide'
+  },
+  {
+    label: 'Your year, on a big screen',
+    sub: 'This week by day and this year by month.',
+    shots: [webShot('desktop', '03-profile', 'a profile with its week and year')],
+    layout: 'wide'
+  },
+  {
+    label: 'Natter beside your inbox',
+    sub: 'Conversations open right next to your messages.',
+    shots: [webShot('desktop', '04-messages', 'a conversation beside the inbox')],
+    layout: 'wide'
+  },
+  {
+    label: 'Made for tablets',
+    sub: 'The phone apps wrap the live site, so a tablet gets the same status.',
+    shots: [
+      webShot('tablet', '03-profile', 'a profile with its week and year'),
+      webShot('tablet', '04-messages', 'a conversation')
+    ],
+    layout: 'phones'
   }
-})
+]
 
 export const story = {
   problem:

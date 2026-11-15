@@ -72,7 +72,7 @@ test('status has ten composed slides and Pipes four', () => {
   render(Products)
   const strips = document.querySelectorAll('.strip')
   expect(strips[0].getAttribute('aria-label')).toBe('status screenshots')
-  expect(strips[0].querySelectorAll('.slide .caption')).toHaveLength(11)
+  expect(strips[0].querySelectorAll('.slide .caption')).toHaveLength(12)
   expect(strips[1].getAttribute('aria-label')).toBe('Pipes screenshots')
   expect(strips[1].querySelectorAll('.slide .caption')).toHaveLength(4)
 })

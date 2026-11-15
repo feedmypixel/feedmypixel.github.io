@@ -7,6 +7,8 @@
     height: number
     frame?: 'window' | 'notification'
   }
+
+  export type Layout = 'phones' | 'wide' | 'devices'
 </script>
 
 <script lang="ts">
@@ -23,7 +25,7 @@
     caption: string
     sub: string
     shots: Shot[]
-    layout: 'phones' | 'wide'
+    layout: Layout
   } = $props()
 </script>
 
@@ -71,7 +73,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--space-4);
-    min-width: 0;
+    min-width: min-content;
     padding: var(--space-6) var(--space-5) var(--space-2);
   }
 
@@ -157,6 +159,16 @@
     border-radius: var(--radius-2xl);
   }
 
+  .devices .shot {
+    width: 100%;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+  }
+
+  .devices .shot + .shot {
+    display: none;
+  }
+
   @media (min-width: 47.5rem) {
     .slide {
       flex-direction: row;
@@ -176,17 +188,17 @@
       container-type: size;
     }
 
+    /* A paired shot may take 59% of the width: two of them, less the 18% overlap, still fit. */
     .phones .shot {
       align-self: flex-start;
-      width: auto;
-      height: 88cqh;
+      width: min(88cqh * var(--ratio), 59cqw);
       border-bottom: 1px solid var(--border-default);
       border-radius: var(--radius-lg);
     }
 
     .phones .shot:only-child {
       align-self: center;
-      height: 100cqh;
+      width: min(100cqh * var(--ratio), 100cqw);
     }
 
     .phones .shot + .shot {
@@ -199,6 +211,44 @@
       align-self: center;
       width: min(100cqw, 100cqh * var(--ratio));
       margin-bottom: 0;
+    }
+
+    /* The cluster is 100 units wide and 67 tall: desktop at the back, tablet and phone on one baseline. */
+    .devices {
+      --unit: min(1cqw, 1.45cqh);
+      --cluster-top: calc(var(--space-8) + 50cqh - 33.5 * var(--unit));
+      --cluster-inset: calc(var(--space-8) + (100cqw - 100 * var(--unit)) / 2);
+
+      position: relative;
+      flex-grow: 2;
+    }
+
+    .devices .shot {
+      position: absolute;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+    }
+
+    .devices .shot:nth-child(1) {
+      top: var(--cluster-top);
+      right: var(--cluster-inset);
+      width: calc(88 * var(--unit));
+    }
+
+    .devices .shot:nth-child(2) {
+      display: block;
+      top: calc(var(--cluster-top) + 21 * var(--unit));
+      left: var(--cluster-inset);
+      z-index: 1;
+      width: calc(46 * var(--unit) * var(--ratio));
+    }
+
+    .devices .shot:nth-child(3) {
+      display: block;
+      top: calc(var(--cluster-top) + 35 * var(--unit));
+      right: calc(var(--cluster-inset) + 4 * var(--unit));
+      z-index: 2;
+      width: calc(32 * var(--unit) * var(--ratio));
     }
   }
 </style>

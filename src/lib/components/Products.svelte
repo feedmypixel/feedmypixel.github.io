@@ -1,14 +1,12 @@
 <script lang="ts">
   import { resolve } from '$app/paths'
   import Button from './Button.svelte'
-  import Carousel from './Carousel.svelte'
   import Chevron from './Chevron.svelte'
-  import ComposedSlide from './ComposedSlide.svelte'
   import GitHubMark from './GitHubMark.svelte'
   import ProductEntry from './ProductEntry.svelte'
   import StatusStoreLinks from './StatusStoreLinks.svelte'
   import PipesCarousel from './pipes/PipesCarousel.svelte'
-  import { slideNumber } from '#lib/carousel.js'
+  import StatusCarousel from './status/StatusCarousel.svelte'
   import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
   import { pitch as pipesPitch, story as pipesStory } from '#lib/data/pipes.js'
   import { pipesChromeUrl, pipesFirefoxUrl, pipesSourceUrl, statusUrl } from '#lib/config.js'
@@ -38,17 +36,7 @@
         </Button>
       {/snippet}
       {#snippet screenshots()}
-        <Carousel items={statusSlides} label="status screenshots">
-          {#snippet slide(item, index)}
-            <ComposedSlide
-              number={slideNumber(index)}
-              caption={item.label}
-              sub={item.sub}
-              shots={item.shots}
-              layout="phones"
-            />
-          {/snippet}
-        </Carousel>
+        <StatusCarousel slides={statusSlides} label="status screenshots" />
       {/snippet}
     </ProductEntry>
 

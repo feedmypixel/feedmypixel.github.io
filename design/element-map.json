@@ -53,34 +53,26 @@
         "built": "main .hero .facts",
         "ignore": { "text": "launch dated autumn 2026, not November 2026 (Ben, 15 Nov 2026)" }
       },
-      "screenshots.section": { "mock": "#screenshots", "built": "#screenshots" },
+      "screenshots.section": {
+        "mock": "#screenshots",
+        "built": "#screenshots",
+        "ignore": { "text": "the store frames are replaced by the home status carousel (PRD decision 24)" }
+      },
       "screenshots.eyebrow": { "mock": "#screenshots h2 ~ *, #screenshots p:has(+ h2)", "built": "#screenshots .eyebrow" },
       "screenshots.heading": { "mock": "#screenshots h2", "built": "#screenshots h2" },
       "screenshots.strip": {
         "mock": "[aria-label='status store screenshots']",
-        "built": "[aria-label='status store screenshots']",
-        "ignore": {
-          "children": "Carousel wraps every slide in a snap item; the figure sits inside it",
-          "box.paddingBottom": "one Carousel strip recipe for all three carousels; the 4px only shows as space under the frames",
-          "box.borderRadius": "one Carousel strip recipe for all three carousels; each frame card carries its own --radius-lg"
-        }
-      },
-      "screenshots.frame": {
-        "mock": "[aria-label='status store screenshots'] > figure",
-        "built": "[aria-label='status store screenshots'] > .slide > figure"
-      },
-      "screenshots.card": {
-        "mock": "[aria-label='status store screenshots'] > figure > div",
-        "built": "[aria-label='status store screenshots'] .card"
-      },
-      "screenshots.frameCaption": {
-        "mock": "[aria-label='status store screenshots'] > figure > figcaption",
-        "built": "[aria-label='status store screenshots'] figcaption"
+        "built": "[aria-label='status screenshots']",
+        "waiver": "the store frames are replaced by the home status carousel, as /pipes reuses its home carousel (PRD decision 24)"
       },
       "screenshots.counter": {
         "mock": "#screenshots figure:has(.fmp-caro-frame) > figcaption > span:first-child",
         "built": "#screenshots .carousel > figcaption > .caption",
-        "ignore": { "children": "the mock template wraps interpolated text in a span" }
+        "ignore": {
+          "children": "the mock template wraps interpolated text in a span",
+          "text": "the store frames are replaced by the home status carousel (PRD decision 24)",
+          "box.width": "the store frames are replaced by the home status carousel (PRD decision 24)"
+        }
       },
       "screenshots.storyLabel": {
         "mock": "#screenshots div[style*='grid-template-columns'] > div > p:first-child",
@@ -136,26 +128,8 @@
       "story.paragraph": { "mock": "#story article > p:first-of-type", "built": "#story article > p:first-of-type" },
       "story.screens": {
         "mock": "[aria-label='status screens']",
-        "built": "[aria-label='status screens']",
-        "waiver": "Ben chose the shared Carousel (arrows, dots, counter) over the inset scroll strip, 13 Nov 2026 (PRD decision 18)"
-      },
-      "story.screen": {
-        "mock": "[aria-label='status screens'] > div > div",
-        "built": "[aria-label='status screens'] .card",
-        "ignore": {
-          "box.width": "screens are 60% of the strip on a phone so they can be read (PRD decision 20)",
-          "box.height": "screens are 60% of the strip on a phone so they can be read (PRD decision 20)"
-        }
-      },
-      "story.screensCaption": {
-        "mock": "#story article figure > figcaption",
-        "built": "#story article .screens-note",
-        "ignore": {
-          "text": "theme word dropped from the caption (PRD decision 4)",
-          "box.height": "the shorter caption (PRD decision 4) wraps to one line fewer at 375",
-          "children": "the mock template wraps interpolated text in a span",
-          "tag": "the note sits below the shared Carousel, which owns its own figcaption (PRD decision 18)"
-        }
+        "built": "[aria-label='status on the web']",
+        "waiver": "the nine-screen strip is replaced by composed slides of the web app (PRD decision 23)"
       },
       "story.bullets": {
         "mock": "#story article ul:not([style*='list-style'])",
@@ -442,19 +416,19 @@
       "slide": {
         "mock": "[data-status-slide]",
         "built": "#products .strip > .slide > .slide",
-        "ignore": { "count": "status gains four privacy and control slides (status PRD decision 21)" }
+        "ignore": { "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)" }
       },
       "slide.captionColumn": {
         "mock": "[data-status-cap]",
         "built": "#products .caption-column",
-        "ignore": { "count": "status gains four privacy and control slides (status PRD decision 21)" }
+        "ignore": { "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)" }
       },
       "slide.number": {
         "mock": "[data-status-cap] > span",
         "built": "#products .caption-column .number",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains four privacy and control slides (status PRD decision 21)"
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)"
         }
       },
       "slide.caption": {
@@ -462,7 +436,7 @@
         "built": "#products .caption-column .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains four privacy and control slides (status PRD decision 21)"
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)"
         }
       },
       "slide.sub": {
@@ -470,7 +444,7 @@
         "built": "#products .caption-column .sub",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "count": "status gains four privacy and control slides (status PRD decision 21)"
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)"
         }
       },
       "slide.shots": {
@@ -478,7 +452,7 @@
         "built": "#products .shots",
         "ignore": {
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
-          "count": "status gains four privacy and control slides (status PRD decision 21)",
+          "count": "status gains an every-screen slide and four privacy slides (status PRD decisions 21 and 24)",
           "layout.alignItems": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingTop": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)",
           "box.paddingBottom": "shots sit whole and centred, not cropped at the bottom (status PRD decision 22)"
@@ -498,7 +472,7 @@
       },
       "pipes.shot": {
         "mock": "#products img[data-wide]",
-        "built": "#products .wide .shot",
+        "built": "#products .entry.divided .wide .shot",
         "ignore": {
           "tag": "each shot is a wrapper holding the light and dark image pair (PRD FR12)",
           "children": "each shot is a wrapper holding the light and dark image pair (PRD FR12)"
@@ -509,7 +483,7 @@
         "built": "#products figcaption > .caption",
         "ignore": {
           "children": "the mock template wraps interpolated text in a span",
-          "text": "the status counter runs to 11 with the privacy and control slides (status PRD decision 21)"
+          "text": "the status counter runs to 12 with the every-screen and privacy slides (status PRD decisions 21 and 24)"
         }
       },
       "story.label": {

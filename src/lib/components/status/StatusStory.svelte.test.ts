@@ -27,39 +27,25 @@ test('contents links match the section ids', () => {
   hrefs.forEach((href) => expect(document.querySelector(href as string)).not.toBeNull())
 })
 
-test('shows nine screens, each with a light and a dark image', () => {
-  render(StatusStory)
-  const strip = document.querySelector('[aria-label="status screens"]')
-  expect(strip?.getAttribute('tabindex')).toBe('0')
-  expect(strip?.querySelectorAll('.screen')).toHaveLength(9)
-  expect(strip?.querySelectorAll('img.light')).toHaveLength(9)
-  expect(strip?.querySelectorAll('img.dark')).toHaveLength(9)
-})
-
-test('the screens move like the other carousels, with arrows, dots and a counter', () => {
+test('shows the web app on desktop and tablet as composed slides that follow the theme', () => {
   render(StatusStory)
   const carousel = document.querySelector('#story figure.carousel')!
-  expect(carousel.querySelectorAll('.step')).toHaveLength(2)
-  expect(carousel.querySelectorAll('.dot')).toHaveLength(9)
-  expect(carousel.querySelector('figcaption > .caption')?.textContent).toBe('01 / 09  home')
+  const strip = carousel.querySelector('[aria-label="status on the web"]')!
+  expect(strip.querySelectorAll('.slide .caption')).toHaveLength(4)
+  expect(strip.querySelectorAll('img.light')).toHaveLength(5)
+  expect(strip.querySelectorAll('img.dark')).toHaveLength(5)
+  expect(carousel.querySelector('figcaption > .caption')?.textContent).toBe(
+    '01 / 04  Replies, with room to read'
+  )
 })
 
-test('names the screens by file stem', () => {
+test('the web carousel sits in How it is built', () => {
   render(StatusStory)
-  const names = [...document.querySelectorAll('.screen-name')].map((name) => name.textContent)
-  expect(names[0]).toBe('home')
-  expect(names[8]).toBe('activity')
-})
-
-test('keeps the screens caption theme neutral', async () => {
-  render(StatusStory)
-  await expect
-    .element(
-      page.getByText(
-        'Nine screens. Web app in a Capacitor shell, so the phone apps and the site are the same build.'
-      )
-    )
-    .toBeVisible()
+  const how = document.querySelector('#how')!
+  const claude = document.querySelector('#claude')!
+  const carousel = document.querySelector('#story figure.carousel')!
+  expect(how.compareDocumentPosition(carousel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  expect(carousel.compareDocumentPosition(claude) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
 
 test('uses the corrected sentence about checking the build', () => {

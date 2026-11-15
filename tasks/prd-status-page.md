@@ -35,10 +35,9 @@ pre-framed images to slides composed live, with screenshots that follow the site
 
 1. Prerendered route at `/status` inside the existing header, footer and theme.
 2. Hero: breadcrumb, pixel pair beside h1 "status", pitch, lead, actions, fact line (render copy).
-3. Screenshots band: seven store frames in a snap strip with chevrons, dots and a counter
-   caption (`01 / 07  Everyone`), then Problem / Solution / Product.
+3. Screenshots band: the home status carousel (decision 24), then Problem / Solution / Product.
 4. Build story: sticky table of contents and stack list from 960px; article with five sections,
-   the nine-screen strip inside "How it's built", the tip box and the repeated actions.
+   the web app carousel inside "How it's built" (decision 23), the tip box and the repeated actions.
 5. More from feedMyPixel: removed (decision 19).
 6. Share image `https://status.me/og.png`, title "status - an emoji and your status | feedMyPixel".
 7. Listed in `sitemap.xml`.
@@ -81,11 +80,13 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 15 | Links gap | `--space-3` for both entries, as rendered. |
 | 16 | "Claude is great when:" bullets | Verbatim, except "keep the instructions…" starts lower case like the rest (Ben). |
 | 17 | Pipes Solution comma | Repo wording (no comma before "and"). |
-| 18 | Build-story screens | The shared Carousel with arrows, dots and a counter, not the inset scroll strip (Ben, after review). |
+| 18 | Build-story screens | Superseded by decision 23. |
 | 19 | "More from feedMyPixel" section | Removed (Ben, after review). The header nav already leads back. |
-| 20 | Build-story screens on a phone | 60% of the strip below 760px (about 215px), not 132px, so they can be read (Ben, after review). Unchanged from 760px. |
+| 20 | Build-story screens on a phone | Superseded by decision 23. |
 | 21 | Privacy and control | Show control being used, not a settings page (Ben, 14 Nov 2026). Home gains three slides from real iPhone captures: "You decide who gets in" (private page, follow requests), "Messages on your terms" (message requests) and "Mute, block and report" (the status menu, report reasons). "Mature content stays hidden" (blurred status, show prompt) is its own slide so the report slide stays clear (Ben, 15 Nov 2026). A `/status` build-story section with the eight-item list and desktop shots, and the 08 Control store frame, were built and then removed (Ben: the desktop shots did not work). |
 | 22 | Screenshots whole, not cropped | From 760px every composed-slide shot fits inside the shot column with even padding: phones at 88% of its height (one top, one bottom when paired, 100% when alone), wide Pipes shots as large as fits. The mock ran phones to 104% and cropped them at the slide's bottom edge (Ben, after review: "you clearly have the space"). Below 760px is unchanged. |
+| 23 | Build-story carousel | The nine-screen strip is replaced by a `StatusCarousel` of four composed slides showing the web app on desktop and tablet ("status on the web"), from the stat session's 15 Nov web captures (`design/status-captures/web/`). Ben: the strip was hard to see and added little. Image tiles with drawn device frames were tried and rejected. |
+| 24 | One slide style for status | Every status carousel uses composed slides (Ben, 15 Nov 2026: "PARITY"). The `/status` screenshots band shows the same `StatusCarousel` as home, as `/pipes` reuses its home carousel; the seven App Store frames are gone. Home and `/status` gain "Everything everywhere" / "Made for all screens." (Ben's words): desktop, tablet and phone in one cluster (`devices` layout), so the carousel runs to 12. Its screens come from one seeded world (`design/status-captures/web/`, including `phone/`). Dots wrap on a phone so 12 never scroll the page sideways. |
 
 ## 6. Non-goals
 

@@ -233,6 +233,7 @@
   .dots {
     display: flex;
     flex: 0 0 100%;
+    flex-wrap: wrap;
     gap: var(--space-2);
   }
 

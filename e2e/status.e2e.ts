@@ -26,12 +26,14 @@ test('the status page does not scroll sideways on a phone', async ({ page }) => 
   expect(scrollWidth).toBe(clientWidth)
 })
 
-test('the build-story screens are big enough to read on a phone', async ({ page }) => {
-  await page.setViewportSize({ width: 393, height: 852 })
+test('the chevrons move the web carousel and its counter', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/status')
-  const firstScreen = page.getByLabel('status screens', { exact: true }).locator('.card').first()
-  const box = await firstScreen.boundingBox()
-  expect(box?.width).toBeGreaterThanOrEqual(200)
+  const strip = page.getByLabel('status on the web', { exact: true })
+  await strip.scrollIntoViewIfNeeded()
+  await page.locator('#story').getByRole('button', { name: 'Next screenshot' }).click()
+  await expect(counter(page, 'status on the web')).toHaveText('02 / 04  Your year, on a big screen')
+  await expect.poll(() => strip.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0)
 })
 
 test('the home page links to the status build story', async ({ page }) => {
@@ -41,35 +43,16 @@ test('the home page links to the status build story', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1, name: 'status' })).toBeVisible()
 })
 
-test('the chevrons move the frame strip and its counter on /status', async ({ page }) => {
+test('the chevrons move the /status carousel and its counter', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('/status')
-  const strip = page.getByLabel('status store screenshots', { exact: true })
+  const strip = page.getByLabel('status screenshots', { exact: true })
   await strip.scrollIntoViewIfNeeded()
   await page.locator('#screenshots').getByRole('button', { name: 'Next screenshot' }).click()
-  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 07  People')
+  await expect(counter(page, 'status screenshots')).toHaveText('02 / 12  Bring your people')
   await expect.poll(() => strip.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0)
   await page.waitForTimeout(400)
-  await expect(counter(page, 'status store screenshots')).toHaveText('02 / 07  People')
-})
-
-test('a frame near the end stays chosen when the strip cannot scroll to its start', async ({
-  page
-}) => {
-  await page.setViewportSize({ width: 1440, height: 900 })
-  await page.goto('/status')
-  const strip = page.getByLabel('status store screenshots', { exact: true })
-  await strip.scrollIntoViewIfNeeded()
-  await page.locator('#screenshots').getByRole('button', { name: 'Show Natter' }).click()
-  await expect
-    .poll(() =>
-      strip.evaluate((element) =>
-        Math.round(element.scrollWidth - element.clientWidth - element.scrollLeft)
-      )
-    )
-    .toBeLessThanOrEqual(2)
-  await page.waitForTimeout(400)
-  await expect(counter(page, 'status store screenshots')).toHaveText('06 / 07  Natter')
+  await expect(counter(page, 'status screenshots')).toHaveText('02 / 12  Bring your people')
 })
 
 test('the chevrons move the home status carousel and it stays put', async ({ page }) => {
@@ -81,7 +64,7 @@ test('the chevrons move the home status carousel and it stays put', async ({ pag
     .getByRole('button', { name: 'Next screenshot' })
   await next.click()
   await next.click()
-  await expect(counter(page, 'status screenshots')).toHaveText('03 / 11  Your status with an emoji')
+  await expect(counter(page, 'status screenshots')).toHaveText('03 / 12  Your status with an emoji')
   await page.waitForTimeout(800)
   const slideWidth = await strip.evaluate((element) => element.clientWidth + 16)
   await expect
@@ -93,15 +76,16 @@ test('screenshots follow the theme and the hidden theme is never downloaded', as
   const requested: string[] = []
   page.on('request', (request) => requested.push(new URL(request.url()).pathname))
   await page.emulateMedia({ colorScheme: 'light' })
-  await page.goto('/status')
-  await page.locator('#story').scrollIntoViewIfNeeded()
-  await page.getByLabel('status screens', { exact: true }).scrollIntoViewIfNeeded()
-  await expect.poll(() => requested.some((path) => path.includes('/screens/light/'))).toBe(true)
-  expect(requested.some((path) => path.includes('/screens/dark/'))).toBe(false)
+  await page.goto('/')
+  await page.getByLabel('status screenshots', { exact: true }).scrollIntoViewIfNeeded()
+  await expect
+    .poll(() => requested.some((path) => path.includes('/screens/light/03-replies')))
+    .toBe(true)
+  expect(requested.some((path) => path.includes('/screens/dark/03-replies'))).toBe(false)
 
   await page.getByRole('button', { name: 'Switch colour theme' }).click()
   const firstScreen = page
-    .getByLabel('status screens', { exact: true })
+    .getByLabel('status screenshots', { exact: true })
     .locator('img:visible')
     .first()
   await expect(firstScreen).toHaveAttribute('src', /\/screens\/dark\/01-home/)

@@ -10,26 +10,11 @@ test('has the screenshots anchor and heading', async () => {
     .toHaveTextContent('Post. React. Reply. Natter.')
 })
 
-test('shows the seven store frames, lazy and sized', () => {
+test('shows the same composed carousel as the home page', () => {
   render(StatusScreenshots)
-  const images = document.querySelectorAll('.strip img')
-  expect(images).toHaveLength(7)
-  images.forEach((image) => {
-    expect(image.getAttribute('loading')).toBe('lazy')
-    expect(image.getAttribute('width')).not.toBeNull()
-    expect(image.getAttribute('height')).not.toBeNull()
-  })
-})
-
-test('numbers each frame and labels the strip', () => {
-  render(StatusScreenshots)
-  const captions = [...document.querySelectorAll('.strip figcaption')].map((caption) =>
-    caption.textContent?.replace(/\s+/g, ' ').trim()
-  )
-  expect(captions[0]).toBe('01 Everyone')
-  expect(captions[6]).toBe('07 No ads')
-  expect(captions).toHaveLength(7)
-  expect(document.querySelector('[aria-label="status store screenshots"]')).not.toBeNull()
+  const strip = document.querySelector('[aria-label="status screenshots"]')!
+  expect(strip.querySelectorAll('.slide .caption')).toHaveLength(12)
+  expect(strip.querySelector('.slide .caption')?.textContent).toBe('How is everyone?')
 })
 
 test('tells the problem, solution and the longer product description', () => {

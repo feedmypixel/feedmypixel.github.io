@@ -1,17 +1,11 @@
 <script lang="ts">
   import { statusAppStoreUrl, statusGooglePlayUrl, statusUrl } from '#lib/config.js'
-  import { screenName, screenShot, screens } from '#lib/data/status.js'
+  import { webSlides } from '#lib/data/status.js'
   import Button from '../Button.svelte'
   import StatusStoreLinks from '../StatusStoreLinks.svelte'
-  import ThemedImage from '../ThemedImage.svelte'
   import ExternalLink from '../ExternalLink.svelte'
-  import Carousel from '../Carousel.svelte'
   import BuildStory from '../product/BuildStory.svelte'
-
-  const screenSlides = screens.map((screen) => ({
-    label: screenName(screen),
-    shot: screenShot(screen)
-  }))
+  import StatusCarousel from './StatusCarousel.svelte'
 </script>
 
 {#snippet storeLink(url: string | undefined, name: string)}
@@ -91,26 +85,8 @@
     Capacitor has worked very well with SvelteKit.
   </p>
 
-  <div class="screens">
-    <Carousel items={screenSlides} label="status screens" slideWidth="var(--screen-width)">
-      {#snippet slide(item)}
-        <div class="screen">
-          <div class="card" style:aspect-ratio="{item.shot.width} / {item.shot.height}">
-            <ThemedImage
-              light={item.shot.light}
-              dark={item.shot.dark}
-              alt={item.shot.alt}
-              width={item.shot.width}
-              height={item.shot.height}
-            />
-          </div>
-          <span class="screen-name">{item.label}</span>
-        </div>
-      {/snippet}
-    </Carousel>
-    <p class="screens-note">
-      Nine screens. Web app in a Capacitor shell, so the phone apps and the site are the same build.
-    </p>
+  <div class="web">
+    <StatusCarousel slides={webSlides} label="status on the web" />
   </div>
 
   <h3 id="claude">Built with Claude</h3>
@@ -180,40 +156,8 @@
 </BuildStory>
 
 <style>
-  .screens {
-    --screen-width: 60%;
-
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+  .web {
     margin-top: var(--space-6);
-  }
-
-  .screen {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .card {
-    overflow: hidden;
-    background: var(--surface-raised);
-    border: 1px solid var(--border-default);
-    border-radius: var(--radius-md);
-  }
-
-  .card :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .screen-name,
-  .screens-note {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    color: var(--ink-muted);
   }
 
   .tip {
@@ -222,11 +166,5 @@
     color: var(--ink-strong);
     background: var(--surface-sunken);
     border-radius: var(--radius-lg);
-  }
-
-  @media (min-width: 47.5rem) {
-    .screens {
-      --screen-width: clamp(132px, 14vw, 168px);
-    }
   }
 </style>

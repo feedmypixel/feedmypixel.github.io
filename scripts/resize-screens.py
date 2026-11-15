@@ -1,6 +1,6 @@
 """Build web-sized status and Pipes screenshots from the pinned design originals.
 
-Store frames, plain screens and the Pipes framed store set become WebP; pipe screenshots and
+Status phone and web screens and the Pipes framed store set become WebP; pipe screenshots and
 the Pipes share image are already small and are copied byte-for-byte.
 Run from the repo root: python3 -I scripts/resize-screens.py
 """
@@ -12,17 +12,17 @@ from pathlib import Path
 from PIL import Image
 
 SCREENS_SOURCE_DIRECTORY = Path('design/status-captures')
-FRAMES_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'frames'
 CONTROL_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'control'
+WEB_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'web'
 PIPES_SOURCE_DIRECTORY = Path('design/pipes-captures')
 PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
 
-FRAMES_DIRECTORY = Path('static/status/frames')
 SCREENS_DIRECTORY = Path('static/status/screens')
+WEB_DIRECTORY = Path('static/status/web')
 PIPES_DIRECTORY = Path('static/pipes')
 
-FRAME_WIDTH = 560
 SCREEN_WIDTH = 660
+WEB_WIDTHS = {'desktop': 1440, 'tablet': 820, 'phone': SCREEN_WIDTH}
 FRAMED_WIDTH = 1040
 WEBP_QUALITY = 85
 
@@ -54,9 +54,11 @@ def report(destination, dimensions):
 
 def main():
     jobs = []
-    for source in sorted(FRAMES_SOURCE_DIRECTORY.glob('*.png')):
-        jobs.append((source, FRAMES_DIRECTORY / f'{source.stem}.webp', FRAME_WIDTH))
     for theme in THEMES:
+        for device, width in WEB_WIDTHS.items():
+            for source in sorted((WEB_SOURCE_DIRECTORY / device / theme).glob('*.png')):
+                destination = WEB_DIRECTORY / device / theme / f'{source.stem}.webp'
+                jobs.append((source, destination, width))
         for source in sorted((SCREENS_SOURCE_DIRECTORY / theme).glob('*.png')):
             jobs.append((source, SCREENS_DIRECTORY / theme / f'{source.stem}.webp', SCREEN_WIDTH))
         for source in sorted((CONTROL_SOURCE_DIRECTORY / 'iphone' / theme).glob('*.png')):
