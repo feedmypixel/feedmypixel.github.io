@@ -6,6 +6,7 @@
     width: number
     height: number
     frame?: 'window' | 'notification'
+    scale?: number
   }
 
   export type Layout = 'phones' | 'wide' | 'devices'
@@ -42,6 +43,7 @@
         data-frame={shot.frame ?? 'window'}
         style:aspect-ratio="{shot.width} / {shot.height}"
         style:--ratio={shot.width / shot.height}
+        style:--scale={shot.scale}
       >
         <ThemedImage
           light={shot.light}
@@ -214,7 +216,7 @@
 
     .wide .shot {
       align-self: center;
-      width: min(100cqw, 100cqh * var(--ratio));
+      width: calc(min(100cqw, 100cqh * var(--ratio)) * var(--scale, 1));
       margin-bottom: 0;
     }
 

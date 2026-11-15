@@ -3,13 +3,16 @@ import { slideNumber } from '#lib/carousel.js'
 
 type View = 'popup' | 'sidepanel' | 'options' | 'failure-notification'
 
+const SHOT_SCALE = 1 / 1.25
+
 const shot = (view: View, label: string, width: number, height: number) => ({
   light: asset(`pipes/${view}-light.png`),
   dark: asset(`pipes/${view}-dark.png`),
   alt: `Pipes: ${label.toLowerCase()}`,
   width,
   height,
-  frame: view === 'failure-notification' ? ('notification' as const) : ('window' as const)
+  frame: view === 'failure-notification' ? ('notification' as const) : ('window' as const),
+  scale: SHOT_SCALE
 })
 
 const slide = (view: View, label: string, sub: string, width: number, height: number) => ({
