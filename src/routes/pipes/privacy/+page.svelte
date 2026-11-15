@@ -96,7 +96,8 @@
 
 <style>
   .policy {
-    max-width: 70ch;
+    display: grid;
+    grid-template-columns: minmax(0, 70ch);
     padding-block: var(--band);
   }
 
