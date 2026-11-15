@@ -213,14 +213,15 @@
       margin-bottom: 0;
     }
 
-    /* The cluster is 100 units wide and 67 tall: desktop at the back, tablet and phone on one baseline. */
+    /* The cluster is 92 units wide and 67 tall: desktop at the back, tablet and phone on one baseline. */
     .devices {
-      --unit: min(1cqw, 1.45cqh);
-      --cluster-top: calc(var(--space-8) + 50cqh - 33.5 * var(--unit));
-      --cluster-inset: calc(var(--space-8) + (100cqw - 100 * var(--unit)) / 2);
+      --unit: min(100cqw / 92, 100cqh / 67);
+      --cluster-top: calc(var(--space-6) + 50cqh - 33.5 * var(--unit));
+      --cluster-inset: calc(var(--space-6) + (100cqw - 92 * var(--unit)) / 2);
 
       position: relative;
-      flex-grow: 2;
+      flex-grow: 2.6;
+      padding: var(--space-6);
     }
 
     .devices .shot {
