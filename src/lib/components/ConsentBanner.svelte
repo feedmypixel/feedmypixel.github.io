@@ -12,6 +12,7 @@
 
   $effect(() => {
     consent.init()
+    delete document.documentElement.dataset.consentDecided
   })
 
   $effect(() => {
@@ -77,6 +78,10 @@
     box-shadow: var(--shadow-md);
     opacity: 1;
     transition: opacity var(--transition-slow) var(--ease-emphasized);
+  }
+
+  :global(html[data-consent-decided]) .banner {
+    display: none;
   }
 
   .closing {
