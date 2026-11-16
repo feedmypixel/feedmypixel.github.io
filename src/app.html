@@ -17,6 +17,24 @@
         document.documentElement.dataset.theme = theme
       } catch (e) {}
     </script>
+    <script>
+      // No-flash consent banner: hide it before paint for anyone who has already chosen.
+      const storedConsent = () => {
+        try {
+          return localStorage.getItem('fmp-consent')
+        } catch (e) {
+          return null
+        }
+      }
+      if (
+        navigator.globalPrivacyControl === true ||
+        navigator.doNotTrack === '1' ||
+        storedConsent() === 'granted' ||
+        storedConsent() === 'denied'
+      ) {
+        document.documentElement.dataset.consentDecided = ''
+      }
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">
