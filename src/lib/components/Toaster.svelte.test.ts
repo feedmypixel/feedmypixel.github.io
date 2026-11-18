@@ -7,6 +7,16 @@ beforeEach(() => {
   toasts.items = []
 })
 
+test('is a live region before any toast arrives, so each toast is announced once', async () => {
+  render(Toaster)
+  const region = page.getByRole('region', { name: 'Notifications' })
+  await expect.element(region).toHaveAttribute('aria-live', 'polite')
+
+  toasts.push('info', 'Hello there')
+  await expect.element(region).toHaveTextContent('Hello there')
+  expect(document.querySelector('.toaster [role="status"]')).toBeNull()
+})
+
 test('renders toasts pushed to the store and removes them on dismiss', async () => {
   render(Toaster)
   toasts.push('info', 'Hello there')
