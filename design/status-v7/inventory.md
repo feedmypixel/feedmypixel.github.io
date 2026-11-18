@@ -1,6 +1,6 @@
 # status v7 build inventory
 
-Sources (all under `design/status-v7/mocks-pinned/`): `README.md`, `BEHAVIOR.md`, `CHANGELOG.md`, `_ds/base.css`, `_ds/tokens.css`, `render/Status.dc.html` (line refs `S:n`), `render/feedMyPixel.dc.html` (line refs `H:n`). Repo refs are relative to the repo root. An element map for the fix loop already exists at `design/status-v7/element-map.json`.
+Sources (all under `design/status-v7/mocks-pinned/`): `README.md`, `BEHAVIOR.md`, `CHANGELOG.md`, `_ds/base.css`, `_ds/tokens.css`, `render/Status.dc.html` (line refs `S:n`), `render/feedMyPixel.dc.html` (line refs `H:n`). Repo refs are relative to the repo root. An element map for the fix loop already exists at `design/element-map.json`.
 
 Token naming: the mock uses `--size-*`, `--leading-*`, `--weight-*`, `--dur*`. The repo uses `--font-size-*`, `--line-height-*`, `--font-weight-*`, `--transition*` (`src/lib/styles/tokens.css`). Same values. Tokens below are written in repo names.
 

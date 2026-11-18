@@ -12,13 +12,24 @@ Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
 
 ## Products
 
-- [Pipes](https://github.com/feedmypixel/pipes): CI/CD pipeline monitoring as a browser extension.
+- [status](https://feedmypixel.com/status): an emoji and your status. Break the ice and spark a
+  conversation. React, reply and natter. A SvelteKit and Svelte 5 web app with a Fastify and
+  PostgreSQL api. The iPhone and Android apps are Capacitor shells around the live site. No ads and
+  no tracking. Live at [status.me](https://status.me), on the App Store and on Google Play.
+- [Pipes](https://feedmypixel.com/pipes): CI/CD pipeline monitoring as a browser extension.
   Watches GitHub Actions and GitLab CI/CD and goes loud the moment a default branch breaks. Fully
   client-side - no server, no tracking. Published on the Chrome Web Store and Firefox Add-ons.
+  [Source on GitHub](https://github.com/feedmypixel/pipes).
 
 ## Pages
 
-- [Home](https://feedmypixel.com/): hero, products, searchable CV and contact, on one page.
+- [Home](https://feedmypixel.com/): hero, products, searchable CV, services and contact, on one page.
+- [status](https://feedmypixel.com/status): what status is, with screenshots, and how Ben Chidgey
+  built it with SvelteKit, Fastify and Claude.
+- [Pipes](https://feedmypixel.com/pipes): what Pipes is, with screenshots, and how and why Ben
+  Chidgey built it with Svelte 5, Manifest V3 and Claude.
+- [Pipes privacy policy](https://feedmypixel.com/pipes/privacy): how Pipes handles your data. Fully
+  client-side, no backend, nothing ever sent to feedMyPixel.
 - [Components](https://feedmypixel.com/components): the component catalogue this site is built from.
 - [CV (PDF)](https://feedmypixel.com/BenChidgeyCV.pdf): the full work history as a document.
 
