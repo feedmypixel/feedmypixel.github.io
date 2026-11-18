@@ -25,6 +25,7 @@
   import { buildRuns } from '#lib/role-runs.js'
   import EmptyState from './EmptyState.svelte'
   import Button from './Button.svelte'
+  import DownloadArrow from './DownloadArrow.svelte'
 
   let query = $state('')
   let chips = $state<FilterChip[]>([])
@@ -121,19 +122,7 @@
     <SectionHeader eyebrow="Experience" heading="Search my CV">
       {#snippet actions()}
         <Button variant="solid" href={asset(cvFileName)} download={cvFileName}>
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" />
-          </svg>
+          <DownloadArrow />
           Download CV
         </Button>
       {/snippet}
