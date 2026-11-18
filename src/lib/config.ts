@@ -12,8 +12,8 @@ export const pipesShareImage = { url: `${siteUrl}/pipes/og-image.png`, width: 14
 
 export const statusUrl = 'https://status.me'
 export const statusShareImage = { url: 'https://status.me/og.png', width: 1200, height: 630 }
-export const statusAppStoreUrl: string | undefined = undefined
-export const statusGooglePlayUrl: string | undefined = undefined
+export const statusAppStoreUrl = 'https://apps.apple.com/app/status-me/id6829789500'
+export const statusGooglePlayUrl = 'https://play.google.com/store/apps/details?id=app.status.me'
 
 export const analyticsId = 'G-9LQ8KHG828'
 

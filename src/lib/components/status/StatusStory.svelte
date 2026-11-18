@@ -9,14 +9,6 @@
   import HeadingLink from '../HeadingLink.svelte'
 </script>
 
-{#snippet storeLink(url: string | undefined, name: string)}
-  {#if url}
-    <ExternalLink href={url}>{name}</ExternalLink>
-  {:else}
-    {name}
-  {/if}
-{/snippet}
-
 <BuildStory
   heading="How and why I built status, with Claude, on SvelteKit"
   sections={[
@@ -47,8 +39,8 @@
       <dt>Apps</dt>
       <dd>
         <ExternalLink href="https://capacitorjs.com">Capacitor</ExternalLink>,
-        {@render storeLink(statusAppStoreUrl, 'iPhone')} and
-        {@render storeLink(statusGooglePlayUrl, 'Android')}
+        <ExternalLink href={statusAppStoreUrl}>iPhone</ExternalLink> and
+        <ExternalLink href={statusGooglePlayUrl}>Android</ExternalLink>
       </dd>
     </div>
     <div>
@@ -139,8 +131,9 @@
   <p>
     This has been an immense amount of fun: a modern web app plus iPhone and Android apps, built
     with SvelteKit, Fastify and <ExternalLink href="https://claude.com">Claude</ExternalLink>. Try
-    it at <ExternalLink href={statusUrl}>status.me</ExternalLink>. The iPhone and Android apps are
-    coming very soon.
+    it at <ExternalLink href={statusUrl}>status.me</ExternalLink> or in the
+    <ExternalLink href={statusAppStoreUrl}>App Store</ExternalLink> and
+    <ExternalLink href={statusGooglePlayUrl}>Google Play</ExternalLink>.
   </p>
   <div class="actions">
     <Button variant="solid" external href={statusUrl}>Open status.me</Button>

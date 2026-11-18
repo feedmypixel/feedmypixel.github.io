@@ -24,9 +24,12 @@ test('opens status.me in a new tab', () => {
   expect(link?.getAttribute('target')).toBe('_blank')
 })
 
-test('shows no store links while the apps are not live', () => {
+test('offers the web app and both app stores', async () => {
   render(StatusHero)
-  expect(document.querySelectorAll('a.button')).toHaveLength(1)
+  expect(document.querySelectorAll('a.button')).toHaveLength(3)
+  await expect.element(page.getByRole('link', { name: /^App Store/ })).toBeVisible()
+  await expect.element(page.getByRole('link', { name: /^Google Play/ })).toBeVisible()
+  expect(document.body.textContent).toContain('Web, iPhone and Android')
 })
 
 test('keeps the hero out of the scroll reveal', () => {

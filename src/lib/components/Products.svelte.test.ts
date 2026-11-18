@@ -37,10 +37,14 @@ test('Pipes Solution has no comma before and', () => {
   )
 })
 
-test('status store links stay hidden until the apps are listed', async () => {
+test('status links to both app stores', async () => {
   render(Products)
-  await expect.element(page.getByRole('link', { name: /App Store/ })).not.toBeInTheDocument()
-  await expect.element(page.getByRole('link', { name: /Google Play/ })).not.toBeInTheDocument()
+  await expect
+    .element(page.getByRole('link', { name: /^App Store/ }))
+    .toHaveAttribute('href', 'https://apps.apple.com/app/status-me/id6829789500')
+  await expect
+    .element(page.getByRole('link', { name: /^Google Play/ }))
+    .toHaveAttribute('href', 'https://play.google.com/store/apps/details?id=app.status.me')
 })
 
 test('Pipes offers both stores and the source, each in a new tab', async () => {
