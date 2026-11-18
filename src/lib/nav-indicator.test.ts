@@ -1,8 +1,11 @@
 import { mostVisibleId, indicatorGeometry, sectionForRoute } from './nav-indicator'
 
-test('a product page marks Products in the section nav', () => {
-  expect(sectionForRoute('/status')).toBe('products')
-})
+test.each(['/status', '/pipes', '/pipes/privacy'])(
+  '%s marks Products in the section nav',
+  (routeId) => {
+    expect(sectionForRoute(routeId)).toBe('products')
+  }
+)
 
 test('pages outside a section mark nothing', () => {
   expect(sectionForRoute('/components')).toBeNull()
