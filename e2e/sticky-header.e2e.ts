@@ -31,11 +31,14 @@ test('a section link lands the section clear of the header', async ({ page }) =>
   expect(await topOf(section)).toBeGreaterThanOrEqual(await headerHeight(page))
 })
 
-test('a deep link to a heading lands the heading in view', async ({ page }) => {
+test('a deep link to a heading lands the heading just below the header', async ({ page }) => {
   await page.goto('/status')
   const id = await page.locator('main :is(h2, h3)[id]').first().getAttribute('id')
   await page.goto(`/status#${id}`)
   const heading = page.locator(`[id="${id}"]`)
   await expect(heading).toBeInViewport()
-  expect(await topOf(heading)).toBeGreaterThanOrEqual(await headerHeight(page))
+  const header = await headerHeight(page)
+  const top = await topOf(heading)
+  expect(top).toBeGreaterThanOrEqual(header)
+  expect(top).toBeLessThan(header * 2)
 })

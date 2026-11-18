@@ -70,7 +70,7 @@
 
 <style>
   .title {
-    scroll-margin-top: calc(var(--header-height) + var(--space-6));
+    scroll-margin-top: var(--space-6);
     font-family: var(--font-display);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
