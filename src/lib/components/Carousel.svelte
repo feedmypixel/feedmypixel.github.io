@@ -50,7 +50,7 @@
     index = target
     if (stripEl) {
       const offset = slideOffsets(stripEl).at(target) ?? 0
-      stripEl.scrollTo({ left: Math.min(offset, maxScroll(stripEl)), behavior: 'smooth' })
+      stripEl.scrollTo({ left: Math.min(offset, maxScroll(stripEl)) })
     }
   }
 
@@ -147,14 +147,14 @@
   @media (min-width: 42.5rem) {
     .frame,
     figcaption {
-      padding-inline: 64px;
+      padding-inline: var(--space-16);
     }
   }
 
   /* From here the page margin is wide enough to hold the chevrons, so the slides take the full width. */
   @media (min-width: 80rem) {
     .frame {
-      margin-inline: -64px;
+      margin-inline: calc(var(--space-16) * -1);
     }
 
     figcaption {
@@ -167,9 +167,14 @@
     gap: var(--space-4);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     border-radius: var(--radius-lg);
     scrollbar-width: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .strip {
+      scroll-behavior: smooth;
+    }
   }
 
   .strip::-webkit-scrollbar {

@@ -43,3 +43,18 @@ for (const route of routes) {
     }
   })
 }
+
+test('the next button jumps without animating for a visitor who prefers reduced motion', async ({
+  page
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/pipes')
+  const figure = page.locator('figure.carousel').first()
+  await expect(figure.locator('.next')).toBeVisible()
+  const scrolledStraightAfterClick = await figure.evaluate((element) => {
+    element.querySelector<HTMLButtonElement>('.next')!.click()
+    return element.querySelector('.strip')!.scrollLeft
+  })
+  expect(scrolledStraightAfterClick).toBeGreaterThan(0)
+})
