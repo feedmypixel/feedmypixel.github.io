@@ -1,5 +1,6 @@
 <script lang="ts">
   import { asset } from '$app/paths'
+  import { cvFileName } from '#lib/config.js'
   import Button from './Button.svelte'
   import EmailPill from './EmailPill.svelte'
 
@@ -16,8 +17,8 @@
     <div class="actions">
       <Button
         variant="solid"
-        href={asset('BenChidgeyCV.pdf')}
-        download="BenChidgeyCV.pdf"
+        href={asset(cvFileName)}
+        download={cvFileName}
         aria-label="Download CV"
       >
         <svg

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte'
   import { asset } from '$app/paths'
+  import { cvFileName } from '#lib/config.js'
   import { roles } from '#lib/data/experience.js'
   import {
     QUICK_FILTERS,
@@ -119,7 +120,7 @@
   <div class="container intro">
     <SectionHeader eyebrow="Experience" heading="Search my CV">
       {#snippet actions()}
-        <Button variant="solid" href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
+        <Button variant="solid" href={asset(cvFileName)} download={cvFileName}>
           <svg
             width="15"
             height="15"
@@ -205,7 +206,7 @@
     <noscript>
       <p class="noscript">
         Search and filtering need JavaScript. The full history is listed below and the
-        <a href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
+        <a href={asset(cvFileName)} download={cvFileName}>CV is downloadable</a>.
       </p>
     </noscript>
   </div>
