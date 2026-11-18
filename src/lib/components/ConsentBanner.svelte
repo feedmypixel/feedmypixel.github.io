@@ -2,7 +2,7 @@
   import { consent } from '#lib/consent.svelte.js'
   import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
-  import NewTabHint from './NewTabHint.svelte'
+  import ExternalLink from './ExternalLink.svelte'
 
   const FADE_MS = 320
 
@@ -56,9 +56,7 @@
       <p id="consent-copy" class="copy">
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
         yes and no personal data is collected either way.
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-          Read more<NewTabHint />
-        </a>
+        <ExternalLink href="https://policies.google.com/privacy">Read more</ExternalLink>
       </p>
       <div class="actions">
         <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
