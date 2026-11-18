@@ -6,7 +6,7 @@
 
   const home = resolve('/')
 
-  let { open, onclose }: { open: boolean; onclose: () => void } = $props()
+  let { open, onClose }: { open: boolean; onClose: () => void } = $props()
 
   const reducedMotion = new MediaQuery('prefers-reduced-motion: reduce')
   const slideDuration = $derived(reducedMotion.current ? 0 : 220)
@@ -24,7 +24,7 @@
 
     const onKeydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onclose()
+        onClose()
         return
       }
       if (event.key !== 'Tab' || !panelEl) {
@@ -58,7 +58,7 @@
     type="button"
     aria-label="Close menu"
     tabindex="-1"
-    onclick={onclose}
+    onclick={onClose}
     transition:fade={{ duration: fadeDuration }}
   ></button>
   <div
@@ -72,7 +72,7 @@
   >
     <nav aria-label="Sections">
       {#each sections as section (section.id)}
-        <a href="{home}#{section.id}" onclick={onclose}>{section.label}</a>
+        <a href="{home}#{section.id}" onclick={onClose}>{section.label}</a>
       {/each}
     </nav>
   </div>

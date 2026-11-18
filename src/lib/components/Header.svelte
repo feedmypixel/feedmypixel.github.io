@@ -124,7 +124,7 @@
   </div>
 </header>
 
-<MobileNav open={drawerOpen} onclose={() => (drawerOpen = false)} />
+<MobileNav open={drawerOpen} onClose={() => (drawerOpen = false)} />
 
 <style>
   .header {
