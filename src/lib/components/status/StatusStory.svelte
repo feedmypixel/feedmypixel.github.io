@@ -29,7 +29,7 @@
       </dd>
     </div>
     <div>
-      <dt>Api</dt>
+      <dt>API</dt>
       <dd>
         <ExternalLink href="https://fastify.dev">Fastify</ExternalLink>,
         <ExternalLink href="https://www.postgresql.org">PostgreSQL</ExternalLink>
