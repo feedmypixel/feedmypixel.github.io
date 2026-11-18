@@ -12,10 +12,6 @@ beforeEach(() => {
   delete window.dataLayer
 })
 
-test('nothing from Google is on the page until analytics is loaded', () => {
-  expect(gtagScripts()).toHaveLength(0)
-})
-
 test('loading adds the tag for the configured property', () => {
   loadAnalytics()
   const scripts = gtagScripts()

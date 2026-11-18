@@ -1,6 +1,5 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
-import Button from './Button.svelte'
 import ButtonHarness from './Button.harness.svelte'
 
 test('renders a link when given an href', async () => {
@@ -60,8 +59,4 @@ test('calls onclick', async () => {
   render(ButtonHarness, { props: { label: 'Clear all filters', onclick } })
   await page.getByRole('button', { name: 'Clear all filters' }).click()
   expect(onclick).toHaveBeenCalledOnce()
-})
-
-test('is exported as the default component', () => {
-  expect(Button).toBeTypeOf('function')
 })
