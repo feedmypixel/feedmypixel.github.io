@@ -97,3 +97,36 @@ test('the banner takes focus so it is announced', async () => {
     expect(document.activeElement).toBe(banner())
   })
 })
+
+function addToPage(html: string) {
+  const host = document.createElement('div')
+  host.innerHTML = html
+  document.body.append(host)
+  onTestFinished(() => host.remove())
+  return host.firstElementChild as HTMLElement
+}
+
+test('a first-visit answer hands focus to the main content rather than dropping it', async () => {
+  const main = addToPage('<main tabindex="-1"></main>')
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(document.activeElement).toBe(banner()))
+  await page.getByRole('button', { name: 'Decline' }).click()
+
+  await vi.waitFor(() => expect(banner()).toBeNull())
+  expect(document.activeElement).toBe(main)
+})
+
+test('an answer after reopening hands focus back to the control that reopened it', async () => {
+  addToPage('<main tabindex="-1"></main>')
+  const cookieSettings = addToPage('<button type="button">Cookie settings</button>')
+  localStorage.setItem(CONSENT_KEY, 'denied')
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(consent.choice).toBe('denied'))
+  cookieSettings.focus()
+  consent.ask()
+  await vi.waitFor(() => expect(document.activeElement).toBe(banner()))
+  await page.getByRole('button', { name: 'Accept analytics' }).click()
+
+  await vi.waitFor(() => expect(banner()).toBeNull())
+  expect(document.activeElement).toBe(cookieSettings)
+})
