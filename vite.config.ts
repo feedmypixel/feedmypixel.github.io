@@ -35,7 +35,6 @@ export default defineConfig({
         'coverage/**',
         'e2e/**',
         'playwright.config.ts',
-        'playwright.visual.config.ts',
         'vite.config.ts',
         'eslint.config.js',
         'src/app.d.ts',

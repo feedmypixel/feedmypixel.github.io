@@ -12,7 +12,6 @@ node_modules
 /coverage
 /test-results
 /playwright-report
-/e2e/visual/__screenshots__/*-actual.png
 
 # Local symlink to the shared ai-dev-tasks workflow repo (not part of this repo)
 /ai-dev-tasks

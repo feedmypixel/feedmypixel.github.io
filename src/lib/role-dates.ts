@@ -25,29 +25,6 @@ export function describeMonths(months: number): string {
   return rest === 0 ? yearPart : `${yearPart} ${monthPart}`
 }
 
-/* Dates are display strings, and two of the roles predate the Mon YYYY format.
-   Anything unparseable returns null so the card simply omits the duration. */
-export function roleDuration(dates: string, now: Date): string | null {
-  const [rawStart, rawEnd] = dates.split(' - ').map((part) => part.trim())
-  if (!rawStart || !rawEnd) {
-    return null
-  }
-
-  const start = parsePoint(rawStart)
-  if (!start) {
-    return null
-  }
-
-  const end =
-    rawEnd === 'present' ? { year: now.getFullYear(), month: now.getMonth() } : parsePoint(rawEnd)
-  if (!end) {
-    return null
-  }
-
-  const months = (end.year - start.year) * 12 + (end.month - start.month) + 1
-  return months < 1 ? null : describeMonths(months)
-}
-
 export function monthsBetween(start: Point, end: Point): number {
   return (end.year - start.year) * 12 + (end.month - start.month) + 1
 }
