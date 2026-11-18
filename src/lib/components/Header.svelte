@@ -5,15 +5,9 @@
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import { mostVisibleId, indicatorGeometry, sectionForRoute } from '#lib/nav-indicator.js'
+  import { sections } from '#lib/data/sections.js'
 
   const home = resolve('/')
-
-  const sections = [
-    { id: 'products', label: 'Products' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'services', label: 'Services' },
-    { id: 'contact', label: 'Contact' }
-  ]
 
   let active = $state<string | null>(null)
   let drawerOpen = $state(false)

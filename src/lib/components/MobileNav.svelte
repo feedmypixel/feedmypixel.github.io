@@ -2,6 +2,7 @@
   import { fade, fly } from 'svelte/transition'
   import { MediaQuery } from 'svelte/reactivity'
   import { resolve } from '$app/paths'
+  import { sections } from '#lib/data/sections.js'
 
   const home = resolve('/')
 
@@ -10,13 +11,6 @@
   const reducedMotion = new MediaQuery('prefers-reduced-motion: reduce')
   const slideDuration = $derived(reducedMotion.current ? 0 : 220)
   const fadeDuration = $derived(reducedMotion.current ? 0 : 160)
-
-  const links = [
-    { id: 'products', label: 'Products' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'services', label: 'Services' },
-    { id: 'contact', label: 'Contact' }
-  ]
 
   let panelEl: HTMLElement | undefined = $state()
 
@@ -77,8 +71,8 @@
     transition:fly={{ x: 288, duration: slideDuration }}
   >
     <nav aria-label="Sections">
-      {#each links as link (link.id)}
-        <a href="{home}#{link.id}" onclick={onclose}>{link.label}</a>
+      {#each sections as section (section.id)}
+        <a href="{home}#{section.id}" onclick={onclose}>{section.label}</a>
       {/each}
     </nav>
   </div>
