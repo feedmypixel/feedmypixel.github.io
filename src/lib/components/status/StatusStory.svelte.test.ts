@@ -66,13 +66,10 @@ test('opens every external link in a new tab', () => {
   })
 })
 
-test('shows no store links while the apps are not live', () => {
+test('links the apps to their stores', () => {
   render(StatusStory)
   const hrefs = [...document.querySelectorAll('a')].map((link) => link.getAttribute('href'))
-  expect(hrefs.some((href) => href?.includes('apple.com') || href?.includes('play.google'))).toBe(
-    false
-  )
-  expect(document.body.textContent?.replace(/\s+/g, ' ')).toContain(
-    'The iPhone and Android apps are coming very soon'
-  )
+  expect(hrefs).toContain('https://apps.apple.com/app/status-me/id6829789500')
+  expect(hrefs).toContain('https://play.google.com/store/apps/details?id=app.status.me')
+  expect(document.body.textContent).not.toContain('coming very soon')
 })

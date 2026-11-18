@@ -5,9 +5,5 @@
   let { size = 'default' }: { size?: 'default' | 'large' } = $props()
 </script>
 
-{#if statusAppStoreUrl}
-  <Button variant="ghost" {size} external href={statusAppStoreUrl}>App Store</Button>
-{/if}
-{#if statusGooglePlayUrl}
-  <Button variant="ghost" {size} external href={statusGooglePlayUrl}>Google Play</Button>
-{/if}
+<Button variant="ghost" {size} external href={statusAppStoreUrl}>App Store</Button>
+<Button variant="ghost" {size} external href={statusGooglePlayUrl}>Google Play</Button>

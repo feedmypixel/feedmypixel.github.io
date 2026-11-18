@@ -57,7 +57,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
     markup, CSS shows the one matching `html[data-theme]` and the hidden one is lazy so it is not
     fetched. status slide 02 uses the opposite theme.
 13. Store links are the site's own buttons (decision 1). status shows App Store and Google Play
-    buttons only once their URLs exist in `config.ts`.
+    buttons (decision 35).
 
 ## 5. Decisions (taken at build, from the inventory's open questions)
 
@@ -97,6 +97,7 @@ pre-framed images to slides composed live, with screenshots that follow the site
 | 32 | One section header | `SectionHeader` (eyebrow and heading) replaces six copies; `HeadingLink` owns heading type through a `size` prop; section headings share the mocks' 26ch measure; 32ch read too long (Ben, 15 Nov 2026). |
 | 33 | One slide split | `wide` slides use the same caption-to-screenshot split as `phones`, so captions get room for one line; Pipes shots are about 8% smaller than under decision 25. `devices` keeps 2.6 parts (Ben, 15 Nov 2026). |
 | 34 | Apps coming very soon | Until the stores list status, the hero facts say "Web now · iPhone and Android coming very soon" and Try it says "The iPhone and Android apps are coming very soon." Store links and buttons go in when Ben says the apps are live (Ben, 15 Nov 2026). |
+| 35 | Apps live | status is on the App Store and Google Play (18 Nov 2026). The hero and Try it show both store buttons, the facts say "Web, iPhone and Android", Try it uses the render's "Try it at status.me or in the App Store and Google Play." and the stack list links iPhone and Android to their stores. |
 
 ## 6. Non-goals
 
@@ -123,4 +124,4 @@ Tokens only, scoped component CSS, existing bricks first (`Button`, `Carousel`, 
 
 ## 10. Open questions
 
-- Real App Store and Google Play URLs (Ben, at release).
+None.

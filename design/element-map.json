@@ -17,8 +17,7 @@
         "mock": "main > section:first-child",
         "built": "main section.hero",
         "ignore": {
-          "text": "status store links stay hidden until the apps are listed (PRD decision 1); external links carry the new-tab hint",
-          "box.height": "status store links stay hidden until the apps are listed (PRD decision 1)"
+          "text": "external links carry the new-tab hint"
         }
       },
       "hero.breadcrumb": { "mock": "nav[aria-label='Breadcrumb']", "built": "nav[aria-label='Breadcrumb']" },
@@ -34,19 +33,12 @@
       "hero.lead": { "mock": "main div:has(> h1) + p + p", "built": "main .hero .lead" },
       "hero.actions": {
         "mock": "[data-hero-actions]",
-        "built": "main .hero .actions",
-        "ignore": {
-          "text": "status store links stay hidden until the apps are listed (PRD decision 1)",
-          "children": "status store links stay hidden until the apps are listed (PRD decision 1)",
-          "box.height": "status store links stay hidden until the apps are listed (PRD decision 1)",
-          "box.width": "status store links stay hidden until the apps are listed (PRD decision 1)"
-        }
+        "built": "main .hero .actions"
       },
       "hero.action": {
         "mock": "[data-hero-actions] a",
         "built": "main .hero .actions > a",
         "ignore": {
-          "count": "status store links stay hidden until the apps are listed (PRD decision 1)",
           "text": "external links carry the visually hidden new-tab hint, as on every external Button",
           "colour.borderColor": "Button brick recipe, shared by every button on the site",
           "layout.justifyContent": "Button brick recipe, shared by every button on the site"
@@ -56,8 +48,7 @@
         "mock": "[data-hero-actions] + p",
         "built": "main .hero .facts",
         "ignore": {
-          "text": "launch dated autumn 2026; the apps are coming very soon (Ben, 15 Nov 2026, status PRD decision 34)",
-          "box.height": "the apps are coming very soon, so the facts run a line longer (status PRD decision 34)"
+          "text": "launch dated autumn 2026 and the apps are live on both stores (status PRD decisions 34 and 35)"
         }
       },
       "screenshots.section": {
@@ -105,7 +96,7 @@
         "mock": "[data-story-grid]",
         "built": "#story .grid",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption and the new-tab hints differ",
           "box.height": "Ben's group and broadcast paragraph lengthens the story (PRD decision 30)"
         }
       },
@@ -113,7 +104,7 @@
         "mock": "[data-story-aside]",
         "built": "#story aside",
         "ignore": {
-          "text": "store links render as plain text until the apps are listed (PRD decision 1); external links carry the new-tab hint"
+          "text": "external links carry the new-tab hint"
         }
       },
       "story.toc": { "mock": "nav[aria-label='In this story']", "built": "nav[aria-label='In this story']" },
@@ -130,7 +121,7 @@
         "mock": "#story dl",
         "built": "#story dl",
         "ignore": {
-          "text": "store links render as plain text until the apps are listed (PRD decision 1); external links carry the new-tab hint",
+          "text": "external links carry the new-tab hint",
           "layout.flexDirection": "the stack is a grid on both sides, where flex-direction has no effect"
         }
       },
@@ -139,15 +130,14 @@
         "mock": "#story dd",
         "built": "#story dd",
         "ignore": {
-          "text": "store links render as plain text until the apps are listed (PRD decision 1); external links carry the new-tab hint",
-          "children": "store links render as plain text until the apps are listed (PRD decision 1)"
+          "text": "external links carry the new-tab hint"
         }
       },
       "story.article": {
         "mock": "#story article",
         "built": "#story article",
         "ignore": {
-          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption, hidden store links and the new-tab hints differ",
+          "text": "verified by word diff: only the typo fixes (PRD decision 2), the theme-neutral caption and the new-tab hints differ",
           "box.height": "Ben's group and broadcast paragraph lengthens the story (PRD decision 30)",
           "children": "the screens sit in a wrapper around the shared Carousel, not a figure (PRD decision 18)"
         }
@@ -496,18 +486,12 @@
       },
       "entry.links": {
         "mock": "#products div:has(> div > h3) > div:last-child",
-        "built": "#products .intro .links",
-        "ignore": {
-          "text": "status store links stay hidden until the apps are listed (PRD decision 1)",
-          "children": "status store links stay hidden until the apps are listed (PRD decision 1)",
-          "box.height": "status store links stay hidden until the apps are listed (PRD decision 1)"
-        }
+        "built": "#products .intro .links"
       },
       "entry.link": {
         "mock": "#products div:has(> div > h3) > div:last-child > a",
         "built": "#products .intro .links > a",
         "ignore": {
-          "count": "status store links stay hidden until the apps are listed (PRD decision 1)",
           "colour.borderColor": "Button brick recipe, shared by every button on the site",
           "layout.justifyContent": "Button brick recipe, shared by every button on the site",
           "box.gap": "Button brick recipe, shared by every button on the site"
