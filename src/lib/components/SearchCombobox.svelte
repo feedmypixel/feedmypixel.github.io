@@ -31,26 +31,18 @@
     onClearAll: () => void
   } = $props()
 
-  let fieldEl: HTMLElement | undefined = $state()
-
   const showList = $derived(open && (suggestions.length > 0 || query.trim().length > 0))
   const noSuggestions = $derived(open && suggestions.length === 0 && query.trim().length > 0)
 
-  $effect(() => {
-    if (!open) {
-      return
+  function closeWhenFocusLeaves(event: FocusEvent & { currentTarget: HTMLElement }) {
+    const next = event.relatedTarget
+    if (!(next instanceof Node && event.currentTarget.contains(next))) {
+      onClose()
     }
-    const onPointerDown = (event: MouseEvent) => {
-      if (fieldEl && !fieldEl.contains(event.target as Node)) {
-        onClose()
-      }
-    }
-    document.addEventListener('mousedown', onPointerDown)
-    return () => document.removeEventListener('mousedown', onPointerDown)
-  })
+  }
 </script>
 
-<div bind:this={fieldEl} class="field">
+<div class="field" onfocusout={closeWhenFocusLeaves}>
   <svg
     class="search-icon"
     width="17"
@@ -72,7 +64,7 @@
     name="q"
     autocomplete="off"
     role="combobox"
-    aria-expanded={open}
+    aria-expanded={showList}
     aria-controls="cv-suggestions"
     aria-autocomplete="list"
     aria-activedescendant={activeIndex >= 0 ? `cv-suggestion-${activeIndex}` : undefined}
@@ -150,6 +142,7 @@
 
   .field:focus-within {
     border-color: var(--indicator);
+    outline: 2px solid transparent;
     box-shadow: var(--focus-ring);
   }
 
