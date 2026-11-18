@@ -24,10 +24,10 @@ Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
 ## Pages
 
 - [Home](https://feedmypixel.com/): hero, products, searchable CV, services and contact, on one page.
-- [status](https://feedmypixel.com/status): what status is, with screenshots, and how Ben Chidgey
-  built it with SvelteKit, Fastify and Claude.
-- [Pipes](https://feedmypixel.com/pipes): what Pipes is, with screenshots, and how and why Ben
-  Chidgey built it with Svelte 5, Manifest V3 and Claude.
+- [status](https://feedmypixel.com/status): screenshots of status and how Ben Chidgey built it
+  with SvelteKit, Fastify and Claude.
+- [Pipes](https://feedmypixel.com/pipes): screenshots of Pipes and how and why Ben Chidgey built
+  it with Svelte 5, Manifest V3 and Claude.
 - [Pipes privacy policy](https://feedmypixel.com/pipes/privacy): how Pipes handles your data. Fully
   client-side, no backend, nothing ever sent to feedMyPixel.
 - [Components](https://feedmypixel.com/components): the component catalogue this site is built from.
