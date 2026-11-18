@@ -12,7 +12,10 @@
 
   $effect(() => {
     consent.init()
-    delete document.documentElement.dataset.consentDecided
+  })
+
+  $effect(() => {
+    document.documentElement.toggleAttribute('data-consent-pending', consent.choice === 'unknown')
   })
 
   $effect(() => {
@@ -70,6 +73,7 @@
 
 <style>
   .banner {
+    display: none;
     position: sticky;
     top: calc(var(--header-height) + 1px);
     z-index: var(--z-consent);
@@ -80,8 +84,8 @@
     transition: opacity var(--transition-slow) var(--ease-emphasized);
   }
 
-  :global(html[data-consent-decided]) .banner {
-    display: none;
+  :global(html[data-consent-pending]) .banner {
+    display: block;
   }
 
   .closing {
