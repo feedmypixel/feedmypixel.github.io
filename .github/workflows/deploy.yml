@@ -18,8 +18,7 @@ concurrency:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: read
 
 jobs:
   build:
@@ -27,10 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - name: Fail if the Web3Forms key is missing
+        env:
+          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
+        run: |
+          if [ -z "$VITE_WEB3FORMS_KEY" ]; then
+            echo "::error::The VITE_WEB3FORMS_KEY secret is empty, so the contact form would fail every send."
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version-file: .nvmrc
           cache: pnpm
@@ -38,7 +45,7 @@ jobs:
       - run: pnpm check
       - run: pnpm lint
       - name: Cache Playwright browser
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
@@ -51,8 +58,8 @@ jobs:
         run: pnpm build
       - name: Fail if the custom domain would be dropped
         run: test -f build/CNAME
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           path: build
 
@@ -61,9 +68,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
