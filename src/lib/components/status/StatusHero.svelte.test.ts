@@ -1,6 +1,13 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import StatusHero from './StatusHero.svelte'
+import '#lib/styles/patterns.css'
+
+let main: HTMLElement | undefined
+
+afterEach(() => {
+  main?.remove()
+})
 
 test('names the product in the headline and the breadcrumb', async () => {
   render(StatusHero)
@@ -32,7 +39,15 @@ test('offers the web app and both app stores', async () => {
   expect(document.body.textContent).toContain('Web, iPhone and Android')
 })
 
-test('keeps the hero out of the scroll reveal', () => {
-  render(StatusHero)
-  expect(document.querySelector('section')?.classList.contains('hero')).toBe(true)
+test('keeps the hero out of the scroll reveal its sibling sections get', () => {
+  main = document.createElement('main')
+  main.id = 'main'
+  main.appendChild(document.createElement('section'))
+  document.body.appendChild(main)
+  render(StatusHero, { target: main })
+  const [sibling, hero] = [...main.querySelectorAll(':scope > section')].map(
+    (section) => getComputedStyle(section).animationName
+  )
+  expect(sibling).toBe('rise-in')
+  expect(hero).toBe('none')
 })

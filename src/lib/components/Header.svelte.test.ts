@@ -5,6 +5,12 @@ import Header from './Header.svelte'
 /* Header only tracks sections on the one-pager, so the route has to look like it. */
 vi.mock('$app/state', () => ({ page: { route: { id: '/' }, url: new URL('http://localhost/') } }))
 
+let sectionsHost: HTMLElement | undefined
+
+afterEach(() => {
+  sectionsHost?.remove()
+})
+
 test('renders the brand, section nav and theme toggle', async () => {
   render(Header)
   await expect
@@ -37,16 +43,16 @@ test('returns focus to the hamburger after the drawer closes', async () => {
   expect(document.activeElement?.getAttribute('aria-label')).toBe('Open menu')
 })
 
-test('lights the active-link indicator for the section in view', async () => {
-  const host = document.createElement('div')
-  host.innerHTML =
+test('marks the link for the section in view as current', async () => {
+  sectionsHost = document.createElement('div')
+  sectionsHost.innerHTML =
     '<section id="products" style="height:80vh"></section>' +
     '<section id="experience" style="height:80vh"></section>' +
     '<section id="contact" style="height:80vh"></section>'
-  document.body.appendChild(host)
+  document.body.appendChild(sectionsHost)
   render(Header)
   await vi.waitFor(() => {
-    expect(document.querySelector('nav[aria-label="Sections"] a.active')).not.toBeNull()
+    const current = document.querySelectorAll('nav[aria-label="Sections"] a[aria-current="true"]')
+    expect([...current].map((link) => link.textContent?.trim())).toEqual(['Products'])
   })
-  host.remove()
 })

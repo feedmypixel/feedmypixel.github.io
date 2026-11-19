@@ -72,7 +72,7 @@ test('each product tells its problem, solution and product story', () => {
   expect(labels).toEqual(['Problem', 'Solution', 'Product', 'Problem', 'Solution', 'Product'])
 })
 
-test('status has ten composed slides and Pipes four', () => {
+test('status has twelve composed slides and Pipes four', () => {
   render(Products)
   const strips = document.querySelectorAll('.strip')
   expect(strips[0].getAttribute('aria-label')).toBe('status screenshots')
