@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { copyText } from '#lib/clipboard.js'
+  import { Copier } from '#lib/copier.svelte.js'
   import { slugify } from '#lib/slugify.js'
-
-  const COPIED_FOR_MS = 2000
+  import CopiedNote from './CopiedNote.svelte'
 
   let {
     text,
@@ -11,8 +10,7 @@
     id = slugify(text)
   }: { text: string; level?: 2 | 3; size?: '3xl' | '2xl' | 'xl' | 'lg'; id?: string } = $props()
 
-  let copied = $state(false)
-  let copiedTimeout: ReturnType<typeof setTimeout> | undefined
+  const copier = new Copier()
 
   const opensElsewhere = (event: MouseEvent) =>
     event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
@@ -22,13 +20,9 @@
       return
     }
     event.preventDefault()
-    if (!(await copyText(new URL(`#${id}`, location.href).href))) {
+    if (!(await copier.copy(new URL(`#${id}`, location.href).href))) {
       location.hash = id
-      return
     }
-    copied = true
-    clearTimeout(copiedTimeout)
-    copiedTimeout = setTimeout(() => (copied = false), COPIED_FOR_MS)
   }
 </script>
 
@@ -50,22 +44,7 @@
       <path d="M6.5 9.5a3 3 0 0 0 4.24 0l2.12-2.12a3 3 0 0 0-4.24-4.24l-.7.7" />
       <path d="M9.5 6.5a3 3 0 0 0-4.24 0L3.14 8.62a3 3 0 0 0 4.24 4.24l.7-.7" />
     </svg></a
-  ><span class="copied" role="status">
-    {#if copied}
-      <svg
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M3 8.5l3.5 3.5L13 4.5" />
-      </svg>
-      Copied
-    {/if}
-  </span>
+  ><CopiedNote shown={copier.copied} />
 </svelte:element>
 
 <style>
@@ -129,21 +108,7 @@
     }
   }
 
-  .copied {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
+  .title > :global(.copied-note) {
     margin-left: var(--space-1);
-    vertical-align: middle;
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-regular);
-    letter-spacing: normal;
-    color: var(--mood-positive);
-  }
-
-  .copied svg {
-    width: 1em;
-    height: 1em;
   }
 </style>
