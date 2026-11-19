@@ -11,6 +11,7 @@ declare global {
 
   interface Window {
     dataLayer?: unknown[]
+    [googleAnalyticsDisableFlag: `ga-disable-${string}`]: boolean | undefined
   }
 
   const __BUILD_SHA__: string
