@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import {
     contactEndpoint,
     emailAddress,
@@ -19,6 +20,7 @@
   let message = $state('')
   let errors = $state<ContactErrors>({})
   let sending = $state(false)
+  let isJavaScriptRunning = $state(false)
 
   let summaryEl: HTMLElement | undefined = $state()
   let shouldFocusSummary = false
@@ -32,8 +34,13 @@
     }
   })
 
-  async function onSubmit(event: SubmitEvent) {
+  onMount(() => {
+    isJavaScriptRunning = true
+  })
+
+  async function onSubmit(event: SubmitEvent & { currentTarget: HTMLFormElement }) {
     event.preventDefault()
+    const fields = Object.fromEntries(new FormData(event.currentTarget))
     const found = validateContact({ name, email, message })
 
     if (Object.keys(found).length > 0) {
@@ -49,13 +56,7 @@
       const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: web3formsKey,
-          subject: 'New message from feedmypixel.com',
-          name,
-          email,
-          message
-        })
+        body: JSON.stringify(fields)
       })
 
       if (!response.ok) {
@@ -80,7 +81,12 @@
     <p class="lede">Available worldwide and remote, happy to accommodate different timezones</p>
 
     <div class="grid">
-      <form method="post" action={contactEndpoint} novalidate onsubmit={onSubmit}>
+      <form
+        method="post"
+        action={contactEndpoint}
+        novalidate={isJavaScriptRunning}
+        onsubmit={onSubmit}
+      >
         <input type="hidden" name="access_key" value={web3formsKey} />
         <input type="hidden" name="subject" value="New message from feedmypixel.com" />
 

@@ -1,6 +1,7 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Contact from './Contact.svelte'
+import { contactEndpoint, web3formsKey } from '#lib/config.js'
 import { toasts } from '#lib/toasts.svelte.js'
 
 beforeEach(() => {
@@ -97,6 +98,59 @@ test('a valid submit sends the message and confirms it', async () => {
   expect(document.querySelector<HTMLInputElement>('#contact-name')?.value).toBe('')
 })
 
+test('sends every field in the form, once', async () => {
+  const fetchMock = vi
+    .spyOn(globalThis, 'fetch')
+    .mockResolvedValue(new Response('{}', { status: 200 }))
+  render(Contact)
+  await fillForm()
+  await submit()
+
+  await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledOnce())
+  const [endpoint, request] = fetchMock.mock.calls[0]
+  expect(endpoint).toBe(contactEndpoint)
+  expect(JSON.parse(request?.body as string)).toEqual({
+    access_key: web3formsKey,
+    subject: 'New message from feedmypixel.com',
+    name: 'Ben',
+    email: 'ben@example.com',
+    message: 'A trading platform'
+  })
+})
+
+test('a ticked honeypot is sent so Web3Forms can reject the bot', async () => {
+  const fetchMock = vi
+    .spyOn(globalThis, 'fetch')
+    .mockResolvedValue(new Response('{}', { status: 200 }))
+  render(Contact)
+  await fillForm()
+  document.querySelector<HTMLInputElement>('input[name="botcheck"]')!.checked = true
+  await submit()
+
+  await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledOnce())
+  expect(JSON.parse(fetchMock.mock.calls[0][1]?.body as string)).toMatchObject({ botcheck: 'on' })
+})
+
+test('takes over validation from the browser once JavaScript runs', async () => {
+  render(Contact)
+  await vi.waitFor(() => {
+    expect(document.querySelector('form')?.noValidate).toBe(true)
+  })
+})
+
+test('the button is disabled and says so while the message is sending', async () => {
+  const { promise, resolve } = Promise.withResolvers<Response>()
+  vi.spyOn(globalThis, 'fetch').mockReturnValue(promise)
+  render(Contact)
+  await fillForm()
+  await submit()
+
+  await expect.element(page.getByRole('button', { name: 'Sending…' })).toBeDisabled()
+
+  resolve(new Response('{}', { status: 200 }))
+  await expect.element(page.getByRole('button', { name: 'Send message' })).toBeEnabled()
+})
+
 test('a failed send tells the reader what to do instead', async () => {
   vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('', { status: 500 }))
   render(Contact)
@@ -109,6 +163,22 @@ test('a failed send tells the reader what to do instead', async () => {
       message: 'Could not send the message, please email me directly'
     })
   })
+})
+
+test('a failed send keeps what was typed', async () => {
+  vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('', { status: 500 }))
+  render(Contact)
+  await fillForm()
+  await submit()
+
+  await vi.waitFor(() => expect(toasts.items.at(-1)?.kind).toBe('critical'))
+  await expect.element(page.getByLabelText('Your name')).toHaveValue('Ben')
+  await expect
+    .element(page.getByLabelText('Email address', { exact: true }))
+    .toHaveValue('ben@example.com')
+  await expect
+    .element(page.getByLabelText('What are you building?'))
+    .toHaveValue('A trading platform')
 })
 
 test('a network failure is surfaced, never swallowed', async () => {
