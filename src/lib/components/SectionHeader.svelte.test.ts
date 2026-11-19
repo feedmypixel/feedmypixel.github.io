@@ -17,7 +17,7 @@ test('shows the eyebrow and a linkable section heading', async () => {
 test('shows the lede under the heading', async () => {
   render(SectionHeader, {
     eyebrow: 'Products',
-    heading: 'Real tools for real needs',
+    heading: 'Side projects, shipped',
     lede: 'Designed, built and shipped end to end'
   })
   await expect.element(page.getByText('Designed, built and shipped end to end')).toBeVisible()

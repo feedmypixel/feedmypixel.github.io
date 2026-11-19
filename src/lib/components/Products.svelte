@@ -20,7 +20,7 @@
   <div class="container inner">
     <SectionHeader
       eyebrow="Products"
-      heading="Real tools for real needs"
+      heading="Side projects, shipped"
       lede="Designed, built and shipped end to end"
     />
 
