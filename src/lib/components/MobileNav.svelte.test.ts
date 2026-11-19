@@ -27,7 +27,7 @@ test('closes when the scrim is clicked', async () => {
 })
 
 test('the close control sits inside the modal dialog, where touch screen readers can reach it', async () => {
-  render(MobileNav, { props: { open: true, onclose: () => {} } })
+  render(MobileNav, { props: { open: true, onClose: () => {} } })
   const dialog = page.getByRole('dialog', { name: 'Menu' })
   await expect.element(dialog.getByRole('button', { name: 'Close menu' })).toBeInTheDocument()
 })

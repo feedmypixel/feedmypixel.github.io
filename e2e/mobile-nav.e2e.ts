@@ -9,22 +9,22 @@ async function openMenuOnAPhone(page: Page) {
   await page.goto('/')
   await appHasStarted(page)
   await menuButton(page).click()
-  const menu = page.getByRole('dialog', { name: 'Menu' })
-  await expect(menu).toBeVisible()
-  return menu
+  const menuLinks = page.getByRole('dialog', { name: 'Menu' }).getByRole('link')
+  await expect(menuLinks.first()).toBeVisible()
+  return menuLinks
 }
 
 test('on a phone a menu link lands on its section and the menu closes', async ({ page }) => {
-  const menu = await openMenuOnAPhone(page)
-  await menu.getByRole('link', { name: 'Contact' }).click()
-  await expect(menu).toBeHidden()
+  const menuLinks = await openMenuOnAPhone(page)
+  await menuLinks.filter({ hasText: 'Contact' }).click()
+  await expect(menuLinks).toHaveCount(0)
   await expect(page).toHaveURL(/#contact$/)
   await expect(page.locator('#contact')).toBeInViewport()
 })
 
 test('on a phone Escape closes the menu and focus returns to the menu button', async ({ page }) => {
-  const menu = await openMenuOnAPhone(page)
+  const menuLinks = await openMenuOnAPhone(page)
   await page.keyboard.press('Escape')
-  await expect(menu).toBeHidden()
+  await expect(menuLinks).toHaveCount(0)
   await expect(menuButton(page)).toBeFocused()
 })

@@ -109,7 +109,7 @@
         number="01"
         caption={pipesSlide.label}
         sub={pipesSlide.sub}
-        shots={[pipesSlide.shot]}
+        shots={pipesSlide.shots}
         layout="wide"
       />
     </div>
