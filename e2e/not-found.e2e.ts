@@ -37,17 +37,9 @@ async function expectNotFoundPageWithAWayHome(page: Page, path: string) {
   await expect(page.getByRole('heading', { level: 1, name: 'Page not found' })).toBeVisible()
   await expect(page.getByRole('banner')).toBeVisible()
   await expect(page.getByRole('contentinfo')).toBeVisible()
-  await expect(page.getByRole('link', { name: 'status', exact: true })).toHaveAttribute(
-    'href',
-    '/status'
-  )
-  await expect(page.getByRole('link', { name: 'Pipes', exact: true })).toHaveAttribute(
-    'href',
-    '/pipes'
-  )
 
-  await page.getByRole('link', { name: 'Go to the home page' }).click()
-  await expect(page).toHaveURL('/')
+  await page.getByRole('link', { name: 'feedMyPixel, home' }).click()
+  await expect(page).toHaveURL('/#top')
   await expect(
     page.getByRole('heading', { level: 1, name: 'Software that makes you smile' })
   ).toBeVisible()
