@@ -5,9 +5,8 @@ these are gaps found along the way, not defects in what shipped.
 
 ## 1.0 Testing gaps
 
-- [ ] 1.1 Set up visual regression testing. `pnpm test:visual` runs against
-      `playwright.visual.config.ts` but finds zero spec files - the tooling exists, nothing uses it
-      yet.
+- [ ] 1.1 Set up visual regression testing: a Playwright `toHaveScreenshot` config and a script to
+      run it. The earlier config had no specs and was removed.
 - [ ] 1.2 Write the actual visual regression specs once 1.1 is set up. At minimum the homepage
       (light + dark) and the Experience section, which changed markup this session (`<p>` per
       summary paragraph, `{@html}`).

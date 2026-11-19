@@ -7,20 +7,6 @@
   gap: var(--stack-gap, var(--space-6));
 }
 
-/* Inline group that wraps - chips, buttons, tags. */
-.cluster {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--cluster-gap, var(--space-3));
-}
-
-/* Measure-constrained, horizontally-centred column. */
-.center {
-  margin-inline: auto;
-  max-width: var(--measure, 65ch);
-}
-
 /* Section container - max width + fluid side gutters. */
 .container {
   max-width: var(--container-max, 77.5rem);

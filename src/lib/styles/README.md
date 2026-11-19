@@ -7,7 +7,7 @@ the root layout imports). Mirrors the [stat-ui](https://github.com/feedmypixel) 
 | ----------- | --------------- | -------------------------------------------------------------------------- |
 | `tokens`    | `tokens.css`    | Custom properties - the **only** place raw hex lives (Stylelint-enforced). |
 | `base`      | `base.css`      | Reset (Josh Comeau) + element defaults, token-driven. No component styles. |
-| `objects`   | `objects.css`   | Layout primitives - `.stack` / `.cluster` / `.center` / `.container`.      |
+| `objects`   | `objects.css`   | Layout primitives - `.stack` / `.container`.                               |
 | `utilities` | `utilities.css` | Single-purpose helpers - `.visually-hidden`.                               |
 | `patterns`  | `patterns.css`  | Named multi-property patterns - added as page-level repetition earns them. |
 

@@ -27,8 +27,6 @@
     "test:e2e": "playwright test",
     "test:a11y": "playwright test e2e/a11y.e2e.ts",
     "design:check": "node scripts/design/design-check.mjs",
-    "test:visual": "playwright test -c playwright.visual.config.ts",
-    "test:visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
     "security-audit": "pnpm audit --audit-level=moderate",
     "prepare": "pnpm setup:husky",
     "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module"
@@ -57,7 +55,6 @@
     "prettier": "3.9.10",
     "prettier-plugin-svelte": "4.1.1",
     "stylelint": "17.16.0",
-    "stylelint-config-html": "2.0.0",
     "stylelint-config-standard": "40.0.0",
     "svelte": "^5.57.3",
     "svelte-check": "^4.7.7",

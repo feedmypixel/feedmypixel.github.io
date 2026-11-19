@@ -62,7 +62,6 @@ The contact form posts to [Web3Forms](https://web3forms.com). Copy `.env.example
 | `pnpm test:unit`      | Vitest unit tests with coverage               |
 | `pnpm test:e2e`       | Playwright e2e (builds + previews, then runs) |
 | `pnpm test:a11y`      | axe accessibility checks                      |
-| `pnpm test:visual`    | Playwright visual-regression                  |
 | `pnpm test`           | Unit + e2e                                    |
 | `pnpm security-audit` | `pnpm audit --audit-level=moderate`           |
 
@@ -122,7 +121,7 @@ stat-ui architecture.
 
 The load-bearing rule: **components are self-contained** (scoped `<style>`, depending only on
 **tokens**) and **never use global utility classes**; utilities and layout objects
-(`.stack`/`.cluster`/`.center`) are a **page/route call-site tool**; cross-component duplication is
+(`.stack`/`.container`) are a **page/route call-site tool**; cross-component duplication is
 DRY'd via **tokens, not shared classes**. Raw hex lives only in `tokens.css` (Stylelint-enforced).
 
 Links follow one rule: hover always **changes** the underline state. Content links are underlined at

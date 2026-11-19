@@ -82,8 +82,8 @@ def main():
     ))
 
     missing = [source for source, *_ in jobs + pipe_jobs if not source.is_file()]
-    if not jobs or missing:
-        print(f'Missing sources: {missing or FRAMES_SOURCE_DIRECTORY}', file=sys.stderr)
+    if missing:
+        print(f'Missing sources: {missing}', file=sys.stderr)
         sys.exit(1)
 
     for source, destination, width in jobs:
