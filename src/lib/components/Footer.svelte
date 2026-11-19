@@ -23,7 +23,9 @@
       <a href="https://github.com/feedmypixel" target="_blank" rel="noopener noreferrer">
         GitHub<NewTabHint />
       </a>
-      <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
+      {#if !consent.optedOutByBrowser}
+        <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
+      {/if}
       <a
         class="repo"
         href="https://github.com/feedmypixel/feedmypixel.github.io"

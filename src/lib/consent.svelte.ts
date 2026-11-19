@@ -28,8 +28,11 @@ function remember(choice: ConsentChoice) {
 class Consent {
   choice = $state<ConsentChoice>('unknown')
 
+  optedOutByBrowser = $state(false)
+
   init() {
-    this.choice = optedOutAtBrowserLevel() ? 'denied' : storedChoice()
+    this.optedOutByBrowser = optedOutAtBrowserLevel()
+    this.choice = this.optedOutByBrowser ? 'denied' : storedChoice()
   }
 
   grant() {
