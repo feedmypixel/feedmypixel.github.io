@@ -4,6 +4,7 @@
   import Logo from '#lib/components/Logo.svelte'
   import ThemeToggle from '#lib/components/ThemeToggle.svelte'
   import Toast from '#lib/components/Toast.svelte'
+  import Banner from '#lib/components/Banner.svelte'
   import Button from '#lib/components/Button.svelte'
   import EmailPill from '#lib/components/EmailPill.svelte'
   import Carousel from '#lib/components/Carousel.svelte'
@@ -213,6 +214,17 @@
     <h2 id="totop-h">Back to top</h2>
     <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px</p>
     <BackToTop />
+  </section>
+
+  <section aria-labelledby="banner-h">
+    <h2 id="banner-h">Banner</h2>
+    <p class="note">The result of the thing in front of you. Stays in the flow until resolved.</p>
+    <Banner variant="positive" title="Message sent">
+      <p>I will come back to you shortly</p>
+    </Banner>
+    <Banner variant="critical" title="Could not send the message">
+      <p>Your message is still in the form. Try again or email ben@feedmypixel.com.</p>
+    </Banner>
   </section>
 
   <section aria-labelledby="toast-h">
