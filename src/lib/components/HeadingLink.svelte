@@ -27,24 +27,22 @@
 </script>
 
 <svelte:element this={`h${level}`} {id} class="title size-{size}" aria-labelledby="{id}-text">
-  <span id="{id}-text">{text}</span><a
-    class="anchor"
-    href="#{id}"
-    aria-label="Copy link to {text}"
-    onclick={copyLink}
-    ><svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M6.5 9.5a3 3 0 0 0 4.24 0l2.12-2.12a3 3 0 0 0-4.24-4.24l-.7.7" />
-      <path d="M9.5 6.5a3 3 0 0 0-4.24 0L3.14 8.62a3 3 0 0 0 4.24 4.24l.7-.7" />
-    </svg></a
-  ><CopiedNote shown={copier.copied} />
+  <span id="{id}-text">{text}</span><span class="link"
+    ><a class="anchor" href="#{id}" aria-label="Copy link to {text}" onclick={copyLink}
+      ><svg
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M6.5 9.5a3 3 0 0 0 4.24 0l2.12-2.12a3 3 0 0 0-4.24-4.24l-.7.7" />
+        <path d="M9.5 6.5a3 3 0 0 0-4.24 0L3.14 8.62a3 3 0 0 0 4.24 4.24l.7-.7" />
+      </svg></a
+    ><CopiedNote shown={copier.copied} /></span
+  >
 </svelte:element>
 
 <style>
@@ -106,7 +104,14 @@
     }
   }
 
-  .title > :global(.copied-note) {
-    margin-left: var(--space-1);
+  .link {
+    position: relative;
+  }
+
+  .link > :global(.copied-note) {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + var(--space-1));
+    translate: 0 -50%;
   }
 </style>
