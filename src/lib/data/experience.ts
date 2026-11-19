@@ -48,7 +48,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Government',
     summary:
-      "<p>Designed and built the Core Delivery Platform Portal at DEFRA from a blank page. It's the developer UI that lets tenant teams create, release and run their services, tooling and infrastructure, and it sits at the core of DEFRA's software offering, holding standards and parity across every service built on it.</p><p>It went from concept to the way software gets built at DEFRA. GDS reported time to first release dropping from three-to-six months to hours, and recovery from failure from a week to under an hour.</p>",
+      "<p>Designed and built the Core Delivery Platform Portal at DEFRA from a blank page. It's the developer UI that lets tenant teams create, release and run their services, tooling and infrastructure and it sits at the core of DEFRA's software offering, holding standards and parity across every service built on it.</p><p>It went from concept to the way software gets built at DEFRA. GDS reported time to first release dropping from three-to-six months to hours and recovery from failure from a week to under an hour.</p>",
     tags: [
       'JavaScript',
       'CSS',
@@ -125,7 +125,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      "<p>Set up a custom developer portal, Disco, using the Backstage platform from Spotify. A developer data platform that obtained and served custom SRE and Accelerate metrics for Pret's digital estate, providing detailed transparency on the platform and all of its assets.</p><p>Created Next.js and Express template repositories. Rolled out Sentry observability and regularly ran chaos experiments and incident exercises with tenant teams to practice diagnosing and debugging issues whilst gaining familiarity with how services work on the platform.</p>",
+      "<p>Set up a custom developer portal, Disco, using the Backstage platform from Spotify. A developer data platform that obtained and served custom SRE and Accelerate metrics for Pret's digital estate, providing detailed transparency on the platform and all of its assets.</p><p>Created Next.js and Express template repositories. Rolled out Sentry observability and regularly ran chaos experiments and incident exercises with tenant teams to practise diagnosing and debugging issues whilst gaining familiarity with how services work on the platform.</p>",
     tags: [
       'TypeScript',
       'JavaScript',
@@ -212,7 +212,7 @@ export const roles: Role[] = [
     type: 'Contract',
     sector: 'Retail',
     summary:
-      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and worked with the bespoke in-house JavaScript framework, whilst React was brought in to various departments across the business.</p>',
+      '<p>Framework team, building the shared tooling and component library used by teams across the dot-com business and working with the bespoke in-house JavaScript framework, whilst React was brought in to various departments across the business.</p>',
     tags: [
       'JavaScript',
       'CSS',

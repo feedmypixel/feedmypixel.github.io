@@ -5,7 +5,7 @@
 
 ## About
 
-Ben Chidgey has worked as a contract engineer since 2010, mostly on public-facing services with a
+Ben Chidgey has worked as a contract engineer since 2011, mostly on public-facing services with a
 strong accessibility and progressive-enhancement bias. Recent work is SvelteKit, TypeScript, Node and
 AWS. Clients include the Guardian, the BBC, DEFRA, the Ministry of Justice, HMRC, HM Passport Office,
 Marks & Spencer, Wayfair, Pret A Manger and Deutsche Telekom.
