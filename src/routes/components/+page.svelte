@@ -227,7 +227,7 @@
       <p>I will come back to you shortly</p>
     </Banner>
     <Banner variant="critical" title="Could not send the message">
-      <p>Your message is still in the form. Try again or email ben@feedmypixel.com.</p>
+      <p>Your message is still in the form. Try again or email hello@feedmypixel.com.</p>
     </Banner>
   </section>
 
