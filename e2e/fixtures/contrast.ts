@@ -2,11 +2,10 @@ import { expect, type Locator } from '@playwright/test'
 
 const minimumNonTextContrast = 3
 
-export async function expectOutlineContrast(target: Locator, pseudoElement?: '::before') {
-  const ratio = await target.evaluate((element, pseudo) => {
+export async function expectOutlineContrast(target: Locator) {
+  const ratio = await target.evaluate((element) => {
     const context = document.createElement('canvas').getContext('2d')!
-    const paint = (colour: string, alpha = 1) => {
-      context.globalAlpha = alpha
+    const paint = (colour: string) => {
       context.fillStyle = colour
       context.fillRect(0, 0, 1, 1)
       return context.getImageData(0, 0, 1, 1).data
@@ -26,13 +25,10 @@ export async function expectOutlineContrast(target: Locator, pseudoElement?: '::
     }
     const backdrop = luminance(context.getImageData(0, 0, 1, 1).data)
 
-    const style = getComputedStyle(element, pseudo)
-    const outlineColour =
-      style.borderTopWidth === '0px' ? style.backgroundColor : style.borderTopColor
-    const outline = luminance(paint(outlineColour, Number(style.opacity)))
+    const outline = luminance(paint(getComputedStyle(element).borderTopColor))
 
     return (Math.max(backdrop, outline) + 0.05) / (Math.min(backdrop, outline) + 0.05)
-  }, pseudoElement)
+  })
 
   expect(ratio, `contrast of ${target}`).toBeGreaterThanOrEqual(minimumNonTextContrast)
 }

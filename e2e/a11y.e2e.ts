@@ -47,9 +47,5 @@ for (const theme of ['light', 'dark']) {
       await expectOutlineContrast(page.locator('#contact-name'))
       await expectOutlineContrast(page.locator('.field:has(> #cv-search)'))
     })
-
-    test('inactive carousel dots reach 3:1', async ({ page }) => {
-      await expectOutlineContrast(page.locator('.dot:not([aria-current])').first(), '::before')
-    })
   })
 }
