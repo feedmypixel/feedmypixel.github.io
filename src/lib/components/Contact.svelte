@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import {
     contactEndpoint,
     emailAddress,
@@ -8,7 +8,7 @@
     web3formsKey
   } from '#lib/config.js'
   import { validateContact, errorSummary, type ContactErrors } from '#lib/contact-validation.js'
-  import { toasts } from '#lib/toasts.svelte.js'
+  import Banner from './Banner.svelte'
   import Button from './Button.svelte'
   import Field from './Field.svelte'
   import SectionHeader from './SectionHeader.svelte'
@@ -20,36 +20,43 @@
   let message = $state('')
   let errors = $state<ContactErrors>({})
   let sending = $state(false)
+  let sendResult = $state<'sent' | 'failed'>()
   let isJavaScriptRunning = $state(false)
 
-  let summaryEl: HTMLElement | undefined = $state()
-  let shouldFocusSummary = false
+  let bannerElement: HTMLElement | undefined = $state()
 
   const hasErrors = $derived(Object.keys(errors).length > 0)
-
-  $effect(() => {
-    if (hasErrors && shouldFocusSummary && summaryEl) {
-      summaryEl.focus()
-      shouldFocusSummary = false
-    }
-  })
 
   onMount(() => {
     isJavaScriptRunning = true
   })
 
+  async function focusBanner() {
+    await tick()
+    bannerElement?.focus()
+  }
+
+  function focusLinkedField(event: MouseEvent & { currentTarget: HTMLAnchorElement }) {
+    event.preventDefault()
+    document.querySelector<HTMLElement>(event.currentTarget.hash)?.focus()
+  }
+
+  function clearCorrectedErrors() {
+    const stillInvalid = validateContact({ name, email, message })
+    errors = Object.fromEntries(Object.entries(errors).filter(([field]) => field in stillInvalid))
+  }
+
   async function onSubmit(event: SubmitEvent & { currentTarget: HTMLFormElement }) {
     event.preventDefault()
     const fields = Object.fromEntries(new FormData(event.currentTarget))
-    const found = validateContact({ name, email, message })
+    errors = validateContact({ name, email, message })
+    sendResult = undefined
 
-    if (Object.keys(found).length > 0) {
-      shouldFocusSummary = true
-      errors = found
+    if (hasErrors) {
+      await focusBanner()
       return
     }
 
-    errors = {}
     sending = true
 
     try {
@@ -66,12 +73,14 @@
       name = ''
       email = ''
       message = ''
-      toasts.push('positive', 'Message sent, I will come back to you shortly')
+      sendResult = 'sent'
     } catch {
-      toasts.push('critical', 'Could not send the message, please email me directly')
+      sendResult = 'failed'
     } finally {
       sending = false
     }
+
+    await focusBanner()
   }
 </script>
 
@@ -86,14 +95,34 @@
         action={contactEndpoint}
         novalidate={isJavaScriptRunning}
         onsubmit={onSubmit}
+        oninput={clearCorrectedErrors}
       >
         <input type="hidden" name="access_key" value={web3formsKey} />
         <input type="hidden" name="subject" value="New message from feedmypixel.com" />
 
-        {#if hasErrors}
-          <div bind:this={summaryEl} class="error-summary" role="alert" tabindex="-1">
-            <p>{errorSummary(errors)}</p>
-          </div>
+        {#if sendResult === 'sent'}
+          <Banner variant="positive" title="Message sent" bind:element={bannerElement}>
+            <p>I will come back to you shortly</p>
+          </Banner>
+        {:else if sendResult === 'failed'}
+          <Banner
+            variant="critical"
+            title="Could not send the message"
+            bind:element={bannerElement}
+          >
+            <p>
+              Your message is still in the form. Try again or email
+              <a href="mailto:{emailAddress}">{emailAddress}</a>.
+            </p>
+          </Banner>
+        {:else if hasErrors}
+          <Banner variant="critical" title={errorSummary(errors)} bind:element={bannerElement}>
+            <ul class="error-links">
+              {#each Object.entries(errors) as [field, error] (field)}
+                <li><a href="#contact-{field}" onclick={focusLinkedField}>{error}</a></li>
+              {/each}
+            </ul>
+          </Banner>
         {/if}
 
         <Field
@@ -201,17 +230,12 @@
     gap: var(--space-6);
   }
 
-  .error-summary {
-    padding: var(--space-4) var(--space-5);
-    background: var(--mood-critical-tint);
-    border: 1px solid var(--mood-critical);
-    border-radius: var(--radius-md);
-  }
-
-  .error-summary p {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    color: var(--ink-strong);
+  .error-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
   }
 
   .honeypot {
