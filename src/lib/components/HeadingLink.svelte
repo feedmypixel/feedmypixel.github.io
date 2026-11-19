@@ -50,10 +50,8 @@
 <style>
   .title {
     scroll-margin-top: var(--space-6);
-    font-family: var(--font-display);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
     text-wrap: balance;
   }
 

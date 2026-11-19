@@ -10,7 +10,7 @@
 </script>
 
 <footer class="footer">
-  <div class="inner">
+  <div class="container inner">
     <div class="brand">
       <Logo size={22} />
       <span class="line">feedMyPixel Ltd · Ben Chidgey · number 08198085 · established 2012</span>
@@ -50,9 +50,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-6);
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: var(--space-10) var(--gutter);
+    padding-block: var(--space-10);
   }
 
   .brand {

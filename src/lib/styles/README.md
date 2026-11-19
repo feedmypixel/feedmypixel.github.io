@@ -14,8 +14,10 @@ the root layout imports). Mirrors the [stat-ui](https://github.com/feedmypixel) 
 ## The boundary
 
 Components are **self-contained**: scoped `<style>`, depending only on **tokens** - never a global
-utility/object class for their own identity. Layout objects and utilities are a **page/route
-call-site tool**. Cross-component duplication is DRY'd through **tokens, not shared classes**.
+utility class for their own look. Layout objects such as `.container` are used by pages and by
+**section-level components** (the header, the footer, the consent banner, each page section) to
+place their content.
+Cross-component duplication is DRY'd through **tokens, not shared classes**.
 
 Later layers win, so order is drift-proof. A component's scoped `<style>` is unlayered and beats
 every named layer by design.

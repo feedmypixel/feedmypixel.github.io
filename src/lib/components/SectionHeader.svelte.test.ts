@@ -14,6 +14,15 @@ test('shows the eyebrow and a linkable section heading', async () => {
     .toBeInTheDocument()
 })
 
+test('shows the lede under the heading', async () => {
+  render(SectionHeader, {
+    eyebrow: 'Products',
+    heading: 'Real tools for real needs',
+    lede: 'Designed, built and shipped end to end'
+  })
+  await expect.element(page.getByText('Designed, built and shipped end to end')).toBeVisible()
+})
+
 test('places actions beside the heading', async () => {
   const actions = createRawSnippet(() => ({ render: () => '<button>Download CV</button>' }))
   render(SectionHeader, { eyebrow: 'Experience', heading: 'Search my CV', actions })

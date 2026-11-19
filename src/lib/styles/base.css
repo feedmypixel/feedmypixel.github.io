@@ -58,7 +58,9 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-display);
   line-height: var(--line-height-snug);
+  color: var(--ink-strong);
 }
 
 :focus-visible {

@@ -18,8 +18,11 @@
 
 <section id="products" class="products">
   <div class="container inner">
-    <SectionHeader eyebrow="Products" heading="Real tools for real needs" />
-    <p class="lede">Designed, built and shipped end to end</p>
+    <SectionHeader
+      eyebrow="Products"
+      heading="Real tools for real needs"
+      lede="Designed, built and shipped end to end"
+    />
 
     <ProductEntry
       name="status"
@@ -71,14 +74,5 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .lede {
-    max-width: 50ch;
-    margin-top: var(--space-4);
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-snug);
-    color: var(--ink-muted);
-    text-wrap: pretty;
   }
 </style>
