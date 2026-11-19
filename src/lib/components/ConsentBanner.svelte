@@ -30,6 +30,22 @@
     }
   })
 
+  $effect(() => {
+    const banner = bannerEl
+    if (!banner) {
+      return
+    }
+    // On a phone the strip covers the foot of the page; its height varies as the copy wraps.
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--consent-height', `${banner.offsetHeight}px`)
+    })
+    observer.observe(banner)
+    return () => {
+      observer.disconnect()
+      document.documentElement.style.removeProperty('--consent-height')
+    }
+  })
+
   function moveFocusOutOfBanner() {
     if (!bannerEl?.contains(document.activeElement)) {
       return
@@ -69,18 +85,16 @@
     aria-describedby="consent-copy"
     tabindex="-1"
   >
-    <div class="container inner">
-      <p id="consent-copy" class="copy">
-        I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-        yes. If you do, Google sets cookies and records how you use the site.
-        <ExternalLink href="https://policies.google.com/privacy"
-          >How Google uses your data</ExternalLink
-        >
-      </p>
-      <div class="actions">
-        <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
-        <Button variant="solid" onclick={() => decide(true)}>Accept analytics</Button>
-      </div>
+    <p id="consent-copy" class="copy">
+      I use Google Analytics to see which parts of this site are read. Nothing loads until you say
+      yes. If you do, Google sets cookies and records how you use the site.
+      <ExternalLink href="https://policies.google.com/privacy"
+        >How Google uses your data</ExternalLink
+      >
+    </p>
+    <div class="actions">
+      <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
+      <Button variant="solid" onclick={() => decide(true)}>Accept analytics</Button>
     </div>
   </div>
 {/if}
@@ -88,35 +102,36 @@
 <style>
   .banner {
     display: none;
-    position: sticky;
-    top: calc(var(--header-height) + 1px);
+    position: fixed;
+    inset: auto 0 0;
     z-index: var(--z-consent);
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--gutter);
     background: var(--surface-raised);
-    border-bottom: 1px solid var(--border-default);
-    box-shadow: var(--shadow-md);
+    border-top: 1px solid var(--border-default);
+    box-shadow: var(--shadow-lg);
     opacity: 1;
     transition: opacity var(--transition-slow) var(--ease-emphasized);
   }
 
   :global(html[data-consent-pending]) .banner {
-    display: block;
+    display: flex;
+  }
+
+  :global(html[data-consent-pending]) :global(body) {
+    padding-bottom: var(--consent-height, 0);
+  }
+
+  .banner:focus {
+    outline: none;
   }
 
   .closing {
     opacity: 0;
   }
 
-  .inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-block: var(--space-4);
-  }
-
   .copy {
-    max-width: 62ch;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-relaxed);
     color: var(--ink);
@@ -127,7 +142,28 @@
     --button-ghost-bg: var(--surface-page);
 
     display: flex;
-    flex: none;
     gap: var(--space-3);
+  }
+
+  .actions > :global(*) {
+    flex: 1 1 0;
+  }
+
+  @media (min-width: 47.5rem) {
+    .banner {
+      inset: auto auto var(--space-5) var(--space-5);
+      width: 21rem;
+      padding: var(--space-5);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+    }
+
+    :global(html[data-consent-pending]) :global(body) {
+      padding-bottom: 0;
+    }
+
+    .actions > :global(*) {
+      flex: 0 1 auto;
+    }
   }
 </style>
