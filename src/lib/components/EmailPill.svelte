@@ -100,8 +100,9 @@
 
   .pill > :global(.copied-note) {
     position: absolute;
-    top: calc(100% + var(--space-2));
-    right: 0;
+    top: 50%;
+    left: calc(100% + var(--space-2));
+    translate: 0 -50%;
   }
 
   .copy:hover {

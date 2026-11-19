@@ -258,16 +258,17 @@
     content: '';
     width: 14px;
     height: 14px;
-    border: 2px solid var(--indicator);
+    background: var(--indicator);
     border-radius: var(--radius-pixel);
+    opacity: 0.32;
     transform: scale(0.85);
     transition:
-      background-color var(--transition) var(--ease-standard),
+      opacity var(--transition) var(--ease-standard),
       transform var(--transition) var(--ease-standard);
   }
 
   .dot[aria-current='true']::before {
-    background-color: var(--indicator);
+    opacity: 1;
     transform: scale(1);
   }
 

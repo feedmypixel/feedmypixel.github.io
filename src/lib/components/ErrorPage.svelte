@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { resolve } from '$app/paths'
-  import Button from './Button.svelte'
   import Eyebrow from './Eyebrow.svelte'
 
   let { status }: { status: number } = $props()
@@ -8,7 +6,7 @@
   const notFound = {
     eyebrow: '404',
     title: 'Page not found',
-    message: 'The address may be mistyped or the page may have moved'
+    message: 'Yup thats not here!'
   }
   const unexpected = {
     eyebrow: 'Error',
@@ -28,13 +26,6 @@
   <Eyebrow text={copy.eyebrow} />
   <h1>{copy.title}</h1>
   <p class="message">{copy.message}</p>
-  <div class="action">
-    <Button size="large" href={resolve('/')}>Go to the home page</Button>
-  </div>
-  <p class="products">
-    Or take a look at <a href={resolve('/status')}>status</a> or
-    <a href={resolve('/pipes')}>Pipes</a>
-  </p>
 </section>
 
 <style>
@@ -58,14 +49,5 @@
     line-height: var(--line-height-snug);
     color: var(--ink-muted);
     text-wrap: pretty;
-  }
-
-  .action {
-    margin-top: var(--space-10);
-  }
-
-  .products {
-    margin-top: var(--space-6);
-    color: var(--ink-muted);
   }
 </style>

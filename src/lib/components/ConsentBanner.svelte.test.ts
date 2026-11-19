@@ -22,11 +22,16 @@ test('asks before anything is loaded', async () => {
   await expect.element(page.getByRole('button', { name: 'Decline' })).toBeVisible()
 })
 
-test('sits under the header in the page rather than covering it', async () => {
+test('tells the page its height so the foot of the page stays reachable', async () => {
   render(ConsentBanner)
   await vi.waitFor(() => expect(banner()).not.toBeNull())
-  const styles = getComputedStyle(banner() as HTMLElement)
-  expect(styles.position).toBe('sticky')
+  const reservedHeight = () => document.documentElement.style.getPropertyValue('--consent-height')
+  await vi.waitFor(() =>
+    expect(reservedHeight()).toBe(`${(banner() as HTMLElement).offsetHeight}px`)
+  )
+
+  await page.getByRole('button', { name: 'Decline' }).click()
+  await vi.waitFor(() => expect(reservedHeight()).toBe(''))
 })
 
 test('describes itself for screen readers and points at the copy', async () => {

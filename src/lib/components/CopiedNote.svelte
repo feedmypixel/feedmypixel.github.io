@@ -34,6 +34,8 @@
   }
 
   svg {
+    flex: none;
+    max-width: none;
     width: 1em;
     height: 1em;
   }
