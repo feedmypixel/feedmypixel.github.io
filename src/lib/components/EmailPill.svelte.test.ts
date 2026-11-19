@@ -14,10 +14,10 @@ const selectedText = () => window.getSelection()?.toString()
 
 test('links the address for mail clients', async () => {
   render(EmailPill)
-  const link = page.getByRole('link', { name: 'ben@feedmypixel.com' })
+  const link = page.getByRole('link', { name: 'hello@feedmypixel.com' })
   await expect.element(link).toBeInTheDocument()
   expect(document.querySelector('a.address')?.getAttribute('href')).toBe(
-    'mailto:ben@feedmypixel.com'
+    'mailto:hello@feedmypixel.com'
   )
 })
 
@@ -28,7 +28,7 @@ test('copies the address and says so beside it', async () => {
   render(EmailPill)
   await page.getByRole('button', { name: 'Copy email address' }).click()
 
-  expect(writeText).toHaveBeenCalledWith('ben@feedmypixel.com')
+  expect(writeText).toHaveBeenCalledWith('hello@feedmypixel.com')
   await expect.element(page.getByRole('status')).toHaveTextContent('Copied')
 })
 
@@ -38,8 +38,8 @@ test('selects the address to copy by hand when the clipboard rejects', async () 
   render(EmailPill)
   await page.getByRole('button', { name: 'Copy email address' }).click()
 
-  await vi.waitFor(() => expect(selectedText()).toBe('ben@feedmypixel.com'))
-  await expect.element(page.getByRole('link', { name: 'ben@feedmypixel.com' })).toHaveFocus()
+  await vi.waitFor(() => expect(selectedText()).toBe('hello@feedmypixel.com'))
+  await expect.element(page.getByRole('link', { name: 'hello@feedmypixel.com' })).toHaveFocus()
   await expect.element(page.getByRole('status')).toHaveTextContent('')
 })
 
@@ -49,5 +49,5 @@ test('selects the address to copy by hand when there is no clipboard API', async
   render(EmailPill)
   await page.getByRole('button', { name: 'Copy email address' }).click()
 
-  await vi.waitFor(() => expect(selectedText()).toBe('ben@feedmypixel.com'))
+  await vi.waitFor(() => expect(selectedText()).toBe('hello@feedmypixel.com'))
 })

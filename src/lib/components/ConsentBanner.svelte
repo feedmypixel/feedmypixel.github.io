@@ -72,8 +72,10 @@
     <div class="inner">
       <p id="consent-copy" class="copy">
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-        yes and no personal data is collected either way.
-        <ExternalLink href="https://policies.google.com/privacy">Read more</ExternalLink>
+        yes. If you do, Google sets cookies and records how you use the site.
+        <ExternalLink href="https://policies.google.com/privacy"
+          >How Google uses your data</ExternalLink
+        >
       </p>
       <div class="actions">
         <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
