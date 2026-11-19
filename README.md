@@ -98,6 +98,8 @@ src/
 │   └── consent.svelte.ts        # Consent state, gates analytics
 └── routes/
     ├── +layout.svelte           # Header + main + footer shell
+    ├── +error.svelte            # Error page, sharing its display with 404/
+    ├── 404/                     # Pre-renders to 404.html, which GitHub Pages serves for unknown URLs
     ├── +page.svelte             # The one-pager (hero, products, CV search, contact)
     ├── components/              # Public component catalogue
     ├── pipes/privacy/           # Privacy policy for the Pipes extension
