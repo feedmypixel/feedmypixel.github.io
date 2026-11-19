@@ -12,7 +12,7 @@ are reserved; they may not be copied, redistributed, or reused.
 - `static/BenChidgeyCV.pdf` and the CV content in `src/lib/data/experience.ts`
 - The feedMyPixel name, logo, and wordmark, including `src/lib/components/Logo.svelte`,
   `static/favicon.png`, `static/apple-touch-icon.png`, and `static/og-image.png`
-- Product screenshots under `static/pipes/`
+- Product screenshots under `static/status/` and `static/pipes/`
 - Written copy throughout the site
 
 Reusing the code is welcome. Presenting yourself as feedMyPixel or Ben Chidgey

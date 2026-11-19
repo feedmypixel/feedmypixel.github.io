@@ -1,16 +1,19 @@
 # feedmypixel.github.io
 
-The feedMyPixel site: a one-page portfolio for Ben Chidgey (contract full-stack engineer) and his
-product Pipes. A statically pre-rendered SvelteKit app (`@sveltejs/adapter-static`) deployed to GitHub
-Pages at [feedmypixel.com](https://feedmypixel.com).
+The feedMyPixel site: a portfolio for Ben Chidgey (contract full-stack engineer) with a page each for
+his products status and Pipes. A statically pre-rendered SvelteKit app (`@sveltejs/adapter-static`)
+deployed to GitHub Pages at [feedmypixel.com](https://feedmypixel.com).
 
 Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/design output live under
 [`design/`](./design).
+
+## Contents
 
 - [Stack](#stack)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Scripts](#scripts)
+  - [Hooks](#hooks)
 - [Layout](#layout)
 - [Brand](#brand)
 - [Styling](#styling)
@@ -23,9 +26,9 @@ Planning notes live under [`tasks/`](./tasks). Design briefs and claude.ai/desig
 
 ## Stack
 
-- **SvelteKit 2** + **Svelte 5** (runes mode)
+- **SvelteKit 3** + **Svelte 5** (runes mode)
 - **Vite 8** for bundling, **adapter-static** (full pre-render) for output
-- **Vitest 4** (browser mode) + **Playwright** (e2e + axe a11y) for tests
+- **Vitest 5** (browser mode) + **Playwright** (e2e + axe a11y) for tests
 - **ESLint** + **Prettier** + **Stylelint** + **husky** + **lint-staged**
 
 ## Prerequisites
@@ -84,26 +87,34 @@ before a big UI push.
 
 ## Layout
 
-```
+```text
 src/
 ├── app.html                     # HTML shell, no-flash theme script
 ├── app.d.ts                     # App namespace globals
 ├── lib/
 │   ├── components/              # Header, Footer, Hero, Products, Experience, Contact, … (Svelte 5)
-│   ├── data/                    # experience.ts (roles → CV search + JSON-LD)
+│   ├── data/                    # experience.ts (roles → CV search + JSON-LD), services.ts (+ FAQs),
+│   │                            # status.ts and pipes.ts (product slides and copy)
 │   ├── seo/                     # structured-data.ts (JSON-LD builders)
 │   ├── styles/                  # Layered app CSS - see styles/README.md
 │   ├── config.ts                # All environment + constant access, one place
 │   └── consent.svelte.ts        # Consent state, gates analytics
 └── routes/
     ├── +layout.svelte           # Header + main + footer shell
-    ├── +page.svelte             # The one-pager (hero, products, CV search, contact)
+    ├── +page.svelte             # Home (hero, products, CV search, services, contact)
     ├── components/              # Public component catalogue
+    ├── status/                  # status product page
+    ├── pipes/                   # Pipes product page
     ├── pipes/privacy/           # Privacy policy for the Pipes extension
     └── sitemap.xml/             # Sitemap endpoint (pre-rendered)
 
-scripts/cv-to-odt.py             # Renders tasks/cv-draft.md into the CV - see CV below
-static/                          # CV PDF, robots.txt, llms.txt, icons, CNAME - served at root
+scripts/
+├── cv-to-odt.py                 # Renders tasks/cv-draft.md into the CV - see CV below
+├── sync-experience.py           # Copies CV summaries and tags into experience.ts - see CV below
+├── resize-screens.py            # Builds static/status/ and static/pipes/ images from design/
+└── design/                      # pnpm design:check - diffs built pages against the design mocks
+static/                          # CV PDF, status/ and pipes/ screenshots, share images, robots.txt,
+                                 # llms.txt, icons, CNAME - served at root
 e2e/                             # Playwright specs
 ```
 
@@ -197,7 +208,8 @@ appears. The choice is remembered and can be withdrawn from the footer.
 ## SEO and AEO
 
 - Per-page title, description, canonical, Open Graph and Twitter cards via `Seo.svelte`
-- JSON-LD `@graph` (`Organization`, `Person`, `WebSite`) built from the CV data
+- JSON-LD `@graph` (`Organization`, `Person`, `WebSite`, `ProfessionalService`, `FAQPage`) built
+  from the CV and services data
 - `sitemap.xml` (pre-rendered), `robots.txt`, and an `llms.txt` summary for
   answer engines
 - `robots.txt` explicitly welcomes answer-engine crawlers, including the retrieval bots

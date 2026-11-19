@@ -38,7 +38,7 @@ From [`prd-status-page.md`](prd-status-page.md). Branch `feat/product-pages` (st
 - [x] 2.1 `Button` `size` prop (default 44px, `large` 48px), tests.
 - [x] 2.2 `PixelMark`, `ProductStory`, `ThemedImage`, `Chevron`, `ExternalLink`, `ProductEntry`,
       `StatusStoreLinks`, with tests where they carry behaviour.
-- [ ] 2.2a status store buttons appear through `StatusStoreLinks` once the store URLs are in
+- [x] 2.2a status store buttons appear through `StatusStoreLinks` once the store URLs are in
       `config.ts` (at release).
 - [x] 2.3 `carousel.ts` offset maths, tests first.
 - [x] 2.4 `Carousel` slide snippet + strip mode; every consumer migrated in the same change.
