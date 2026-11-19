@@ -4,13 +4,13 @@
   Scroll-driven reveals. Native view timelines only: no observer, no script.
   The @supports must test animation-range as well as animation-timeline, or
   browsers with partial support match and then never run the animation, which
-  would leave every section stuck at opacity 0.
+  would leave every section stuck below its resting place.
+  Transform only: a fade would dim text that is already on screen (WCAG 1.4.3).
 */
 @media (prefers-reduced-motion: no-preference) {
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
     @keyframes rise-in {
       from {
-        opacity: 0;
         transform: translateY(32px);
       }
     }
