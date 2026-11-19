@@ -5,10 +5,12 @@ type View = 'popup' | 'sidepanel' | 'options' | 'failure-notification'
 
 const SHOT_SCALE = 1 / 1.25
 
+const lowerCaseFirstLetter = (text: string) => text.charAt(0).toLowerCase() + text.slice(1)
+
 const shot = (view: View, label: string, width: number, height: number) => ({
   light: asset(`pipes/${view}-light.png`),
   dark: asset(`pipes/${view}-dark.png`),
-  alt: `Pipes: ${label.toLowerCase()}`,
+  alt: `Pipes: ${lowerCaseFirstLetter(label)}`,
   width,
   height,
   frame: view === 'failure-notification' ? ('notification' as const) : ('window' as const),

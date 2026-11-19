@@ -13,7 +13,11 @@ export function mostVisibleId(entries: SectionEntry[]): string | null {
   return visible.length ? visible[0].target.id : null
 }
 
-const routeSections = new Map([['/status', 'products']])
+const routeSections = new Map([
+  ['/status', 'products'],
+  ['/pipes', 'products'],
+  ['/pipes/privacy', 'products']
+])
 
 export function sectionForRoute(routeId: string | null) {
   return (routeId && routeSections.get(routeId)) ?? null

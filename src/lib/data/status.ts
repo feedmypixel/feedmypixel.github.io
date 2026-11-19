@@ -120,7 +120,7 @@ export const slides: Slide[] = [
     label: 'You decide who gets in',
     sub: 'Make your profile private and approve who follows you',
     shots: [
-      controlShot('06-private-page', 'a private page with a follow button'),
+      controlShot('06-private-page', 'a private profile with a follow button'),
       controlShot('05-follow-requests', 'follow requests to accept or decline')
     ],
     layout: 'phones'

@@ -24,11 +24,32 @@ test.describe('before the app loads', () => {
   })
 })
 
+test.describe('with no JavaScript at all', () => {
+  test.use({ javaScriptEnabled: false })
+
+  test('the banner and its dead buttons are not shown', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+    await expect(banner(page)).toBeHidden()
+  })
+})
+
+test('a first-time visitor can still decline once the app has loaded', async ({ page }) => {
+  await page.goto('/')
+  await expect(banner(page)).toBeVisible()
+  await expect(async () => {
+    await page.getByRole('button', { name: 'Decline' }).click({ timeout: 500 })
+    await expect(banner(page)).toBeHidden({ timeout: 1000 })
+  }).toPass()
+  await expect(page.locator('html')).not.toHaveAttribute('data-consent-pending')
+})
+
 test('cookie settings brings the banner back after a choice', async ({ page }) => {
   await remember(page, 'granted')
   await page.goto('/')
   await expect(banner(page)).toBeHidden()
-  await expect(page.locator('html')).not.toHaveAttribute('data-consent-decided')
-  await page.getByRole('button', { name: 'Cookie settings' }).click()
-  await expect(banner(page)).toBeVisible()
+  await expect(async () => {
+    await page.getByRole('button', { name: 'Cookie settings' }).click()
+    await expect(banner(page)).toBeVisible({ timeout: 500 })
+  }).toPass()
 })

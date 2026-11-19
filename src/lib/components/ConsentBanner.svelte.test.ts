@@ -18,9 +18,8 @@ const banner = () => document.querySelector('[role="dialog"][aria-label="Cookie 
 
 test('asks before anything is loaded', async () => {
   render(ConsentBanner)
-  await vi.waitFor(() => expect(banner()).not.toBeNull())
-  await expect.element(page.getByRole('button', { name: 'Accept analytics' })).toBeInTheDocument()
-  await expect.element(page.getByRole('button', { name: 'Decline' })).toBeInTheDocument()
+  await expect.element(page.getByRole('button', { name: 'Accept analytics' })).toBeVisible()
+  await expect.element(page.getByRole('button', { name: 'Decline' })).toBeVisible()
 })
 
 test('sits under the header in the page rather than covering it', async () => {

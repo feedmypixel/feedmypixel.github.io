@@ -32,6 +32,13 @@ test('the status product page marks Products and leaving it clears the mark', as
   await expect.poll(() => activeLinks(page)).toEqual([])
 })
 
+for (const route of ['/pipes', '/pipes/privacy']) {
+  test(`${route} marks Products like the status product page`, async ({ page }) => {
+    await page.goto(route)
+    await expect.poll(() => activeLinks(page)).toEqual(['Products'])
+  })
+}
+
 test('section highlighting still works on the one-pager', async ({ page }) => {
   await page.goto('/')
   await page.locator('#products').scrollIntoViewIfNeeded()

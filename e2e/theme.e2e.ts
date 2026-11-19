@@ -46,6 +46,15 @@ test.describe('before the app loads', () => {
   }
 })
 
+for (const theme of ['light', 'dark']) {
+  test(`native controls and scrollbars follow the ${theme} theme`, async ({ page }) => {
+    await rememberTheme(page, theme)
+    await page.goto('/')
+    await expect(html(page)).toHaveAttribute('data-theme', theme)
+    await expect(html(page)).toHaveCSS('color-scheme', theme)
+  })
+}
+
 test('the theme chosen with the toggle survives a reload', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' })
   await rememberConsent(page, 'denied')

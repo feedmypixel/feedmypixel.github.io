@@ -177,9 +177,13 @@
   /* layout */
   --container-max: 77.5rem;
   --header-height: 4rem;
+
+  color-scheme: light;
 }
 
 [data-theme='dark'] {
+  color-scheme: dark;
+
   --surface-page: #0a0b0e;
   --surface-raised: #1b1e26;
   --surface-sunken: #13151c;
