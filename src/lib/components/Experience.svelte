@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte'
   import { asset } from '$app/paths'
+  import { cvFileName } from '#lib/config.js'
   import { roles } from '#lib/data/experience.js'
   import {
     QUICK_FILTERS,
@@ -24,6 +25,7 @@
   import { buildRuns } from '#lib/role-runs.js'
   import EmptyState from './EmptyState.svelte'
   import Button from './Button.svelte'
+  import DownloadArrow from './DownloadArrow.svelte'
 
   let query = $state('')
   let chips = $state<FilterChip[]>([])
@@ -119,20 +121,8 @@
   <div class="container intro">
     <SectionHeader eyebrow="Experience" heading="Search my CV">
       {#snippet actions()}
-        <Button variant="solid" href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" />
-          </svg>
+        <Button variant="solid" href={asset(cvFileName)} download={cvFileName}>
+          <DownloadArrow />
           Download CV
         </Button>
       {/snippet}
@@ -205,7 +195,7 @@
     <noscript>
       <p class="noscript">
         Search and filtering need JavaScript. The full history is listed below and the
-        <a href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
+        <a href={asset(cvFileName)} download={cvFileName}>CV is downloadable</a>.
       </p>
     </noscript>
   </div>

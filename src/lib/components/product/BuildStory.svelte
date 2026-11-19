@@ -59,7 +59,7 @@
           {/each}
         </nav>
 
-        <dl class="stack">
+        <dl class="tech-stack">
           {@render stack()}
         </dl>
       </aside>
@@ -101,7 +101,7 @@
   }
 
   .nav-label,
-  .stack :global(dt) {
+  .tech-stack :global(dt) {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     letter-spacing: var(--tracking-wide);
@@ -129,7 +129,7 @@
     border-left-color: var(--brand);
   }
 
-  .stack {
+  .tech-stack {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-4);
@@ -137,13 +137,13 @@
     border-top: 1px solid var(--border-subtle);
   }
 
-  .stack :global(div) {
+  .tech-stack :global(div) {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
   }
 
-  .stack :global(dd) {
+  .tech-stack :global(dd) {
     font-size: var(--font-size-sm);
     color: var(--ink);
   }

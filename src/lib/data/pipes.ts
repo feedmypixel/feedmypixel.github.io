@@ -15,11 +15,17 @@ const shot = (view: View, label: string, width: number, height: number) => ({
   scale: SHOT_SCALE
 })
 
-const slide = (view: View, label: string, sub: string, width: number, height: number) => ({
-  label,
-  sub,
-  shot: shot(view, label, width, height)
-})
+const slide = (view: View, label: string, sub: string, width: number, height: number) => {
+  const windowShot = shot(view, label, width, height)
+  return {
+    label,
+    sub,
+    // FOLLOWUP: drop `shot` once the catalogue reads `shots`; its page is frozen until https://github.com/feedmypixel/feedmypixel.github.io/pull/71 lands
+    shot: windowShot,
+    shots: [windowShot],
+    layout: 'wide' as const
+  }
+}
 
 export const slides = [
   slide('popup', 'Status from your toolbar', 'One click through to the run that failed', 880, 1000),

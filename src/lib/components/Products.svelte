@@ -6,10 +6,13 @@
   import SectionHeader from './SectionHeader.svelte'
   import ProductEntry from './ProductEntry.svelte'
   import StatusStoreLinks from './StatusStoreLinks.svelte'
-  import PipesCarousel from './pipes/PipesCarousel.svelte'
-  import StatusCarousel from './status/StatusCarousel.svelte'
+  import ScreenshotCarousel from './ScreenshotCarousel.svelte'
   import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
-  import { pitch as pipesPitch, story as pipesStory } from '#lib/data/pipes.js'
+  import {
+    pitch as pipesPitch,
+    slides as pipesSlides,
+    story as pipesStory
+  } from '#lib/data/pipes.js'
   import { pipesChromeUrl, pipesFirefoxUrl, pipesSourceUrl, statusUrl } from '#lib/config.js'
 </script>
 
@@ -36,7 +39,7 @@
         </Button>
       {/snippet}
       {#snippet screenshots()}
-        <StatusCarousel slides={statusSlides} label="status screenshots" />
+        <ScreenshotCarousel slides={statusSlides} label="status screenshots" />
       {/snippet}
     </ProductEntry>
 
@@ -54,7 +57,7 @@
         </Button>
       {/snippet}
       {#snippet screenshots()}
-        <PipesCarousel />
+        <ScreenshotCarousel slides={pipesSlides} label="Pipes screenshots" />
       {/snippet}
     </ProductEntry>
   </div>

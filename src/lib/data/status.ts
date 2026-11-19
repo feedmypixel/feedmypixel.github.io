@@ -1,5 +1,6 @@
 import { asset } from '$app/paths'
-import type { Layout, Shot } from '#lib/components/ComposedSlide.svelte'
+import type { Shot } from '#lib/components/ComposedSlide.svelte'
+import type { Slide } from '#lib/components/ScreenshotCarousel.svelte'
 
 const SCREEN_WIDTH = 660
 const SCREEN_HEIGHT = 1435
@@ -61,8 +62,6 @@ function webShot(device: Device, view: WebView, shows: string, size = WEB_SIZES[
     ...size
   }
 }
-
-type Slide = { label: string; sub: string; shots: Shot[]; layout: Layout }
 
 export const slides: Slide[] = [
   {

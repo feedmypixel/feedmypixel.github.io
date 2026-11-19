@@ -5,7 +5,7 @@
   import StatusStoreLinks from '../StatusStoreLinks.svelte'
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
-  import StatusCarousel from './StatusCarousel.svelte'
+  import ScreenshotCarousel from '../ScreenshotCarousel.svelte'
   import HeadingLink from '../HeadingLink.svelte'
 </script>
 
@@ -83,7 +83,7 @@
   </p>
 
   <div class="web">
-    <StatusCarousel slides={webSlides} label="status on the web" />
+    <ScreenshotCarousel slides={webSlides} label="status on the web" />
   </div>
 
   <HeadingLink level={3} size="xl" id="claude" text="Built with Claude" />
