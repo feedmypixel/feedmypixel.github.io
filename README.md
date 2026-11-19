@@ -101,6 +101,8 @@ src/
 │   └── consent.svelte.ts        # Consent state, gates analytics
 └── routes/
     ├── +layout.svelte           # Header + main + footer shell
+    ├── +error.svelte            # Error page, sharing its display with 404/
+    ├── 404/                     # Pre-renders to 404.html, which GitHub Pages serves for unknown URLs
     ├── +page.svelte             # Home (hero, products, CV search, services, contact)
     ├── components/              # Public component catalogue
     ├── status/                  # status product page
@@ -111,8 +113,7 @@ src/
 scripts/
 ├── cv-to-odt.py                 # Renders tasks/cv-draft.md into the CV - see CV below
 ├── sync-experience.py           # Copies CV summaries and tags into experience.ts - see CV below
-├── resize-screens.py            # Builds static/status/ and static/pipes/ images from design/
-└── design/                      # pnpm design:check - diffs built pages against the design mocks
+└── resize-screens.py            # Builds static/status/ and static/pipes/ images from design/
 static/                          # CV PDF, status/ and pipes/ screenshots, share images, robots.txt,
                                  # llms.txt, icons, CNAME - served at root
 e2e/                             # Playwright specs
