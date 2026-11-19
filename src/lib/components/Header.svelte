@@ -72,7 +72,7 @@
 <svelte:window onresize={() => measure(active)} />
 
 <header class="header" class:drawer-open={drawerOpen}>
-  <div class="inner">
+  <div class="container inner">
     <a
       href="{home}#top"
       class="brand"
@@ -145,10 +145,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    max-width: var(--container-max);
     min-height: var(--header-height);
-    margin-inline: auto;
-    padding-inline: var(--gutter);
   }
 
   .brand {

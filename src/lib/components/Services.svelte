@@ -52,7 +52,7 @@
 <style>
   .services {
     background: var(--surface-sunken);
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .inner {

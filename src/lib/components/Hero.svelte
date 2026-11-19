@@ -85,12 +85,10 @@
 
   h1 {
     max-width: 24ch;
-    font-family: var(--font-display);
     font-size: var(--font-size-5xl);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
     text-wrap: balance;
   }
 

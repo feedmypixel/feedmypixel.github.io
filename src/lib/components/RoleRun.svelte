@@ -133,11 +133,9 @@
   }
 
   h3 {
-    font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .title {
@@ -207,11 +205,9 @@
   }
 
   h4 {
-    font-family: var(--font-display);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .chapter-dates,
@@ -252,7 +248,7 @@
     background: var(--surface-sunken);
     border-radius: var(--radius-pill);
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: var(--font-size-xs);
     color: var(--ink-muted);
   }
 

@@ -76,8 +76,11 @@
 
 <section id="contact" class="contact">
   <div class="container inner">
-    <SectionHeader eyebrow="Contact" heading="Like to build something together?" />
-    <p class="lede">Available worldwide and remote, happy to accommodate different timezones</p>
+    <SectionHeader
+      eyebrow="Contact"
+      heading="Like to build something together?"
+      lede="Available worldwide and remote, happy to accommodate different timezones"
+    />
 
     <div class="grid">
       <form method="post" action={contactEndpoint} novalidate onsubmit={onSubmit}>
@@ -170,15 +173,6 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .lede {
-    max-width: 54ch;
-    margin-top: var(--space-5);
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-relaxed);
-    color: var(--ink-muted);
-    text-wrap: pretty;
   }
 
   .grid {

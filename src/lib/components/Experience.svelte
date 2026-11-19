@@ -119,7 +119,11 @@
 
 <section id="experience" class="experience">
   <div class="container intro">
-    <SectionHeader eyebrow="Experience" heading="Search my CV">
+    <SectionHeader
+      eyebrow="Experience"
+      heading="Search my CV"
+      lede="Type to filter or just scroll the timeline"
+    >
       {#snippet actions()}
         <Button variant="solid" href={asset(cvFileName)} download={cvFileName}>
           <DownloadArrow />
@@ -127,7 +131,6 @@
         </Button>
       {/snippet}
     </SectionHeader>
-    <p class="lede">Type to filter or just scroll the timeline</p>
   </div>
 
   <div class="container controls">
@@ -224,16 +227,7 @@
   }
 
   .intro {
-    padding: var(--band) var(--gutter) var(--space-8);
-  }
-
-  .lede {
-    max-width: 50ch;
-    margin-top: var(--space-4);
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-snug);
-    color: var(--ink-muted);
-    text-wrap: pretty;
+    padding-block: var(--band) var(--space-8);
   }
 
   .controls {

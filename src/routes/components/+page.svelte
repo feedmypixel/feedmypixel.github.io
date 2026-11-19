@@ -189,7 +189,11 @@
 
   <section aria-labelledby="section-header-h">
     <h2 id="section-header-h">Section header</h2>
-    <SectionHeader eyebrow="Eyebrow" heading="A section heading with a copy-link icon" />
+    <SectionHeader
+      eyebrow="Eyebrow"
+      heading="A section heading with a copy-link icon"
+      lede="An optional lede under the heading"
+    />
   </section>
 
   <section aria-labelledby="heading-link-h">
@@ -246,11 +250,9 @@
   }
 
   h1 {
-    font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .lede {
@@ -266,10 +268,8 @@
   }
 
   h2 {
-    font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
-    color: var(--ink-strong);
   }
 
   .row {

@@ -1,4 +1,4 @@
-/* Layout primitives - page/route call-site tool, never used inside a component. */
+/* Layout primitives - for pages and section-level components, never a component's own look. */
 
 /* Vertical rhythm - a column with consistent spacing between children. */
 .stack {

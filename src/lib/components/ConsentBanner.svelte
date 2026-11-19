@@ -52,7 +52,7 @@
     aria-describedby="consent-copy"
     tabindex="-1"
   >
-    <div class="inner">
+    <div class="container inner">
       <p id="consent-copy" class="copy">
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
         yes and no personal data is collected either way.
@@ -92,9 +92,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: var(--space-4) var(--gutter);
+    padding-block: var(--space-4);
   }
 
   .copy {

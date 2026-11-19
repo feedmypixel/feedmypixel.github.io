@@ -121,9 +121,10 @@ App-wide CSS is split by concern into cascade layers under `src/lib/styles/`
 stat-ui architecture.
 
 The load-bearing rule: **components are self-contained** (scoped `<style>`, depending only on
-**tokens**) and **never use global utility classes**; utilities and layout objects
-(`.stack`/`.cluster`/`.center`) are a **page/route call-site tool**; cross-component duplication is
-DRY'd via **tokens, not shared classes**. Raw hex lives only in `tokens.css` (Stylelint-enforced).
+**tokens**) and **never use global utility classes for their own look**; layout objects such as
+`.container` are used by pages and by **section-level components** (the header, the footer, the
+consent banner, each page section); cross-component duplication is DRY'd via **tokens, not shared
+classes**. Raw hex lives only in `tokens.css` (Stylelint-enforced).
 
 Links follow one rule: hover always **changes** the underline state. Content links are underlined at
 rest and lose it on hover; chrome links (nav, footer, buttons) are clean at rest and gain it.

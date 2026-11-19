@@ -103,11 +103,9 @@
 
   h1 {
     margin-top: var(--space-4);
-    font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
     text-wrap: balance;
   }
 
