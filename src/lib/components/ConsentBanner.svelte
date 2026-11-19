@@ -107,8 +107,8 @@
     flex-direction: column;
     gap: var(--space-4);
     padding: var(--space-4) var(--gutter);
-    background: var(--surface-raised);
-    border-top: 1px solid var(--border-subtle);
+    background: var(--surface-sunken);
+    border-top: 1px solid var(--border-strong);
     box-shadow: var(--shadow-lg);
     opacity: 1;
     transition: opacity var(--transition-slow) var(--ease-emphasized);
@@ -153,7 +153,7 @@
       inset: auto auto var(--space-5) var(--space-5);
       width: 21rem;
       padding: var(--space-5);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-strong);
       border-radius: var(--radius-lg);
     }
 
