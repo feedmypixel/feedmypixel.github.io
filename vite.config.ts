@@ -13,7 +13,14 @@ function buildShaFromGitOrCiEnv() {
 }
 
 export default defineConfig({
-  plugins: [sveltekit({ adapter: adapter(), version: { pollInterval: 0 } })],
+  plugins: [
+    sveltekit({
+      adapter: adapter(),
+      version: { pollInterval: 0 },
+      // 404.html is served at any depth, so its asset and link paths cannot be relative.
+      paths: { relative: false }
+    })
+  ],
 
   define: {
     __BUILD_SHA__: JSON.stringify(buildShaFromGitOrCiEnv())
@@ -35,7 +42,6 @@ export default defineConfig({
         'coverage/**',
         'e2e/**',
         'playwright.config.ts',
-        'playwright.visual.config.ts',
         'vite.config.ts',
         'eslint.config.js',
         'src/app.d.ts',

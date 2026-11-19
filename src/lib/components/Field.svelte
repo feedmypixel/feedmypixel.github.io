@@ -109,7 +109,7 @@
   input:focus,
   textarea:focus {
     border-color: var(--field-border-focus);
-    outline: none;
+    outline: 2px solid transparent;
     box-shadow: var(--focus-ring);
   }
 

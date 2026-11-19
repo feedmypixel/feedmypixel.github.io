@@ -11,7 +11,7 @@
   import BackToTop from '#lib/components/BackToTop.svelte'
   import ConsentBanner from '#lib/components/ConsentBanner.svelte'
   import { consent } from '#lib/consent.svelte.js'
-  import { loadAnalytics } from '#lib/analytics.js'
+  import { disableAnalytics, enableAnalytics } from '#lib/analytics.js'
 
   let { children } = $props()
 
@@ -25,7 +25,9 @@
 
   $effect(() => {
     if (consent.choice === 'granted') {
-      loadAnalytics()
+      enableAnalytics()
+    } else {
+      disableAnalytics()
     }
   })
 </script>
@@ -40,7 +42,7 @@
 
 <div id="top" class="page">
   <Header />
-  <main id="main">
+  <main id="main" tabindex="-1">
     <ConsentBanner />
     {@render children()}
   </main>
@@ -59,6 +61,10 @@
 
   main {
     flex: 1 0 auto;
+  }
+
+  main:focus-visible {
+    outline: none;
   }
 
   .skip-link {

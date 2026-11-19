@@ -52,7 +52,7 @@
 <style>
   .services {
     background: var(--surface-sunken);
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .inner {
@@ -124,6 +124,12 @@
   .faq[open]::details-content {
     block-size: auto;
     opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq::details-content {
+      transition: none;
+    }
   }
 
   summary {

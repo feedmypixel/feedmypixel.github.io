@@ -1,6 +1,28 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import Footer from './Footer.svelte'
+import { consent } from '#lib/consent.svelte.js'
+
+afterEach(() => {
+  vi.restoreAllMocks()
+  consent.init()
+})
+
+test('offers cookie settings so a choice can be changed', async () => {
+  consent.init()
+  render(Footer)
+  await expect.element(page.getByRole('button', { name: 'Cookie settings' })).toBeInTheDocument()
+})
+
+test('does not offer cookie settings when the browser has already opted out', async () => {
+  vi.spyOn(navigator, 'doNotTrack', 'get').mockReturnValue('1')
+  consent.init()
+  render(Footer)
+  await expect.element(page.getByRole('link', { name: 'Components' })).toBeInTheDocument()
+  await expect
+    .element(page.getByRole('button', { name: 'Cookie settings' }))
+    .not.toBeInTheDocument()
+})
 
 test('renders the company line and the external links', async () => {
   render(Footer)

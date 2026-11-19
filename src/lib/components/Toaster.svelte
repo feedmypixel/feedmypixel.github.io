@@ -3,7 +3,7 @@
   import Toast from './Toast.svelte'
 </script>
 
-<div class="toaster" role="region" aria-label="Notifications">
+<div class="toaster" role="region" aria-label="Notifications" aria-live="polite">
   {#each toasts.items as toast (toast.id)}
     <Toast kind={toast.kind} message={toast.message} onDismiss={() => toasts.dismiss(toast.id)} />
   {/each}

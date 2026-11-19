@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte'
   import { asset } from '$app/paths'
+  import { cvFileName } from '#lib/config.js'
   import { roles } from '#lib/data/experience.js'
   import {
     QUICK_FILTERS,
@@ -11,6 +12,7 @@
     filterByControls,
     filterRoles,
     nextActiveIndex,
+    roleCountLabel,
     suggestFacets,
     type Chip as FilterChip,
     type Facet,
@@ -24,6 +26,7 @@
   import { buildRuns } from '#lib/role-runs.js'
   import EmptyState from './EmptyState.svelte'
   import Button from './Button.svelte'
+  import DownloadArrow from './DownloadArrow.svelte'
 
   let query = $state('')
   let chips = $state<FilterChip[]>([])
@@ -85,6 +88,8 @@
     type = 'All'
     open = false
     activeIndex = -1
+    suppressListbox = true
+    searchInput()?.focus()
   }
 
   function onKeyDown(event: KeyboardEvent) {
@@ -117,27 +122,18 @@
 
 <section id="experience" class="experience">
   <div class="container intro">
-    <SectionHeader eyebrow="Experience" heading="Search my CV">
+    <SectionHeader
+      eyebrow="Experience"
+      heading="Search my CV"
+      lede="Type to filter or just scroll the timeline"
+    >
       {#snippet actions()}
-        <Button variant="solid" href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" />
-          </svg>
+        <Button variant="solid" href={asset(cvFileName)} download={cvFileName}>
+          <DownloadArrow />
           Download CV
         </Button>
       {/snippet}
     </SectionHeader>
-    <p class="lede">Type to filter or just scroll the timeline</p>
   </div>
 
   <div class="container controls">
@@ -205,12 +201,13 @@
     <noscript>
       <p class="noscript">
         Search and filtering need JavaScript. The full history is listed below and the
-        <a href={asset('BenChidgeyCV.pdf')} download="BenChidgeyCV.pdf">CV is downloadable</a>.
+        <a href={asset(cvFileName)} download={cvFileName}>CV is downloadable</a>.
       </p>
     </noscript>
   </div>
 
-  <div class="container results" aria-live="polite">
+  <div class="container results">
+    <p class="visually-hidden" role="status">{roleCountLabel(results.length)} shown</p>
     {#if results.length > 0}
       <ol class="rows">
         {#each runs as run (run.company + run.spanLabel)}
@@ -234,16 +231,7 @@
   }
 
   .intro {
-    padding: var(--band) var(--gutter) var(--space-8);
-  }
-
-  .lede {
-    max-width: 50ch;
-    margin-top: var(--space-4);
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-snug);
-    color: var(--ink-muted);
-    text-wrap: pretty;
+    padding-block: var(--band) var(--space-8);
   }
 
   .controls {

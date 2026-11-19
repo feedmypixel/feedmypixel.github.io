@@ -21,7 +21,6 @@ with the `design-to-code` skill rather than imported wholesale.
 
 ## What is in here
 
-Only documents describing work still in progress. Everything else - the original multi-page PRD and
-task list, the one-pager build audit, CV notes overtaken by later edits - is removed once the work it
-guided ships, rather than left to rot. All of it remains in git history if the reasoning is ever
-needed.
+Only documents describing work still in progress. Once the work a document guided ships, the
+document moves to [`archive/`](./archive) so the reasoning stays to hand without reading as live
+work.

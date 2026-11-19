@@ -4,6 +4,7 @@
   import Logo from '#lib/components/Logo.svelte'
   import ThemeToggle from '#lib/components/ThemeToggle.svelte'
   import Toast from '#lib/components/Toast.svelte'
+  import Banner from '#lib/components/Banner.svelte'
   import Button from '#lib/components/Button.svelte'
   import EmailPill from '#lib/components/EmailPill.svelte'
   import Carousel from '#lib/components/Carousel.svelte'
@@ -22,6 +23,7 @@
   import BackToTop from '#lib/components/BackToTop.svelte'
   import Eyebrow from '#lib/components/Eyebrow.svelte'
   import HeadingLink from '#lib/components/HeadingLink.svelte'
+  import CopiedNote from '#lib/components/CopiedNote.svelte'
   import SectionHeader from '#lib/components/SectionHeader.svelte'
   import Services from '#lib/components/Services.svelte'
   import { roles } from '#lib/data/experience.js'
@@ -107,7 +109,7 @@
         number="01"
         caption={pipesSlide.label}
         sub={pipesSlide.sub}
-        shots={[pipesSlide.shot]}
+        shots={pipesSlide.shots}
         layout="wide"
       />
     </div>
@@ -189,7 +191,11 @@
 
   <section aria-labelledby="section-header-h">
     <h2 id="section-header-h">Section header</h2>
-    <SectionHeader eyebrow="Eyebrow" heading="A section heading with a copy-link icon" />
+    <SectionHeader
+      eyebrow="Eyebrow"
+      heading="A section heading with a copy-link icon"
+      lede="An optional lede under the heading"
+    />
   </section>
 
   <section aria-labelledby="heading-link-h">
@@ -200,20 +206,39 @@
     <HeadingLink level={3} size="lg" id="catalogue-lg" text="Policy section, lg" />
   </section>
 
+  <section aria-labelledby="copied-note-h">
+    <h2 id="copied-note-h">Copied note</h2>
+    <p class="note">
+      Shown for two seconds beside whatever was copied: heading links and the email pill
+    </p>
+    <CopiedNote shown />
+  </section>
+
   <section aria-labelledby="totop-h">
     <h2 id="totop-h">Back to top</h2>
     <p class="note">Appears fixed, bottom right, once the page is scrolled past 600px</p>
     <BackToTop />
   </section>
 
+  <section aria-labelledby="banner-h">
+    <h2 id="banner-h">Banner</h2>
+    <p class="note">The result of the thing in front of you. Stays in the flow until resolved.</p>
+    <Banner variant="positive" title="Message sent">
+      <p>I will come back to you shortly</p>
+    </Banner>
+    <Banner variant="critical" title="Could not send the message">
+      <p>Your message is still in the form. Try again or email ben@feedmypixel.com.</p>
+    </Banner>
+  </section>
+
   <section aria-labelledby="toast-h">
     <h2 id="toast-h">Toast</h2>
     <div class="specimens">
       <Toast kind="info" message="Light theme on" onDismiss={() => {}} />
-      <Toast kind="positive" message="Email address copied" onDismiss={() => {}} />
+      <Toast kind="positive" message="Analytics on, thank you" onDismiss={() => {}} />
       <Toast
         kind="critical"
-        message="Could not copy, select the address instead"
+        message="Could not send the message, please email me directly"
         onDismiss={() => {}}
       />
     </div>
@@ -246,11 +271,9 @@
   }
 
   h1 {
-    font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .lede {
@@ -266,10 +289,8 @@
   }
 
   h2 {
-    font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
-    color: var(--ink-strong);
   }
 
   .row {

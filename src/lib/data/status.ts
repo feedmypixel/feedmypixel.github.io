@@ -1,5 +1,6 @@
 import { asset } from '$app/paths'
-import type { Layout, Shot } from '#lib/components/ComposedSlide.svelte'
+import type { Shot } from '#lib/components/ComposedSlide.svelte'
+import type { Slide } from '#lib/components/ScreenshotCarousel.svelte'
 
 const SCREEN_WIDTH = 660
 const SCREEN_HEIGHT = 1435
@@ -62,8 +63,6 @@ function webShot(device: Device, view: WebView, shows: string, size = WEB_SIZES[
   }
 }
 
-type Slide = { label: string; sub: string; shots: Shot[]; layout: Layout }
-
 export const slides: Slide[] = [
   {
     label: 'How is everyone?',
@@ -121,7 +120,7 @@ export const slides: Slide[] = [
     label: 'You decide who gets in',
     sub: 'Make your profile private and approve who follows you',
     shots: [
-      controlShot('06-private-page', 'a private page with a follow button'),
+      controlShot('06-private-page', 'a private profile with a follow button'),
       controlShot('05-follow-requests', 'follow requests to accept or decline')
     ],
     layout: 'phones'

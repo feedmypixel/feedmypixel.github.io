@@ -2,21 +2,26 @@
   import { consent } from '#lib/consent.svelte.js'
   import { toasts } from '#lib/toasts.svelte.js'
   import Button from './Button.svelte'
-  import NewTabHint from './NewTabHint.svelte'
+  import ExternalLink from './ExternalLink.svelte'
 
   const FADE_MS = 320
 
   let bannerEl: HTMLElement | undefined = $state()
   let closing = $state(false)
   let focused = false
+  let focusedBeforeBanner: Element | null = null
 
   $effect(() => {
     consent.init()
-    delete document.documentElement.dataset.consentDecided
+  })
+
+  $effect(() => {
+    document.documentElement.toggleAttribute('data-consent-pending', consent.choice === 'unknown')
   })
 
   $effect(() => {
     if (consent.choice === 'unknown' && bannerEl && !focused) {
+      focusedBeforeBanner = document.activeElement
       bannerEl.focus()
       focused = true
     }
@@ -24,6 +29,17 @@
       focused = false
     }
   })
+
+  function moveFocusOutOfBanner() {
+    if (!bannerEl?.contains(document.activeElement)) {
+      return
+    }
+    const nextFocus =
+      focusedBeforeBanner instanceof HTMLElement && focusedBeforeBanner !== document.body
+        ? focusedBeforeBanner
+        : document.querySelector('main')
+    nextFocus?.focus({ preventScroll: true })
+  }
 
   function decide(accepted: boolean) {
     closing = true
@@ -33,6 +49,7 @@
     )
     setTimeout(() => {
       closing = false
+      moveFocusOutOfBanner()
       if (accepted) {
         consent.grant()
       } else {
@@ -52,13 +69,13 @@
     aria-describedby="consent-copy"
     tabindex="-1"
   >
-    <div class="inner">
+    <div class="container inner">
       <p id="consent-copy" class="copy">
         I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-        yes and no personal data is collected either way.
-        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-          Read more<NewTabHint />
-        </a>
+        yes. If you do, Google sets cookies and records how you use the site.
+        <ExternalLink href="https://policies.google.com/privacy"
+          >How Google uses your data</ExternalLink
+        >
       </p>
       <div class="actions">
         <Button variant="ghost" onclick={() => decide(false)}>Decline</Button>
@@ -70,6 +87,7 @@
 
 <style>
   .banner {
+    display: none;
     position: sticky;
     top: calc(var(--header-height) + 1px);
     z-index: var(--z-consent);
@@ -80,8 +98,8 @@
     transition: opacity var(--transition-slow) var(--ease-emphasized);
   }
 
-  :global(html[data-consent-decided]) .banner {
-    display: none;
+  :global(html[data-consent-pending]) .banner {
+    display: block;
   }
 
   .closing {
@@ -94,9 +112,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: var(--space-4) var(--gutter);
+    padding-block: var(--space-4);
   }
 
   .copy {

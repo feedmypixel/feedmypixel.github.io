@@ -1,12 +1,12 @@
 <script lang="ts">
   import Seo from '#lib/components/Seo.svelte'
-  import NewTabHint from '#lib/components/NewTabHint.svelte'
+  import ExternalLink from '#lib/components/ExternalLink.svelte'
   import Eyebrow from '#lib/components/Eyebrow.svelte'
   import HeadingLink from '#lib/components/HeadingLink.svelte'
 </script>
 
 <Seo
-  title="Pipes privacy policy - feedMyPixel"
+  title="Pipes privacy policy | feedMyPixel"
   description="How Pipes handles your data: fully client-side, no backend, nothing ever sent to us"
   path="/pipes/privacy"
 />
@@ -90,9 +90,7 @@
   <HeadingLink size="lg" text="Contact" />
   <p>
     Questions about privacy: <a href="mailto:pipes@feedmypixel.com">pipes@feedmypixel.com</a> or
-    <a href="https://github.com/feedmypixel/pipes/issues" target="_blank" rel="noopener noreferrer">
-      open an issue<NewTabHint />
-    </a>
+    <ExternalLink href="https://github.com/feedmypixel/pipes/issues">open an issue</ExternalLink>
   </p>
 </article>
 
@@ -105,11 +103,9 @@
 
   h1 {
     margin-top: var(--space-4);
-    font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
     text-wrap: balance;
   }
 

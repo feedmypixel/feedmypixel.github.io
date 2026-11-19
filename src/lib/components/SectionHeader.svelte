@@ -3,8 +3,12 @@
   import Eyebrow from './Eyebrow.svelte'
   import HeadingLink from './HeadingLink.svelte'
 
-  let { eyebrow, heading, actions }: { eyebrow: string; heading: string; actions?: Snippet } =
-    $props()
+  let {
+    eyebrow,
+    heading,
+    lede,
+    actions
+  }: { eyebrow: string; heading: string; lede?: string; actions?: Snippet } = $props()
 </script>
 
 <header class="section-header">
@@ -13,6 +17,9 @@
     <HeadingLink text={heading} />
     {@render actions?.()}
   </div>
+  {#if lede}
+    <p class="lede">{lede}</p>
+  {/if}
 </header>
 
 <style>
@@ -32,5 +39,13 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
+  }
+
+  .lede {
+    max-width: 50ch;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+    color: var(--ink-muted);
+    text-wrap: pretty;
   }
 </style>

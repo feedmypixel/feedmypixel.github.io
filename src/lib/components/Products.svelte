@@ -6,17 +6,23 @@
   import SectionHeader from './SectionHeader.svelte'
   import ProductEntry from './ProductEntry.svelte'
   import StatusStoreLinks from './StatusStoreLinks.svelte'
-  import PipesCarousel from './pipes/PipesCarousel.svelte'
-  import StatusCarousel from './status/StatusCarousel.svelte'
+  import ScreenshotCarousel from './ScreenshotCarousel.svelte'
   import { slides as statusSlides, story as statusStory } from '#lib/data/status.js'
-  import { pitch as pipesPitch, story as pipesStory } from '#lib/data/pipes.js'
+  import {
+    pitch as pipesPitch,
+    slides as pipesSlides,
+    story as pipesStory
+  } from '#lib/data/pipes.js'
   import { pipesChromeUrl, pipesFirefoxUrl, pipesSourceUrl, statusUrl } from '#lib/config.js'
 </script>
 
 <section id="products" class="products">
   <div class="container inner">
-    <SectionHeader eyebrow="Products" heading="Real tools for real needs" />
-    <p class="lede">Designed, built and shipped end to end</p>
+    <SectionHeader
+      eyebrow="Products"
+      heading="Real tools for real needs"
+      lede="Designed, built and shipped end to end"
+    />
 
     <ProductEntry
       name="status"
@@ -36,7 +42,7 @@
         </Button>
       {/snippet}
       {#snippet screenshots()}
-        <StatusCarousel slides={statusSlides} label="status screenshots" />
+        <ScreenshotCarousel slides={statusSlides} label="status screenshots" />
       {/snippet}
     </ProductEntry>
 
@@ -54,7 +60,7 @@
         </Button>
       {/snippet}
       {#snippet screenshots()}
-        <PipesCarousel />
+        <ScreenshotCarousel slides={pipesSlides} label="Pipes screenshots" />
       {/snippet}
     </ProductEntry>
   </div>
@@ -68,14 +74,5 @@
 
   .inner {
     padding-block: var(--band);
-  }
-
-  .lede {
-    max-width: 50ch;
-    margin-top: var(--space-4);
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-snug);
-    color: var(--ink-muted);
-    text-wrap: pretty;
   }
 </style>

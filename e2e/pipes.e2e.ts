@@ -49,4 +49,5 @@ test('the fact line links to the privacy policy', async ({ page }) => {
   await page.getByRole('link', { name: 'Privacy policy' }).click()
   await page.waitForURL('**/pipes/privacy')
   await expect(page.getByRole('heading', { level: 1, name: 'Privacy policy' })).toBeVisible()
+  await expect(page).toHaveTitle('Pipes privacy policy | feedMyPixel')
 })

@@ -1,17 +1,20 @@
 import { analyticsId } from './config'
 
-let loaded = false
+const tagUrl = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`
+const disableFlag = `ga-disable-${analyticsId}` as const
+const cookieNames = ['_ga', `_ga_${analyticsId.replace('G-', '')}`]
 
-export function loadAnalytics(doc: Document = document) {
-  if (loaded) {
+export function enableAnalytics() {
+  window[disableFlag] = false
+
+  if (document.querySelector(`script[src="${tagUrl}"]`)) {
     return
   }
-  loaded = true
 
-  const script = doc.createElement('script')
+  const script = document.createElement('script')
   script.async = true
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`
-  doc.head.appendChild(script)
+  script.src = tagUrl
+  document.head.appendChild(script)
 
   const dataLayer = (window.dataLayer = window.dataLayer ?? [])
 
@@ -27,6 +30,13 @@ export function loadAnalytics(doc: Document = document) {
   gtag('config', analyticsId)
 }
 
-export function resetAnalyticsForTest() {
-  loaded = false
+export function disableAnalytics() {
+  window[disableFlag] = true
+
+  // Google sets these with a domain attribute, which a host-only expiry would not match.
+  for (const name of cookieNames) {
+    const expired = `${name}=; max-age=0; path=/`
+    document.cookie = expired
+    document.cookie = `${expired}; domain=${location.hostname}`
+  }
 }

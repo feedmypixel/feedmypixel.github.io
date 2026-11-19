@@ -87,9 +87,6 @@ importers:
       stylelint:
         specifier: 17.16.0
         version: 17.16.0(typescript@6.0.3)
-      stylelint-config-html:
-        specifier: 2.0.0
-        version: 2.0.0(postcss-html@2.0.0(postcss@8.5.32))(stylelint@17.16.0(typescript@6.0.3))
       stylelint-config-standard:
         specifier: 40.0.0
         version: 40.0.0(stylelint@17.16.0(typescript@6.0.3))
@@ -1471,13 +1468,6 @@ packages:
   strip-ansi@7.2.0:
     resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
     engines: {node: '>=12'}
-
-  stylelint-config-html@2.0.0:
-    resolution: {integrity: sha512-Lk1NPEdUxzHkPv3ehktjpiOk4MPaqQ3H8fkvhxdWlQpaZCm9ze0SoMbRQLqkUxEMfPE1G9/x968uxm/+d2njoA==}
-    engines: {node: ^22.12 || >=24}
-    peerDependencies:
-      postcss-html: ^2.0.0
-      stylelint: '>=16.0.0'
 
   stylelint-config-recommended@18.0.0:
     resolution: {integrity: sha512-mxgT2XY6YZ3HWWe3Di8umG6aBmWmHTblTgu/f10rqFXnyWxjKWwNdjSWkgkwCtxIKnqjSJzvFmPT5yabVIRxZg==}
@@ -2961,11 +2951,6 @@ snapshots:
   strip-ansi@7.2.0:
     dependencies:
       ansi-regex: 6.4.0
-
-  stylelint-config-html@2.0.0(postcss-html@2.0.0(postcss@8.5.32))(stylelint@17.16.0(typescript@6.0.3)):
-    dependencies:
-      postcss-html: 2.0.0(postcss@8.5.32)
-      stylelint: 17.16.0(typescript@6.0.3)
 
   stylelint-config-recommended@18.0.0(stylelint@17.16.0(typescript@6.0.3)):
     dependencies:

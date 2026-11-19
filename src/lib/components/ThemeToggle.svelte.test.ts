@@ -9,6 +9,10 @@ beforeEach(() => {
   toasts.items = []
 })
 
+afterEach(() => {
+  vi.restoreAllMocks()
+})
+
 test('toggles the theme, persists it, and announces the change', async () => {
   render(ThemeToggle)
   const button = page.getByRole('button', { name: 'Switch colour theme' })
@@ -30,5 +34,4 @@ test('still applies the theme when persistence throws', async () => {
   render(ThemeToggle)
   await page.getByRole('button', { name: 'Switch colour theme' }).click()
   expect(document.documentElement.dataset.theme).toBe('dark')
-  vi.restoreAllMocks()
 })

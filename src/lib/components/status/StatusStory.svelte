@@ -5,7 +5,7 @@
   import StatusStoreLinks from '../StatusStoreLinks.svelte'
   import ExternalLink from '../ExternalLink.svelte'
   import BuildStory from '../product/BuildStory.svelte'
-  import StatusCarousel from './StatusCarousel.svelte'
+  import ScreenshotCarousel from '../ScreenshotCarousel.svelte'
   import HeadingLink from '../HeadingLink.svelte'
 </script>
 
@@ -29,7 +29,7 @@
       </dd>
     </div>
     <div>
-      <dt>Api</dt>
+      <dt>API</dt>
       <dd>
         <ExternalLink href="https://fastify.dev">Fastify</ExternalLink>,
         <ExternalLink href="https://www.postgresql.org">PostgreSQL</ExternalLink>
@@ -62,7 +62,7 @@
   </p>
   <p>
     If you wish to have a private group you can, "Katsu anyone? 🍛". Or if you wish to tell everyone
-    what your up to broadcast away "Holipops time 🏝️"
+    what you're up to broadcast away "Holipops time 🏝️".
   </p>
   <p>
     Everything has a status already: WhatsApp, Slack, Facebook. But there it sits on the side,
@@ -83,7 +83,7 @@
   </p>
 
   <div class="web">
-    <StatusCarousel slides={webSlides} label="status on the web" />
+    <ScreenshotCarousel slides={webSlides} label="status on the web" />
   </div>
 
   <HeadingLink level={3} size="xl" id="claude" text="Built with Claude" />
@@ -111,9 +111,9 @@
     </li>
     <li><ExternalLink href="https://www.rtk-ai.app/">rtk</ExternalLink> to save tokens</li>
     <li>
-      utilise hooks for things like cleaning up worktrees and pruning docker and stopping local
-      servers, stopping claude going wild with comments and many other helpful tasks hooked into
-      claudes lifecycle
+      utilise hooks for things like cleaning up worktrees and pruning Docker and stopping local
+      servers, stopping Claude going wild with comments and many other helpful tasks hooked into
+      Claude's lifecycle
     </li>
   </ul>
   <p>

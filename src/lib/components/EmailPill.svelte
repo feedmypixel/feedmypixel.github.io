@@ -1,21 +1,23 @@
 <script lang="ts">
-  import { copyText } from '#lib/clipboard.js'
   import { emailAddress } from '#lib/config.js'
-  import { toasts } from '#lib/toasts.svelte.js'
+  import { Copier } from '#lib/copier.svelte.js'
+  import CopiedNote from './CopiedNote.svelte'
 
   let { address = emailAddress }: { address?: string } = $props()
 
+  const copier = new Copier()
+  let addressLink: HTMLAnchorElement
+
   async function copy() {
-    if (await copyText(address)) {
-      toasts.push('positive', 'Email address copied')
-    } else {
-      toasts.push('critical', 'Could not copy, select the address instead')
+    if (!(await copier.copy(address))) {
+      addressLink.focus()
+      window.getSelection()?.selectAllChildren(addressLink)
     }
   }
 </script>
 
 <div class="pill">
-  <a class="address" href="mailto:{address}">{address}</a>
+  <a bind:this={addressLink} class="address" href="mailto:{address}">{address}</a>
   <button
     class="copy"
     type="button"
@@ -38,10 +40,12 @@
       <path d="M10.5 3.5a1.5 1.5 0 0 0-1.5-1H4a1.5 1.5 0 0 0-1.5 1.5v5a1.5 1.5 0 0 0 1 1.4" />
     </svg>
   </button>
+  <CopiedNote shown={copier.copied} />
 </div>
 
 <style>
   .pill {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
@@ -92,6 +96,12 @@
     border-radius: var(--radius-md);
     color: var(--ink-muted);
     cursor: pointer;
+  }
+
+  .pill > :global(.copied-note) {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    right: 0;
   }
 
   .copy:hover {

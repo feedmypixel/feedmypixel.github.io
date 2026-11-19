@@ -1,4 +1,4 @@
-"""Build web-sized status and Pipes screenshots from the pinned design originals.
+"""Build web-sized status and Pipes screenshots from the captured originals.
 
 Status phone and web screens and the Pipes framed store set become WebP; pipe screenshots and
 the Pipes share image are already small and are copied byte-for-byte.
@@ -15,7 +15,7 @@ SCREENS_SOURCE_DIRECTORY = Path('design/status-captures')
 CONTROL_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'control'
 WEB_SOURCE_DIRECTORY = SCREENS_SOURCE_DIRECTORY / 'web'
 PIPES_SOURCE_DIRECTORY = Path('design/pipes-captures')
-PIPES_PAGE_SOURCE_DIRECTORY = Path('design/pipes-v8/mocks-pinned/render/assets/pipes')
+FRAMED_SOURCE_DIRECTORY = PIPES_SOURCE_DIRECTORY / 'framed'
 
 SCREENS_DIRECTORY = Path('static/status/screens')
 WEB_DIRECTORY = Path('static/status/web')
@@ -66,7 +66,7 @@ def main():
             jobs.append((source, destination, SCREEN_WIDTH))
     for shot in FRAMED_SHOTS:
         jobs.append((
-            PIPES_PAGE_SOURCE_DIRECTORY / 'framed' / f'{shot}.png',
+            FRAMED_SOURCE_DIRECTORY / f'{shot}.png',
             PIPES_DIRECTORY / 'framed' / f'{shot}.webp',
             FRAMED_WIDTH,
         ))
@@ -77,13 +77,13 @@ def main():
         for theme in THEMES
     ]
     pipe_jobs.append((
-        PIPES_PAGE_SOURCE_DIRECTORY / 'framed' / '7-marquee-tile.png',
+        FRAMED_SOURCE_DIRECTORY / '7-marquee-tile.png',
         PIPES_DIRECTORY / 'og-image.png',
     ))
 
     missing = [source for source, *_ in jobs + pipe_jobs if not source.is_file()]
-    if not jobs or missing:
-        print(f'Missing sources: {missing or FRAMES_SOURCE_DIRECTORY}', file=sys.stderr)
+    if missing:
+        print(f'Missing sources: {missing}', file=sys.stderr)
         sys.exit(1)
 
     for source, destination, width in jobs:

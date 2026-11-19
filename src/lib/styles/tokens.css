@@ -86,7 +86,7 @@
 
   /* form fields */
   --field-bg: #fff;
-  --field-border: var(--neutral-300);
+  --field-border: var(--neutral-500);
   --field-border-focus: var(--indicator);
   --field-invalid: var(--mood-critical);
   --field-placeholder: var(--ink-subtle);
@@ -177,9 +177,13 @@
   /* layout */
   --container-max: 77.5rem;
   --header-height: 4rem;
+
+  color-scheme: light;
 }
 
 [data-theme='dark'] {
+  color-scheme: dark;
+
   --surface-page: #0a0b0e;
   --surface-raised: #1b1e26;
   --surface-sunken: #13151c;
@@ -210,7 +214,7 @@
   --mood-critical-tint: #2a1414;
   --mood-info: #73b0ff;
   --field-bg: #0d121b;
-  --field-border: #38445c;
+  --field-border: #66728a;
   --field-invalid: oklch(74% 0.16 25);
   --field-border-focus: var(--indicator);
   --focus-ring-color: rgb(79, 157, 253, 0.55);

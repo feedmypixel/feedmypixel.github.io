@@ -18,7 +18,7 @@
       } catch (e) {}
     </script>
     <script>
-      // No-flash consent banner: hide it before paint for anyone who has already chosen.
+      // No-flash consent banner: hidden by default, shown before paint only to a visitor yet to choose.
       const storedConsent = () => {
         try {
           return localStorage.getItem('fmp-consent')
@@ -27,12 +27,12 @@
         }
       }
       if (
-        navigator.globalPrivacyControl === true ||
-        navigator.doNotTrack === '1' ||
-        storedConsent() === 'granted' ||
-        storedConsent() === 'denied'
+        navigator.globalPrivacyControl !== true &&
+        navigator.doNotTrack !== '1' &&
+        storedConsent() !== 'granted' &&
+        storedConsent() !== 'denied'
       ) {
-        document.documentElement.dataset.consentDecided = ''
+        document.documentElement.dataset.consentPending = ''
       }
     </script>
     %sveltekit.head%

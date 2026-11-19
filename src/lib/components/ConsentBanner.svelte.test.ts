@@ -18,9 +18,8 @@ const banner = () => document.querySelector('[role="dialog"][aria-label="Cookie 
 
 test('asks before anything is loaded', async () => {
   render(ConsentBanner)
-  await vi.waitFor(() => expect(banner()).not.toBeNull())
-  await expect.element(page.getByRole('button', { name: 'Accept analytics' })).toBeInTheDocument()
-  await expect.element(page.getByRole('button', { name: 'Decline' })).toBeInTheDocument()
+  await expect.element(page.getByRole('button', { name: 'Accept analytics' })).toBeVisible()
+  await expect.element(page.getByRole('button', { name: 'Decline' })).toBeVisible()
 })
 
 test('sits under the header in the page rather than covering it', async () => {
@@ -42,7 +41,7 @@ test('links out to the privacy policy', async () => {
   await vi.waitFor(() => expect(banner()).not.toBeNull())
   const link = document.querySelector<HTMLAnchorElement>('#consent-copy a')
   expect(link?.href).toContain('policies.google.com/privacy')
-  expect(link?.textContent).toBe('Read more (opens in a new tab)')
+  expect(link?.textContent).toBe('How Google uses your data (opens in a new tab)')
   expect(link?.getAttribute('target')).toBe('_blank')
   expect(link?.getAttribute('rel')).toBe('noopener noreferrer')
 })
@@ -96,4 +95,37 @@ test('the banner takes focus so it is announced', async () => {
   await vi.waitFor(() => {
     expect(document.activeElement).toBe(banner())
   })
+})
+
+function addToPage(html: string) {
+  const host = document.createElement('div')
+  host.innerHTML = html
+  document.body.append(host)
+  onTestFinished(() => host.remove())
+  return host.firstElementChild as HTMLElement
+}
+
+test('a first-visit answer hands focus to the main content rather than dropping it', async () => {
+  const main = addToPage('<main tabindex="-1"></main>')
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(document.activeElement).toBe(banner()))
+  await page.getByRole('button', { name: 'Decline' }).click()
+
+  await vi.waitFor(() => expect(banner()).toBeNull())
+  expect(document.activeElement).toBe(main)
+})
+
+test('an answer after reopening hands focus back to the control that reopened it', async () => {
+  addToPage('<main tabindex="-1"></main>')
+  const cookieSettings = addToPage('<button type="button">Cookie settings</button>')
+  localStorage.setItem(CONSENT_KEY, 'denied')
+  render(ConsentBanner)
+  await vi.waitFor(() => expect(consent.choice).toBe('denied'))
+  cookieSettings.focus()
+  consent.ask()
+  await vi.waitFor(() => expect(document.activeElement).toBe(banner()))
+  await page.getByRole('button', { name: 'Accept analytics' }).click()
+
+  await vi.waitFor(() => expect(banner()).toBeNull())
+  expect(document.activeElement).toBe(cookieSettings)
 })

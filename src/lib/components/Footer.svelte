@@ -4,26 +4,28 @@
   import GitHubMark from './GitHubMark.svelte'
   import NewTabHint from './NewTabHint.svelte'
   import { consent } from '#lib/consent.svelte.js'
+  import { sections } from '#lib/data/sections.js'
 
   const home = resolve('/')
 </script>
 
 <footer class="footer">
-  <div class="inner">
+  <div class="container inner">
     <div class="brand">
       <Logo size={22} />
       <span class="line">feedMyPixel Ltd · Ben Chidgey · number 08198085 · established 2012</span>
     </div>
     <nav class="nav" aria-label="Footer">
-      <a href="{home}#products">Products</a>
-      <a href="{home}#experience">Experience</a>
-      <a href="{home}#services">Services</a>
-      <a href="{home}#contact">Contact</a>
+      {#each sections as section (section.id)}
+        <a href="{home}#{section.id}">{section.label}</a>
+      {/each}
       <a href={resolve('/components')}>Components</a>
       <a href="https://github.com/feedmypixel" target="_blank" rel="noopener noreferrer">
         GitHub<NewTabHint />
       </a>
-      <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
+      {#if !consent.optedOutByBrowser}
+        <button type="button" onclick={() => consent.ask()}>Cookie settings</button>
+      {/if}
       <a
         class="repo"
         href="https://github.com/feedmypixel/feedmypixel.github.io"
@@ -48,9 +50,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-6);
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: var(--space-10) var(--gutter);
+    padding-block: var(--space-10);
   }
 
   .brand {

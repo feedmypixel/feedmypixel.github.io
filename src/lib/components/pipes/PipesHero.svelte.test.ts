@@ -1,6 +1,13 @@
 import { render } from 'vitest-browser-svelte'
 import { page } from 'vitest/browser'
 import PipesHero from './PipesHero.svelte'
+import '#lib/styles/patterns.css'
+
+let main: HTMLElement | undefined
+
+afterEach(() => {
+  main?.remove()
+})
 
 test('names the product in the headline and the breadcrumb', async () => {
   render(PipesHero)
@@ -43,7 +50,15 @@ test('the fact line links to the privacy policy on this site', async () => {
   )
 })
 
-test('keeps the hero out of the scroll reveal', () => {
-  render(PipesHero)
-  expect(document.querySelector('section')?.classList.contains('hero')).toBe(true)
+test('keeps the hero out of the scroll reveal its sibling sections get', () => {
+  main = document.createElement('main')
+  main.id = 'main'
+  main.appendChild(document.createElement('section'))
+  document.body.appendChild(main)
+  render(PipesHero, { target: main })
+  const [sibling, hero] = [...main.querySelectorAll(':scope > section')].map(
+    (section) => getComputedStyle(section).animationName
+  )
+  expect(sibling).toBe('rise-in')
+  expect(hero).toBe('none')
 })

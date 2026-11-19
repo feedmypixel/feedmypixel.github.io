@@ -5,15 +5,9 @@
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import { mostVisibleId, indicatorGeometry, sectionForRoute } from '#lib/nav-indicator.js'
+  import { sections } from '#lib/data/sections.js'
 
   const home = resolve('/')
-
-  const sections = [
-    { id: 'products', label: 'Products' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'services', label: 'Services' },
-    { id: 'contact', label: 'Contact' }
-  ]
 
   let active = $state<string | null>(null)
   let drawerOpen = $state(false)
@@ -78,7 +72,7 @@
 <svelte:window onresize={() => measure(active)} />
 
 <header class="header" class:drawer-open={drawerOpen}>
-  <div class="inner">
+  <div class="container inner">
     <a
       href="{home}#top"
       class="brand"
@@ -130,7 +124,7 @@
   </div>
 </header>
 
-<MobileNav open={drawerOpen} onclose={() => (drawerOpen = false)} />
+<MobileNav open={drawerOpen} onClose={() => (drawerOpen = false)} />
 
 <style>
   .header {
@@ -151,10 +145,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    max-width: var(--container-max);
     min-height: var(--header-height);
-    margin-inline: auto;
-    padding-inline: var(--gutter);
   }
 
   .brand {

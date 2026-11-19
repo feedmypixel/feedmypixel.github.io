@@ -1,5 +1,6 @@
 <script lang="ts">
   import { isTagHot, type Chip } from '#lib/cv-filter.js'
+  import type { Role } from '#lib/data/experience.js'
   import type { Run } from '#lib/role-runs.js'
 
   let {
@@ -12,6 +13,26 @@
   const solo = $derived(run.chapters.length === 1)
   const only = $derived(run.chapters[0])
 </script>
+
+{#snippet summaryAndTags(role: Role)}
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -- authored in experience.ts, never user input -->
+  <div class="summary">{@html role.summary}</div>
+  <ul class="tags">
+    {#each role.tags as tag (tag)}
+      <li>
+        <button
+          class="tag"
+          type="button"
+          data-hot={isTagHot(tag, chips, query)}
+          aria-label="Filter by {tag}"
+          onclick={() => onSelectTag?.(tag)}
+        >
+          {tag}
+        </button>
+      </li>
+    {/each}
+  </ul>
+{/snippet}
 
 <li class="row">
   <div class="grid">
@@ -32,23 +53,7 @@
 
       {#if solo}
         <p class="title">{only.role.title}</p>
-        <!-- eslint-disable-next-line svelte/no-at-html-tags -- authored in experience.ts, never user input -->
-        <div class="summary">{@html only.role.summary}</div>
-        <ul class="tags">
-          {#each only.role.tags as tag (tag)}
-            <li>
-              <button
-                class="tag"
-                type="button"
-                data-hot={isTagHot(tag, chips, query)}
-                aria-label="Filter by {tag}"
-                onclick={() => onSelectTag?.(tag)}
-              >
-                {tag}
-              </button>
-            </li>
-          {/each}
-        </ul>
+        {@render summaryAndTags(only.role)}
       {:else}
         <ol class="chapters">
           {#each run.chapters as chapter, index (chapter.role.dates + chapter.role.title)}
@@ -61,23 +66,7 @@
               {#if !run.metaLabel}
                 <span class="chapter-meta">{chapter.role.type} · {chapter.role.location}</span>
               {/if}
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -- authored in experience.ts, never user input -->
-              <div class="summary">{@html chapter.role.summary}</div>
-              <ul class="tags">
-                {#each chapter.role.tags as tag (tag)}
-                  <li>
-                    <button
-                      class="tag"
-                      type="button"
-                      data-hot={isTagHot(tag, chips, query)}
-                      aria-label="Filter by {tag}"
-                      onclick={() => onSelectTag?.(tag)}
-                    >
-                      {tag}
-                    </button>
-                  </li>
-                {/each}
-              </ul>
+              {@render summaryAndTags(chapter.role)}
             </li>
           {/each}
         </ol>
@@ -144,11 +133,9 @@
   }
 
   h3 {
-    font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .title {
@@ -218,11 +205,9 @@
   }
 
   h4 {
-    font-family: var(--font-display);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--tracking-tight);
-    color: var(--ink-strong);
   }
 
   .chapter-dates,
@@ -263,7 +248,7 @@
     background: var(--surface-sunken);
     border-radius: var(--radius-pill);
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: var(--font-size-xs);
     color: var(--ink-muted);
   }
 

@@ -5,7 +5,7 @@
     $props()
 </script>
 
-<div class="toast" data-kind={kind} role="status">
+<div class="toast" data-kind={kind}>
   <span class="message">{message}</span>
   <button class="dismiss" type="button" aria-label="Dismiss notification" onclick={onDismiss}>
     <svg
@@ -80,6 +80,10 @@
 
   .dismiss:hover {
     opacity: 1;
+  }
+
+  .dismiss:focus-visible {
+    outline-color: var(--toast-ink);
   }
 
   .cross {
