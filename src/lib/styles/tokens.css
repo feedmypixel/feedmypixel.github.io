@@ -185,17 +185,17 @@
   color-scheme: dark;
 
   --surface-page: #0a0b0e;
-  --surface-raised: #1b1e26;
-  --surface-sunken: #13151c;
-  --surface-inset: #23262f;
-  --surface-overlay: #1b1e26;
-  --border-subtle: #262a33;
-  --border-default: #333843;
-  --border-strong: #454b58;
+  --surface-raised: #242832;
+  --surface-sunken: #171a21;
+  --surface-inset: #2c303b;
+  --surface-overlay: #242832;
+  --border-subtle: #323743;
+  --border-default: #3e4350;
+  --border-strong: #515867;
   --ink-strong: #f3f6fb;
   --ink: #d6deea;
   --ink-muted: #93a1ba;
-  --ink-subtle: #7888a2;
+  --ink-subtle: #8693ab;
   --brand: #4f9dfd;
   --brand-hover: #73b0ff;
   --brand-active: #a9ceff;
