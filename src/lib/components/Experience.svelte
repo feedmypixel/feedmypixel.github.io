@@ -12,6 +12,7 @@
     filterByControls,
     filterRoles,
     nextActiveIndex,
+    roleCountLabel,
     suggestFacets,
     type Chip as FilterChip,
     type Facet,
@@ -87,6 +88,8 @@
     type = 'All'
     open = false
     activeIndex = -1
+    suppressListbox = true
+    searchInput()?.focus()
   }
 
   function onKeyDown(event: KeyboardEvent) {
@@ -200,7 +203,8 @@
     </noscript>
   </div>
 
-  <div class="container results" aria-live="polite">
+  <div class="container results">
+    <p class="visually-hidden" role="status">{roleCountLabel(results.length)} shown</p>
     {#if results.length > 0}
       <ol class="rows">
         {#each runs as run (run.company + run.spanLabel)}

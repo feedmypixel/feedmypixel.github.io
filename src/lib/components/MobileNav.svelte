@@ -53,28 +53,27 @@
 </script>
 
 {#if open}
-  <button
-    class="scrim"
-    type="button"
-    aria-label="Close menu"
-    tabindex="-1"
-    onclick={onClose}
-    transition:fade={{ duration: fadeDuration }}
-  ></button>
-  <div
-    bind:this={panelEl}
-    class="drawer"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Menu"
-    id="mobile-nav"
-    transition:fly={{ x: 288, duration: slideDuration }}
-  >
-    <nav aria-label="Sections">
-      {#each sections as section (section.id)}
-        <a href="{home}#{section.id}" onclick={onClose}>{section.label}</a>
-      {/each}
-    </nav>
+  <div role="dialog" aria-modal="true" aria-label="Menu">
+    <button
+      class="scrim"
+      type="button"
+      aria-label="Close menu"
+      tabindex="-1"
+      onclick={onClose}
+      transition:fade={{ duration: fadeDuration }}
+    ></button>
+    <div
+      bind:this={panelEl}
+      class="drawer"
+      id="mobile-nav"
+      transition:fly={{ x: 288, duration: slideDuration }}
+    >
+      <nav aria-label="Sections">
+        {#each sections as section (section.id)}
+          <a href="{home}#{section.id}" onclick={onClose}>{section.label}</a>
+        {/each}
+      </nav>
+    </div>
   </div>
 {/if}
 

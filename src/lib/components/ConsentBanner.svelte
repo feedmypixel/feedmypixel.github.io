@@ -9,6 +9,7 @@
   let bannerEl: HTMLElement | undefined = $state()
   let closing = $state(false)
   let focused = false
+  let focusedBeforeBanner: Element | null = null
 
   $effect(() => {
     consent.init()
@@ -17,6 +18,7 @@
 
   $effect(() => {
     if (consent.choice === 'unknown' && bannerEl && !focused) {
+      focusedBeforeBanner = document.activeElement
       bannerEl.focus()
       focused = true
     }
@@ -24,6 +26,17 @@
       focused = false
     }
   })
+
+  function moveFocusOutOfBanner() {
+    if (!bannerEl?.contains(document.activeElement)) {
+      return
+    }
+    const nextFocus =
+      focusedBeforeBanner instanceof HTMLElement && focusedBeforeBanner !== document.body
+        ? focusedBeforeBanner
+        : document.querySelector('main')
+    nextFocus?.focus({ preventScroll: true })
+  }
 
   function decide(accepted: boolean) {
     closing = true
@@ -33,6 +46,7 @@
     )
     setTimeout(() => {
       closing = false
+      moveFocusOutOfBanner()
       if (accepted) {
         consent.grant()
       } else {

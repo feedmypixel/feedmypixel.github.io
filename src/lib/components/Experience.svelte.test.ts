@@ -1,5 +1,5 @@
 import { render } from 'vitest-browser-svelte'
-import { page } from 'vitest/browser'
+import { page, userEvent } from 'vitest/browser'
 import Experience from './Experience.svelte'
 import { roles } from '#lib/data/experience.js'
 
@@ -225,9 +225,43 @@ test('backspace with text in the field leaves the chips alone', async () => {
   expect(chipLabels()).toContain('Node')
 })
 
-test('the results region announces changes', () => {
+test('a status announces the result count, not the timeline itself', async () => {
   render(Experience)
-  expect(document.querySelector('.results')?.getAttribute('aria-live')).toBe('polite')
+  const announced = () => document.querySelector('.results [role="status"]')?.textContent
+  expect(announced()).toBe(`${roles.length} roles shown`)
+  expect(document.querySelector('.results')?.hasAttribute('aria-live')).toBe(false)
+
+  await searchBox().fill('guardian')
+  await vi.waitFor(() => expect(announced()).toBe('1 role shown'))
+})
+
+test('clearing from the search box hands focus to the search input with the listbox shut', async () => {
+  render(Experience)
+  await searchBox().fill('gov')
+  await page.getByRole('button', { name: 'Clear all filters' }).first().click()
+
+  await vi.waitFor(() => expect(document.activeElement?.id).toBe('cv-search'))
+  expect(document.querySelector('.listbox')).toBeNull()
+})
+
+test('clearing from the empty state hands focus to the search input with the listbox shut', async () => {
+  render(Experience)
+  await searchBox().fill('zzzz')
+  await page.getByRole('button', { name: 'Clear all filters' }).last().click()
+
+  await vi.waitFor(() => expect(document.activeElement?.id).toBe('cv-search'))
+  expect(document.querySelector('.listbox')).toBeNull()
+})
+
+test('tabbing out of the search closes the suggestions', async () => {
+  render(Experience)
+  await searchBox().click()
+  await expect.element(page.getByRole('listbox')).toBeInTheDocument()
+
+  await userEvent.tab()
+
+  await expect.element(page.getByRole('listbox')).not.toBeInTheDocument()
+  expect(document.activeElement?.id).not.toBe('cv-search')
 })
 
 test('the search field is a labelled combobox', async () => {

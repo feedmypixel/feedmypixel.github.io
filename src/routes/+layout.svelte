@@ -40,7 +40,7 @@
 
 <div id="top" class="page">
   <Header />
-  <main id="main">
+  <main id="main" tabindex="-1">
     <ConsentBanner />
     {@render children()}
   </main>
@@ -59,6 +59,10 @@
 
   main {
     flex: 1 0 auto;
+  }
+
+  main:focus-visible {
+    outline: none;
   }
 
   .skip-link {

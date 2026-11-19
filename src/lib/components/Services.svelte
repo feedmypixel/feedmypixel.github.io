@@ -126,6 +126,12 @@
     opacity: 1;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .faq::details-content {
+      transition: none;
+    }
+  }
+
   summary {
     display: flex;
     align-items: flex-start;
