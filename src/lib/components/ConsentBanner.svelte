@@ -86,8 +86,7 @@
     tabindex="-1"
   >
     <p id="consent-copy" class="copy">
-      I use Google Analytics to see which parts of this site are read. Nothing loads until you say
-      yes. If you do, Google sets cookies and records how you use the site.
+      Can I use Google Analytics cookies to see what gets read?
       <ExternalLink href="https://policies.google.com/privacy"
         >How Google uses your data</ExternalLink
       >
@@ -109,7 +108,7 @@
     gap: var(--space-4);
     padding: var(--space-4) var(--gutter);
     background: var(--surface-raised);
-    border-top: 1px solid var(--border-default);
+    border-top: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-lg);
     opacity: 1;
     transition: opacity var(--transition-slow) var(--ease-emphasized);
@@ -154,7 +153,7 @@
       inset: auto auto var(--space-5) var(--space-5);
       width: 21rem;
       padding: var(--space-5);
-      border: 1px solid var(--border-default);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
     }
 
