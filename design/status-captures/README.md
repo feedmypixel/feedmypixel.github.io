@@ -2,7 +2,8 @@
 
 The status app screens in both themes, 1206x2622, from the stat session's sweep of the live app on
 14 Nov 2026 (`~/Documents/Stat/store-shots/2026-11-14/`, which has the full set of 17 and a README).
-Only the screens the site uses are kept here: 01 to 09.
+Only the screens the site uses are kept here: 01 to 09. 01-home was recaptured on 22 Nov 2026
+(`~/Documents/Stat/store-shots/2026-11-22/`) after status dropped the mature content blur.
 
 `control/iphone/` holds the privacy-in-action moments behind the home control slides, from the same
 sweep (`~/Documents/Stat/store-shots/2026-11-14/control/`, which has all ten moments on six devices
