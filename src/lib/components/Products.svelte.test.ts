@@ -72,11 +72,11 @@ test('each product tells its problem, solution and product story', () => {
   expect(labels).toEqual(['Problem', 'Solution', 'Product', 'Problem', 'Solution', 'Product'])
 })
 
-test('status has twelve composed slides and Pipes four', () => {
+test('status has eleven composed slides and Pipes four', () => {
   render(Products)
   const strips = document.querySelectorAll('.strip')
   expect(strips[0].getAttribute('aria-label')).toBe('status screenshots')
-  expect(strips[0].querySelectorAll('.slide .caption')).toHaveLength(12)
+  expect(strips[0].querySelectorAll('.slide .caption')).toHaveLength(11)
   expect(strips[1].getAttribute('aria-label')).toBe('Pipes screenshots')
   expect(strips[1].querySelectorAll('.slide .caption')).toHaveLength(4)
 })

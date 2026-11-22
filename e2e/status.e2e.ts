@@ -49,10 +49,10 @@ test('the chevrons move the /status carousel and its counter', async ({ page }) 
   const strip = page.getByLabel('status screenshots', { exact: true })
   await strip.scrollIntoViewIfNeeded()
   await page.locator('#screenshots').getByRole('button', { name: 'Next screenshot' }).click()
-  await expect(counter(page, 'status screenshots')).toHaveText('02 / 12  Bring your people')
+  await expect(counter(page, 'status screenshots')).toHaveText('02 / 11  Bring your people')
   await expect.poll(() => strip.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0)
   await page.waitForTimeout(400)
-  await expect(counter(page, 'status screenshots')).toHaveText('02 / 12  Bring your people')
+  await expect(counter(page, 'status screenshots')).toHaveText('02 / 11  Bring your people')
 })
 
 test('the chevrons move the home status carousel and it stays put', async ({ page }) => {
@@ -64,7 +64,7 @@ test('the chevrons move the home status carousel and it stays put', async ({ pag
     .getByRole('button', { name: 'Next screenshot' })
   await next.click()
   await next.click()
-  await expect(counter(page, 'status screenshots')).toHaveText('03 / 12  Your status with an emoji')
+  await expect(counter(page, 'status screenshots')).toHaveText('03 / 11  Your status with an emoji')
   await page.waitForTimeout(800)
   const slideWidth = await strip.evaluate((element) => element.clientWidth + 16)
   await expect

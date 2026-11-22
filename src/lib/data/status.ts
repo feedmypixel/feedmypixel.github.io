@@ -35,8 +35,6 @@ function screenShot(screen: Screen, { inverted = false } = {}): Shot {
 type PhoneMoment =
   | '01-report'
   | '01b-report-reasons'
-  | '03-hidden'
-  | '03b-shown'
   | '04-message-request'
   | '05-follow-requests'
   | '06-private-page'
@@ -137,15 +135,6 @@ export const slides: Slide[] = [
     shots: [
       controlShot('01-report', 'a status menu with report'),
       controlShot('01b-report-reasons', 'the reasons to report someone')
-    ],
-    layout: 'phones'
-  },
-  {
-    label: 'Mature content stays hidden',
-    sub: 'Mature or adult content stays blurred until you choose to see it',
-    shots: [
-      controlShot('03-hidden', 'a blurred status with a closed eye'),
-      controlShot('03b-shown', 'the same status shown after tapping the eye')
     ],
     layout: 'phones'
   }

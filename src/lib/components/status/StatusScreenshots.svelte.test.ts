@@ -13,7 +13,7 @@ test('has the screenshots anchor and heading', async () => {
 test('shows the same composed carousel as the home page', () => {
   render(StatusScreenshots)
   const strip = document.querySelector('[aria-label="status screenshots"]')!
-  expect(strip.querySelectorAll('.slide .caption')).toHaveLength(12)
+  expect(strip.querySelectorAll('.slide .caption')).toHaveLength(11)
   expect(strip.querySelector('.slide .caption')?.textContent).toBe('How is everyone?')
 })
 
