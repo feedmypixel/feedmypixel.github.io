@@ -20,5 +20,10 @@
       animation-timeline: view();
       animation-range: cover 0% cover 520px;
     }
+
+    /* The browser aims an anchor jump at the shifted box, so the rise would carry the target under the header */
+    #main > section:is(:target, :has(:target)) {
+      animation: none;
+    }
   }
 }
