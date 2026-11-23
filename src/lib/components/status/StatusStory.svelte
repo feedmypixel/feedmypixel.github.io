@@ -54,11 +54,11 @@
 
   <HeadingLink level={3} size="xl" id="why" text="Why I built it" />
   <p>
-    For me status is about breaking the ice. Reaching out to people can take real effort and
-    sometimes it means saying something in a group chat. status is a simple way to say what you're
-    up to and start a conversation. Your people see it pop up and can react or comment. If they want
-    to chat more they can message you privately. If they want to take it elsewhere, to WhatsApp,
-    Instagram, Zoom, Snapchat, TikTok, FaceTime or anywhere else, they can.
+    It's all about breaking the ice. Keeping in touch takes more than it should. A full post feels
+    like a performance, a message out of the blue needs a reason and sometimes it means saying
+    something in a group chat. status is a simple app that provides an easy way to say what you're
+    up to and start a conversation. Post an emoji and a few words. Your people see it pop up and can
+    react, reply or message you for a natter.
   </p>
   <p>
     If you wish to have a private group you can, "Katsu anyone? 🍛". Or if you wish to tell everyone
